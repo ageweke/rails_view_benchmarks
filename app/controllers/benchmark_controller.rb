@@ -4,7 +4,9 @@ class BenchmarkController < ApplicationController
   MICROSECONDS_PER_SECOND = 1_000_000
 
   def benchmark_place_page
-    @place = "San Francisco"
+    @place = OpenStruct.new(
+      :title => "San Francisco",
+      :following => true)
 
     @user = OpenStruct.new(
       :name => 'Joe Smith',
@@ -30,6 +32,29 @@ class BenchmarkController < ApplicationController
       OpenStruct.new(:link => "/n/places/mexico-city-distrito-federal-mexico", :title => "Mexico City"),
       OpenStruct.new(:link => "/n/places/montreal-quebec-canada", :title => "Montreal"),
       OpenStruct.new(:link => "/n/places/nairobi-nairobi-kenya", :title => "Nairobi")
+    ]
+
+    @subscription_options = [
+      OpenStruct.new(:selected => false, :key => :instant_email_updates, :name => 'Instant Updates', :detail => '(Get messages as they are posted)'),
+      OpenStruct.new(:selected => true, :key => :digest_emails, :name => 'Occasional Email Digests', :detail => nil),
+      OpenStruct.new(:selected => false, :key => :no_emails, :name => 'No Email Digests', :detail => nil),
+    ]
+
+    @part_of = [
+      OpenStruct.new(:url => '/n/geolocations/united-states_california', :name => "California"),
+      OpenStruct.new(:url => '/n/geolocations/united-states', :name => "United States")
+    ]
+
+    @nearby = [
+      OpenStruct.new(:url => '/n/places/uc-berkeley-california-united-states', :name => "UC Berkeley"),
+      OpenStruct.new(:url => '/n/places/stanford-university-california-united-states', :name => "Stanford University"),
+      OpenStruct.new(:url => '/n/places/wine-country-california-united-states', :name => "California Wine Country"),
+      OpenStruct.new(:url => '/n/places/san-jose-california-united-states', :name => "San Jose"),
+      OpenStruct.new(:url => '/n/places/santa-cruz-california-united-states', :name => "Santa Cruz"),
+      OpenStruct.new(:url => '/n/places/monterey-california-united-states', :name => "Monterey, California"),
+      OpenStruct.new(:url => '/n/places/sacramento-california-united-states', :name => "Sacramento"),
+      OpenStruct.new(:url => '/n/places/merced-california-united-states', :name => "Merced"),
+      OpenStruct.new(:url => '/n/places/mendocino-california-united-states', :name => "Mendocino"),
     ]
 
     benchmark!({ })
