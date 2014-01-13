@@ -6,6 +6,8 @@ class BenchmarkController < ApplicationController
   def benchmark_place_page
     @place = "San Francisco"
 
+    @user = OpenStruct.new(:name => 'Andrew Geweke', :id => 84390252)
+
     benchmark!({ })
   end
 
@@ -28,6 +30,10 @@ class BenchmarkController < ApplicationController
     template = "#{@partial_base}/#{benchmark}".freeze
     @render_args = { :template => template, :locals => locals }
     @measure_count ||= 25
+
+    if params[:view_only]
+      return render @render_args
+    end
 
     benchmarker.go! { render @render_args }
 
