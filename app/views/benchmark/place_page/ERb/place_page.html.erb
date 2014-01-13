@@ -1,60 +1,12 @@
 
 <!DOCTYPE html>
-<html class="no-js root-places page-places action-show page-places-show root-places page-places action-show" data-logged-in="3287398" data-user-main-image="https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/3287398/1389477462/C-60-60?default=true&amp;sh=cDC5YUsZOQLnQnLQ39ahyA">
+<html class="no-js root-places page-places action-show page-places-show root-places page-places action-show" data-logged-in="<%= @user.id %>" data-user-main-image="<%= cdn(@user.profile_image) %>">
   <%= render :partial => "#{@partial_base}/header" %>
   <body>
     <div id="viewport">
-      <header id="main-header">
-        <nav id="main-menu">
-          <h1 id="brand"><a href="/" id="autogen_id_for_tracking_nav_logo_clicked_1"><img alt="Couchsurfing" height="41" src="https://d20rrv4k3o7n66.cloudfront.net/assets/logo/logo-small-a6218f040fc83533cd4ce0ecfec406e4.png" width="117" /></a></h1>
-          <a class="button trigger unread" data-toggle="dropdown" href="#viewport" id="logged_in_menu_trigger">Menu<span class="message-bubble">24</span></a>
-          <div id="logged_in_menu"><a class="close_button" href="#" id="logged_in_menu_close">Close</a>
-            <ul class="menu" id="nav_user_menu">
-              <li class="menu_item" data-view="HeaderDropdown" id="nav_user_settings"><a class="trigger button" data-toggle="dropdown" href="#nav_user_settings" id="navbar_user_settings_trigger"><span class="avatar imgsize_compact_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/3287398/1389477462/C-30-30?default=true&amp;sh=U5JSWSsaz3aT0WbCuMOa5g);"></span><span class="username" title="Andrew">Andrew</span></a>
-                <ul class="dropdown_menu submenu" data-component="options" id="navbar_user_settings_menu">                  <li class="menu_item"><a class="button" href="/profile.html?id=M2O0L2F" id="autogen_id_for_tracking_nav_profile_clicked_1" title="Profile">My Profile</a></li>
-                  <li class="menu_item"><a class="button" href="/n/o/user_account_settings" id="autogen_id_for_tracking_nav_account_settings_clicked_1">Account Settings</a></li>
-                  <li class="menu_item"><a class="button" href="/n/places/san-francisco-california-united-states" id="autogen_id_for_tracking_nav_place_page_clicked_1">Your local place page</a></li>
-                  <li class="menu_item"><a class="button" href="/n/logout" id="autogen_id_for_tracking_nav_log_out_clicked_1">Log out</a></li>
-                </ul>
-              </li>
-              <li class="menu_item" id="nav_couch_manager"><a class=" button" href="/n/o/couchmanager" id="autogen_id_for_tracking_nav_couchrequests_clicked_1" title="Couchrequests">Couchrequests</a></li>
-              <li class="menu_item" id="nav_messages"><a class="unread button" href="/n/o/messages" id="autogen_id_for_tracking_nav_messages_clicked_1" title="Messages">Messages</a><span class="message-bubble">24</span></li>
-            </ul>
-            <ul class="menu_item" id="nav_explore_menu">              <li class="explore menu_item"><a class="button" href="/" id="autogen_id_for_tracking_nav_home_clicked_1" title="Home"><span translate="yes">Home</span></a></li>
-              <li class="find_a_couch menu_item"><a class="button" href="/n/surfing" id="autogen_id_for_tracking_nav_trips_clicked_1" title="Surf"><span translate="yes">Surf</span></a></li>
-              <li class="host_a_traveler menu_item"><a class="button" href="/n/hosting" id="autogen_id_for_tracking_nav_host_clicked_1" title="Host"><span translate="yes">Host</span></a></li>
-              <li class="global_events menu_item"><a class="button" href="/n/events" id="autogen_id_for_tracking_nav_events_clicked_1" title="Events"><span translate="yes">Events</span></a></li>
-              <li class="discuss menu_item"><a class="button" href="/groups" id="autogen_id_for_tracking_nav_groups_clicked_1" title="Discuss"><span translate="yes">Discuss</span></a></li>
-              <li class="help menu_item"><a class="button" href="/n/help" id="autogen_id_for_tracking_nav_help_clicked_1" title="Help"><span translate="yes">Help</span></a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="flash-spot"></div>
-      </header>
+      <%= render :partial => "#{@partial_base}/nav" %>
       <div class="main-container-wrapper" id="main-content">
-        <nav class="subnav">
-          <form action="/n/locations/search_place" class="search_place" method="post"><input name="authenticity_token" type="hidden" value="NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=" />
-            <label for="cs_typeahead_input">              <div class="search_icon"></div>
-              <div class="input_container"><input autocomplete="off" data-cs-typeahead="PlaceSubnavNavigator" data-place-navigator="true" id="cs_typeahead_input" name="location_query" placeholder="Find a place…" tabindex="1" type="text" /><span class="typeahead_prompt">Find a place…</span></div>
-            </label>
-          </form>
-          <ul>            <li class="nav_button"><a class="first" href="/n/places/san-francisco-california-united-states">San Francisco Bay</a></li>
-            <li class="nav_button"><a class="followed" href="/n/places/yosemite-national-park-california-united-states">Yosemite National Park</a></li>
-            <li class="nav_button"><a class="followed" href="/n/places/rocky-mountain-national-park-united-states">Rocky Mountain National Park</a></li>
-            <li class="nav_button"><a href="/n/places/barcelona-cataluna-spain">Barcelona</a></li>
-            <li class="nav_button"><a href="/n/places/berlin-berlin-germany">Berlin</a></li>
-            <li class="nav_button"><a href="/n/places/boston-massachusetts-united-states">Boston</a></li>
-            <li class="nav_button"><a href="/n/places/budapest-budapest-hungary">Budapest</a></li>
-            <li class="nav_button"><a href="/n/places/buenos-aires-autonomous-city-of-buenos-aires-argentina">Buenos Aires</a></li>
-            <li class="nav_button"><a href="/n/places/cairo-cairo-governorate-egypt">Cairo</a></li>
-            <li class="nav_button"><a href="/n/places/cape-town-western-cape-south-africa">Cape Town</a></li>
-            <li class="nav_button"><a href="/n/places/istanbul-turkey">Istanbul</a></li>
-            <li class="nav_button"><a href="/n/places/melbourne-victoria-australia">Melbourne</a></li>
-            <li class="nav_button"><a href="/n/places/mexico-city-distrito-federal-mexico">Mexico City</a></li>
-            <li class="nav_button"><a href="/n/places/montreal-quebec-canada">Montreal</a></li>
-            <li class="nav_button"><a href="/n/places/nairobi-nairobi-kenya">Nairobi</a></li>
-          </ul>
-        </nav>
+        <%= render :partial => "#{@partial_base}/place_subnav" %>
         <div class="avatar_header" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/images/faces/san-francisco-california-united-states/201401052244/6?sh=sV5Ky3b0NBIpw33ZdKsqJg)">          <div class="avatar_header_content">            <div class="title_and_following">
               <div class="main_title ">
                 <h1 title="San Francisco Bay Area">San Francisco Bay Area</h1>
