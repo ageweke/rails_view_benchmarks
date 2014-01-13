@@ -1,5 +1,81 @@
 require 'benchmarker'
 
+class String
+  UPPERCASE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  LOWERCASE_ALPHABET = UPPERCASE_ALPHABET.downcase
+  ALL_CASE_ALPHABET = UPPERCASE_ALPHABET + LOWERCASE_ALPHABET
+
+  NUMBERS = "0123456789"
+  PUNCTUATION = ".-_/"
+
+  USERNAME_CHARACTERS = ALL_CASE_ALPHABET + NUMBERS + PUNCTUATION
+  SECURE_HASH_CHARACTERS = ALL_CASE_ALPHABET + NUMBERS
+  PROFILE_PATH_CHARACTERS = UPPERCASE_ALPHABET + NUMBERS
+
+  HEX_CHARACTERS = "ABCDEF" + NUMBERS
+
+  class << self
+    def random_profile_name
+      count = rand(12) + 5
+      out = ""
+      count.times { out << USERNAME_CHARACTERS[rand(USERNAME_CHARACTERS.length)] }
+      out
+    end
+
+    def random_secure_hash
+      out = ""
+      22.times { out << SECURE_HASH_CHARACTERS[rand(SECURE_HASH_CHARACTERS.length)] }
+      out
+    end
+
+    def random_profile_image
+      "/n/image/main_image/1/#{Integer.random_id}/#{Time.random_future_time.to_i}/C-30-30?default=true&sh=#{random_secure_hash}"
+    end
+
+    def random_profile_path
+      out = "/profile.html?id="
+      8.times { out << PROFILE_PATH_CHARACTERS[rand(PROFILE_PATH_CHARACTERS.length)] }
+      out
+    end
+
+    def random_name
+      %w{Joe Mary Floyd Miriam Ben Hermione Kate Scott}.sample + " " +
+        %w{Hernandez Johnson Li Miller}.sample
+    end
+
+    def random_profile_name_path
+      "/n/people/#{random_profile_name}"
+    end
+
+
+    def random_hex_string(length)
+      out = ""
+      length.times { out << HEX_CHARACTERS[rand(HEX_CHARACTERS.length)] }
+      out
+    end
+  end
+end
+
+class Integer
+  def self.random_id
+    rand(1_000_000_000)
+  end
+end
+
+class Time
+  def self.random_future_date
+    Time.now.at_midnight + rand(30).days
+  end
+
+  def self.random_future_time
+    random_future_date + rand(86_400)
+  end
+
+  def self.random_time
+    Time.now + rand(86_400)
+  end
+end
+
 class BenchmarkController < ApplicationController
   MICROSECONDS_PER_SECOND = 1_000_000
 
@@ -10,8 +86,8 @@ class BenchmarkController < ApplicationController
 
     @user = OpenStruct.new(
       :name => 'Joe Smith',
-      :id => 84390252,
-      :profile_image => "/n/image/main_image/1/84390252/1389477462/C-60-60?default=true&amp;sh=cDC5YUsZOQLnQnLQ39ahyA",
+      :id => Integer.random_id,
+      :profile_image => String.random_profile_image,
       :unread_messages => 57,
       :first_name => 'Joe',
       :profile_path => '/profile.html?id=890FZQ')
@@ -56,6 +132,30 @@ class BenchmarkController < ApplicationController
       OpenStruct.new(:url => '/n/places/merced-california-united-states', :name => "Merced"),
       OpenStruct.new(:url => '/n/places/mendocino-california-united-states', :name => "Mendocino"),
     ]
+
+    @featured_events = [ ]
+    2.times do
+      event = OpenStruct.new(:numeric_id => Integer.random_id, :start_date => Time.random_future_date,
+        :id => "some-event-string-for-something-#{rand(1_000_000)}", :big_day => Time.random_future_date.strftime("%B %d"),
+        :small_day => "%A", :time => Time.random_time, :image => String.random_profile_image,
+        :title => "This is some featured event!", :location => "And this is where that event happens",
+        :attendee_count => 5 + rand(75), :button_id => String.random_hex_string(22),
+        :attendees => [ ])
+
+      attendees = [ ]
+      10.times do
+        attendees << OpenStruct.new(
+          :name => String.random_name, :profile => "/n/people/#{String.random_profile_name_path}",
+          :organizer => false, :verified => (rand(10) < 2 ? true : false),
+          :profile_image => String.random_profile_image, :id => Integer.random_id)
+      end
+
+      (0..(1 + rand(3))).each { |i| attendees[i].organizer = true }
+
+      event[:attendees] += attendees
+
+      @featured_events << event
+    end
 
     benchmark!({ })
   end
