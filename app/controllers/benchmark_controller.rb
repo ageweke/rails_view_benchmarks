@@ -82,7 +82,10 @@ class BenchmarkController < ApplicationController
   def benchmark_place_page
     @place = OpenStruct.new(
       :title => "San Francisco",
-      :following => true)
+      :following => true,
+      :id => 13,
+      :total_threads => 17442,
+      :path => "/n/places/san-francisco-california-united-states")
 
     @user = OpenStruct.new(
       :name => 'Joe Smith',
@@ -156,6 +159,8 @@ class BenchmarkController < ApplicationController
 
       @featured_events << event
     end
+
+    @form_authenticity_token = "BZHW+lZIOqSn5Lu+mOKSND+0f4s72zohHSnHbxvZEHU="
 
     benchmark!({ })
   end
