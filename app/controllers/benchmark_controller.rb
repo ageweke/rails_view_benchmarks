@@ -33,9 +33,11 @@ class String
     end
 
     def random_profile_path
-      out = "/profile.html?id="
-      8.times { out << PROFILE_PATH_CHARACTERS[rand(PROFILE_PATH_CHARACTERS.length)] }
-      out
+      "/profile.html?id=#{random_profile_encoded_id}"
+    end
+
+    def random_profile_encoded_id
+      (0..7).map { PROFILE_PATH_CHARACTERS[rand(PROFILE_PATH_CHARACTERS.length)] }.join
     end
 
     def random_name
@@ -47,11 +49,29 @@ class String
       "/n/people/#{random_profile_name}"
     end
 
+    def random_word
+      out = ""
+      (2 + rand(7)).times { out << LOWERCASE_ALPHABET[rand(LOWERCASE_ALPHABET.length)] }
+      out
+    end
+
+    def random_thread_slug
+      (0..(3 + rand(20))).map { |i| random_word }.join("-")
+    end
 
     def random_hex_string(length)
       out = ""
       length.times { out << HEX_CHARACTERS[rand(HEX_CHARACTERS.length)] }
       out
+    end
+
+    def random_phrase
+      (0..(1 + rand(6))).map { |i| random_word }.join(" ")
+    end
+
+    def random_text(min_words, max_words)
+      num_words = min_words + rand(max_words - min_words)
+      (0..(num_words - 1)).map { |i| random_word }.join(" ")
     end
   end
 end
@@ -73,6 +93,10 @@ class Time
 
   def self.random_time
     Time.now + rand(86_400)
+  end
+
+  def self.random_past_time
+    Time.now - rand(86_400) - rand(10).days
   end
 end
 
@@ -180,6 +204,29 @@ class BenchmarkController < ApplicationController
     ]
 
     @comments = [ ]
+
+    10.times do
+      comment = OpenStruct.new(:creator_id => rand(1_000_000_000), :entity_id => rand(1_000_000_000),
+        :slug => String.random_thread_slug, :total_replies => rand(50), :id => Integer.random_id,
+        :creator_profile_link => String.random_profile_path, :creator_profile_image => String.random_profile_image,
+        :thread_title => String.random_phrase, :created_at => Time.random_past_time,
+        :creator_name => String.random_name, :creator_profile_encoded_id => String.random_profile_encoded_id,
+        :short_text => String.random_text(10, 20), :more_text => String.random_text(0, 200))
+
+      replies = [ ]
+      (1..(1 + rand(15))).each do
+        reply = OpenStruct.new(:profile_link => String.random_profile_path,
+          :profile_image => String.random_profile_image, :created_at => Time.random_past_time,
+          :creator_id => Integer.random_id, :id => Integer.random_id, :slug => String.random_thread_slug,
+          :creator_name => String.random_name, :creator_profile_encoded_id => String.random_profile_encoded_id,
+          :text => String.random_text(10, 200))
+
+        replies << reply
+      end
+      comment.replies = replies
+
+      @comments << comment
+    end
 
     benchmark!({ })
   end

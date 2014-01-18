@@ -1,180 +1,40 @@
-    <li class="thread media" data-commented-on-type="place" data-creator-id="1002432235" data-entity-id="11605597" data-thread-slug="san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard" data-total-replies="12"><a class="avatar_link" href="/profile.html?id=5HBVL7MP0"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/1002432235/1389528425/C-60-60?default=true&amp;sh=SKsIzqw6DVJgWLImLs9r_g);"></span></a>
+    <li class="thread media" data-commented-on-type="place" data-creator-id="<%= comment.creator_id %>" data-entity-id="<%= comment.entity_id %>" data-thread-slug="<%= comment.slug.html_safe %>" data-total-replies="<%= comment.total_replies %>"><a class="avatar_link" href="<%= comment.creator_profile_link.html_safe %>"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(<%= cdn(comment.creator_profile_image.html_safe) %>);"></span></a>
       <div class="media-body">
-        <div><a href="/profile.html?id=5HBVL7MP0"></a>
+        <div><a href="<%= comment.creator_profile_link.html_safe %>"></a>
           <div class="comment-text">
             <div class="comment-header row-fluid">              <div class="span12">
-                <h4><a href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard" class="reply-title">Scenic spots</a>
+                <h4><a href="/n/threads/<%= comment.slug.html_safe %>" class="reply-title"><%= comment.thread_title %></a>
                   <div class="comment-details">
-                    <time data-component="timestamp" data-original-timestamp="2014-01-09T21:37:27Z" datetime="2014-01-09T21:37:27Z"></time>
+                    <time data-component="timestamp" data-original-timestamp="<%= comment.created_at.iso8601 %>" datetime="<%= comment.created_at.iso8601 %>"></time>
                   </div>
                 </h4>
-                <span><a class="reply-creator" href="/profile.html?id=5HBVL7MP0">Phan Ly</a></span><span><a href="/send_message.html?id=5HBVL7MP0" id="autogen_id_for_tracking_place_conversations_send_private_message_1" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="https://d20rrv4k3o7n66.cloudfront.net/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png" /></a></span></div>
+                <span><a class="reply-creator" href="<%= comment.creator_profile_link.html_safe %>"><%= comment.creator_name %></a></span><span><a href="/send_message.html?id=<%= comment.creator_profile_encoded_id %>" id="autogen_id_for_tracking_place_conversations_send_private_message_1" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="<%= cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png") %>" /></a></span></div>
             </div>
             <div class="row-fluid">
               <div class="span11">
                 <div class="comment-body-text">
-                  <div class="more-link"><span class="shortened-text">Does anyone know of a few good spots for photography, besides the GG Bridge, Bay Bridge, Twin Peaks, Coit Tower, Lombard St., and </span>&nbsp;<a class="show-more-link">(more...)</a><span class="on-show-only">Does anyone know of a few good spots for photography, besides the GG Bridge, Bay Bridge, Twin Peaks, Coit Tower, Lombard St., and the Fisherman&#39;s Wharf ???<br />
-And if you would like to come along?</span>&nbsp;<a class="show-less-link">(less...)</a></div>
+                  <div class="more-link"><span class="shortened-text"><%= comment.short_text %></span>&nbsp;<a class="show-more-link">(more...)</a><span class="on-show-only"><%= comment.more_text %><a class="show-less-link">(less...)</a></div>
                 </div>
                 <div class="thread-reply-view">
-                  <div class="thread_participants hidden"><span class="show-reply-count"><a class="reveal-comments" rel="11605597">Show replies</a></span><a class="avatar_link" href="/profile.html?id=1WO3D7P"><span class="avatar sm_circle imgsize_small_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/287981/1389552339/C-36-36?default=true&amp;sh=1XywVTR5s2ZaMM5QLjCt9g);"></span></a><a class="avatar_link" href="/profile.html?id=3DWQLVK"><span class="avatar sm_circle imgsize_small_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/506014/1389491224/C-36-36?default=true&amp;sh=ZtALQ1UsZLnKzyEUYjCVtQ);"></span></a><a class="avatar_link" href="/profile.html?id=5HBVL7MP0"><span class="avatar sm_circle imgsize_small_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/1002432235/1389528425/C-36-36?default=true&amp;sh=Dm5uczl_iKX1T5yYL2ksgg);"></span></a><span class="last_replied_at">Latest reply
-                      <time data-component="timestamp" datetime="2014-01-12T18:37:45Z"></time>
+                  <div class="thread_participants hidden"><span class="show-reply-count"><a class="reveal-comments" rel="11605597">Show replies</a></span>
+                    <% comment.replies[0..9].each do |reply| %>
+                    <a class="avatar_link" href="<%= reply.profile_link.html_safe %>"><span class="avatar sm_circle imgsize_small_thumb" style="background-image:url(<%= cdn(reply.profile_image) %>);"></span></a>
+                    <% end %>
+
+                  <span class="last_replied_at">Latest reply
+                      <time data-component="timestamp" datetime="<%= comment.replies[-1].created_at.iso8601 %>"></time>
                     </span></div>
+
                   <div class="replies-and-form inline">
                     <div class="reply-container">
-                      <div class="paginate_replies hidden"><a class="see-more-replies">Show 7 more</a></div>
-                      <div class="replies" id="comments_on_11605597">
-                        <div class="reply hidden media" data-commented-on-type="place" data-creator-id="287981" data-entity-id="11612001" data-thread-slug="san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--8"><a class="avatar_link" href="/profile.html?id=1WO3D7P"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/287981/1389552339/C-60-60?default=true&amp;sh=S5isgQCCTbmaLAJKEFI2FQ);"></span></a>
-                          <div class="media-body">
-                            <div><a href="/profile.html?id=1WO3D7P"></a>
-                              <div class="comment-text">
-                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="/profile.html?id=1WO3D7P">Tony Lee</a></span><span><a href="/send_message.html?id=1WO3D7P" id="autogen_id_for_tracking_place_conversations_send_private_message_2" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="https://d20rrv4k3o7n66.cloudfront.net/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png" /></a></span>
-                                    <div class="comment-details">
-                                      <time data-component="timestamp" data-original-timestamp="2014-01-10T20:22:27Z" datetime="2014-01-10T20:22:27Z"></time>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row-fluid">                                  <div class="span11">
-                                    <div class="comment-body-text">lots of great places in SF. all depends on what you like to see and snap. the monthly fireJam was last night but very difficult to photograph. i&#39;ve got some pixs here of last night&#39;s jam<br />
- <span class="user-links"><a href="https://t.co/KsmBhiZUJ7" target='_blank' >https://t.co/KsmBhiZUJ7</a></span></div>
-                                  </div>
-                                  <div class="span1">
-                                    <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="11612001" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
-                                      <ul class="dropdown-menu pull-right" data-component="options">
-                                        <li><a class="share get_link" href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--8" target="_blank"><i class="icon-mail"></i>Get link</a></li>
-                                        <li class="divider"></li>
-                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="reply hidden media" data-commented-on-type="place" data-creator-id="506014" data-entity-id="11612728" data-thread-slug="san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--9"><a class="avatar_link" href="/profile.html?id=3DWQLVK"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/506014/1389491224/C-60-60?default=true&amp;sh=gbiVQqXAyikJFCApxBENBg);"></span></a>
-                          <div class="media-body">
-                            <div><a href="/profile.html?id=3DWQLVK"></a>
-                              <div class="comment-text">
-                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="/profile.html?id=3DWQLVK">Ilia Correa</a></span><span><a href="/send_message.html?id=3DWQLVK" id="autogen_id_for_tracking_place_conversations_send_private_message_3" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="https://d20rrv4k3o7n66.cloudfront.net/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png" /></a></span>
-                                    <div class="comment-details">
-                                      <time data-component="timestamp" data-original-timestamp="2014-01-10T22:28:52Z" datetime="2014-01-10T22:28:52Z"></time>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row-fluid">                                  <div class="span11">
-                                    <div class="comment-body-text">I have a car! Not sure if I can do Saturday though, but would love to do some hikes any time this coming Mon Jan 13-Wed Jan 15, the weather is supposed to be great! </div>
-                                  </div>
-                                  <div class="span1">
-                                    <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="11612728" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
-                                      <ul class="dropdown-menu pull-right" data-component="options">
-                                        <li><a class="share get_link" href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--9" target="_blank"><i class="icon-mail"></i>Get link</a></li>
-                                        <li class="divider"></li>
-                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="reply hidden media" data-commented-on-type="place" data-creator-id="287981" data-entity-id="11612757" data-thread-slug="san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--10"><a class="avatar_link" href="/profile.html?id=1WO3D7P"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/287981/1389552339/C-60-60?default=true&amp;sh=S5isgQCCTbmaLAJKEFI2FQ);"></span></a>
-                          <div class="media-body">
-                            <div><a href="/profile.html?id=1WO3D7P"></a>
-                              <div class="comment-text">
-                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="/profile.html?id=1WO3D7P">Tony Lee</a></span><span><a href="/send_message.html?id=1WO3D7P" id="autogen_id_for_tracking_place_conversations_send_private_message_4" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="https://d20rrv4k3o7n66.cloudfront.net/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png" /></a></span>
-                                    <div class="comment-details">
-                                      <time data-component="timestamp" data-original-timestamp="2014-01-10T22:35:13Z" datetime="2014-01-10T22:35:13Z"></time>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row-fluid">                                  <div class="span11">
-                                    <div class="comment-body-text">don&#39;t forget IF sky is clear and you have a tripod and a VERY long lens, Jupiter is very close to Earth. the other day i snapped of pix before the fireworks of Jupiter and the three moons could be SEEN. I snapped another a few days ago and underexposed it drowning out the moons BUT now can see the colors of the bands of Jupiter!! I just read there&#39;s also woodpeckers in GGPark though very diffcult to see</div>
-                                  </div>
-                                  <div class="span1">
-                                    <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="11612757" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
-                                      <ul class="dropdown-menu pull-right" data-component="options">
-                                        <li><a class="share get_link" href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--10" target="_blank"><i class="icon-mail"></i>Get link</a></li>
-                                        <li class="divider"></li>
-                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="reply hidden media" data-commented-on-type="place" data-creator-id="1002432235" data-entity-id="11621152" data-thread-slug="san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--11"><a class="avatar_link" href="/profile.html?id=5HBVL7MP0"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/1002432235/1389528425/C-60-60?default=true&amp;sh=SKsIzqw6DVJgWLImLs9r_g);"></span></a>
-                          <div class="media-body">
-                            <div><a href="/profile.html?id=5HBVL7MP0"></a>
-                              <div class="comment-text">
-                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="/profile.html?id=5HBVL7MP0">Phan Ly</a></span><span><a href="/send_message.html?id=5HBVL7MP0" id="autogen_id_for_tracking_place_conversations_send_private_message_5" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="https://d20rrv4k3o7n66.cloudfront.net/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png" /></a></span>
-                                    <div class="comment-details">
-                                      <time data-component="timestamp" data-original-timestamp="2014-01-12T10:04:43Z" datetime="2014-01-12T10:04:43Z"></time>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row-fluid">                                  <div class="span11">
-                                    <div class="comment-body-text">Thanks Tony. I checked out the pics on your CS page, they are amazing!</div>
-                                  </div>
-                                  <div class="span1">
-                                    <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="11621152" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
-                                      <ul class="dropdown-menu pull-right" data-component="options">
-                                        <li><a class="share get_link" href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--11" target="_blank"><i class="icon-mail"></i>Get link</a></li>
-                                        <li class="divider"></li>
-                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="reply hidden media" data-commented-on-type="place" data-creator-id="287981" data-entity-id="11623654" data-thread-slug="san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--12"><a class="avatar_link" href="/profile.html?id=1WO3D7P"><span class="pull-left avatar md_circle imgsize_large_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/287981/1389552339/C-60-60?default=true&amp;sh=S5isgQCCTbmaLAJKEFI2FQ);"></span></a>
-                          <div class="media-body">
-                            <div><a href="/profile.html?id=1WO3D7P"></a>
-                              <div class="comment-text">
-                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="/profile.html?id=1WO3D7P">Tony Lee</a></span><span><a href="/send_message.html?id=1WO3D7P" id="autogen_id_for_tracking_place_conversations_send_private_message_6" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="https://d20rrv4k3o7n66.cloudfront.net/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png" /></a></span>
-                                    <div class="comment-details">
-                                      <time data-component="timestamp" data-original-timestamp="2014-01-12T18:37:45Z" datetime="2014-01-12T18:37:45Z"></time>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row-fluid">                                  <div class="span11">
-                                    <div class="comment-body-text">Thanks Phan!! but GET OUT and snap. soon will be going to grace cathedral on geary to snap some pixs and maybe hang out at the ocean beach/cliff house to snap some pixs too</div>
-                                  </div>
-                                  <div class="span1">
-                                    <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="11623654" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
-                                      <ul class="dropdown-menu pull-right" data-component="options">
-                                        <li><a class="share get_link" href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard-reply--12" target="_blank"><i class="icon-mail"></i>Get link</a></li>
-                                        <li class="divider"></li>
-                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="paginate_replies hidden"><a class="see-more-replies">Show <%= comment.replies.length %> more</a></div>
+                      <div class="replies" id="comments_on_<%= comment.random_id %>">
+                        <%= render :partial => "#{@partial_base}/comment_reply", :collection => comment.replies %>
                       </div>
                     </div>
-                    <div class="media thread-form-container reply-thread"><span class="thread-author pull-left avatar circle imgsize_small_thumb" style="background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/serve/P/1/C-60-60?sh=E-af_-fF3G72Xoy9EWb_wQ);"></span>
+                    <div class="media thread-form-container reply-thread"><span class="thread-author pull-left avatar circle imgsize_small_thumb" style="background-image:url(<%= cdn(comment.creator_profile_image) %>);"></span>
                       <div class="media-body">
-                        <form action="/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard/replies" class="thread-reply-form" method="post"><input name="parent_id" type="hidden" value="11605597" />
+                        <form action="/n/threads/<%= comment.slug.html_safe %>/replies" class="thread-reply-form" method="post"><input name="parent_id" type="hidden" value="<%= comment.id %>" />
                           <div class="control-group">
                             <label></label>
                             <div class="controls"><textarea class="comment_text" name="comment_text" placeholder="Write a reply"></textarea></div>
@@ -215,9 +75,9 @@ And if you would like to come along?</span>&nbsp;<a class="show-less-link">(less
                 </div>
               </div>
               <div class="span1">
-                <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="11605597" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
+                <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="<%= comment.id %>" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
                   <ul class="dropdown-menu pull-right" data-component="options">
-                    <li><a class="share get_link" href="https://www.couchsurfing.org/n/threads/san-francisco-california-united-states-does-anyone-know-of-a-few-good-spots-for-photography-besides-the-gg-bridge-bay-bridge-twin-peaks-coit-tower-lombard" target="_blank"><i class="icon-mail"></i>Get link</a></li>
+                    <li><a class="share get_link" href="/n/threads/<%= comment.slug.html_safe %>" target="_blank"><i class="icon-mail"></i>Get link</a></li>
                     <li class="divider"></li>
                     <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
                     <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
