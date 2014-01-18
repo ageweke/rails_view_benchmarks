@@ -162,6 +162,25 @@ class BenchmarkController < ApplicationController
 
     @form_authenticity_token = "BZHW+lZIOqSn5Lu+mOKSND+0f4s72zohHSnHbxvZEHU="
 
+    @conversation_categories = [
+      OpenStruct.new(:symbol => :places_to_stay, :name => "Places To Stay",
+        :description => "I’m looking for a place to stay."),
+      OpenStruct.new(:symbol => :meeting_people, :name => "Meeting People",
+        :description => "I want to meet new people in the area."),
+      OpenStruct.new(:symbol => :local_advice, :name => "Local Advice",
+        :description => "I want to know more about the area."),
+      OpenStruct.new(:symbol => :share_a_ride, :name => "Share a Ride",
+        :description => "I want to share a ride somewhere."),
+      OpenStruct.new(:symbol => :general, :name => "Other",
+        :description => "Observations, conversations, etc..."),
+    ]
+
+    @conversation_tabs = @conversation_categories + [
+      OpenStruct.new(:symbol => :all, :name => "All")
+    ]
+
+    @comments = [ ]
+
     benchmark!({ })
   end
 

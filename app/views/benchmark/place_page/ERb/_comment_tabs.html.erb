@@ -1,0 +1,9 @@
+  <div class="conversation-category-tabs"><input id="selected-filter" name="selected-filter" type="hidden" value="all" />
+    <table>
+      <tr>
+        <% @conversation_tabs.each do |tab| %>
+          <td class="<%= tab.symbol %>" data-conversation-filter="<%= tab.symbol %>"><a href="?category=<%= tab.symbol %>"><%= tab.name %></a></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
