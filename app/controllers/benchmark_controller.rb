@@ -103,6 +103,12 @@ end
 class BenchmarkController < ApplicationController
   MICROSECONDS_PER_SECOND = 1_000_000
 
+  def random_event
+    OpenStruct.new(:generator => !! (rand(2) == 1), :slug => String.random_thread_slug,
+        :title => String.random_phrase, :when => Time.random_future_time, :location => String.random_phrase,
+        :attendees => 1 + rand(100))
+  end
+
   def benchmark_place_page
     @place = OpenStruct.new(
       :title => "San Francisco",
@@ -227,6 +233,14 @@ class BenchmarkController < ApplicationController
 
       @comments << comment
     end
+
+    @trending_events = [ ]
+    3.times { @trending_events << random_event }
+
+    @upcoming_events = [ ]
+    10.times { @upcoming_events << random_event }
+
+    @total_event_count = rand(100)
 
     benchmark!({ })
   end

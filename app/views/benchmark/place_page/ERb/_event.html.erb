@@ -1,0 +1,9 @@
+<li class="event<%= event.generator ? ' generator' : '' %>" data-slug="<%= event.slug %>">
+    <div class="event_links"><a href="/n/events/<%= event.slug.html_safe %>"><%= event.title %></a><span class="hidden"><%= event.when.strftime("%A") %></span></div>
+                        <div class="event_info">                          <div class="city"><span><%= event.location %></span></div>
+                          <div class="time"><span>
+                              <time datetime="<%= event.when.iso8601 %>"></time>
+                            </span></div>
+                          <div class="attendees"><span><%= event.attendees %></span></div>
+                        </div>
+                      </li>
