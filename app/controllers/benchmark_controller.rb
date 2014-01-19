@@ -242,6 +242,19 @@ class BenchmarkController < ApplicationController
 
     @total_event_count = rand(100)
 
+    @surfers = [ ]
+    10.times do
+      @surfers << OpenStruct.new(:city_couchrequest_id => Integer.random_id,
+        :profile_encoded_id => String.random_profile_encoded_id, :profile_image => String.random_profile_image,
+        :verified? => !! (rand(2) == 1), :name => String.random_name, :city => String.random_word,
+        :age => 18 + rand(50), :gender => (rand(2) == 1 ? "Male" : "Female"), :reference_count => 1 + rand(50))
+    end
+
+    @related_groups = [ ]
+    5.times do
+      @related_groups << OpenStruct.new(:id => Integer.random_id, :name => String.random_phrase)
+    end
+
     benchmark!({ })
   end
 
