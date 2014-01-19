@@ -51,18 +51,18 @@
                               </div>
                               <div class="span6"></div>
                               <div class="buttons span5 pull-right">                                <div class="ajax_loading_container"></div>
-                                <button class="btn btn-cancel" type="button"><%= t('buttons.cancel') %></button>&nbsp;<button class="btn btn-primary btn-create"><%= t('comments.post_reply') %></button><br />
+                                <button class="btn btn-cancel" type="button"><%= t('buttons.cancel') %></button>&nbsp;<button class="btn btn-primary btn-create"><%= t('comment.post_reply') %></button><br />
                                 <br />
                               </div>
                             </div>
                             <div class="row-fluid">
                               <div class="form-footer span12">
                                 <div class="posting-guidelines">
-                                  <h4><%= t('comments.posting_guidelines.header') %></h4>
+                                  <h4><%= t('comment.posting_guidelines.header') %></h4>
                                   <ul>
-                                    <li><%= t('comments.posting_guidelines.l1') %></li>
-                                    <li><%= t('comments.posting_guidelines.l2') %></li>
-                                    <li><%= t('comments.posting_guidelines.l3', :href => '/n/safety').html_safe %></li>
+                                    <li><%= t('comment.posting_guidelines.l1') %></li>
+                                    <li><%= t('comment.posting_guidelines.l2') %></li>
+                                    <li><%= t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe %></li>
                                   </ul>
                                 </div>
                               </div>
@@ -77,11 +77,11 @@
               <div class="span1">
                 <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="<%= comment.id %>" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
                   <ul class="dropdown-menu pull-right" data-component="options">
-                    <li><a class="share get_link" href="/n/threads/<%= comment.slug.html_safe %>" target="_blank"><i class="icon-mail"></i><%= t('comments.get_link') %></a></li>
+                    <li><a class="share get_link" href="/n/threads/<%= comment.slug.html_safe %>" target="_blank"><i class="icon-mail"></i><%= t('comment.get_link') %></a></li>
                     <li class="divider"></li>
-                    <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i><%= t('comments.edit_this_post') %></a></li>
-                    <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i><%= t('comments.delete_this_post') %></a></li>
-                    <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i><%= t('comments.flag_this_post') %></a></li>
+                    <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i><%= t('comment.edit_this_post') %></a></li>
+                    <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i><%= t('comment.delete_this_post') %></a></li>
+                    <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i><%= t('comment.flag_this_post') %></a></li>
                   </ul>
                 </div>
               </div>

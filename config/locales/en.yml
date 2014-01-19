@@ -41,5 +41,12 @@ en:
     edit_this_post: "Edit This Post"
     delete_this_post: "Delete This Post"
     flag_this_post: "Flag This Post"
+    add:
+      couchsearch_header: "Looking for a place to stay?"
+      couchsearch_body: "Use our CouchSearch to find people with available couches, anywhere in the world!"
+      couchsearch_button: "Find a Couch with CouchSearch"
+      couchsearch_note: "If you have a different question or comment about finding places to stay, you can %{link_start}start a conversation%{link_end}"
+      placeholder: "Start a Conversation"
+      start: "Start Conversation"
   buttons:
     cancel: "Cancel"
