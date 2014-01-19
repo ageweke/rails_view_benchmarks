@@ -13,21 +13,21 @@
             <div class="row-fluid">
               <div class="span11">
                 <div class="comment-body-text">
-                  <div class="more-link"><span class="shortened-text"><%= comment.short_text %></span>&nbsp;<a class="show-more-link">(more...)</a><span class="on-show-only"><%= comment.more_text %><a class="show-less-link">(less...)</a></div>
+                  <div class="more-link"><span class="shortened-text"><%= comment.short_text %></span>&nbsp;<a class="show-more-link"><%= t('comment.more') %></a><span class="on-show-only"><%= comment.more_text %><a class="show-less-link"><%= t('comment.less') %></a></div>
                 </div>
                 <div class="thread-reply-view">
-                  <div class="thread_participants hidden"><span class="show-reply-count"><a class="reveal-comments" rel="11605597">Show replies</a></span>
+                  <div class="thread_participants hidden"><span class="show-reply-count"><a class="reveal-comments" rel="11605597"><%= t('comment.show_replies') %></a></span>
                     <% comment.replies[0..9].each do |reply| %>
                     <a class="avatar_link" href="<%= reply.profile_link.html_safe %>"><span class="avatar sm_circle imgsize_small_thumb" style="background-image:url(<%= cdn(reply.profile_image) %>);"></span></a>
                     <% end %>
 
-                  <span class="last_replied_at">Latest reply
+                  <span class="last_replied_at"><%= t('comment.latest_reply') %>
                       <time data-component="timestamp" datetime="<%= comment.replies[-1].created_at.iso8601 %>"></time>
                     </span></div>
 
                   <div class="replies-and-form inline">
                     <div class="reply-container">
-                      <div class="paginate_replies hidden"><a class="see-more-replies">Show <%= comment.replies.length %> more</a></div>
+                      <div class="paginate_replies hidden"><a class="see-more-replies"><%= t('comment.show_more', :num => comment.replies.length) %></a></div>
                       <div class="replies" id="comments_on_<%= comment.random_id %>">
                         <%= render :partial => "#{@partial_base}/comment_reply", :collection => comment.replies %>
                       </div>
@@ -40,29 +40,29 @@
                             <div class="controls"><textarea class="comment_text" name="comment_text" placeholder="Write a reply"></textarea></div>
                             <p class="help-block"></p>
                           </div>
-                          <p class="privacy-warning">It looks like you&#39;re posting an email address or phone number. To protect your privacy, don&#39;t post any personal contact information here.</p>
+                          <p class="privacy-warning"><%= t('comment.privacy_warning') %></p>
                           <div class="hide-when-colapsed row-fluid">
                             <div class="row-fluid">
                               <div class="privacy-settings dropdown" data-component="privacySettings"><input name="private_thread" type="hidden" value="true" /><a class="dropdown-toggle" data-component="dropdown" href=""><span class="privacy-label"></span><i class="icon-group"></i></a>
                                 <ul class="dropdown-menu pull-right" data-component="options">
-                                  <li><a data-component="privacyOption" data-value="false" href=""><i class="icon-group"></i>Publicly viewable</a></li>
-                                  <li><a data-component="privacyOption" data-value="true" href=""><i class="icon-user"></i>Visible to logged-in members only</a></li>
+                                  <li><a data-component="privacyOption" data-value="false" href=""><i class="icon-group"></i><%= t('comment.public') %></a></li>
+                                  <li><a data-component="privacyOption" data-value="true" href=""><i class="icon-user"></i><%= t('comment.private') %></a></li>
                                 </ul>
                               </div>
                               <div class="span6"></div>
                               <div class="buttons span5 pull-right">                                <div class="ajax_loading_container"></div>
-                                <button class="btn btn-cancel" type="button">Cancel</button>&nbsp;<button class="btn btn-primary btn-create">Post Reply</button><br />
+                                <button class="btn btn-cancel" type="button"><%= t('buttons.cancel') %></button>&nbsp;<button class="btn btn-primary btn-create"><%= t('comments.post_reply') %></button><br />
                                 <br />
                               </div>
                             </div>
                             <div class="row-fluid">
                               <div class="form-footer span12">
                                 <div class="posting-guidelines">
-                                  <h4>Stay safe and be respectful:</h4>
+                                  <h4><%= t('comments.posting_guidelines.header') %></h4>
                                   <ul>
-                                    <li>Don&#39;t post your phone or email. Communicate via Couchsurfing.</li>
-                                    <li>Remember: you are responsible for your own safety. Trust your instincts.</li>
-                                    <li>Report problems immediately to our <a href='/n/safety'>Trust and Safety Team</a>.</li>
+                                    <li><%= t('comments.posting_guidelines.l1') %></li>
+                                    <li><%= t('comments.posting_guidelines.l2') %></li>
+                                    <li><%= t('comments.posting_guidelines.l3', :href => '/n/safety').html_safe %></li>
                                   </ul>
                                 </div>
                               </div>
@@ -77,11 +77,11 @@
               <div class="span1">
                 <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="<%= comment.id %>" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
                   <ul class="dropdown-menu pull-right" data-component="options">
-                    <li><a class="share get_link" href="/n/threads/<%= comment.slug.html_safe %>" target="_blank"><i class="icon-mail"></i>Get link</a></li>
+                    <li><a class="share get_link" href="/n/threads/<%= comment.slug.html_safe %>" target="_blank"><i class="icon-mail"></i><%= t('comments.get_link') %></a></li>
                     <li class="divider"></li>
-                    <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                    <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                    <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
+                    <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i><%= t('comments.edit_this_post') %></a></li>
+                    <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i><%= t('comments.delete_this_post') %></a></li>
+                    <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i><%= t('comments.flag_this_post') %></a></li>
                   </ul>
                 </div>
               </div>

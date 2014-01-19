@@ -21,3 +21,25 @@
 
 en:
   hello: "Hello world"
+
+  comment:
+    more: "(more...)"
+    less: "(less...)"
+    show_replies: "Show Replies"
+    latest_reply: "Latest Reply"
+    show_more: "Show %{num} more"
+    privacy_warning: "It looks like you’re posting an email address or phone number. To protect your privacy, don’t post any personal contact information here."
+    public: "Publicly viewable"
+    private: "Visible to logged-in members only"
+    post_reply: "Post Reply"
+    posting_guidelines:
+      header: "Stay safe and be respectful:"
+      l1: "Don’t post your phone or email. Communicate via Couchsurfing."
+      l2: "Remember: you are responsible for your own safety. Trust your instincts."
+      l3: "Report problems immediately to our <a href='%{href}'>Trust and Safety Team</a>."
+    get_link: "Get link"
+    edit_this_post: "Edit This Post"
+    delete_this_post: "Delete This Post"
+    flag_this_post: "Flag This Post"
+  buttons:
+    cancel: "Cancel"
