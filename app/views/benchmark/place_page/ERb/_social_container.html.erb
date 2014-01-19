@@ -1,0 +1,8 @@
+        <nav class="social_container">
+          <div class="call-to-action">Connect with us:</div>
+          <ul class="social">
+            <% @social_links.each do |social_link| %>
+              <li><a class="icon_button button <%= social_link.name.gsub(/\s+/, '').downcase %>" href="<%= social_link.link.html_safe %>" target="_blank" title="<%= social_link.name %>"><%= social_link.name %></a></li>
+            <% end %>
+          </ul>
+        </nav>

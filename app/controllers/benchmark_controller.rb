@@ -1,3 +1,5 @@
+# Coding: UTF-8
+
 require 'benchmarker'
 
 class String
@@ -254,6 +256,41 @@ class BenchmarkController < ApplicationController
     5.times do
       @related_groups << OpenStruct.new(:id => Integer.random_id, :name => String.random_phrase)
     end
+
+    @languages = [
+      OpenStruct.new(:locale => 'de_DE', :name => 'Deutsch'),
+      OpenStruct.new(:locale => 'en_US', :name => 'English'),
+      OpenStruct.new(:locale => 'es_ES', :name => 'Español'),
+      OpenStruct.new(:locale => 'fr_FR', :name => 'Français'),
+      OpenStruct.new(:locale => 'it_IT', :name => 'Italiano'),
+      OpenStruct.new(:locale => 'ja_JP', :name => '日本語'),
+
+      OpenStruct.new(:locale => 'ko_KR', :name => '한국어'),
+      OpenStruct.new(:locale => 'pl_PL', :name => 'Polski'),
+      OpenStruct.new(:locale => 'pt_BR', :name => 'Português brasileiro'),
+      OpenStruct.new(:locale => 'ru_RU', :name => 'Русский'),
+      OpenStruct.new(:locale => 'tr_TR', :name => 'Türkçe'),
+      OpenStruct.new(:locale => 'zh_CN', :name => '中文 (简化字)'),
+    ]
+
+    @social_links = [
+      OpenStruct.new(:name => "Twitter", :link => "http://twitter.com/couchsurfing"),
+      OpenStruct.new(:name => "Facebook", :link => "http://facebook.com/couchsurfing"),
+      OpenStruct.new(:name => "Google", :link => "https://plus.google.com/102186173500819286170"),
+      OpenStruct.new(:name => "YouTube", :link => "http://www.youtube.com/user/thisiscouchsurfing"),
+      OpenStruct.new(:name => "Tumblr", :link => "http://couchsurfing.tumblr.com/"),
+      OpenStruct.new(:name => "Instagram", :link => "http://instagram.com/couchsurfing"),
+    ]
+
+    @site_map =
+      { 'About' => { "About Us" => '/n/about', "Team" => '/n/team', "Jobs" => '/n/jobs', "Press" => '/n/press',
+                     "Blog" => '/n/news' },
+        'Getting Started' => { "How It Works" => '/n/how-it-works', "Mobile" => '/n/mobile' },
+        'Safety' => { "Basics" => '/n/safety', "Tips" => '/n/safety_tips', "FAQ" => '/n/safety_faq' },
+        'Community' => { "Our Values" => '/n/values', "Ambassador Program" => '/n/ambassadors', "Stories" => '/n/stories' },
+        'Support' => { "Help" => '/n/help', 'Terms of Use' => '/n/terms', "Privacy Policy" => '/n/privacy',
+                       "Community Guidelines" => '/n/guidelines', "Trademark Policy" => '/n/trademark' }
+      }
 
     benchmark!({ })
   end

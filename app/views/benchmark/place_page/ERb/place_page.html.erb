@@ -26,67 +26,7 @@
           </div>
         </section>
       </div>
-      <footer id="main-footer">
-        <div class="hidden-menu" id="language_selector_container">
-          <div class="menu" id="language_selector_menu">
-            <div class="language_selector_columns_container">
-              <div class="column"><a class="language" data-locale="de_DE">Deutsch</a><a class="language selected" data-locale="en_US">English</a><a class="language" data-locale="es_ES">Español</a><a class="language" data-locale="fr_FR">Français</a><a class="language" data-locale="it_IT">Italiano</a><a class="language" data-locale="ja_JP">日本語</a></div>
-              <div class="column"><a class="language" data-locale="ko_KR">한국어</a><a class="language" data-locale="pl_PL">Polski</a><a class="language" data-locale="pt_BR">Português brasileiro</a><a class="language" data-locale="ru_RU">Русский</a><a class="language" data-locale="tr_TR">Türkçe</a><a class="language" data-locale="zh_CN">中文 (简化字)</a></div>
-            </div>
-            <a class="menu-close" href="#brand">close</a></div>
-          <a class="trigger" href="#language_selector_menu" id="language_selector_button">English</a></div>
-        <nav class="social_container">
-          <div class="call-to-action">Connect with us:</div>
-          <ul class="social">
-            <li><a class="icon_button button twitter" href="http://twitter.com/couchsurfing" target="_blank" title="Twitter">Twitter</a></li>
-            <li><a class="icon_button button facebook" href="http://facebook.com/couchsurfing" target="_blank" title="Facebook">Facebook</a></li>
-            <li><a class="icon_button button google" href="https://plus.google.com/102186173500819286170" target="_blank" title="Google">Google</a></li>
-            <li><a class="icon_button button youtube" href="http://www.youtube.com/user/thisiscouchsurfing" target="_blank" title="You Tube">You Tube</a></li>
-            <li><a class="icon_button button tumblr" href="http://couchsurfing.tumblr.com/" target="_blank" title="Tumblr">Tumblr</a></li>
-            <li><a class="icon_button button instagram" href="http://instagram.com/couchsurfing" target="_blank" title="Instagram">Instagram</a></li>
-          </ul>
-        </nav>
-        <nav class="site_map">          <div class="about">            <div class="heading">About</div>
-            <ul class="links">
-              <li><a href="/n/about">About Us</a></li>
-              <li><a href="/n/team">Team</a></li>
-              <li><a href="/n/jobs">Jobs</a></li>
-              <li><a href="/n/press">Press</a></li>
-              <li><a href="/n/news" target="_blank">Blog</a></li>
-            </ul>
-          </div>
-          <div class="getting-started">            <div class="heading">Getting Started</div>
-            <ul class="links">
-              <li><a href="/n/how-it-works">How It Works</a></li>
-              <li><a href="/n/mobile">Mobile</a></li>
-            </ul>
-          </div>
-          <div class="safety">            <div class="heading">Safety</div>
-            <ul class="links">
-              <li><a href="/n/safety">Basics</a></li>
-              <li><a href="/n/safety_tips">Tips</a></li>
-              <li><a href="/n/safety_faq">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="community">            <div class="heading">Community</div>
-            <ul class="links">
-              <li><a href="/n/values">Our Values</a></li>
-              <li><a href="/n/ambassadors">Ambassador Program</a></li>
-              <li><a href="/n/stories" target="_blank">Stories</a></li>
-            </ul>
-          </div>
-          <div class="support">            <div class="heading">Support</div>
-            <ul class="links">
-              <li><a href="/n/help" target="_blank">Help</a></li>
-              <li><a href="/n/terms">Terms of Use</a></li>
-              <li><a href="/n/privacy">Privacy Policy</a></li>
-              <li><a href="/n/guidelines">Community Guidelines</a></li>
-              <li><a href="/n/trademark">Trademark Policy</a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="copyright">&copy; 1999 - 2014&nbsp;&nbsp;&nbsp;&nbsp;Couchsurfing International, Inc. A socially responsible, Certified B Corporation</div>
-      </footer>
+      <%= render :partial => "#{@partial_base}/main_footer" %>
       <div id="hidden-content">
         <div class="modal_window hide fade event_modal_container new_event_form" data-backdrop="static" data-keyboard="false" id="event_form_modal" title="i18n_events_add_new">
           <header class="modal_header">

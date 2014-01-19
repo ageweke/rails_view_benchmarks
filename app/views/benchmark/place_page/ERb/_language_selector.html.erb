@@ -1,0 +1,20 @@
+        <div class="hidden-menu" id="language_selector_container">
+          <div class="menu" id="language_selector_menu">
+            <div class="language_selector_columns_container">
+              <%
+                  language_rows = [ [ ], [ ] ]
+                  @languages.each_with_index do |language, i|
+                    language_rows[i % 2] << language
+                  end
+
+                  language_rows.each do |row|
+              %>
+              <div class="column">
+                <% row.each do |language| %>
+                  <a class="language" data-locale="<%= language.locale %>"><%= language.name %></a>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+            <a class="menu-close" href="#brand">close</a></div>
+          <a class="trigger" href="#language_selector_menu" id="language_selector_button">English</a></div>
