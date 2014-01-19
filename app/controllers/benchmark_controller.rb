@@ -122,10 +122,14 @@ class BenchmarkController < ApplicationController
     @user = OpenStruct.new(
       :name => 'Joe Smith',
       :id => Integer.random_id,
+      :location => 'San Francisco',
       :profile_image => String.random_profile_image,
+      :username => 'JOESMITH',
       :unread_messages => 57,
       :first_name => 'Joe',
-      :profile_path => '/profile.html?id=890FZQ')
+      :profile_path => '/profile.html?id=890FZQ',
+      :locale => 'en_US',
+      :live_place_slug => 'san-francisco-california-united-states')
 
     @subnav_places = [
       OpenStruct.new(:link => "/n/places/san-francisco-california-united-states", :title => "San Francisco Bay", :followed => true),
@@ -312,11 +316,11 @@ class BenchmarkController < ApplicationController
     @partial_base = "benchmark/#{benchmark}/#{engine}".freeze
 
     template = "#{@partial_base}/#{benchmark}".freeze
-    @render_args = { :template => template, :locals => locals }
+    @render_args = { :template => template, :locals => locals, :layout => false }
     @measure_count ||= 25
 
     if params[:view_only]
-      return render @render_args
+      return render @render_args, :layout => false
     end
 
     benchmarker.go! { render @render_args }
