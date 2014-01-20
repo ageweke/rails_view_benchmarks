@@ -74,12 +74,18 @@ en:
 
   event:
     your_events: "Your Events"
-    create: "Create Event"
+    create_button: "Create Event"
     view_past_events: "View Past Events"
     trending_events: "Trending Events"
     upcoming_events: "Upcoming Events"
     total_events: "%{num} Events"
     see_all: "See all"
+
+    featured:
+      title: "Featured Events"
+      attending: "Attending"
+      leave: "Leave"
+      join: "Join"
 
     create:
       we_found: "We found:"

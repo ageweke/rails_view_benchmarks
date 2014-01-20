@@ -1,7 +1,7 @@
           <div class="row-fluid">            <div class="span8">
-              <div class="row-fluid">                <h3 class="featured_event_title">Featured Events</h3>
+              <div class="row-fluid">                <h3 class="featured_event_title"><%= t('event.featured.title') %></h3>
                 <div class="event_list">
-                  <% @featured_events.each do |event| %>
+                  <% featured_events.each do |event| %>
                     <div class="event_in_list event_row_<%= event.numeric_id %>" data-event_id="<%= event.numeric_id %>" data-start_date="<%= event.start_date.strftime("%Y-%m-%d") %>" id="<%= event.id %>">
                       <div class="event_start_time">                      <h2 class="event_day"><%= event.start_date.strftime("%B %d") %></h2>
                         <div class="date_time"><%= event.start_date.strftime("%A") %><br />
@@ -9,9 +9,9 @@
                       </div>
                       <div class="event_image"><a class="event_in_list_link" href="/n/events/<%= event.id.html_safe %>"><img src="<%= cdn(event.image) %>" /></a></div>
                       <div class="event_details">                      <div class="event_details_text"><a class="event_in_list_link title" href="/n/events/<%= event.id.html_safe %>" title="<%= event.title %>"><%= event.title %></a>                        <div class="city"><span><%= event.location %></span></div>
-                        <div class="attendees" data-count="<%= event.attendee_count %>"><span class='attendee_count'><%= event.attendee_count %></span><span> Attending</span></div>
+                        <div class="attendees" data-count="<%= event.attendee_count %>"><span class='attendee_count'><%= event.attendee_count %></span><span> <%= t('event.featured.attending') %></span></div>
                       </div>
-                      <div class="event_buttons_container" data-event_slug="<%= event.id %>">                        <div class="event_buttons"><a class="action_button button event_list_button leave_event hide disabled_until_load" href="#" id="<%= event.button_id %>" title="Leave">Leave</a>
+                      <div class="event_buttons_container" data-event_slug="<%= event.id %>">                        <div class="event_buttons"><a class="action_button button event_list_button leave_event hide disabled_until_load" href="#" id="<%= event.button_id %>" title="<%= t('event.featured.leave') %>"><%= t('event.featured.leave') %></a>
                           <script type="text/javascript">
 // <![CDATA[
   (function () {
@@ -24,7 +24,7 @@
 // ]]>
                           </script>
 
-<a class="primary_action_button button event_list_button join_event disabled_until_load" href="#" id="<%= event.button_id %>" title="Join">Join</a>
+<a class="primary_action_button button event_list_button join_event disabled_until_load" href="#" id="<%= event.button_id %>" title="<%= t('event.featured.join') %>"><%= t('event.featured.join') %></a>
                           <script type="text/javascript">
 // <![CDATA[
   (function () {
