@@ -28,6 +28,6 @@
       </div>
       <%= render :partial => "#{@partial_base}/main_footer" %>
       <%= render :partial => "#{@partial_base}/hidden_content", :locals => { :user => @user } %>
-      <%= render :partial => "#{@partial_base}/footer_javascript" %>
+      <%= render :partial => "#{@partial_base}/footer_javascript", :locals => { :user => @user, :place => @place } %>
 </body>
 </html>
