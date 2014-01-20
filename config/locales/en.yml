@@ -23,6 +23,7 @@ en:
   hello: "Hello world"
 
   comment:
+    more_conversations: "More conversations"
     more: "(more...)"
     less: "(less...)"
     show_replies: "Show Replies"
@@ -70,5 +71,29 @@ en:
       dating_or_sexual: "Dating/Inappropriate Sexual Content"
       abusive_or_illegal: "Abusive or Illegal Content"
       privacy_breach: "Shows my Contact/Protected Information"
+
+  event:
+    create:
+      we_found: "We found:"
+      to_specify_exact: "To specify an exact location, click and drag the marker on the map"
+      public: "Public Event"
+      private: "Invite Only Event"
+      allow_guest_invite: "Allow guests to invite others"
+      add_time_date: "Add Time & Date"
+      starts_on: "Starts on:"
+      start_time: "From:"
+      end_time: "to"
+      next_day: "the next day"
+      remove_photo: "Remove"
+      add_photo: "Add Photo"
+      description: "Optional description : any cost or purchase, directions, etc."
+      guests_limited: "Limit number of guests"
+      add_organizer: "Invite an additional organizer"
+      add_organizer_heading: "Invite another organizer to this event."
+      add_organizer_detail: "Note: All organizers will have the same privileges that you have."
+      search_placeholder: "Search by name or username"
+      search_button: "Search"
+      organizers_heading: "Organizers"
+
   buttons:
     cancel: "Cancel"

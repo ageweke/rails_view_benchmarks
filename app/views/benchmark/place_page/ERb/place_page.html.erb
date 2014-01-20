@@ -11,7 +11,7 @@
         <section class="main-content container">
           <%= render :partial => "#{@partial_base}/featured_events" %>
             <div class="row-fluid">
-              <%= render :partial => "#{@partial_base}/conversations", :locals => { :place => @place, :conversation_categories => @conversation_categories, :form_authenticity_token => @form_authenticity_token } %>
+              <%= render :partial => "#{@partial_base}/conversations", :locals => { :place => @place, :conversation_categories => @conversation_categories, :form_authenticity_token => @form_authenticity_token, :conversation_tabs => @conversation_tabs, :comments => @comments } %>
 </div>
             </div>
             <div class="span4">
@@ -27,7 +27,7 @@
         </section>
       </div>
       <%= render :partial => "#{@partial_base}/main_footer" %>
-      <%= render :partial => "#{@partial_base}/hidden_content" %>
+      <%= render :partial => "#{@partial_base}/hidden_content", :locals => { :user => @user } %>
       <%= render :partial => "#{@partial_base}/footer_javascript" %>
 </body>
 </html>

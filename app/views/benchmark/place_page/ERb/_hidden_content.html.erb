@@ -4,7 +4,7 @@
             <h3 class="modal_title clearfix"><span class="title_text">i18n_events_add_new</span><a class="modal_close" data-dismiss="modal" href="#">Cancel</a></h3>
           </header>
           <div class="modal_body">
-            <%= render :partial => "#{@partial_base}/create_event_form" %>
+            <%= render :partial => "#{@partial_base}/create_event_form", :locals => { :user => user } %>
           </div>
           <footer class="modal_footer">            <div class="ajax_loading_container"></div>
             <a class="action_button button prev_page disabled_until_load" href="#" id="73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5" title="Back">Back</a>

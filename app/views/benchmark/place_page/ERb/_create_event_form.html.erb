@@ -3,53 +3,53 @@
                 <div><input class="title" name="title" placeholder="Event Title" type="text" /></div>
                 <div><input class="location_string_as_entered_by_user" name="location_string_as_entered_by_user" placeholder="Location" type="text" /></div>
                 <div class="found_location" style="display: none">
-                  <label>We found:</label>
-                  <span></span>                  <label class="note">To specify an exact location, click and drag the marker on the map</label>
+                  <label><%= t('event.create.we_found') %></label>
+                  <span></span>                  <label class="note"><%= t('event.create.to_specify_exact') %></label>
                 </div>
                 <input class="normalized_location_string" name="normalized_location_string" type="hidden" />
                 <div class="map_preview">
                   <div data-lat="" data-long="" id="event_map_preview"></div>
                   <div class="map_placeholder hide"><img src="https://d20rrv4k3o7n66.cloudfront.net/assets/choose_location-cfd29dd4b26ef631dbf29a47fdfa89c5.jpeg" /></div>
                 </div>
-                <input class="lat" name="latitude" type="hidden" /><input class="lng" name="longitude" type="hidden" /><input class="customized_coordinate" name="customized_coordinate" type="hidden" /><input checked="checked" class="public_event" name="private" type="radio" value="0" /><span class="public_selected">Public Event</span><input class="invite_only" name="private" type="radio" value="1" /><span class="private_selected">Invite Only Event</span>                <div class="allow_guest_invite"><input id="allow_guest_invite" name="allow_guest_invite" type="checkbox" value="1" />
-                  <label for="allow_guest_invite">Allow guests to invite others</label>
+                <input class="lat" name="latitude" type="hidden" /><input class="lng" name="longitude" type="hidden" /><input class="customized_coordinate" name="customized_coordinate" type="hidden" /><input checked="checked" class="public_event" name="private" type="radio" value="0" /><span class="public_selected"><%= t('event.create.public') %></span><input class="invite_only" name="private" type="radio" value="1" /><span class="private_selected"><%= t('event.create.private') %></span>                <div class="allow_guest_invite"><input id="allow_guest_invite" name="allow_guest_invite" type="checkbox" value="1" />
+                  <label for="allow_guest_invite"><%= t('event.create.allow_guest_invite') %></label>
                 </div>
               </fieldset>
-              <fieldset class="modal_page" data-modal_title="Add Time &amp; Date">
+              <fieldset class="modal_page" data-modal_title="<%= t('event.create.add_time_date') %>">
                 <div class="timeselector">
-                  <label for="start_day">Starts on:</label>
+                  <label for="start_day"><%= t('event.create.starts_on') %></label>
                   <input id="start_day" name="start_day" type="hidden" /><input class="start_day_picker" type="text" /></div>
                 <div class="hour_selector">
                   <div id="time_error"></div>
-                  <label for="start_hour_select">From:</label>
+                  <label for="start_hour_select"><%= t('event.create.start_time') %></label>
                   <select class="start_hour" id="start_hour_select" name="start_hour">
                     <%= render :partial => "#{@partial_base}/half_hour_form" %>
                   </select>
-                  <label class="label_end_hour" for="end_hour_select">to</label>
+                  <label class="label_end_hour" for="end_hour_select"><%= t('event.create.end_time') %></label>
                   <select class="end_hour" id="end_hour_select" name="end_hour">
                     <%= render :partial => "#{@partial_base}/half_hour_form" %>
-                  </select><span class="ends_next_day hide">the next day</span></div>
+                  </select><span class="ends_next_day hide"><%= t('event.create.next_day') %></span></div>
                 <p class="duration"></p>
               </fieldset>
               <fieldset class="modal_page" data-modal_title="Optional Extras">
                 <div class="image_and_desc">
                   <div class="add_photo_container">
                     <div class="event_photo"></div>
-                    <div class="btn remove_photo_btn event_photo_btn"><span class="event_photo_btn_text">Remove</span></div>
-                    <div class="btn add_photo_btn event_photo_btn"><span class="event_photo_btn_text">Add Photo</span><input class="file" name="images[]" type="file" /><input class="remove_photo" name="remove_photo" type="hidden" /></div>
+                    <div class="btn remove_photo_btn event_photo_btn"><span class="event_photo_btn_text"><%= t('event.create.remove_photo') %></span></div>
+                    <div class="btn add_photo_btn event_photo_btn"><span class="event_photo_btn_text"><%= t('event.create.add_photo') %></span><input class="file" name="images[]" type="file" /><input class="remove_photo" name="remove_photo" type="hidden" /></div>
                     <div class="aspect_ratio"></div>
                   </div>
-                  <textarea class="description" name="description" placeholder="Optional description : any cost or purchase, directions, etc."></textarea></div>
+                  <textarea class="description" name="description" placeholder="<%= t('event.create.description') %>"></textarea></div>
                 <div class="max_guests_container"><input class="guest_limit" id="max_guests_enabled" name="max_guests_enabled" type="checkbox" />
-                  <label class="max_guests_label" for="max_guests_enabled">Limit number of guests</label>
+                  <label class="max_guests_label" for="max_guests_enabled"><%= t('event.create.guests_limited') %></label>
                   <input class="hide max_guests maximum_guests_allowed" maxlength="4" name="maximum_guests_allowed" type="text" /></div>
                 <div class="organizers_container">                  <div class="row_label"><input class="enable_multi_organizer" id="enable_multi_organizer" type="checkbox" />
-                    <label for="enable_multi_organizer">Invite an additional organizer</label>
+                    <label for="enable_multi_organizer"><%= t('event.create.add_organizer') %></label>
                   </div>
                   <div class="add_organizers">
-                    <h3>Invite another organizer to this event.</h3>
-                    <p>Note: All organizers will have the same privileges that you have.</p>
-                    <div class="search_organizers"><input class="search_string" name="search_string" placeholder="Search by name or username" type="text" /><a class="primary_action_button button submit_search disabled_until_load" href="#" id="search_for_organizers_button" title="Search">Search</a>
+                    <h3><%= t('event.create.add_organizer_heading') %></h3>
+                    <p><%= t('event.create.add_organizer_detail') %></p>
+                    <div class="search_organizers"><input class="search_string" name="search_string" placeholder="<%= t('event.create.search_placeholder') %>" type="text" /><a class="primary_action_button button submit_search disabled_until_load" href="#" id="search_for_organizers_button" title="<%= t('event.create.search_button') %>"><%= t('event.create.search_button') %></a>
                       <script type="text/javascript">
 // <![CDATA[
   (function () {
@@ -64,12 +64,12 @@
 
 </div>
                     <div class="select_organizers clearfix"></div>
-                    <h3>Organizers</h3>
-                    <div class="selected_organizers clearfix">                      <div class="selectable_user_container" data-id="<%= @user.id %>">                        <div class="input_container"><input checked="checked" id="selected_organizers_ids_<%= @user.id %>" name="selected_organizers_ids[]" type="checkbox" value="<%= @user.id %>" /></div>
-                        <span class="pull-left avatar sm_circle imgsize_compact_thumb" style="background-image:url(<%= cdn(@user.profile_image) %>);"></span>                        <div class="meta_container">
-                          <label for="selected_organizers_ids_<%= @user.id %>">                            <p class="username"><%= @user.name %></p>
+                    <h3><%= t('event.create.organizers_heading') %></h3>
+                    <div class="selected_organizers clearfix">                      <div class="selectable_user_container" data-id="<%= user.id %>">                        <div class="input_container"><input checked="checked" id="selected_organizers_ids_<%= user.id %>" name="selected_organizers_ids[]" type="checkbox" value="<%= user.id %>" /></div>
+                        <span class="pull-left avatar sm_circle imgsize_compact_thumb" style="background-image:url(<%= cdn(user.profile_image) %>);"></span>                        <div class="meta_container">
+                          <label for="selected_organizers_ids_<%= user.id %>">                            <p class="username"><%= user.name %></p>
                           </label>
-                          <p class="location"><%= @user.location %></p>
+                          <p class="location"><%= user.location %></p>
                         </div>
                       </div>
                     </div>
