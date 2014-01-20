@@ -1,8 +1,10 @@
 class Views::Benchmark::PlacePage::Erector::Surfer < Erector::Widget
+  attr_reader :surfer
+
   def content
     div :class => 'featured_person' do
       div :class => 'media' do
-        a(:class => 'pull-left square avatar', :href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id) + '&id=' + (surfer.profile_encoded_id)), :id => 'autogen_id_for_tracking_place_ocrs_clicked_ocr_1') do
+        a(:class => 'pull-left square avatar', :href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id.to_s) + '&id=' + (surfer.profile_encoded_id.to_s)), :id => 'autogen_id_for_tracking_place_ocrs_clicked_ocr_1') do
           span(:class => 'media-object avatar imgsize_compact_thumb', :style => ('background-image:url(' + (cdn(surfer.profile_image.html_safe)) + ');')) do
             if surfer.verified?
             span :class => 'verified' do
@@ -13,7 +15,7 @@ class Views::Benchmark::PlacePage::Erector::Surfer < Erector::Widget
       end
       div :class => 'media-body' do
         h4 do
-          a(:href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id) + '&id=' + (surfer.profile_encoded_id))) do
+          a(:href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id.to_s) + '&id=' + (surfer.profile_encoded_id.to_s))) do
             rawtext surfer.name
           end
         end

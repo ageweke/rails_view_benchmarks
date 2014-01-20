@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
+  attr_reader :comment
+
   def content
     li(:class => 'thread media', 'data-commented-on-type' => 'place', 'data-creator-id' => (comment.creator_id), 'data-entity-id' => (comment.entity_id), 'data-thread-slug' => (comment.slug.html_safe), 'data-total-replies' => (comment.total_replies)) do
       a(:class => 'avatar_link', :href => (comment.creator_profile_link.html_safe)) do
@@ -78,8 +80,8 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                             rawtext t('comment.show_more', :num => comment.replies.length)
                           end
                         end
-                        div(:class => 'replies', :id => ('comments_on_' + (comment.random_id))) do
-                          rawtext render(:partial => "#{@partial_base}/comment_reply", :collection => comment.replies)
+                        div(:class => 'replies', :id => ('comments_on_' + (comment.id.to_s))) do
+                          comment.replies.each { |reply| widget Views::Benchmark::PlacePage::Erector::CommentReply.new(:comment_reply => reply) }
                         end
                       end
                       div :class => 'media thread-form-container reply-thread' do
@@ -216,5 +218,6 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
           end
         end
       end
+    end
   end
 end

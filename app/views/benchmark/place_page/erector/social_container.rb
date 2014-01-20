@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::SocialContainer < Erector::Widget
+  attr_reader :social_links
+
   def content
     nav :class => 'social_container' do
       div :class => 'call-to-action' do

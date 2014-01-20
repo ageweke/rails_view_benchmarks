@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
+  attr_reader :place, :conversation_categories
+
   def content
     div :class => 'media thread-form-container add-thread' do
       bg_img = cdn("/n/image/serve/P/1/C-60-60?sh=E-af_-fF3G72Xoy9EWb_wQ")

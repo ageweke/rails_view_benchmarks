@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::EmailDropdown < Erector::Widget
+  attr_reader :place, :subscription_options
+
   def content
     section do
       div :class => 'sidebar-list' do

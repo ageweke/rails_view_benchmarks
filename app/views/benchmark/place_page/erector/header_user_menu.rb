@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::HeaderUserMenu < Erector::Widget
+  attr_reader :user, :place
+
   def content
     ul :class => 'menu', :id => 'nav_user_menu' do
       li :class => 'menu_item', 'data-view' => 'HeaderDropdown', :id => 'nav_user_settings' do
@@ -32,5 +34,6 @@ class Views::Benchmark::PlacePage::Erector::HeaderUserMenu < Erector::Widget
           end
         end
       end
+    end
   end
 end

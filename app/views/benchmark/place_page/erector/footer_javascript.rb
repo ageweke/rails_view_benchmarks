@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::FooterJavascript < Erector::Widget
+  attr_reader :place, :user
+
   def content
     script do
       text 'if(typeof CSDataTransfer===\'undefined\'){ CSDataTransfer = {}; } CSDataTransfer._place = {"id":'

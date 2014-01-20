@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::PlaceSubnav < Erector::Widget
+  attr_reader :subnav_places
+
   def content
     nav :class => 'subnav' do
       form :action => '/n/locations/search_place', :class => 'search_place', :method => 'post' do
@@ -15,7 +17,9 @@ class Views::Benchmark::PlacePage::Erector::PlaceSubnav < Erector::Widget
         end
       end
       ul do
-        rawtext render(:partial => "#{@partial_base}/place_subnav_button", :collection => subnav_places)
+        subnav_places.each do |s|
+          widget Views::Benchmark::PlacePage::Erector::PlaceSubnavButton.new(:place_subnav_button => s)
+        end
       end
     end
   end

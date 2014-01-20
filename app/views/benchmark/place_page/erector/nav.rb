@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::Nav < Erector::Widget
+  attr_reader :user, :place
+
   def content
     header :id => 'main-header' do
       nav :id => 'main-menu' do
@@ -18,7 +20,7 @@ class Views::Benchmark::PlacePage::Erector::Nav < Erector::Widget
           a :class => 'close_button', :href => '#', :id => 'logged_in_menu_close' do
             text 'Close'
           end
-          rawtext render(:partial => "#{@partial_base}/header_user_menu", :locals => { :user => user, :place => place })
+          widget Views::Benchmark::PlacePage::Erector::HeaderUserMenu.new(:user => user, :place => place)
           li :class => 'menu_item', :id => 'nav_couch_manager' do
             a :class => ' button', :href => '/n/o/couchmanager', :id => 'autogen_id_for_tracking_nav_couchrequests_clicked_1', :title => 'Couchrequests' do
               text 'Couchrequests'
@@ -33,7 +35,7 @@ class Views::Benchmark::PlacePage::Erector::Nav < Erector::Widget
             end
           end
         end
-        rawtext render(:partial => "#{@partial_base}/header_explore_menu")
+        widget Views::Benchmark::PlacePage::Erector::HeaderExploreMenu.new
       end
       div :class => 'flash-spot' do
       end

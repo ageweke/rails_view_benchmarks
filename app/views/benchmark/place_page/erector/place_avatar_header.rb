@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
+  attr_reader :place, :subscription_options, :part_of, :nearby
+
   def content
     cdn_img = cdn("/n/images/faces/san-francisco-california-united-states/201401052244/6?sh=sV5Ky3b0NBIpw33ZdKsqJg")
     div(:class => 'avatar_header', :style => ('background-image:url(' + cdn_img)) do
@@ -26,7 +28,7 @@ class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
                 end
               end
               div :class => 'dropdown-panel' do
-                rawtext render(:partial => "#{@partial_base}/email_dropdown", :locals => { :place => place, :subscription_options => subscription_options })
+                widget Views::Benchmark::PlacePage::Erector::EmailDropdown.new(:place => place, :subscription_options => subscription_options)
               end
             end
           end

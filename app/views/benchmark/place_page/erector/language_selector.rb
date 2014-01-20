@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::LanguageSelector < Erector::Widget
+  attr_reader :languages
+
   def content
     div :class => 'hidden-menu', :id => 'language_selector_container' do
       div :class => 'menu', :id => 'language_selector_menu' do

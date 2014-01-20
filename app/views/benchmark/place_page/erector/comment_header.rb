@@ -1,6 +1,8 @@
 class Views::Benchmark::PlacePage::Erector::CommentHeader < Erector::Widget
+  attr_reader :place
+
   def content
-    div(:class => 'threads thread-container well-light well', 'data-commented-on-type' => 'place', 'data-conversation-categories-enabled' => 'true', 'data-more_path' => ('https://www.couchsurfing.org/n/threads?entity_id=' + (place.id) + '&entity_type=place&limit=10'), 'data-total_thread_count' => (place.total_threads)) do
+    div(:class => 'threads thread-container well-light well', 'data-commented-on-type' => 'place', 'data-conversation-categories-enabled' => 'true', 'data-more_path' => ('https://www.couchsurfing.org/n/threads?entity_id=' + (place.id.to_s) + '&entity_type=place&limit=10'), 'data-total_thread_count' => (place.total_threads)) do
       div :class => 'holder_header' do
         div :class => 'pull-left' do
           h3 do
@@ -35,5 +37,6 @@ class Views::Benchmark::PlacePage::Erector::CommentHeader < Erector::Widget
           end
         end
       end
+    end
   end
 end

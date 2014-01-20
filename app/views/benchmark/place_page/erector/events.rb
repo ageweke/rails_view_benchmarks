@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::Events < Erector::Widget
+  attr_reader :trending_events, :place, :total_event_count, :upcoming_events
+
   def content
     div :class => 'event_container' do
       div :class => 'holder_header' do
@@ -53,7 +55,9 @@ class Views::Benchmark::PlacePage::Erector::Events < Erector::Widget
         div :style => 'clear:both' do
         end
         ul :class => 'events' do
-          rawtext render(:partial => "#{@partial_base}/event", :collection => trending_events)
+          trending_events.each do |e|
+            widget Views::Benchmark::PlacePage::Erector::Event.new(:event => e)
+          end
         end
       end
       div :class => 'event_container' do
@@ -72,7 +76,9 @@ class Views::Benchmark::PlacePage::Erector::Events < Erector::Widget
         div :style => 'clear:both' do
         end
         ul :class => 'events' do
-          rawtext render(:partial => "#{@partial_base}/event", :collection => upcoming_events)
+          upcoming_events.each do |e|
+            widget Views::Benchmark::PlacePage::Erector::Event.new(:event => e)
+          end
         end
       end
       div :class => 'big_groups_btn well see_all_events_big' do

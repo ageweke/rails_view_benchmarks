@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::CreateEventForm < Erector::Widget
+  attr_reader :user
+
   def content
     form :class => 'event_form', :enctype => 'multipart/form-data' do
       fieldset :class => 'modal_page', 'data-modal_title' => 'Create an Event' do
@@ -60,13 +62,13 @@ class Views::Benchmark::PlacePage::Erector::CreateEventForm < Erector::Widget
             rawtext t('event.create.start_time')
           end
           select :class => 'start_hour', :id => 'start_hour_select', :name => 'start_hour' do
-            rawtext render(:partial => "#{@partial_base}/half_hour_form")
+            widget Views::Benchmark::PlacePage::Erector::HalfHourForm.new
           end
           label :class => 'label_end_hour', :for => 'end_hour_select' do
             rawtext t('event.create.end_time')
           end
           select :class => 'end_hour', :id => 'end_hour_select', :name => 'end_hour' do
-            rawtext render(:partial => "#{@partial_base}/half_hour_form")
+            widget Views::Benchmark::PlacePage::Erector::HalfHourForm.new
           end
           span :class => 'ends_next_day hide' do
             rawtext t('event.create.next_day')
@@ -145,12 +147,12 @@ class Views::Benchmark::PlacePage::Erector::CreateEventForm < Erector::Widget
             div :class => 'selected_organizers clearfix' do
               div(:class => 'selectable_user_container', 'data-id' => (user.id)) do
                 div :class => 'input_container' do
-                  input(:checked => 'checked', :id => ('selected_organizers_ids_' + (user.id)), :name => 'selected_organizers_ids[]', :type => 'checkbox', :value => (user.id))
+                  input(:checked => 'checked', :id => ('selected_organizers_ids_' + (user.id.to_s)), :name => 'selected_organizers_ids[]', :type => 'checkbox', :value => (user.id.to_s))
                 end
                 span(:class => 'pull-left avatar sm_circle imgsize_compact_thumb', :style => ('background-image:url(' + (cdn(user.profile_image)) + ');')) do
                 end
                 div :class => 'meta_container' do
-                  label(:for => ('selected_organizers_ids_' + (user.id))) do
+                  label(:for => ('selected_organizers_ids_' + (user.id.to_s))) do
                     p :class => 'username' do
                       rawtext user.name
                     end

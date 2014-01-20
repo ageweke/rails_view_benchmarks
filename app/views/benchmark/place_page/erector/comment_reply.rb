@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::CommentReply < Erector::Widget
+  attr_reader :comment_reply
+
   def content
     div(:class => 'reply hidden media', 'data-commented-on-type' => 'place', 'data-creator-id' => (comment_reply.creator_id), 'data-entity-id' => (comment_reply.id), 'data-thread-slug' => (comment_reply.slug)) do
       a(:class => 'avatar_link', :href => (comment_reply.profile_link.html_safe)) do

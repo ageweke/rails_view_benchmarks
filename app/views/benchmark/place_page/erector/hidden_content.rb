@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
+  attr_reader :user
+
   def content
     div :id => 'hidden-content' do
       div :class => 'modal_window hide fade event_modal_container new_event_form', 'data-backdrop' => 'static', 'data-keyboard' => 'false', :id => 'event_form_modal', :title => 'i18n_events_add_new' do
@@ -13,7 +15,7 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
           end
         end
         div :class => 'modal_body' do
-          rawtext render(:partial => "#{@partial_base}/create_event_form", :locals => { :user => user })
+          widget Views::Benchmark::PlacePage::Erector::CreateEventForm.new(:user => user)
         end
         footer :class => 'modal_footer' do
           div :class => 'ajax_loading_container' do
@@ -93,12 +95,11 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
         end
       end
     end
-  end
-  div :id => 'preloaded_ajax_loading_container' do
-    div :class => 'ajax_loading_loop' do
+    div :id => 'preloaded_ajax_loading_container' do
+      div :class => 'ajax_loading_loop' do
+      end
+      a :class => 'action_button button loading', :href => '#' do
+      end
     end
-    a :class => 'action_button button loading', :href => '#' do
-    end
-  end
   end
 end

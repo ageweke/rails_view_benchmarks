@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
+  attr_reader :featured_events
+
   def content
     div :class => 'row-fluid' do
       div :class => 'span8' do
@@ -9,7 +11,7 @@ class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
           div :class => 'event_list' do
             featured_events.each do |event|
               start_date_strftime = event.start_date.strftime("%Y-%m-%d")
-              div(:class => ('event_in_list event_row_' + (event.numeric_id)), 'data-event_id' => (event.numeric_id), 'data-start_date' => start_date_strftime, :id => (event.id)) do
+              div(:class => ('event_in_list event_row_' + (event.numeric_id.to_s)), 'data-event_id' => (event.numeric_id), 'data-start_date' => start_date_strftime, :id => (event.id)) do
                 div :class => 'event_start_time' do
                   h2 :class => 'event_day' do
                     rawtext event.start_date.strftime("%B %d")
@@ -86,12 +88,14 @@ class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
                         a(:class => 'user_image', :href => (attendee.profile), :title => (attendee.name)) do
                           span(:class => 'avatar circle imgsize_compact_thumb', :style => ('background-image:url(' + (cdn(attendee.profile_image)) + ');')) do
                             if attendee.organizer
-                            span :class => 'avatar_badge organizer-icon' do
+                              span :class => 'avatar_badge organizer-icon' do
+                              end
                             end
-                          end
-                          if attendee.verified
-                          span :class => 'verified' do
-                            img :src => '/assets/verification-badge-8a2bb1613424ebe4344fed87c342ce6e.png'
+                            if attendee.verified
+                              span :class => 'verified' do
+                                img :src => '/assets/verification-badge-8a2bb1613424ebe4344fed87c342ce6e.png'
+                              end
+                            end
                           end
                         end
                       end

@@ -45,5 +45,4 @@ class Views::Benchmark::PlacePage::Erector::HeaderExploreMenu < Erector::Widget
       end
     end
   end
-  end
 end

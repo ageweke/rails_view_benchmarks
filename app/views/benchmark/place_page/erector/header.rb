@@ -3,7 +3,7 @@ class Views::Benchmark::PlacePage::Erector::Header < Erector::Widget
 
   def content
     head do
-      rawtext render(:partial => "#{@partial_base}/newrelic_early_header")
+      widget Views::Benchmark::PlacePage::Erector::NewrelicEarlyHeader.new
       meta :content => 'text/html;charset=UTF-8', 'http-equiv' => 'content-type'
       title do
         text place.title
@@ -43,9 +43,9 @@ EOS
       end
       script(:src => (cdn('/assets/global-e0f624a2951c1b799a7b15960d3bf411.js')), :type => 'text/javascript') do
       end
-      rawtext render(:partial => "#{@partial_base}/header_mixpanel_javascript")
-      rawtext render(:partial => "#{@partial_base}/header_mixpanel_id", :locals => { :user => user })
-      rawtext render(:partial => "#{@partial_base}/header_ga_javascript")
+      widget Views::Benchmark::PlacePage::Erector::HeaderMixpanelJavascript.new
+      widget Views::Benchmark::PlacePage::Erector::HeaderMixpanelId.new(:user => user)
+      widget Views::Benchmark::PlacePage::Erector::HeaderGaJavascript.new
     end
     meta(:content => ((place.title) + ' - Couchsurfing'), :property => 'og:title')
     meta :content => 'website', :property => 'og:type'

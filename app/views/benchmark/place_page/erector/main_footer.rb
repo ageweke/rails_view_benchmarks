@@ -1,8 +1,10 @@
 class Views::Benchmark::PlacePage::Erector::MainFooter < Erector::Widget
+  attr_reader :languages, :social_links, :site_map
+
   def content
     footer :id => 'main-footer' do
-      rawtext render(:partial => "#{@partial_base}/language_selector", :locals => { :languages => languages })
-      rawtext render(:partial => "#{@partial_base}/social_container", :locals => { :social_links => social_links })
+      widget Views::Benchmark::PlacePage::Erector::LanguageSelector.new(:languages => languages)
+      widget Views::Benchmark::PlacePage::Erector::SocialContainer.new(:social_links => social_links)
       nav :class => 'site_map' do
         site_map.each do |heading, values|
           div(:class => (heading.gsub(/\s+/, '').downcase)) do
