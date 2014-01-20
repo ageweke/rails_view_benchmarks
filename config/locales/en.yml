@@ -73,6 +73,14 @@ en:
       privacy_breach: "Shows my Contact/Protected Information"
 
   event:
+    your_events: "Your Events"
+    create: "Create Event"
+    view_past_events: "View Past Events"
+    trending_events: "Trending Events"
+    upcoming_events: "Upcoming Events"
+    total_events: "%{num} Events"
+    see_all: "See all"
+
     create:
       we_found: "We found:"
       to_specify_exact: "To specify an exact location, click and drag the marker on the map"

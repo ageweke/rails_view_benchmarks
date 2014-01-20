@@ -16,7 +16,7 @@
             </div>
             <div class="span4">
               <div class="row-fluid" id="sidebar">
-                <%= render :partial => "#{@partial_base}/events" %>
+                <%= render :partial => "#{@partial_base}/events", :locals => { :trending_events => @trending_events, :place => @place, :total_event_count => @total_event_count, :upcoming_events => @upcoming_events } %>
                 <div class="well big_groups_btn"><a class="link_button button" href="/n/o/groups" title="All Groups">All Groups</a></div>
                 <%= render :partial => "#{@partial_base}/surfers" %>
                 <%= render :partial => "#{@partial_base}/related_groups" %>
