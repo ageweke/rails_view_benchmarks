@@ -1,0 +1,25 @@
+!!!
+%html.no-js.root-places.page-places.action-show.page-places-show.root-places.page-places.action-show{"data-logged-in" => @user.id, "data-user-main-image" => cdn(@user.profile_image)}
+  %body
+    = render :partial => "#{@partial_base}/header", :locals => { :place => @place, :user => @user }
+    #viewport
+      = render :partial => "#{@partial_base}/nav", :locals => { :user => @user, :place => @place }
+      #main-content.main-container-wrapper
+        = render :partial => "#{@partial_base}/place_subnav", :locals => { :subnav_places => @subnav_places }
+        = render :partial => "#{@partial_base}/place_avatar_header", :locals => { :place => @place, :subscription_options => @subscription_options, :part_of => @part_of, :nearby => @nearby }
+        %section.main-content.container
+          = render :partial => "#{@partial_base}/featured_events", :locals => { :featured_events => @featured_events }
+          .row-fluid
+            = render :partial => "#{@partial_base}/conversations", :locals => { :place => @place, :conversation_categories => @conversation_categories, :form_authenticity_token => @form_authenticity_token, :conversation_tabs => @conversation_tabs, :comments => @comments }
+      .span4
+        #sidebar.row-fluid
+          = render :partial => "#{@partial_base}/events", :locals => { :trending_events => @trending_events, :place => @place, :total_event_count => @total_event_count, :upcoming_events => @upcoming_events }
+          .well.big_groups_btn
+            %a.link_button.button{:href => "/n/o/groups", :title => "All Groups"} All Groups
+          = render :partial => "#{@partial_base}/surfers", :locals => { :place => @place, :surfers => @surfers }
+          = render :partial => "#{@partial_base}/related_groups"
+          .well.big_groups_btn
+            %a#autogen_id_for_tracking_place_sidebar_meet_people_button_clicked_1.link_button.button{:href => "/n/locals/in/place/13", :title => t('meet_people')}= t('meet_people')
+    = render :partial => "#{@partial_base}/main_footer", :locals => { :languages => @languages, :site_map => @site_map, :social_links => @social_links }
+    = render :partial => "#{@partial_base}/hidden_content", :locals => { :user => @user }
+    = render :partial => "#{@partial_base}/footer_javascript", :locals => { :user => @user, :place => @place }

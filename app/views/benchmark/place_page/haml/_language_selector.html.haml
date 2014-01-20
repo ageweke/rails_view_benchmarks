@@ -1,0 +1,12 @@
+#language_selector_container.hidden-menu
+  #language_selector_menu.menu
+    .language_selector_columns_container
+      - language_rows = [ [ ], [ ] ]
+      - languages.each_with_index do |language, i|
+        - language_rows[i % 2] << language
+      - language_rows.each do |row|
+        .column
+          - row.each do |language|
+            %a.language{"data-locale" => language.locale}= language.name
+    %a.menu-close{:href => "#brand"} close
+  %a#language_selector_button.trigger{:href => "#language_selector_menu"}= t('language_selector.english')

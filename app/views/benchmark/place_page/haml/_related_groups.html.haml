@@ -1,0 +1,10 @@
+#sub_groups.well.sub_groups
+  #sub_groups_list.hidden_mode
+    .holder_header
+      .pull-left
+        %h3= t('related_groups.header')
+    .media-body
+      %ul
+        - @related_groups.each_with_index do |group, i|
+          %li{"data-sub-group-id" => group.id, "data-sub-group-position" => i}
+            %a{:href => "https://www.couchsurfing.org/n/o/group/#{group.id}"}= group.name

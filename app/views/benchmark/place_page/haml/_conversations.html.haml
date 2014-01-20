@@ -1,0 +1,8 @@
+= render :partial => "#{@partial_base}/comment_report", :locals => { :form_authenticity_token => form_authenticity_token }
+= render :partial => "#{@partial_base}/comment_remove"
+= render :partial => "#{@partial_base}/comment_header", :locals => { :place => place }
+= render :partial => "#{@partial_base}/comment_add", :locals => { :place => place, :conversation_categories => conversation_categories }
+= render :partial => "#{@partial_base}/comment_tabs", :locals => { :conversation_tabs => conversation_tabs }
+%ul.entity-container.medias= render :partial => "#{@partial_base}/comment", :collection => comments
+.well-end
+  %a.see-more{:href => "https://www.couchsurfing.org/n/threads?entity_id=13&entity_type=place&limit=10"}= t('comment.more_conversations')
