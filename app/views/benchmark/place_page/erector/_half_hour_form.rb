@@ -1,4 +1,4 @@
-class HalfHourForm < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HalfHourForm < Erector::Widget
   def content
     current_time = start_time = Time.now.at_midnight
                       end_time = start_time + 1.day

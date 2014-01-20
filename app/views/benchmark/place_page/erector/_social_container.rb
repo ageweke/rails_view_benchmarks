@@ -1,4 +1,4 @@
-class SocialContainer < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::SocialContainer < Erector::Widget
   def content
     nav :class => 'social_container' do
       div :class => 'call-to-action' do

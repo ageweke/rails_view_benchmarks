@@ -1,4 +1,4 @@
-class FeaturedEvents < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
   def content
     div :class => 'row-fluid' do
       div :class => 'span8' do

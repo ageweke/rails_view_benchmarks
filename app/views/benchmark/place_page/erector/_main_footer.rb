@@ -1,4 +1,4 @@
-class MainFooter < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::MainFooter < Erector::Widget
   def content
     footer :id => 'main-footer' do
       rawtext render(:partial => "#{@partial_base}/language_selector", :locals => { :languages => languages })

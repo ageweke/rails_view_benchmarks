@@ -1,4 +1,4 @@
-class CommentTabs < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::CommentTabs < Erector::Widget
   def content
     div :class => 'conversation-category-tabs' do
       input :id => 'selected-filter', :name => 'selected-filter', :type => 'hidden', :value => 'all'

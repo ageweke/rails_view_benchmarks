@@ -1,4 +1,4 @@
-class Comment < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
   def content
     li(:class => 'thread media', 'data-commented-on-type' => 'place', 'data-creator-id' => (comment.creator_id), 'data-entity-id' => (comment.entity_id), 'data-thread-slug' => (comment.slug.html_safe), 'data-total-replies' => (comment.total_replies)) do
       a(:class => 'avatar_link', :href => (comment.creator_profile_link.html_safe)) do

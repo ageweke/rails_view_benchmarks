@@ -1,4 +1,4 @@
-class RelatedGroups < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::RelatedGroups < Erector::Widget
   def content
     div :class => 'well sub_groups', :id => 'sub_groups' do
       div :class => 'hidden_mode', :id => 'sub_groups_list' do

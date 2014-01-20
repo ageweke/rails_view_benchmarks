@@ -1,4 +1,4 @@
-class Events < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Events < Erector::Widget
   def content
     div :class => 'event_container' do
       div :class => 'holder_header' do

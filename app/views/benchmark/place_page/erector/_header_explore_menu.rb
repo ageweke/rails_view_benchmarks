@@ -1,4 +1,4 @@
-class HeaderExploreMenu < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HeaderExploreMenu < Erector::Widget
   def content
     ul :class => 'menu_item', :id => 'nav_explore_menu' do
       li :class => 'explore menu_item' do

@@ -1,4 +1,4 @@
-class PlaceSubnav < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::PlaceSubnav < Erector::Widget
   def content
     nav :class => 'subnav' do
       form :action => '/n/locations/search_place', :class => 'search_place', :method => 'post' do

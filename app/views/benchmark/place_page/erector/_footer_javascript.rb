@@ -1,4 +1,4 @@
-class FooterJavascript < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::FooterJavascript < Erector::Widget
   def content
     script do
       text 'if(typeof CSDataTransfer===\'undefined\'){ CSDataTransfer = {}; } CSDataTransfer._place = {"id":'

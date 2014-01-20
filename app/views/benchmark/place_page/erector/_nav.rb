@@ -1,4 +1,4 @@
-class Nav < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Nav < Erector::Widget
   def content
     header :id => 'main-header' do
       nav :id => 'main-menu' do

@@ -1,4 +1,4 @@
-class Event < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Event < Erector::Widget
   def content
     li(:class => ('event' + (event.generator ? ' generator' : '')), 'data-slug' => (event.slug)) do
       div :class => 'event_links' do

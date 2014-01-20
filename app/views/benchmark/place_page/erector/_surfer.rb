@@ -1,4 +1,4 @@
-class Surfer < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Surfer < Erector::Widget
   def content
     div :class => 'featured_person' do
       div :class => 'media' do

@@ -1,4 +1,4 @@
-class Conversations < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Conversations < Erector::Widget
   def content
     rawtext render(:partial => "#{@partial_base}/comment_report", :locals => { :form_authenticity_token => form_authenticity_token })
     rawtext render(:partial => "#{@partial_base}/comment_remove")

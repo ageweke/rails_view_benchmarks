@@ -1,4 +1,4 @@
-class PlaceSubnavButton < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::PlaceSubnavButton < Erector::Widget
   def content
     li :class => 'nav_button' do
       the_class = place_subnav_button.followed ? "followed" : "foo"

@@ -1,4 +1,4 @@
-class CommentHeader < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::CommentHeader < Erector::Widget
   def content
     div(:class => 'threads thread-container well-light well', 'data-commented-on-type' => 'place', 'data-conversation-categories-enabled' => 'true', 'data-more_path' => ('https://www.couchsurfing.org/n/threads?entity_id=' + (place.id) + '&entity_type=place&limit=10'), 'data-total_thread_count' => (place.total_threads)) do
       div :class => 'holder_header' do

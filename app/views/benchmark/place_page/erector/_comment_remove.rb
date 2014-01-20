@@ -1,4 +1,4 @@
-class CommentRemove < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::CommentRemove < Erector::Widget
   def content
     div :class => 'modal hide fade remove-thread-modal' do
       div :class => 'modal-header' do

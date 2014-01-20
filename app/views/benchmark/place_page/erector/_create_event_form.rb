@@ -1,4 +1,4 @@
-class CreateEventForm < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::CreateEventForm < Erector::Widget
   def content
     form :class => 'event_form', :enctype => 'multipart/form-data' do
       fieldset :class => 'modal_page', 'data-modal_title' => 'Create an Event' do

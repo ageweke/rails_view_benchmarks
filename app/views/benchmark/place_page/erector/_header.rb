@@ -1,10 +1,12 @@
-class Header < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Header < Erector::Widget
+  attr_reader :place, :user
+
   def content
     head do
       rawtext render(:partial => "#{@partial_base}/newrelic_early_header")
       meta :content => 'text/html;charset=UTF-8', 'http-equiv' => 'content-type'
       title do
-        rawtext h(place.title)
+        text place.title
         text '- Couchsurfing'
       end
       meta :content => 'authenticity_token', :name => 'csrf-param'
@@ -28,14 +30,16 @@ class Header < Erector::Widget
       end
       script :type => 'text/javascript' do
         text '//'
-        rawtext '<![CDATA[
+        rawtext <<-EOS
+        <![CDATA[
           if (typeof jQuery === 'undefined') {
             document.write('<script type="text/javascript" src="/assets/jquery.js">'
         text '\');
             document.write(\'<\' + \'/\' + \'script>\');
           }
 
-// ]]>'
+// ]]>
+EOS
       end
       script(:src => (cdn('/assets/global-e0f624a2951c1b799a7b15960d3bf411.js')), :type => 'text/javascript') do
       end
@@ -50,6 +54,5 @@ class Header < Erector::Widget
     cdn_img = cdn("/assets/share_icon-1f9b3cb3fe7434c4572905f8df9249e1.png?sh=_icJV-EO8S9rq7R8cgM6ag")
     meta :content => cdn_img, :property => 'og:image'
     meta :content => '818BFA93A51A3073F67BC14BC22B9CFF', :name => 'msvalidate.01'
-  end
   end
 end

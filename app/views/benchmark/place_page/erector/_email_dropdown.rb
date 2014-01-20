@@ -1,4 +1,4 @@
-class EmailDropdown < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::EmailDropdown < Erector::Widget
   def content
     section do
       div :class => 'sidebar-list' do

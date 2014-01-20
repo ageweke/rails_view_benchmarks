@@ -1,4 +1,4 @@
-class HiddenContent < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
   def content
     div :id => 'hidden-content' do
       div :class => 'modal_window hide fade event_modal_container new_event_form', 'data-backdrop' => 'static', 'data-keyboard' => 'false', :id => 'event_form_modal', :title => 'i18n_events_add_new' do

@@ -1,8 +1,9 @@
-class HeaderMixpanelJavascript < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HeaderMixpanelJavascript < Erector::Widget
   def content
     script :type => 'text/javascript' do
       text '//'
-      rawtext '<![CDATA[
+      rawtext <<-EOS
+      <![CDATA[
           (function(c,a){window.mixpanel=a;var b,d,h,e;b=c.createElement("script");
           b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+
           '//cdn.mxpnl.com/libs/mixpanel-2.1.min.js';d=c.getElementsByTagName("script")[0];
@@ -15,7 +16,8 @@ class HeaderMixpanelJavascript < Erector::Widget
           a._i.push([b,c,f])};a.__SV=1.1;})(document,window.mixpanel||[]);
           mixpanel.init("96d1d3410f5322c82443e5238ba9012c");
 
-// ]]>'
+// ]]>
+EOS
     end
   end
 end

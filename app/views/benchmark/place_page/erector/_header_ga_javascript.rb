@@ -1,4 +1,4 @@
-class HeaderGaJavascript < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HeaderGaJavascript < Erector::Widget
   def content
     script :type => 'text/javascript' do
       text 'var _gaq = _gaq || [];

@@ -1,4 +1,4 @@
-class HeaderUserMenu < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HeaderUserMenu < Erector::Widget
   def content
     ul :class => 'menu', :id => 'nav_user_menu' do
       li :class => 'menu_item', 'data-view' => 'HeaderDropdown', :id => 'nav_user_settings' do

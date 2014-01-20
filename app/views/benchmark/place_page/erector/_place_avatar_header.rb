@@ -1,4 +1,4 @@
-class PlaceAvatarHeader < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
   def content
     cdn_img = cdn("/n/images/faces/san-francisco-california-united-states/201401052244/6?sh=sV5Ky3b0NBIpw33ZdKsqJg")
     div(:class => 'avatar_header', :style => ('background-image:url(' + cdn_img)) do

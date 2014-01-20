@@ -1,4 +1,4 @@
-class PlacePage < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::PlacePage < Erector::Widget
   def content
     rawtext '<!DOCTYPE html>'
     html(:class => 'no-js root-places page-places action-show page-places-show root-places page-places action-show', 'data-logged-in' => (@user.id), 'data-user-main-image' => (cdn(@user.profile_image))) do
@@ -39,6 +39,5 @@ class PlacePage < Erector::Widget
       rawtext render(:partial => "#{@partial_base}/hidden_content", :locals => { :user => @user })
       rawtext render(:partial => "#{@partial_base}/footer_javascript", :locals => { :user => @user, :place => @place })
     end
-  end
   end
 end

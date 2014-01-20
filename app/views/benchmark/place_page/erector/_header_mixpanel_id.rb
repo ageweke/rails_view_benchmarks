@@ -1,4 +1,6 @@
-class HeaderMixpanelId < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::HeaderMixpanelId < Erector::Widget
+  attr_reader :user
+
   def content
     script :type => 'text/javascript' do
       text 'mixpanel.identify("cstrk:user-v1:'

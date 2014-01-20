@@ -1,4 +1,4 @@
-class Surfers < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::Surfers < Erector::Widget
   def content
     div :class => 'well people_container' do
       h3 :class => 'holder_header' do

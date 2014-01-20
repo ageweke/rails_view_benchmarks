@@ -1,4 +1,4 @@
-class CommentReport < Erector::Widget
+class Views::Benchmark::PlacePage::Erector::CommentReport < Erector::Widget
   def content
     div :class => 'modal hide fade report-abusive-content', 'data-entity_type' => 'comment' do
       div :class => 'modal-header' do
