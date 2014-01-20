@@ -20,7 +20,7 @@
                 <div class="well big_groups_btn"><a class="link_button button" href="/n/o/groups" title="All Groups">All Groups</a></div>
                 <%= render :partial => "#{@partial_base}/surfers", :locals => { :place => @place, :surfers => @surfers } %>
                 <%= render :partial => "#{@partial_base}/related_groups" %>
-                <div class="well big_groups_btn"><a class="link_button button" href="/n/locals/in/place/13" id="autogen_id_for_tracking_place_sidebar_meet_people_button_clicked_1" title="Meet People">Meet People</a></div>
+                <div class="well big_groups_btn"><a class="link_button button" href="/n/locals/in/place/13" id="autogen_id_for_tracking_place_sidebar_meet_people_button_clicked_1" title="<%= t('meet_people') %>"><%= t('meet_people') %></a></div>
               </div>
             </div>
           </div>
