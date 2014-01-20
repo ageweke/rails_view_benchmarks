@@ -123,7 +123,11 @@ en:
       events: "Events"
       discuss: "Discuss"
       help: "Help"
-
+    user_menu:
+      my_profile: "My Profile"
+      account_settings: "Account Settings"
+      local_place_page: "Your local place page"
+      logout: "Log out"
 
   buttons:
     cancel: "Cancel"

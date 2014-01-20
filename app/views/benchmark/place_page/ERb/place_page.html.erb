@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 <html class="no-js root-places page-places action-show page-places-show root-places page-places action-show" data-logged-in="<%= @user.id %>" data-user-main-image="<%= cdn(@user.profile_image) %>">
-  <%= render :partial => "#{@partial_base}/header", :locals => { :place => @place } %>
+  <%= render :partial => "#{@partial_base}/header", :locals => { :place => @place, :user => @user } %>
   <body>
     <div id="viewport">
-      <%= render :partial => "#{@partial_base}/nav" %>
+      <%= render :partial => "#{@partial_base}/nav", :locals => { :user => @user, :place => @place } %>
       <div class="main-container-wrapper" id="main-content">
         <%= render :partial => "#{@partial_base}/place_subnav" %>
         <%= render :partial => "#{@partial_base}/place_avatar_header", :locals => { :place => @place, :subscription_options => @subscription_options } %>

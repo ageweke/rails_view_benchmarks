@@ -3,7 +3,7 @@
           <h1 id="brand"><a href="/" id="autogen_id_for_tracking_nav_logo_clicked_1"><img alt="Couchsurfing" height="41" src="<%= cdn("/assets/logo/logo-small-a6218f040fc83533cd4ce0ecfec406e4.png")%>" width="117" /></a></h1>
           <a class="button trigger <%= @user.unread_messages > 0 ? 'unread' : 'read' %>" data-toggle="dropdown" href="#viewport" id="logged_in_menu_trigger">Menu<span class="message-bubble"><%= @user.unread_messages %></span></a>
           <div id="logged_in_menu"><a class="close_button" href="#" id="logged_in_menu_close">Close</a>
-            <%= render :partial => "#{@partial_base}/header_user_menu" %>
+            <%= render :partial => "#{@partial_base}/header_user_menu", :locals => { :user => user, :place => place } %>
               <li class="menu_item" id="nav_couch_manager"><a class=" button" href="/n/o/couchmanager" id="autogen_id_for_tracking_nav_couchrequests_clicked_1" title="Couchrequests">Couchrequests</a></li>
               <li class="menu_item" id="nav_messages"><a class="unread button" href="/n/o/messages" id="autogen_id_for_tracking_nav_messages_clicked_1" title="Messages">Messages</a><span class="message-bubble">24</span></li>
             </ul>

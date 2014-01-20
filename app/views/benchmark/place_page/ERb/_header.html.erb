@@ -26,7 +26,7 @@
 <%= render :partial => "#{@partial_base}/header_mixpanel_javascript" %>
 
 
-<%= render :partial => "#{@partial_base}/header_mixpanel_id" %>
+<%= render :partial => "#{@partial_base}/header_mixpanel_id", :locals => { :user => user } %>
     <%= render :partial => "#{@partial_base}/header_ga_javascript" %>
 </script>
     <meta content="<%= place.title %> - Couchsurfing" property="og:title" />
