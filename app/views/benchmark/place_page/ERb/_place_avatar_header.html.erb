@@ -11,7 +11,7 @@
                       <% end %>
                       <b class="caret"></b></a></div>
                     <div class="dropdown-panel">
-                      <%= render :partial => "#{@partial_base}/email_dropdown" %>
+                      <%= render :partial => "#{@partial_base}/email_dropdown", :locals => { :place => place, :subscription_options => subscription_options } %>
                     </div>
                   </div>
                 </div>

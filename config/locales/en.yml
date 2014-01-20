@@ -95,5 +95,12 @@ en:
       search_button: "Search"
       organizers_heading: "Organizers"
 
+  email_dropdown:
+    heading: "Email Digests"
+    subheading: "How much email would you like to receive related to this place?"
+    button: "Change Subscription"
+    unfollow: "unfollow"
+
+
   buttons:
     cancel: "Cancel"
