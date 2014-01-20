@@ -138,5 +138,8 @@ en:
   language_selector:
     english: "English"
 
+  footer:
+    copyright_notice: "(c) 1999 - 2014    Couchsurfing International, Inc. A socially responsible, Certified B Corporation"
+
   buttons:
     cancel: "Cancel"

@@ -2,7 +2,7 @@
         <%= render :partial => "#{@partial_base}/language_selector", :locals => { :languages => languages } %>
         <%= render :partial => "#{@partial_base}/social_container" %>
         <nav class="site_map">
-          <% @site_map.each do |heading, values| %>
+          <% site_map.each do |heading, values| %>
             <div class="<%= heading.gsub(/\s+/, '').downcase %>">
               <div class="heading"><%= heading %></div>
               <ul class="links">
@@ -13,5 +13,5 @@
             </div>
           <% end %>
         </nav>
-        <div class="copyright">&copy; 1999 - 2014&nbsp;&nbsp;&nbsp;&nbsp;Couchsurfing International, Inc. A socially responsible, Certified B Corporation</div>
+        <div class="copyright"><%= t('footer.copyright_notice') %></div>
       </footer>

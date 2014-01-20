@@ -26,7 +26,7 @@
           </div>
         </section>
       </div>
-      <%= render :partial => "#{@partial_base}/main_footer", :locals => { :languages => @languages } %>
+      <%= render :partial => "#{@partial_base}/main_footer", :locals => { :languages => @languages, :site_map => @site_map } %>
       <%= render :partial => "#{@partial_base}/hidden_content", :locals => { :user => @user } %>
       <%= render :partial => "#{@partial_base}/footer_javascript", :locals => { :user => @user, :place => @place } %>
 </body>
