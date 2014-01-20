@@ -129,5 +129,11 @@ en:
       local_place_page: "Your local place page"
       logout: "Log out"
 
+  hidden_content:
+    back: "Back"
+    save_event: "Save Event"
+    next: "Next"
+    past_events: "Past Events"
+
   buttons:
     cancel: "Cancel"

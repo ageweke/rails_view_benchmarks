@@ -1,13 +1,13 @@
 <div id="hidden-content">
         <div class="modal_window hide fade event_modal_container new_event_form" data-backdrop="static" data-keyboard="false" id="event_form_modal" title="i18n_events_add_new">
           <header class="modal_header">
-            <h3 class="modal_title clearfix"><span class="title_text">i18n_events_add_new</span><a class="modal_close" data-dismiss="modal" href="#">Cancel</a></h3>
+            <h3 class="modal_title clearfix"><span class="title_text">i18n_events_add_new</span><a class="modal_close" data-dismiss="modal" href="#"><%= t('buttons.cancel') %></a></h3>
           </header>
           <div class="modal_body">
             <%= render :partial => "#{@partial_base}/create_event_form", :locals => { :user => user } %>
           </div>
           <footer class="modal_footer">            <div class="ajax_loading_container"></div>
-            <a class="action_button button prev_page disabled_until_load" href="#" id="73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5" title="Back">Back</a>
+            <a class="action_button button prev_page disabled_until_load" href="#" id="73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5" title="<%= t('hidden_content.back') %>"><%= t('hidden_content.back') %></a>
             <script type="text/javascript">
 // <![CDATA[
   (function () {
@@ -20,7 +20,7 @@
 // ]]>
             </script>
 
-<a class="primary_action_button button submit_btn new_submit_btn disabled_until_load" href="#" id="7f1998f6b3b3f70801ebb84a23493e5b900fdf37" title="Save Event">Save Event</a>
+<a class="primary_action_button button submit_btn new_submit_btn disabled_until_load" href="#" id="7f1998f6b3b3f70801ebb84a23493e5b900fdf37" title="<%= t('hidden_content.save_event') %>"><%= t('hidden_content.save_event') %></a>
             <script type="text/javascript">
 // <![CDATA[
   (function () {
@@ -33,7 +33,7 @@
 // ]]>
             </script>
 
-<a class="primary_action_button button next_page disabled_until_load" href="#" id="a61726a26c5837d2081a322e322d6bbeeef98142" title="Next">Next</a>
+<a class="primary_action_button button next_page disabled_until_load" href="#" id="a61726a26c5837d2081a322e322d6bbeeef98142" title="<%= t('hidden_content.next') %>"><%= t('hidden_content.next') %></a>
             <script type="text/javascript">
 // <![CDATA[
   (function () {
@@ -48,14 +48,14 @@
 
 </footer>
         </div>
-        <div class="modal_window hide fade other_events_modal past_events_modal" id="past_events_modal" title="Past Events">
+        <div class="modal_window hide fade other_events_modal past_events_modal" id="past_events_modal" title="<%= t('hidden_content.past_events') %>">
           <header class="modal_header">
-            <h3 class="modal_title clearfix"><span class="title_text">Past Events</span><a class="modal_close" data-dismiss="modal" href="#">Cancel</a></h3>
+            <h3 class="modal_title clearfix"><span class="title_text"><%= t('hidden_content.past_events') %></span><a class="modal_close" data-dismiss="modal" href="#"><%= t('buttons.cancel') %></a></h3>
           </header>
           <div class="modal_body"><img class="ajax_loading" src="/assets/loading_loop.gif" /></div>
           <footer class="modal_footer">&#160;</footer>
         </div>
-        <div class="modal_window hide fade" id="alert_modal">          <header class="modal_header"><a class="modal_close" data-dismiss="modal" href="#">Cancel</a></header>
+        <div class="modal_window hide fade" id="alert_modal">          <header class="modal_header"><a class="modal_close" data-dismiss="modal" href="#"><%= t('buttons.cancel') %></a></header>
           <div class="modal_body"></div>
         </div>
       </div>
