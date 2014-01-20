@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html class="no-js root-places page-places action-show page-places-show root-places page-places action-show" data-logged-in="<%= @user.id %>" data-user-main-image="<%= cdn(@user.profile_image) %>">
-  <%= render :partial => "#{@partial_base}/header" %>
+  <%= render :partial => "#{@partial_base}/header", :locals => { :place => @place } %>
   <body>
     <div id="viewport">
       <%= render :partial => "#{@partial_base}/nav" %>

@@ -1,5 +1,5 @@
   <head><%= render :partial => "#{@partial_base}/newrelic_early_header" %><meta content="text/html;charset=UTF-8" http-equiv="content-type" />
-    <title><%= h(@place.title) %> - Couchsurfing</title>
+    <title><%= h(place.title) %> - Couchsurfing</title>
     <meta content="authenticity_token" name="csrf-param" />
 <meta content="NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=" name="csrf-token" /><meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
     <link href="<%= cdn('/assets/global_manifest-7c3595129a107f6fde65b7837276c39e.css') %>" media="all" rel="stylesheet" type="text/css" /><link href="<%= cdn('/assets/old_common-c8fe6e30f84afd66b13d694872c9b015.css')%>" media="all" rel="stylesheet" type="text/css" /><!--[if IE 9]>
@@ -29,9 +29,9 @@
 <%= render :partial => "#{@partial_base}/header_mixpanel_id" %>
     <%= render :partial => "#{@partial_base}/header_ga_javascript" %>
 </script>
-    <meta content="San Francisco Bay - Couchsurfing" property="og:title" />
+    <meta content="<%= place.title %> - Couchsurfing" property="og:title" />
     <meta content="website" property="og:type" />
-    <meta content="https://www.couchsurfing.org/n/places/san-francisco-california-united-states" property="og:url" />
+    <meta content="https://www.couchsurfing.org/<%= place.path.html_safe %>" property="og:url" />
     <meta content="Discover new friends around the world!" property="og:description" />
     <meta content="<%= cdn("/assets/share_icon-1f9b3cb3fe7434c4572905f8df9249e1.png?sh=_icJV-EO8S9rq7R8cgM6ag")%>" property="og:image" />
     <meta content="818BFA93A51A3073F67BC14BC22B9CFF" name="msvalidate.01" />

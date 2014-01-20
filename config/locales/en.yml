@@ -115,6 +115,15 @@ en:
     button: "Change Subscription"
     unfollow: "unfollow"
 
+  header:
+    explore_menu:
+      home: "Home"
+      surf: "Surf"
+      host: "Host"
+      events: "Events"
+      discuss: "Discuss"
+      help: "Help"
+
 
   buttons:
     cancel: "Cancel"
