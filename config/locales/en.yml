@@ -135,5 +135,8 @@ en:
     next: "Next"
     past_events: "Past Events"
 
+  language_selector:
+    english: "English"
+
   buttons:
     cancel: "Cancel"

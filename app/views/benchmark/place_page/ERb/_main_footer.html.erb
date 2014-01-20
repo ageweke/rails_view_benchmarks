@@ -1,5 +1,5 @@
       <footer id="main-footer">
-        <%= render :partial => "#{@partial_base}/language_selector" %>
+        <%= render :partial => "#{@partial_base}/language_selector", :locals => { :languages => languages } %>
         <%= render :partial => "#{@partial_base}/social_container" %>
         <nav class="site_map">
           <% @site_map.each do |heading, values| %>

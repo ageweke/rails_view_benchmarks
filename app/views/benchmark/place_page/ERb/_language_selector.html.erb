@@ -3,7 +3,7 @@
             <div class="language_selector_columns_container">
               <%
                   language_rows = [ [ ], [ ] ]
-                  @languages.each_with_index do |language, i|
+                  languages.each_with_index do |language, i|
                     language_rows[i % 2] << language
                   end
 
@@ -17,4 +17,4 @@
               <% end %>
             </div>
             <a class="menu-close" href="#brand">close</a></div>
-          <a class="trigger" href="#language_selector_menu" id="language_selector_button">English</a></div>
+          <a class="trigger" href="#language_selector_menu" id="language_selector_button"><%= t('language_selector.english') %></a></div>
