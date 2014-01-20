@@ -6,7 +6,7 @@
     <div id="viewport">
       <%= render :partial => "#{@partial_base}/nav", :locals => { :user => @user, :place => @place } %>
       <div class="main-container-wrapper" id="main-content">
-        <%= render :partial => "#{@partial_base}/place_subnav" %>
+        <%= render :partial => "#{@partial_base}/place_subnav", :locals => { :subnav_places => @subnav_places } %>
         <%= render :partial => "#{@partial_base}/place_avatar_header", :locals => { :place => @place, :subscription_options => @subscription_options, :part_of => @part_of, :nearby => @nearby } %>
         <section class="main-content container">
           <%= render :partial => "#{@partial_base}/featured_events", :locals => { :featured_events => @featured_events } %>

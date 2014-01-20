@@ -138,6 +138,9 @@ en:
       save_preference: "Save preference"
       who_are: "Who are these faces?"
 
+  place_subnav:
+    find: "Find a place…"
+
   hidden_content:
     back: "Back"
     save_event: "Save Event"
