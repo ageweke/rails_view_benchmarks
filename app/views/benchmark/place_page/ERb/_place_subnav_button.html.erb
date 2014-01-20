@@ -1,4 +1,3 @@
-            <li class="nav_button"><a <% if place_subnav_button.followed %>
-                class="followed"
-                <% end %>
-                href="<%= place_subnav_button.link %>"><%= place_subnav_button.title %></a></li>
+            <li class="nav_button">
+                <% the_class = place_subnav_button.followed ? "followed" : "foo" %>
+                <a class="<%= the_class %>" href="<%= place_subnav_button.link %>"><%= place_subnav_button.title %></a></li>

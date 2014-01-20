@@ -2,7 +2,9 @@
                           <div class="media-body">
                             <div><a href="<%= comment_reply.profile_link.html_safe %>"></a>
                               <div class="comment-text">
-                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="<%= comment_reply.profile_link.html_safe %>"><%= comment_reply.creator_name %></a></span><span><a href="/send_message.html?id=<%= comment_reply.creator_profile_encoded_id %>" id="autogen_id_for_tracking_place_conversations_send_private_message_2" style="float: left; margin: 0 0.5em; color: #8B8B8B"><img alt="Private_message" src="<%= cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png") %>" /></a></span>
+                                <div class="comment-header row-fluid">                                  <div class="span12"><span><a class="reply-creator" href="<%= comment_reply.profile_link.html_safe %>"><%= comment_reply.creator_name %></a></span><span><a href="/send_message.html?id=<%= comment_reply.creator_profile_encoded_id %>" id="autogen_id_for_tracking_place_conversations_send_private_message_2" style="float: left; margin: 0 0.5em; color: #8B8B8B">
+                                  <% cdn_img = cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png") %>
+                                  <img alt="Private_message" src="<%= cdn_img %>" /></a></span>
                                     <div class="comment-details">
                                       <time data-component="timestamp" data-original-timestamp="<%= comment_reply.created_at.iso8601 %>" datetime="<%= comment_reply.created_at.iso8601 %>"></time>
                                     </div>

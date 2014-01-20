@@ -1,4 +1,6 @@
-  <div class="media thread-form-container add-thread"><span class="thread-author pull-left avatar circle imgsize_small_thumb" style="background-image:url(<%= cdn("/n/image/serve/P/1/C-60-60?sh=E-af_-fF3G72Xoy9EWb_wQ")%>);"></span>
+  <div class="media thread-form-container add-thread">
+    <% bg_img = cdn("/n/image/serve/P/1/C-60-60?sh=E-af_-fF3G72Xoy9EWb_wQ") %>
+    <span class="thread-author pull-left avatar circle imgsize_small_thumb" style="background-image:url(<%= bg_img %>);"></span>
     <div class="media-body">
       <form action="/n/threads" class="thread-reply-form" method="post"><input name="entity_id" type="hidden" value="<%= place.id %>" /><input name="entity_type" type="hidden" value="place" />
         <div class="control-group">

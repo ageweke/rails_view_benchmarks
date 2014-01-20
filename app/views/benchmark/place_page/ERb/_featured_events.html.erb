@@ -2,7 +2,8 @@
               <div class="row-fluid">                <h3 class="featured_event_title"><%= t('event.featured.title') %></h3>
                 <div class="event_list">
                   <% featured_events.each do |event| %>
-                    <div class="event_in_list event_row_<%= event.numeric_id %>" data-event_id="<%= event.numeric_id %>" data-start_date="<%= event.start_date.strftime("%Y-%m-%d") %>" id="<%= event.id %>">
+                  <% start_date_strftime = event.start_date.strftime("%Y-%m-%d") %>
+                    <div class="event_in_list event_row_<%= event.numeric_id %>" data-event_id="<%= event.numeric_id %>" data-start_date="<%= start_date_strftime %>" id="<%= event.id %>">
                       <div class="event_start_time">                      <h2 class="event_day"><%= event.start_date.strftime("%B %d") %></h2>
                         <div class="date_time"><%= event.start_date.strftime("%A") %><br />
                            <%= event.start_date.strftime("%I:%M %p") %></div>
