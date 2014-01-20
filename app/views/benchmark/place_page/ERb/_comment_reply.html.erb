@@ -15,11 +15,11 @@
                                   <div class="span1">
                                     <div class="comment-context-menu dropdown pull-right" data-component="contextMenu" data-entity_id="<%= comment_reply.id %>" data-entity_type="comment"><a class="dropdown-toggle" data-component="dropdown" href=""><span class="icon-flyout icon-large"></span></a>
                                       <ul class="dropdown-menu pull-right" data-component="options">
-                                        <li><a class="share get_link" href="/n/threads/<%= comment_reply.slug %>" target="_blank"><i class="icon-mail"></i>Get link</a></li>
+                                        <li><a class="share get_link" href="/n/threads/<%= comment_reply.slug %>" target="_blank"><i class="icon-mail"></i><%= t('comment.reply.get_link') %></a></li>
                                         <li class="divider"></li>
-                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i>Edit This Post</a></li>
-                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i>Delete This Post</a></li>
-                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i>Flag This Post</a></li>
+                                        <li data-visible-to="creator"><a class="edit-comment" href=""><i class="icon-pen"></i><%= t('comment.reply.edit') %></a></li>
+                                        <li data-visible-to="creator"><a class="delete-comment" href=""><i class="icon-close"></i><%= t('comment.reply.delete') %></a></li>
+                                        <li data-visible-to="non-creator"><a class="report-trigger" href=""><i class="icon-caution"></i><%= t('comment.reply.flag') %></a></li>
                                       </ul>
                                     </div>
                                   </div>

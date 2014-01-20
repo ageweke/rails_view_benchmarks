@@ -56,5 +56,19 @@ en:
       title: "Remove?"
       confirm: "Please confirm you want to delete this comment"
       confirm_button: "Confirm"
+    reply:
+      get_link: "Get link"
+      edit: "Edit This Post"
+      delete: "Delete This Post"
+      flag: "Flag This Post"
+    report:
+      header: "Reason for flagging"
+      couch_request: "A Couchrequest"
+      website_feedback: "Website Feedback"
+      off_topic: "Off-Topic"
+      commercial_or_spam: "Commercial Content and Spam"
+      dating_or_sexual: "Dating/Inappropriate Sexual Content"
+      abusive_or_illegal: "Abusive or Illegal Content"
+      privacy_breach: "Shows my Contact/Protected Information"
   buttons:
     cancel: "Cancel"

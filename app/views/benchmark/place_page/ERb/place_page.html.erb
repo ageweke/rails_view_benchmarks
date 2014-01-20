@@ -11,7 +11,7 @@
         <section class="main-content container">
           <%= render :partial => "#{@partial_base}/featured_events" %>
             <div class="row-fluid">
-              <%= render :partial => "#{@partial_base}/conversations", :locals => { :place => @place, :conversation_categories => @conversation_categories } %>
+              <%= render :partial => "#{@partial_base}/conversations", :locals => { :place => @place, :conversation_categories => @conversation_categories, :form_authenticity_token => @form_authenticity_token } %>
 </div>
             </div>
             <div class="span4">
