@@ -115,9 +115,10 @@ class BenchmarkController < ApplicationController
     @place = OpenStruct.new(
       :title => "San Francisco",
       :following => true,
-      :id => 13,
-      :total_threads => 17442,
-      :path => "/n/places/san-francisco-california-united-states")
+      :id => rand(100_000),
+      :total_threads => rand(30_000),
+      :path => "/n/places/san-francisco-california-united-states",
+      :locals_count => rand(100_000))
 
     @user = OpenStruct.new(
       :name => 'Joe Smith',
@@ -125,7 +126,7 @@ class BenchmarkController < ApplicationController
       :location => 'San Francisco',
       :profile_image => String.random_profile_image,
       :username => 'JOESMITH',
-      :unread_messages => 57,
+      :unread_messages => rand(100),
       :first_name => 'Joe',
       :profile_path => '/profile.html?id=890FZQ',
       :locale => 'en_US',

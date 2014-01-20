@@ -128,6 +128,15 @@ en:
       account_settings: "Account Settings"
       local_place_page: "Your local place page"
       logout: "Log out"
+    avatar:
+      following: "Following"
+      locals_count: "%{num} Couchsurfing Members"
+      part_of: "Part of:"
+      nearby: "Nearby:"
+      privacy_description: "The faces you see on this page are the profile photos of active Couchsurfers who live in or near this place."
+      never_show: "Never show my profile photo here"
+      save_preference: "Save preference"
+      who_are: "Who are these faces?"
 
   hidden_content:
     back: "Back"
