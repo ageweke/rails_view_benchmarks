@@ -1,6 +1,6 @@
 <%= render :partial => "#{@partial_base}/comment_report" %>
 <%= render :partial => "#{@partial_base}/comment_remove" %>
-<%= render :partial => "#{@partial_base}/comment_header" %>
+<%= render :partial => "#{@partial_base}/comment_header", :locals => { :place => place } %>
 <%= render :partial => "#{@partial_base}/comment_add", :locals => { :place => place, :conversation_categories => conversation_categories } %>
 <%= render :partial => "#{@partial_base}/comment_tabs" %>
   <ul class="entity-container medias">
