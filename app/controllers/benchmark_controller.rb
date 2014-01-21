@@ -302,10 +302,9 @@ class BenchmarkController < ApplicationController
 
   private
   def benchmark!(locals)
-    benchmarker = Benchmarker.new
+    benchmarker = Benchmarker.new(params)
 
     engine = params[:engine]
-    desired_runtime = Float(params[:desired_runtime] || 1.0)
 
     benchmark = nil
     if action_name =~ /^benchmark_(.+)$/i
@@ -318,7 +317,6 @@ class BenchmarkController < ApplicationController
 
     template = "#{@partial_base}/#{benchmark}".freeze
     @render_args = { :template => template, :locals => locals, :layout => false }
-    @measure_count ||= 25
 
     if params[:view_only]
       return render @render_args, :layout => false
@@ -326,6 +324,7 @@ class BenchmarkController < ApplicationController
 
     benchmarker.go! { render @render_args }
 
-    render :text => "Benchmark '#{benchmark}', engine #{engine}: #{benchmarker.to_s}"
+    render :json => benchmarker.to_hash.to_json
+    # render :text => "Benchmark '#{benchmark}', engine #{engine}: #{benchmarker.to_s}\n#{benchmarker.to_hash.to_json}"
   end
 end
