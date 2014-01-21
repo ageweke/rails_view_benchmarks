@@ -34,6 +34,7 @@ end
 
 gem 'haml'
 gem 'erector'
+gem 'trollop'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

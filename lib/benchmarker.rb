@@ -8,17 +8,17 @@ class Benchmarker
 
   def initialize(options = { })
     @benchmark_period = Float(options[:benchmark_period] || DEFAULT_BENCHMARK_PERIOD)
-    @prep_count = options[:prep_count] || DEFAULT_PREP_COUNT
+    @prep_count = Integer(options[:prep_count] || DEFAULT_PREP_COUNT)
 
-    @gc_period = options[:gc_period] || (@benchmark_period * 0.10)
-    @gc_min_count = options[:gc_min_count] || DEFAULT_GC_MIN_COUNT
+    @gc_period = Float(options[:gc_period] || (@benchmark_period * 0.10))
+    @gc_min_count = Integer(options[:gc_min_count] || DEFAULT_GC_MIN_COUNT)
   end
 
   def go!(&block)
     prep(&block)
     benchmark(&block)
 
-    benchmark_gc(&block) if GC.respond_to?(:stat)
+    benchmark_gc(&block) if GC.respond_to?(:stat) && @gc_period > 0
   end
 
   def to_hash

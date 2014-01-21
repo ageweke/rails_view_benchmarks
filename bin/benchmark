@@ -1,0 +1,150 @@
+#!/usr/bin/env ruby
+
+require 'trollop'
+
+class Numeric
+  def with_delimiters(after_decimal = 0)
+    out = with_commas = Integer(self).to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    if after_decimal > 0
+      out = "%.#{after_decimal}f" % self
+      if out =~ /^(.*?)(\..*)$/
+        out = with_commas + $2
+      end
+    end
+    out
+  end
+end
+
+opts = Trollop::options do
+  opt :engine, "Engines to benchmark", :type => :string, :default => 'all'
+  opt :benchmark, "Benchmarks to run", :type => :string, :default => 'all'
+  opt :url, "Base URL to use", :type => :string, :default => 'http://localhost:3000'
+
+  opt :runtime, "Time to run each benchmark for", :type => :float, :default => 5.0
+  opt :'prep-count', "Number of prep runs", :type => :integer, :default => 10
+  opt :'gc-period', "Time to run GC test for", :type => :float, :default => 0.5
+  opt :'gc-min-count', "Minimum number of GC test passes", :type => :integer, :default => 5
+end
+
+ALL_ENGINES = %w{erb haml erector}.map(&:to_sym)
+
+engines = if opts[:engine] == 'all'
+  ALL_ENGINES
+else
+  engines.split(/[\s,]+/).map { |e| e.strip.downcase.to_sym }
+  extra = engines - ALL_ENGINES
+  Trollop::die :engine, "is unknown; must be one of: #{ALL_ENGINES.inspect}" if extra.length > 0
+end
+
+ALL_BENCHMARKS = %w{place_page static_html partial_hell escaping_hell local_variable_hell translation_hell}.map(&:to_sym)
+
+benchmarks = if opts[:benchmark] == 'all'
+  ALL_BENCHMARKS
+else
+  benchmarks.split(/[\s,]+/).map { |b| b.strip.downcase.to_sym }
+  extra = benchmarks - ALL_BENCHMARKS
+  Trollop::die :benchmark, "is unknown; must be one of: #{ALL_BENCHMARKS.inspect}" if extra.length > 0
+end
+
+def partial(s)
+  $stdout << s
+  $stdout.flush
+end
+
+def write(s)
+  $stdout.puts s
+  $stdout.flush
+end
+
+engine_column_width = (engines + [ 'engine' ]).map { |e| e.to_s.length }.max
+data_column_width = 22
+
+partial "%#{engine_column_width}s" % "engine"
+benchmarks.each do |benchmark|
+  partial " %-#{data_column_width}s" % benchmark.to_s
+end
+write ""
+
+partial "%-#{engine_column_width}s" % ("-" * engine_column_width)
+benchmarks.each do |benchmark|
+  partial " %-#{data_column_width}s" % ("-" * data_column_width)
+end
+write ""
+
+params = {
+  :benchmark_period => opts[:runtime],
+  :prep_count => opts[:'prep-count'],
+  :gc_period => opts[:'gc-period'],
+  :gc_min_count => opts[:'gc-min-count']
+}
+
+results = { }
+
+baseline_times = { }
+baseline_gcs = { }
+
+engines.each do |engine|
+  partial "%#{engine_column_width}s" % engine.to_s
+
+  results[engine] = { }
+
+  benchmarks.each do |benchmark|
+    path = "#{opts[:url]}/benchmark_#{benchmark}/#{engine}?#{params.to_query}"
+    uri = URI(path)
+    json = JSON.parse(Net::HTTP.get(uri))
+
+    results[engine][benchmark] = json
+
+    ms_per_iteration = (Float(json['time']['time']) / Float(json['time']['iterations'])) * 1000.0
+
+    baseline_time = (baseline_times[benchmark] ||= ms_per_iteration)
+
+    partial "  %8s ms (%6.2fx)" % [ ms_per_iteration.with_delimiters(1), (ms_per_iteration / baseline_time) ]
+  end
+
+  write ""
+
+  partial "%#{engine_column_width}s" % (" " * engine_column_width)
+  benchmarks.each do |benchmark|
+    json = results[engine][benchmark]
+
+    objects_per_iteration = (Float(json['gc']['total_allocated_object']) / Float(json['gc']['iterations']))
+    slots_per_iteration = (Float(json['gc']['heap_live_slot']) / Float(json['gc']['iterations']))
+
+    baseline_gcs[benchmark] ||= {
+      :objects_per_iteration => objects_per_iteration,
+      :slots_per_iteration => slots_per_iteration
+    }
+
+    partial " (%7s o; %7s s)" % [ objects_per_iteration.with_delimiters, slots_per_iteration.with_delimiters ]
+  end
+
+  write ""
+
+  partial "%#{engine_column_width}s" % (" " * engine_column_width)
+  benchmarks.each do |benchmark|
+    json = results[engine][benchmark]
+
+    objects_per_iteration = (Float(json['gc']['total_allocated_object']) / Float(json['gc']['iterations']))
+    slots_per_iteration = (Float(json['gc']['heap_live_slot']) / Float(json['gc']['iterations']))
+
+    baseline_objects = baseline_gcs[benchmark][:objects_per_iteration]
+    baseline_slots = baseline_gcs[benchmark][:slots_per_iteration]
+
+    partial " (  %6.2fx;   %6.2fx)" % [ objects_per_iteration.to_f / baseline_objects.to_f, slots_per_iteration.to_f / baseline_slots.to_f ]
+  end
+
+  write ""
+  write ""
+end
+
+=begin
+engine  place_page
+------- ------------------------
+        0123456789012345678901
+erb      3,427.3 ms (100.00%)
+        (133,248 o; 297,486 s)
+          143.5%      426.2%
+haml
+erector
+=end
