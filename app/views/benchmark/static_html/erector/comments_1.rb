@@ -969,7 +969,7 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                           end
                                           div :class => 'media-body' do
                                             form :action => '/n/threads/om-rri-vrryamhp-xr-rgya-jj-fi-utpl-rm-bvtoykqm-cyphwov-uirb-wbg-pamrmu-bupalz-gsrvwn-qcywcahi-wc/replies', :class => 'thread-reply-form', :method => 'post' do
-                                              input :name => 'parent_id', :type => 'hidden', :value => '255491784' do
+                                              input :name => 'parent_id', :type => 'hidden', :value => '255491784'
                                                 div :class => 'control-group' do
                                                   label do
                                                   end
@@ -986,7 +986,7 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                                 div :class => 'hide-when-colapsed row-fluid' do
                                                   div :class => 'row-fluid' do
                                                     div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
-                                                      input :name => 'private_thread', :type => 'hidden', :value => 'true' do
+                                                      input :name => 'private_thread', :type => 'hidden', :value => 'true'
                                                         a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
                                                           span :class => 'privacy-label' do
                                                           end
@@ -1536,7 +1536,7 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                                           end
                                                           div :class => 'media-body' do
                                                             form :action => '/n/threads/mrpvs-psobpu-tgveq-sovpno-cnkckdvb-uxtws-zbskffu-uuxymzw-ckvb-zgrr-eme-qpgkw-ngimz-wbzx-mbofr-jdsdnvg-zlllyvx-wuarmcln-st/replies', :class => 'thread-reply-form', :method => 'post' do
-                                                              input :name => 'parent_id', :type => 'hidden', :value => '483348347' do
+                                                              input :name => 'parent_id', :type => 'hidden', :value => '483348347'
                                                                 div :class => 'control-group' do
                                                                   label do
                                                                   end
@@ -1553,7 +1553,7 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                                                 div :class => 'hide-when-colapsed row-fluid' do
                                                                   div :class => 'row-fluid' do
                                                                     div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
-                                                                      input :name => 'private_thread', :type => 'hidden', :value => 'true' do
+                                                                      input :name => 'private_thread', :type => 'hidden', :value => 'true'
                                                                         a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
                                                                           span :class => 'privacy-label' do
                                                                           end
@@ -2192,7 +2192,7 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                                                             end
                                                                             div :class => 'media-body' do
                                                                               form :action => '/n/threads/chjoy-kfv-evniehl-mqbnt-ud-gmexknw-xdm-xnn-itublq-herpll-prdfqp-kcxsh-qcidlhuw-ezzca-dh-fibkma-zttqlzf/replies', :class => 'thread-reply-form', :method => 'post' do
-                                                                                input :name => 'parent_id', :type => 'hidden', :value => '585603871' do
+                                                                                input :name => 'parent_id', :type => 'hidden', :value => '585603871'
                                                                                   div :class => 'control-group' do
                                                                                     label do
                                                                                     end
@@ -2209,7 +2209,7 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                                                                   div :class => 'hide-when-colapsed row-fluid' do
                                                                                     div :class => 'row-fluid' do
                                                                                       div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
-                                                                                        input :name => 'private_thread', :type => 'hidden', :value => 'true' do
+                                                                                        input :name => 'private_thread', :type => 'hidden', :value => 'true'
                                                                                           a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
                                                                                             span :class => 'privacy-label' do
                                                                                             end
@@ -2325,12 +2325,6 @@ class Views::Benchmark::StaticHtml::Erector::Comments1 < Erector::Widget
                                                                     end
                                                                   end
   end
-end
-end
-end
-end
-end
-end
 end
 end
 end

@@ -310,9 +310,9 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
               end
             end
             form :action => '/n/flag' do
-              input :name => 'id', :type => 'hidden' do
-                input :name => 'entity_type', :type => 'hidden' do
-                  input :name => 'authenticity_token', :type => 'hidden', :value => 'BZHW+lZIOqSn5Lu+mOKSND+0f4s72zohHSnHbxvZEHU=' do
+              input :name => 'id', :type => 'hidden'
+                input :name => 'entity_type', :type => 'hidden'
+                  input :name => 'authenticity_token', :type => 'hidden', :value => 'BZHW+lZIOqSn5Lu+mOKSND+0f4s72zohHSnHbxvZEHU='
                     div :class => 'control-group' do
                       div :class => 'controls' do
                         label do
@@ -351,7 +351,7 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
                       end
                     end
                     div :class => 'actions' do
-                      input :class => 'btn btn-primary', :name => 'submit', :type => 'submit', :value => 'Flag' do
+                      input :class => 'btn btn-primary', :name => 'submit', :type => 'submit', :value => 'Flag'
                         a :class => 'cancel btn', 'data-dismiss' => 'modal', :href => 'javascript://' do
                           text 'Cancel'
                         end
@@ -415,7 +415,7 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
                           end
                           div :class => 'pull-right' do
                             form :action => '/n/places/san-francisco-california-united-states/search', :method => 'get', :style => 'margin-bottom: 0;' do
-                              input :class => 'search', :name => 'q', :placeholder => 'Search Conversations', :style => 'width: 130px; margin-right: 3px;', :type => 'search' do
+                              input :class => 'search', :name => 'q', :placeholder => 'Search Conversations', :style => 'width: 130px; margin-right: 3px;', :type => 'search'
                               end
                             end
                           end
@@ -425,13 +425,13 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
                           end
                           div :class => 'media-body' do
                             form :action => '/n/threads', :class => 'thread-reply-form', :method => 'post' do
-                              input :name => 'entity_id', :type => 'hidden', :value => '26380' do
-                                input :name => 'entity_type', :type => 'hidden', :value => 'place' do
+                              input :name => 'entity_id', :type => 'hidden', :value => '26380'
+                                input :name => 'entity_type', :type => 'hidden', :value => 'place'
                                   div :class => 'control-group' do
                                     label do
                                     end
                                     div :class => 'controls' do
-                                      input :class => 'comment_title', :name => 'comment_title', :placeholder => 'Title', :type => 'text' do
+                                      input :class => 'comment_title', :name => 'comment_title', :placeholder => 'Title', :type => 'text'
                                       end
                                       p :class => 'help-block' do
                                       end
@@ -543,7 +543,7 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
                                     div :class => 'hide-when-colapsed row-fluid' do
                                       div :class => 'row-fluid' do
                                         div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
-                                          input :name => 'private_thread', :type => 'hidden', :value => 'true' do
+                                          input :name => 'private_thread', :type => 'hidden', :value => 'true'
                                             a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
                                               span :class => 'privacy-label' do
                                               end
@@ -628,7 +628,7 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
                                       end
                                     end
                                     div :class => 'conversation-category-tabs' do
-                                      input :id => 'selected-filter', :name => 'selected-filter', :type => 'hidden', :value => 'all' do
+                                      input :id => 'selected-filter', :name => 'selected-filter', :type => 'hidden', :value => 'all'
                                         table do
                                           tr do
                                             td :class => 'places_to_stay', 'data-conversation-filter' => 'places_to_stay' do
@@ -674,16 +674,6 @@ class Views::Benchmark::StaticHtml::Erector::ExceptComments < Erector::Widget
                                       end
                                     end
   end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 end
 end
 end
