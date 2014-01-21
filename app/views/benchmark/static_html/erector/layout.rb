@@ -10,16 +10,15 @@ class Views::Benchmark::StaticHtml::Erector::Layout < Erector::Widget
           script do
             text 'var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);'
           end
-          meta :content => 'text/html;charset=UTF-8', 'http-equiv' => 'content-type' do
+          meta :content => 'text/html;charset=UTF-8', 'http-equiv' => 'content-type'
             title do
-              text 'San Francisco
-- Couchsurfing'
+              text 'San Francisco - Couchsurfing'
             end
-            meta :content => 'authenticity_token', :name => 'csrf-param' do
-              meta :content => 'NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=', :name => 'csrf-token' do
-                meta :content => 'width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no', :name => 'viewport' do
-                  link :href => 'https://d20rrv4k3o7n66.cloudfront.net/assets/global_manifest-7c3595129a107f6fde65b7837276c39e.css', :media => 'all', :rel => 'stylesheet', :type => 'text/css' do
-                    link :href => 'https://d20rrv4k3o7n66.cloudfront.net/assets/old_common-c8fe6e30f84afd66b13d694872c9b015.css', :media => 'all', :rel => 'stylesheet', :type => 'text/css' do
+            meta :content => 'authenticity_token', :name => 'csrf-param'
+              meta :content => 'NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=', :name => 'csrf-token'
+                meta :content => 'width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no', :name => 'viewport'
+                  link :href => 'https://d20rrv4k3o7n66.cloudfront.net/assets/global_manifest-7c3595129a107f6fde65b7837276c39e.css', :media => 'all', :rel => 'stylesheet', :type => 'text/css'
+                    link :href => 'https://d20rrv4k3o7n66.cloudfront.net/assets/old_common-c8fe6e30f84afd66b13d694872c9b015.css', :media => 'all', :rel => 'stylesheet', :type => 'text/css'
                       rawtext '<!--[if IE 9]>'
                       link(:href => '<haml_loud> cdn(\'/assets/views/widgets/places/subnav_ie9-d03d06fe5d110558d25cfa1c5867e151.css\')</haml_loud>', :media => 'screen', :rel => 'stylesheet', :type => 'text/css')
                       rawtext '<![endif]-->'
@@ -31,7 +30,7 @@ class Views::Benchmark::StaticHtml::Erector::Layout < Erector::Widget
                       rawtext '<!--[if lte IE 9]>'
                       link(:href => '<haml_loud> cdn(\'/assets/old_common_split2-f4c38a3984d08b450fea89aa126ca872.css\')</haml_loud>', :media => 'all', :rel => 'stylesheet', :type => 'text/css')
                       rawtext '<![endif]-->'
-                      link :href => 'http://files.couchsurfing.s3.amazonaws.com/favicon.ico', :rel => 'shortcut icon', :type => 'image/vnd.microsoft.icon' do
+                      link :href => 'http://files.couchsurfing.s3.amazonaws.com/favicon.ico', :rel => 'shortcut icon', :type => 'image/vnd.microsoft.icon'
                         script :src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js', :type => 'text/javascript' do
                         end
                         script do
@@ -82,13 +81,12 @@ EOS
     var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);
   })();'
                         end
-                        meta :content => 'San Francisco - Couchsurfing', :property => 'og:title' do
-                          meta :content => 'website', :property => 'og:type' do
-                            meta :content => 'https://www.couchsurfing.org//n/places/san-francisco-california-united-states', :property => 'og:url' do
-                              meta :content => 'Discover new friends around the world!', :property => 'og:description' do
-                                meta :content => 'https://d20rrv4k3o7n66.cloudfront.net/assets/share_icon-1f9b3cb3fe7434c4572905f8df9249e1.png?sh=_icJV-EO8S9rq7R8cgM6ag', :property => 'og:image' do
-                                  meta :content => '818BFA93A51A3073F67BC14BC22B9CFF', :name => 'msvalidate.01' do
-                                  end
+                        meta :content => 'San Francisco - Couchsurfing', :property => 'og:title'
+                          meta :content => 'website', :property => 'og:type'
+                            meta :content => 'https://www.couchsurfing.org//n/places/san-francisco-california-united-states', :property => 'og:url'
+                              meta :content => 'Discover new friends around the world!', :property => 'og:description'
+                                meta :content => 'https://d20rrv4k3o7n66.cloudfront.net/assets/share_icon-1f9b3cb3fe7434c4572905f8df9249e1.png?sh=_icJV-EO8S9rq7R8cgM6ag', :property => 'og:image'
+                                  meta :content => '818BFA93A51A3073F67BC14BC22B9CFF', :name => 'msvalidate.01'
                                   div :id => 'viewport' do
                                     header :id => 'main-header' do
                                       nav :id => 'main-menu' do
@@ -2132,18 +2130,6 @@ EOS
                                                                                         end
                                                                                       end
   end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 end
 end
 end
