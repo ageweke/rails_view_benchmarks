@@ -5,16 +5,16 @@ class Views::Benchmark::PlacePage::Erector::Event < Erector::Widget
     li(:class => ('event' + (event.generator ? ' generator' : '')), 'data-slug' => (event.slug)) do
       div :class => 'event_links' do
         a(:href => ('/n/events/' + (event.slug.html_safe))) do
-          rawtext event.title
+          text event.title
         end
         span :class => 'hidden' do
-          rawtext event.when.strftime("%A")
+          text event.when.strftime("%A")
         end
       end
       div :class => 'event_info' do
         div :class => 'city' do
           span do
-            rawtext event.location
+            text event.location
           end
         end
         div :class => 'time' do
@@ -25,7 +25,7 @@ class Views::Benchmark::PlacePage::Erector::Event < Erector::Widget
         end
         div :class => 'attendees' do
           span do
-            rawtext event.attendees
+            text event.attendees
           end
         end
       end

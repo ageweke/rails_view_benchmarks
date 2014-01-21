@@ -7,7 +7,7 @@ class Views::Benchmark::PlacePage::Erector::EmailDropdown < Erector::Widget
         div :class => 'holder_header' do
           div :class => 'pull-left' do
             h3 do
-              rawtext t('email_dropdown.heading')
+              text t('email_dropdown.heading')
             end
           end
         end
@@ -18,7 +18,7 @@ class Views::Benchmark::PlacePage::Erector::EmailDropdown < Erector::Widget
               input(:name => 'subscribed_on_id', :type => 'hidden', :value => (place.id))
               input :name => 'subscribed_on_type', :type => 'hidden', :value => 'place'
               p do
-                rawtext t('email_dropdown.subheading')
+                text t('email_dropdown.subheading')
               end
               ul :class => 'medias' do
                 li :class => 'media radio_input' do
@@ -30,9 +30,9 @@ class Views::Benchmark::PlacePage::Erector::EmailDropdown < Erector::Widget
                           span do
                             text '&nbsp;'
                             strong do
-                              rawtext subscription_option.name
+                              text subscription_option.name
                             end
-                            rawtext subscription_option.detail
+                            text subscription_option.detail
                           end
                         end
                       end
@@ -43,13 +43,13 @@ class Views::Benchmark::PlacePage::Erector::EmailDropdown < Erector::Widget
                 end
               end
               button :class => 'btn btn-primary' do
-                rawtext t('email_dropdown.button')
+                text t('email_dropdown.button')
               end
               span :class => 'cancel' do
-                rawtext t('buttons.cancel')
+                text t('buttons.cancel')
               end
               span :class => 'unfollow icon-heart-broken icon-large' do
-                rawtext t('email_dropdown.unfollow')
+                text t('email_dropdown.unfollow')
               end
               div :class => 'entity-subscription-loading' do
               end

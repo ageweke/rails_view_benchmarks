@@ -26,7 +26,7 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
             div :class => 'category-picker-panel' do
               div :class => 'category-picker-options' do
                 ul do
-                  rawtext conversation_categories.each do |category|
+                  conversation_categories.each do |category|
                   li(:class => 'places-to-stay', 'data-category' => (category.symbol.to_s.html_safe)) do
                     div :class => 'category-icon' do
                       i do
@@ -34,10 +34,10 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
                       end
                     end
                     p :class => 'category-title' do
-                      rawtext category.title
+                      text category.title
                     end
                     p :class => 'category-desc' do
-                      rawtext category.description
+                      text category.description
                     end
                   end
                 end
@@ -53,15 +53,15 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
               div :class => 'places-to-stay-confirmation-content centred pull-right' do
                 p do
                   strong do
-                    rawtext t('comment.add.couchsearch_header')
+                    text t('comment.add.couchsearch_header')
                   end
-                  rawtext t('comment.add.couchsearch_body')
+                  text t('comment.add.couchsearch_body')
                 end
                 a :class => 'btn btn-primary btn-large', :href => '/n/trips/plan_trip?referring_link=place_create_post', :id => 'autogen_id_for_tracking_place_conversations_category_place_to_stay_confirmation_action_1' do
-                  rawtext t('comment.add.couchsearch_button')
+                  text t('comment.add.couchsearch_button')
                 end
                 p do
-                  rawtext t('comment.add.couchsearch_note', :link_start => "<a class=\"places-to-stay-confirm\" data-category=\"places_to_stay\" href=\"#\">", :link_end => "</a>").html_safe
+                  text t('comment.add.couchsearch_note', :link_start => "<a class=\"places-to-stay-confirm\" data-category=\"places_to_stay\" href=\"#\">", :link_end => "</a>").html_safe
                 end
               end
             end
@@ -78,7 +78,7 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
           end
         end
         p :class => 'privacy-warning' do
-          rawtext t('comment.privacy_warning')
+          text t('comment.privacy_warning')
         end
         div :class => 'hide-when-colapsed row-fluid' do
           div :class => 'row-fluid' do
@@ -95,14 +95,14 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
                   a 'data-component' => 'privacyOption', 'data-value' => 'false', :href => '' do
                     i :class => 'icon-group' do
                     end
-                    rawtext t('comment.public')
+                    text t('comment.public')
                   end
                 end
                 li do
                   a 'data-component' => 'privacyOption', 'data-value' => 'true', :href => '' do
                     i :class => 'icon-user' do
                     end
-                    rawtext t('comment.private')
+                    text t('comment.private')
                   end
                 end
               end
@@ -111,7 +111,7 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
               select :name => 'category' do
                 conversation_categories.each do |category|
                   option(:value => (category.symbol)) do
-                    rawtext category.name
+                    text category.name
                   end
                 end
               end
@@ -120,11 +120,11 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
               div :class => 'ajax_loading_container' do
               end
               button :class => 'btn btn-cancel', :type => 'button' do
-                rawtext t('buttons.cancel')
+                text t('buttons.cancel')
               end
               text '&nbsp;'
               button :class => 'btn btn-primary btn-create' do
-                rawtext t('comment.add.start')
+                text t('comment.add.start')
               end
               br
               br
@@ -134,17 +134,17 @@ class Views::Benchmark::PlacePage::Erector::CommentAdd < Erector::Widget
             div :class => 'form-footer span12' do
               div :class => 'posting-guidelines' do
                 h4 do
-                  rawtext t('comment.posting_guidelines.header')
+                  text t('comment.posting_guidelines.header')
                 end
                 ul do
                   li do
-                    rawtext t('comment.posting_guidelines.l1')
+                    text t('comment.posting_guidelines.l1')
                   end
                   li do
-                    rawtext t('comment.posting_guidelines.l2')
+                    text t('comment.posting_guidelines.l2')
                   end
                   li do
-                    rawtext t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
+                    text t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
                   end
                 end
               end

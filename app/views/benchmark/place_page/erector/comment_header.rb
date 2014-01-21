@@ -7,14 +7,14 @@ class Views::Benchmark::PlacePage::Erector::CommentHeader < Erector::Widget
         div :class => 'pull-left' do
           h3 do
             span :class => 'entity_threads' do
-              rawtext t('comment.header.label')
+              text t('comment.header.label')
             end
             span do
               text '|'
             end
             span :class => 'thread_count' do
               a(:href => ((place.path.html_safe) + '/conversations')) do
-                rawtext t('comment.header.see_all', :num => place.total_threads)
+                text t('comment.header.see_all', :num => place.total_threads)
               end
             end
           end

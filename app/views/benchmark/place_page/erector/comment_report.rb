@@ -6,7 +6,7 @@ class Views::Benchmark::PlacePage::Erector::CommentReport < Erector::Widget
           text '&times;'
         end
         h3 do
-          rawtext t('comment.report.header')
+          text t('comment.report.header')
         end
       end
       form :action => '/n/flag' do
@@ -19,27 +19,27 @@ class Views::Benchmark::PlacePage::Erector::CommentReport < Erector::Widget
               select :name => 'flag_type' do
                 optgroup do
                   option :value => 'couch_request' do
-                    rawtext t('comment.report.couch_request')
+                    text t('comment.report.couch_request')
                   end
                   option :value => 'website_feedback' do
-                    rawtext t('comment.report.website_feedback')
+                    text t('comment.report.website_feedback')
                   end
                   option :value => 'off_topic' do
-                    rawtext t('comment.report.off_topic')
+                    text t('comment.report.off_topic')
                   end
                 end
                 optgroup do
                   option :value => 'commercial_or_spam' do
-                    rawtext t('comment.report.commercial_or_spam')
+                    text t('comment.report.commercial_or_spam')
                   end
                   option :value => 'dating_or_sexual' do
-                    rawtext t('comment.report.dating_or_sexual')
+                    text t('comment.report.dating_or_sexual')
                   end
                   option :value => 'abusive_or_illegal' do
-                    rawtext t('comment.report.abusive_or_illegal')
+                    text t('comment.report.abusive_or_illegal')
                   end
                   option :value => 'privacy_breach' do
-                    rawtext t('comment.report.privacy_breach')
+                    text t('comment.report.privacy_breach')
                   end
                 end
               end
@@ -54,7 +54,7 @@ class Views::Benchmark::PlacePage::Erector::CommentReport < Erector::Widget
         div :class => 'actions' do
           input :class => 'btn btn-primary', :name => 'submit', :type => 'submit', :value => 'Flag'
           a :class => 'cancel btn', 'data-dismiss' => 'modal', :href => 'javascript://' do
-            rawtext t('buttons.cancel')
+            text t('buttons.cancel')
           end
         end
       end

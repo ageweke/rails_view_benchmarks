@@ -16,7 +16,7 @@ class Views::Benchmark::PlacePage::Erector::CommentReply < Erector::Widget
               div :class => 'span12' do
                 span do
                   a(:class => 'reply-creator', :href => (comment_reply.profile_link.html_safe)) do
-                    rawtext comment_reply.creator_name
+                    text comment_reply.creator_name
                   end
                 end
                 span do
@@ -34,7 +34,7 @@ class Views::Benchmark::PlacePage::Erector::CommentReply < Erector::Widget
             div :class => 'row-fluid' do
               div :class => 'span11' do
                 div :class => 'comment-body-text' do
-                  rawtext comment_reply.text
+                  text comment_reply.text
                   br
                   span :class => 'user-links' do
                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
@@ -54,7 +54,7 @@ class Views::Benchmark::PlacePage::Erector::CommentReply < Erector::Widget
                       a(:class => 'share get_link', :href => ('/n/threads/' + (comment_reply.slug)), :target => '_blank') do
                         i :class => 'icon-mail' do
                         end
-                        rawtext t('comment.reply.get_link')
+                        text t('comment.reply.get_link')
                       end
                     end
                     li :class => 'divider' do
@@ -63,21 +63,21 @@ class Views::Benchmark::PlacePage::Erector::CommentReply < Erector::Widget
                       a :class => 'edit-comment', :href => '' do
                         i :class => 'icon-pen' do
                         end
-                        rawtext t('comment.reply.edit')
+                        text t('comment.reply.edit')
                       end
                     end
                     li 'data-visible-to' => 'creator' do
                       a :class => 'delete-comment', :href => '' do
                         i :class => 'icon-close' do
                         end
-                        rawtext t('comment.reply.delete')
+                        text t('comment.reply.delete')
                       end
                     end
                     li 'data-visible-to' => 'non-creator' do
                       a :class => 'report-trigger', :href => '' do
                         i :class => 'icon-caution' do
                         end
-                        rawtext t('comment.reply.flag')
+                        text t('comment.reply.flag')
                       end
                     end
                   end

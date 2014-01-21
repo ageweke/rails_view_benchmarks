@@ -8,7 +8,7 @@ class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
         div :class => 'title_and_following' do
           div :class => 'main_title ' do
             h1(:title => (place.title)) do
-              rawtext place.title
+              text place.title
             end
           end
           div :class => 'follow_button_container' do
@@ -20,7 +20,7 @@ class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
                     end
                     if place.following
                     span(:class => 'following_handle_text following', :title => (t('header.avatar.following'))) do
-                      rawtext t('header.avatar.following')
+                      text t('header.avatar.following')
                     end
                   end
                   b :class => 'caret' do
@@ -37,28 +37,28 @@ class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
         end
       end
       p :class => 'locals_count' do
-        rawtext t('header.avatar.locals_count', :num => place.locals_count)
+        text t('header.avatar.locals_count', :num => place.locals_count)
       end
       div :class => 'part_of_and_nearby' do
         div do
-          rawtext t('header.avatar.part_of')
+          text t('header.avatar.part_of')
           ul do
             part_of.each do |part_of|
               li do
                 a(:href => (part_of.url.html_safe)) do
-                  rawtext part_of.name
+                  text part_of.name
                 end
               end
             end
           end
         end
         div do
-          rawtext t('header.avatar.nearby')
+          text t('header.avatar.nearby')
           ul do
             nearby.each do |nearby|
               li do
                 a(:href => (nearby.url.html_safe)) do
-                  rawtext nearby.name
+                  text nearby.name
                 end
               end
             end
@@ -70,28 +70,28 @@ class Views::Benchmark::PlacePage::Erector::PlaceAvatarHeader < Erector::Widget
   div :class => 'privacy_popup' do
     div 'data-collage-privacy-title' => 'Locals Collage', :id => 'collage_privacy_popup' do
       p do
-        rawtext t('header.avatar.privacy_description')
+        text t('header.avatar.privacy_description')
       end
       form :class => 'privacy_collage_form' do
         input :id => 'hide_profile', :name => 'hide_profile', :type => 'checkbox', :value => 'true'
         label :for => 'hide_profile' do
-          rawtext t('header.avatar.never_show')
+          text t('header.avatar.never_show')
         end
       end
       div :class => 'row' do
         div :class => 'collage_privacy_buttons pull-right' do
           a :class => 'btn_collage_privacy_cancel btn', :href => '#' do
-            rawtext t('buttons.cancel')
+            text t('buttons.cancel')
           end
           text '&nbsp;'
           a :class => 'btn_collage_privacy_submit btn', :href => '#' do
-            rawtext t('header.avatar.save_preference')
+            text t('header.avatar.save_preference')
           end
         end
       end
     end
     a :href => '#', :class => 'show_collage_privacy_popup', 'data-target' => '#collage_privacy_popup' do
-      rawtext t('header.avatar.who_are')
+      text t('header.avatar.who_are')
     end
   end
   end

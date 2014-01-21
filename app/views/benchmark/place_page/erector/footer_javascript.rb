@@ -4,32 +4,32 @@ class Views::Benchmark::PlacePage::Erector::FooterJavascript < Erector::Widget
   def content
     script do
       text 'if(typeof CSDataTransfer===\'undefined\'){ CSDataTransfer = {}; } CSDataTransfer._place = {"id":'
-      rawtext place.id
+      text place.id
       text ',"path":"'
-      rawtext place.path.html_safe
+      text place.path.html_safe
       text '"};'
     end
     script do
       text 'if(typeof CSDataTransfer===\'undefined\'){ CSDataTransfer = {}; } CSDataTransfer._currentUser = {"loggedIn":true,"siteLocale":"'
-      rawtext user.locale
+      text user.locale
       text '","defaultMainImage":"https://d20rrv4k3o7n66.cloudfront.net/n/image/serve/P/3/C-60-60?sh=aSWzKD3rV9tx7Sgcls-NJQ","uncompletedTasksTotal":0,"id":'
-      rawtext user.id
+      text user.id
       text ',"mainImage":"'
       rawtext cdn(user.profile_image)
       text '","homePlace":{"id":'
-      rawtext user.id
+      text user.id
       text ',"bounds":{"north":38.134705869495,"south":37.397699228207,"east":-121.966992743653,"west":-123.028393432128}},"livePlaceSlug":"'
-      rawtext user.live_place_slug.html_safe
+      rawtext user.live_place_slug
       text '","identityVerified":false,"html5Position":{"coords":{"latitude":37.8157899,"longitude":-122.2442352},"place":{"id":'
-      rawtext place.id
-      text ',"path":"/n/places/'
-      rawtext user.live_place_slug.html_safe
-      text '"},"timestamp":1389477469107},"slug":"'
-      rawtext user.username
-      text '","html5GeolocationPermission":"yes","html5Position":{"coords":{"latitude":37.8157899,"longitude":-122.2442352},"place":{"id":'
-      rawtext place.id
+      text place.id
       text ',"path":"/n/places/'
       rawtext user.live_place_slug
+      text '"},"timestamp":1389477469107},"slug":"'
+      text user.username
+      text '","html5GeolocationPermission":"yes","html5Position":{"coords":{"latitude":37.8157899,"longitude":-122.2442352},"place":{"id":'
+      text place.id
+      text ',"path":"/n/places/'
+      text user.live_place_slug
       text '"},"timestamp":1389477469107}};'
     end
     script(:src => (cdn('/assets/old_site-ad61f0931eedf7dae3548eea9ab2715c.js')), :type => 'text/javascript') do
@@ -39,7 +39,7 @@ class Views::Benchmark::PlacePage::Erector::FooterJavascript < Erector::Widget
       rawtext '<![CDATA[
 $(document).ready(function() {
   CS.Tracking.addGlobalTrackingProperties({"distinct_id":"cstrk:user-v1:<%= user.id %>'
-      text '","referring_page":"dashboard#index","current_page":"places#show","unique_browser_id":"5202000A8DABBF50852D3C0402F91B03","unique_browser_id_source":"uid_got","user_verification_status":"not_verified","user_couch_status":"no","user_has_profile_photo":true,"user_facebook_connected":true,"user_age":44,"user_sex":"male","user_live_location_full":"San Francisco, California, United States","user_live_city":"San Francisco","user_live_state":"California","user_live_country":"United States","user_live_latitude":"37.7749295","user_live_longitude":"-122.4194155","user_joined_date":"2011-09-13T15:01:56Z"});
+      rawtext '","referring_page":"dashboard#index","current_page":"places#show","unique_browser_id":"5202000A8DABBF50852D3C0402F91B03","unique_browser_id_source":"uid_got","user_verification_status":"not_verified","user_couch_status":"no","user_has_profile_photo":true,"user_facebook_connected":true,"user_age":44,"user_sex":"male","user_live_location_full":"San Francisco, California, United States","user_live_city":"San Francisco","user_live_state":"California","user_live_country":"United States","user_live_latitude":"37.7749295","user_live_longitude":"-122.4194155","user_joined_date":"2011-09-13T15:01:56Z"});
 CS.Tracking.trackClicks("#autogen_id_for_tracking_nav_logo_clicked_1", "nav_logo_clicked", {});
 CS.Tracking.trackClicks("#autogen_id_for_tracking_nav_profile_clicked_1", "nav_profile_clicked", {});
 CS.Tracking.trackClicks("#autogen_id_for_tracking_nav_account_settings_clicked_1", "nav_account_settings_clicked", {});

@@ -14,7 +14,7 @@ class Views::Benchmark::PlacePage::Erector::Conversations < Erector::Widget
     end
     div :class => 'well-end' do
       a :class => 'see-more', :href => 'https://www.couchsurfing.org/n/threads?entity_id=13&entity_type=place&limit=10' do
-        rawtext t('comment.more_conversations')
+        text t('comment.more_conversations')
       end
     end
   end

@@ -13,7 +13,7 @@ class Views::Benchmark::PlacePage::Erector::Nav < Erector::Widget
         a(:class => ('button trigger ' + (@user.unread_messages > 0 ? 'unread' : 'read')), 'data-toggle' => 'dropdown', :href => '#viewport', :id => 'logged_in_menu_trigger') do
           text 'Menu'
           span :class => 'message-bubble' do
-            rawtext @user.unread_messages
+            text user.unread_messages
           end
         end
         div :id => 'logged_in_menu' do

@@ -27,7 +27,7 @@ class Views::Benchmark::PlacePage::Erector::PlacePage < Erector::Widget
                 widget Views::Benchmark::PlacePage::Erector::RelatedGroups.new(:related_groups => @related_groups)
                 div :class => 'well big_groups_btn' do
                   a(:class => 'link_button button', :href => '/n/locals/in/place/13', :id => 'autogen_id_for_tracking_place_sidebar_meet_people_button_clicked_1', :title => (t('meet_people'))) do
-                    rawtext t('meet_people')
+                    text t('meet_people')
                   end
                 end
               end

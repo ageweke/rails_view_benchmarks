@@ -9,13 +9,13 @@ class Views::Benchmark::PlacePage::Erector::MainFooter < Erector::Widget
         site_map.each do |heading, values|
           div(:class => (heading.gsub(/\s+/, '').downcase)) do
             div :class => 'heading' do
-              rawtext heading
+              text heading
             end
             ul :class => 'links' do
               values.each do |title, link|
                 li do
                   a(:href => (link.html_safe)) do
-                    rawtext title
+                    text title
                   end
                 end
               end
@@ -24,7 +24,7 @@ class Views::Benchmark::PlacePage::Erector::MainFooter < Erector::Widget
         end
       end
       div :class => 'copyright' do
-        rawtext t('footer.copyright_notice')
+        text t('footer.copyright_notice')
       end
     end
   end

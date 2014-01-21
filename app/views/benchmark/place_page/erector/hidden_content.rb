@@ -10,7 +10,7 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
               text 'i18n_events_add_new'
             end
             a :class => 'modal_close', 'data-dismiss' => 'modal', :href => '#' do
-              rawtext t('buttons.cancel')
+              text t('buttons.cancel')
             end
           end
         end
@@ -21,7 +21,7 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
           div :class => 'ajax_loading_container' do
           end
           a(:class => 'action_button button prev_page disabled_until_load', :href => '#', :id => '73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5', :title => (t('hidden_content.back'))) do
-            rawtext t('hidden_content.back')
+            text t('hidden_content.back')
           end
           script :type => 'text/javascript' do
             text '//'
@@ -36,7 +36,7 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
 // ]]>'
           end
           a(:class => 'primary_action_button button submit_btn new_submit_btn disabled_until_load', :href => '#', :id => '7f1998f6b3b3f70801ebb84a23493e5b900fdf37', :title => (t('hidden_content.save_event'))) do
-            rawtext t('hidden_content.save_event')
+            text t('hidden_content.save_event')
           end
           script :type => 'text/javascript' do
             text '//'
@@ -51,7 +51,7 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
 // ]]>'
           end
           a(:class => 'primary_action_button button next_page disabled_until_load', :href => '#', :id => 'a61726a26c5837d2081a322e322d6bbeeef98142', :title => (t('hidden_content.next'))) do
-            rawtext t('hidden_content.next')
+            text t('hidden_content.next')
           end
           script :type => 'text/javascript' do
             text '//'
@@ -71,10 +71,10 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
         header :class => 'modal_header' do
           h3 :class => 'modal_title clearfix' do
             span :class => 'title_text' do
-              rawtext t('hidden_content.past_events')
+              text t('hidden_content.past_events')
             end
             a :class => 'modal_close', 'data-dismiss' => 'modal', :href => '#' do
-              rawtext t('buttons.cancel')
+              text t('buttons.cancel')
             end
           end
         end
@@ -88,7 +88,7 @@ class Views::Benchmark::PlacePage::Erector::HiddenContent < Erector::Widget
       div :class => 'modal_window hide fade', :id => 'alert_modal' do
         header :class => 'modal_header' do
           a :class => 'modal_close', 'data-dismiss' => 'modal', :href => '#' do
-            rawtext t('buttons.cancel')
+            text t('buttons.cancel')
           end
         end
         div :class => 'modal_body' do

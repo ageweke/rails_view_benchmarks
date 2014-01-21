@@ -6,7 +6,7 @@ class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
       div :class => 'span8' do
         div :class => 'row-fluid' do
           h3 :class => 'featured_event_title' do
-            rawtext t('event.featured.title')
+            text t('event.featured.title')
           end
           div :class => 'event_list' do
             featured_events.each do |event|
@@ -14,12 +14,12 @@ class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
               div(:class => ('event_in_list event_row_' + (event.numeric_id.to_s)), 'data-event_id' => (event.numeric_id), 'data-start_date' => start_date_strftime, :id => (event.id)) do
                 div :class => 'event_start_time' do
                   h2 :class => 'event_day' do
-                    rawtext event.start_date.strftime("%B %d")
+                    text event.start_date.strftime("%B %d")
                   end
                   div :class => 'date_time' do
-                    rawtext event.start_date.strftime("%A")
+                    text event.start_date.strftime("%A")
                     br
-                    rawtext event.start_date.strftime("%I:%M %p")
+                    text event.start_date.strftime("%I:%M %p")
                   end
                 end
                 div :class => 'event_image' do
@@ -30,26 +30,26 @@ class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
                 div :class => 'event_details' do
                   div :class => 'event_details_text' do
                     a(:class => 'event_in_list_link title', :href => ('/n/events/' + (event.id.html_safe)), :title => (event.title)) do
-                      rawtext event.title
+                      text event.title
                     end
                     div :class => 'city' do
                       span do
-                        rawtext event.location
+                        text event.location
                       end
                     end
                     div(:class => 'attendees', 'data-count' => (event.attendee_count)) do
                       span :class => 'attendee_count' do
-                        rawtext event.attendee_count
+                        text event.attendee_count
                       end
                       span do
-                        rawtext t('event.featured.attending')
+                        text t('event.featured.attending')
                       end
                     end
                   end
                   div(:class => 'event_buttons_container', 'data-event_slug' => (event.id)) do
                     div :class => 'event_buttons' do
                       a(:class => 'action_button button event_list_button leave_event hide disabled_until_load', :href => '#', :id => (event.button_id), :title => (t('event.featured.leave'))) do
-                        rawtext t('event.featured.leave')
+                        text t('event.featured.leave')
                       end
                       script :type => 'text/javascript' do
                         text '//'
@@ -65,7 +65,7 @@ class Views::Benchmark::PlacePage::Erector::FeaturedEvents < Erector::Widget
 // ]]>'
                       end
                       a(:class => 'primary_action_button button event_list_button join_event disabled_until_load', :href => '#', :id => (event.button_id), :title => (t('event.featured.join'))) do
-                        rawtext t('event.featured.join')
+                        text t('event.featured.join')
                       end
                       script :type => 'text/javascript' do
                         text '//'

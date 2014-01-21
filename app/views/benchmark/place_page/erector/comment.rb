@@ -16,7 +16,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
               div :class => 'span12' do
                 h4 do
                   a(:href => ('/n/threads/' + (comment.slug.html_safe)), :class => 'reply-title') do
-                    rawtext comment.thread_title
+                    text comment.thread_title
                   end
                   div :class => 'comment-details' do
                     time('data-component' => 'timestamp', 'data-original-timestamp' => (comment.created_at.iso8601), :datetime => (comment.created_at.iso8601)) do
@@ -25,7 +25,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                 end
                 span do
                   a(:class => 'reply-creator', :href => (comment.creator_profile_link.html_safe)) do
-                    rawtext comment.creator_name
+                    text comment.creator_name
                   end
                 end
                 span do
@@ -41,16 +41,16 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                 div :class => 'comment-body-text' do
                   div :class => 'more-link' do
                     span :class => 'shortened-text' do
-                      rawtext comment.short_text
+                      text comment.short_text
                     end
                     text '&nbsp;'
                     a :class => 'show-more-link' do
-                      rawtext t('comment.more')
+                      text t('comment.more')
                     end
                     span :class => 'on-show-only' do
-                      rawtext comment.more_text
+                      text comment.more_text
                       a :class => 'show-less-link' do
-                        rawtext t('comment.less')
+                        text t('comment.less')
                       end
                     end
                   end
@@ -58,7 +58,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                     div :class => 'thread_participants hidden' do
                       span :class => 'show-reply-count' do
                         a :class => 'reveal-comments', :rel => '11605597' do
-                          rawtext t('comment.show_replies')
+                          text t('comment.show_replies')
                         end
                       end
                       comment.replies[0..9].each do |reply|
@@ -68,7 +68,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                         end
                       end
                       span :class => 'last_replied_at' do
-                        rawtext t('comment.latest_reply')
+                        text t('comment.latest_reply')
                         time('data-component' => 'timestamp', :datetime => (comment.replies[-1].created_at.iso8601)) do
                         end
                       end
@@ -77,7 +77,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                       div :class => 'reply-container' do
                         div :class => 'paginate_replies hidden' do
                           a :class => 'see-more-replies' do
-                            rawtext t('comment.show_more', :num => comment.replies.length)
+                            text t('comment.show_more', :num => comment.replies.length)
                           end
                         end
                         div(:class => 'replies', :id => ('comments_on_' + (comment.id.to_s))) do
@@ -101,7 +101,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                               end
                             end
                             p :class => 'privacy-warning' do
-                              rawtext t('comment.privacy_warning')
+                              text t('comment.privacy_warning')
                             end
                             div :class => 'hide-when-colapsed row-fluid' do
                               div :class => 'row-fluid' do
@@ -118,14 +118,14 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                                       a 'data-component' => 'privacyOption', 'data-value' => 'false', :href => '' do
                                         i :class => 'icon-group' do
                                         end
-                                        rawtext t('comment.public')
+                                        text t('comment.public')
                                       end
                                     end
                                     li do
                                       a 'data-component' => 'privacyOption', 'data-value' => 'true', :href => '' do
                                         i :class => 'icon-user' do
                                         end
-                                        rawtext t('comment.private')
+                                        text t('comment.private')
                                       end
                                     end
                                   end
@@ -136,11 +136,11 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                                   div :class => 'ajax_loading_container' do
                                   end
                                   button :class => 'btn btn-cancel', :type => 'button' do
-                                    rawtext t('buttons.cancel')
+                                    text t('buttons.cancel')
                                   end
                                   text '&nbsp;'
                                   button :class => 'btn btn-primary btn-create' do
-                                    rawtext t('comment.post_reply')
+                                    text t('comment.post_reply')
                                   end
                                   br
                                   br
@@ -150,17 +150,17 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                                 div :class => 'form-footer span12' do
                                   div :class => 'posting-guidelines' do
                                     h4 do
-                                      rawtext t('comment.posting_guidelines.header')
+                                      text t('comment.posting_guidelines.header')
                                     end
                                     ul do
                                       li do
-                                        rawtext t('comment.posting_guidelines.l1')
+                                        text t('comment.posting_guidelines.l1')
                                       end
                                       li do
-                                        rawtext t('comment.posting_guidelines.l2')
+                                        text t('comment.posting_guidelines.l2')
                                       end
                                       li do
-                                        rawtext t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
+                                        text t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
                                       end
                                     end
                                   end
@@ -184,7 +184,7 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                         a(:class => 'share get_link', :href => ('/n/threads/' + (comment.slug.html_safe)), :target => '_blank') do
                           i :class => 'icon-mail' do
                           end
-                          rawtext t('comment.get_link')
+                          text t('comment.get_link')
                         end
                       end
                       li :class => 'divider' do
@@ -193,21 +193,21 @@ class Views::Benchmark::PlacePage::Erector::Comment < Erector::Widget
                         a :class => 'edit-comment', :href => '' do
                           i :class => 'icon-pen' do
                           end
-                          rawtext t('comment.edit_this_post')
+                          text t('comment.edit_this_post')
                         end
                       end
                       li 'data-visible-to' => 'creator' do
                         a :class => 'delete-comment', :href => '' do
                           i :class => 'icon-close' do
                           end
-                          rawtext t('comment.delete_this_post')
+                          text t('comment.delete_this_post')
                         end
                       end
                       li 'data-visible-to' => 'non-creator' do
                         a :class => 'report-trigger', :href => '' do
                           i :class => 'icon-caution' do
                           end
-                          rawtext t('comment.flag_this_post')
+                          text t('comment.flag_this_post')
                         end
                       end
                     end

@@ -7,23 +7,23 @@ class Views::Benchmark::PlacePage::Erector::CommentRemove < Erector::Widget
         end
         h3 do
           div do
-            rawtext t('comment.remove.title')
+            text t('comment.remove.title')
           end
         end
       end
       div :class => 'modal-body' do
         div do
-          rawtext t('comment.remove.confirm')
+          text t('comment.remove.confirm')
         end
         br
         br
         div :class => 'actions' do
           a :class => 'confirm btn btn-danger', :href => 'javascript://' do
-            rawtext t('comment.remove.confirm_button')
+            text t('comment.remove.confirm_button')
           end
           text '&nbsp;'
           a :class => 'cancel btn', 'data-dismiss' => 'modal', :href => 'javascript://' do
-            rawtext t('buttons.cancel')
+            text t('buttons.cancel')
           end
         end
       end

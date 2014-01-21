@@ -14,7 +14,7 @@ class Views::Benchmark::PlacePage::Erector::LanguageSelector < Erector::Widget
             div :class => 'column' do
               row.each do |language|
                 a(:class => 'language', 'data-locale' => (language.locale)) do
-                  rawtext language.name
+                  text language.name
                 end
               end
             end
@@ -25,7 +25,7 @@ class Views::Benchmark::PlacePage::Erector::LanguageSelector < Erector::Widget
         end
       end
       a :class => 'trigger', :href => '#language_selector_menu', :id => 'language_selector_button' do
-        rawtext t('language_selector.english')
+        text t('language_selector.english')
       end
     end
   end

@@ -1,7 +1,7 @@
 class Views::Benchmark::PlacePage::Erector::HeaderGaJavascript < Erector::Widget
   def content
     script :type => 'text/javascript' do
-      text <<-EOS
+      rawtext <<-EOS
       var _gaq = _gaq || [];
           _gaq.push([\'_setAccount\', \'UA-458260-1\']);
           _gaq.push([\'_setDomainName\', \'couchsurfing.org\']);

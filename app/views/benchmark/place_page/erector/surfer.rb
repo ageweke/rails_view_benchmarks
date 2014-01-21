@@ -16,19 +16,19 @@ class Views::Benchmark::PlacePage::Erector::Surfer < Erector::Widget
       div :class => 'media-body' do
         h4 do
           a(:href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id.to_s) + '&id=' + (surfer.profile_encoded_id.to_s))) do
-            rawtext surfer.name
+            text surfer.name
           end
         end
         p :class => 'city' do
-          rawtext surfer.city
+          text surfer.city
         end
         p :class => 'meta' do
-          rawtext surfer.age
+          text surfer.age
           text ','
-          rawtext surfer.gender
+          text surfer.gender
         end
         p :class => 'meta' do
-          rawtext surfer.reference_count
+          text surfer.reference_count
           text 'references'
         end
       end

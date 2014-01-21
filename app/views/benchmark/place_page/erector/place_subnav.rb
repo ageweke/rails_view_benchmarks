@@ -11,7 +11,7 @@ class Views::Benchmark::PlacePage::Erector::PlaceSubnav < Erector::Widget
           div :class => 'input_container' do
             input :autocomplete => 'off', 'data-cs-typeahead' => 'PlaceSubnavNavigator', 'data-place-navigator' => 'true', :id => 'cs_typeahead_input', :name => 'location_query', :placeholder => 'Find a place…', :tabindex => '1', :type => 'text'
             span :class => 'typeahead_prompt' do
-              rawtext t('place_subnav.find')
+              text t('place_subnav.find')
             end
           end
         end

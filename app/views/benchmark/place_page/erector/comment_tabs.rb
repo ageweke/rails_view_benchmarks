@@ -9,7 +9,7 @@ class Views::Benchmark::PlacePage::Erector::CommentTabs < Erector::Widget
           conversation_tabs.each do |tab|
             td(:class => (tab.symbol), 'data-conversation-filter' => (tab.symbol)) do
               a(:href => ('?category=' + (tab.symbol.to_s))) do
-                rawtext tab.name
+                text tab.name
               end
             end
           end
