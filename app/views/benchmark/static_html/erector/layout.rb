@@ -203,12 +203,12 @@ EOS
                                     div :class => 'main-container-wrapper', :id => 'main-content' do
                                       nav :class => 'subnav' do
                                         form :action => '/n/locations/search_place', :class => 'search_place', :method => 'post' do
-                                          input :name => 'authenticity_token', :type => 'hidden', :value => 'NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=' do
+                                          input :name => 'authenticity_token', :type => 'hidden', :value => 'NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE='
                                             label :for => 'cs_typeahead_input' do
                                               div :class => 'search_icon' do
                                               end
                                               div :class => 'input_container' do
-                                                input :autocomplete => 'off', 'data-cs-typeahead' => 'PlaceSubnavNavigator', 'data-place-navigator' => 'true', :id => 'cs_typeahead_input', :name => 'location_query', :placeholder => 'Find a place…', :tabindex => '1', :type => 'text' do
+                                                input :autocomplete => 'off', 'data-cs-typeahead' => 'PlaceSubnavNavigator', 'data-place-navigator' => 'true', :id => 'cs_typeahead_input', :name => 'location_query', :placeholder => 'Find a place…', :tabindex => '1', :type => 'text'
                                                   span :class => 'typeahead_prompt' do
                                                     text 'Find a place…'
                                                   end
@@ -328,9 +328,9 @@ EOS
                                                             div :class => 'entity-subscription' do
                                                               div :class => 'entity-subscription-form-container' do
                                                                 form do
-                                                                  input :name => 'authenticity_token', :type => 'hidden', :value => 'NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=' do
-                                                                    input :name => 'subscribed_on_id', :type => 'hidden', :value => '26380' do
-                                                                      input :name => 'subscribed_on_type', :type => 'hidden', :value => 'place' do
+                                                                  input :name => 'authenticity_token', :type => 'hidden', :value => 'NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE='
+                                                                    input :name => 'subscribed_on_id', :type => 'hidden', :value => '26380'
+                                                                      input :name => 'subscribed_on_type', :type => 'hidden', :value => 'place'
                                                                         p do
                                                                           text 'How much email would you like to receive related to this place?'
                                                                         end
@@ -339,7 +339,7 @@ EOS
                                                                             div :class => 'control-group' do
                                                                               div :class => 'controls' do
                                                                                 label do
-                                                                                  input :class => 'subscription_type', :name => 'subscription_type', :type => 'radio' do
+                                                                                  input :class => 'subscription_type', :name => 'subscription_type', :type => 'radio'
                                                                                     span do
                                                                                       strong do
                                                                                         text 'Instant Updates'
@@ -354,7 +354,7 @@ EOS
                                                                               div :class => 'control-group' do
                                                                                 div :class => 'controls' do
                                                                                   label do
-                                                                                    input :class => 'subscription_type', :name => 'subscription_type', :type => 'radio' do
+                                                                                    input :class => 'subscription_type', :name => 'subscription_type', :type => 'radio'
                                                                                       span do
                                                                                         strong do
                                                                                           text 'Occasional Email Digests'
@@ -368,7 +368,7 @@ EOS
                                                                                 div :class => 'control-group' do
                                                                                   div :class => 'controls' do
                                                                                     label do
-                                                                                      input :class => 'subscription_type', :name => 'subscription_type', :type => 'radio' do
+                                                                                      input :class => 'subscription_type', :name => 'subscription_type', :type => 'radio'
                                                                                         span do
                                                                                           strong do
                                                                                             text 'No Email Digests'
@@ -482,7 +482,7 @@ EOS
                                                             text 'The faces you see on this page are the profile photos of active Couchsurfers who live in or near this place.'
                                                           end
                                                           form :class => 'privacy_collage_form' do
-                                                            input :id => 'hide_profile', :name => 'hide_profile', :type => 'checkbox', :value => 'true' do
+                                                            input :id => 'hide_profile', :name => 'hide_profile', :type => 'checkbox', :value => 'true'
                                                               label :for => 'hide_profile' do
                                                                 text 'Never show my profile photo here'
                                                               end
@@ -1522,12 +1522,12 @@ references'
                                                         div :class => 'modal_body' do
                                                           form :class => 'event_form', :enctype => 'multipart/form-data' do
                                                             fieldset :class => 'modal_page', 'data-modal_title' => 'Create an Event' do
-                                                              input :class => 'event_id', :name => 'slug', :type => 'hidden' do
+                                                              input :class => 'event_id', :name => 'slug', :type => 'hidden'
                                                                 div do
-                                                                  input :class => 'title', :name => 'title', :placeholder => 'Event Title', :type => 'text' do
+                                                                  input :class => 'title', :name => 'title', :placeholder => 'Event Title', :type => 'text'
                                                                   end
                                                                   div do
-                                                                    input :class => 'location_string_as_entered_by_user', :name => 'location_string_as_entered_by_user', :placeholder => 'Location', :type => 'text' do
+                                                                    input :class => 'location_string_as_entered_by_user', :name => 'location_string_as_entered_by_user', :placeholder => 'Location', :type => 'text'
                                                                     end
                                                                     div :class => 'found_location', :style => 'display: none' do
                                                                       label do
@@ -1539,7 +1539,7 @@ references'
                                                                         text 'To specify an exact location, click and drag the marker on the map'
                                                                       end
                                                                     end
-                                                                    input :class => 'normalized_location_string', :name => 'normalized_location_string', :type => 'hidden' do
+                                                                    input :class => 'normalized_location_string', :name => 'normalized_location_string', :type => 'hidden'
                                                                       div :class => 'map_preview' do
                                                                         div 'data-lat' => '', 'data-long' => '', :id => 'event_map_preview' do
                                                                         end
@@ -1547,19 +1547,19 @@ references'
                                                                           img :src => 'https://d20rrv4k3o7n66.cloudfront.net/assets/choose_location-cfd29dd4b26ef631dbf29a47fdfa89c5.jpeg'
                                                                         end
                                                                       end
-                                                                      input :class => 'lat', :name => 'latitude', :type => 'hidden' do
-                                                                        input :class => 'lng', :name => 'longitude', :type => 'hidden' do
-                                                                          input :class => 'customized_coordinate', :name => 'customized_coordinate', :type => 'hidden' do
-                                                                            input :checked => 'checked', :class => 'public_event', :name => 'private', :type => 'radio', :value => '0' do
+                                                                      input :class => 'lat', :name => 'latitude', :type => 'hidden'
+                                                                        input :class => 'lng', :name => 'longitude', :type => 'hidden'
+                                                                          input :class => 'customized_coordinate', :name => 'customized_coordinate', :type => 'hidden'
+                                                                            input :checked => 'checked', :class => 'public_event', :name => 'private', :type => 'radio', :value => '0'
                                                                               span :class => 'public_selected' do
                                                                                 text 'Public Event'
                                                                               end
-                                                                              input :class => 'invite_only', :name => 'private', :type => 'radio', :value => '1' do
+                                                                              input :class => 'invite_only', :name => 'private', :type => 'radio', :value => '1'
                                                                                 span :class => 'private_selected' do
                                                                                   text 'Invite Only Event'
                                                                                 end
                                                                                 div :class => 'allow_guest_invite' do
-                                                                                  input :id => 'allow_guest_invite', :name => 'allow_guest_invite', :type => 'checkbox', :value => '1' do
+                                                                                  input :id => 'allow_guest_invite', :name => 'allow_guest_invite', :type => 'checkbox', :value => '1'
                                                                                     label :for => 'allow_guest_invite' do
                                                                                       text 'Allow guests to invite others'
                                                                                     end
@@ -1570,8 +1570,8 @@ references'
                                                                                     label :for => 'start_day' do
                                                                                       text 'Starts on:'
                                                                                     end
-                                                                                    input :id => 'start_day', :name => 'start_day', :type => 'hidden' do
-                                                                                      input :class => 'start_day_picker', :type => 'text' do
+                                                                                    input :id => 'start_day', :name => 'start_day', :type => 'hidden'
+                                                                                      input :class => 'start_day_picker', :type => 'text'
                                                                                       end
                                                                                       div :class => 'hour_selector' do
                                                                                         div :id => 'time_error' do
@@ -1895,8 +1895,8 @@ references'
                                                                                             span :class => 'event_photo_btn_text' do
                                                                                               text 'Add Photo'
                                                                                             end
-                                                                                            input :class => 'file', :name => 'images[]', :type => 'file' do
-                                                                                              input :class => 'remove_photo', :name => 'remove_photo', :type => 'hidden' do
+                                                                                            input :class => 'file', :name => 'images[]', :type => 'file'
+                                                                                              input :class => 'remove_photo', :name => 'remove_photo', :type => 'hidden'
                                                                                               end
                                                                                               div :class => 'aspect_ratio' do
                                                                                               end
@@ -1905,15 +1905,15 @@ references'
                                                                                             end
                                                                                           end
                                                                                           div :class => 'max_guests_container' do
-                                                                                            input :class => 'guest_limit', :id => 'max_guests_enabled', :name => 'max_guests_enabled', :type => 'checkbox' do
+                                                                                            input :class => 'guest_limit', :id => 'max_guests_enabled', :name => 'max_guests_enabled', :type => 'checkbox'
                                                                                               label :class => 'max_guests_label', :for => 'max_guests_enabled' do
                                                                                                 text 'Limit number of guests'
                                                                                               end
-                                                                                              input :class => 'hide max_guests maximum_guests_allowed', :maxlength => '4', :name => 'maximum_guests_allowed', :type => 'text' do
+                                                                                              input :class => 'hide max_guests maximum_guests_allowed', :maxlength => '4', :name => 'maximum_guests_allowed', :type => 'text'
                                                                                               end
                                                                                               div :class => 'organizers_container' do
                                                                                                 div :class => 'row_label' do
-                                                                                                  input :class => 'enable_multi_organizer', :id => 'enable_multi_organizer', :type => 'checkbox' do
+                                                                                                  input :class => 'enable_multi_organizer', :id => 'enable_multi_organizer', :type => 'checkbox'
                                                                                                     label :for => 'enable_multi_organizer' do
                                                                                                       text 'Invite an additional organizer'
                                                                                                     end
@@ -1926,7 +1926,7 @@ references'
                                                                                                       text 'Note: All organizers will have the same privileges that you have.'
                                                                                                     end
                                                                                                     div :class => 'search_organizers' do
-                                                                                                      input :class => 'search_string', :name => 'search_string', :placeholder => 'Search by name or username', :type => 'text' do
+                                                                                                      input :class => 'search_string', :name => 'search_string', :placeholder => 'Search by name or username', :type => 'text'
                                                                                                         a :class => 'primary_action_button button submit_search disabled_until_load', :href => '#', :id => 'search_for_organizers_button', :title => 'Search' do
                                                                                                           text 'Search'
                                                                                                         end
@@ -1951,7 +1951,7 @@ references'
                                                                                                       div :class => 'selected_organizers clearfix' do
                                                                                                         div :class => 'selectable_user_container', 'data-id' => '540371464' do
                                                                                                           div :class => 'input_container' do
-                                                                                                            input :checked => 'checked', :id => 'selected_organizers_ids_540371464', :name => 'selected_organizers_ids[]', :type => 'checkbox', :value => '540371464' do
+                                                                                                            input :checked => 'checked', :id => 'selected_organizers_ids_540371464', :name => 'selected_organizers_ids[]', :type => 'checkbox', :value => '540371464'
                                                                                                             end
                                                                                                             span(:class => 'pull-left avatar sm_circle imgsize_compact_thumb', :style => 'background-image:url(https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/274549413/1391113032/C-30-30?default=true&sh=RxjDs0X6H6TU1sGd5vYKZl);') do
                                                                                                             end
@@ -2130,33 +2130,5 @@ EOS
                                                                                         end
                                                                                       end
   end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 end
 end
