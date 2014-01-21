@@ -327,6 +327,24 @@ class BenchmarkController < ApplicationController
     benchmark!({ })
   end
 
+  def benchmark_local_variable_hell
+    vars = {
+      :v_a => String.random_phrase,
+      :v_b => String.random_phrase,
+      :v_c => String.random_phrase,
+      :v_d => String.random_phrase,
+      :v_e => String.random_phrase,
+      :v_f => String.random_phrase,
+      :v_g => String.random_phrase,
+      :v_h => String.random_phrase,
+      :v_i => String.random_phrase,
+      :v_j => String.random_phrase
+    }
+
+    vars.each { |k,v| instance_variable_set("@#{k}", v) }
+    benchmark!(vars)
+  end
+
   private
   def benchmark!(locals, options = { })
     benchmarker = Benchmarker.new(params)
