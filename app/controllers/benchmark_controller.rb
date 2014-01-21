@@ -327,6 +327,10 @@ class BenchmarkController < ApplicationController
     benchmark!({ })
   end
 
+  def benchmark_translation_hell
+    benchmark!({ })
+  end
+
   def benchmark_local_variable_hell
     vars = {
       :v_a => String.random_phrase,

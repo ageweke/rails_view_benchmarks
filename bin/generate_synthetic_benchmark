@@ -33,6 +33,58 @@ class SyntheticBenchmarkGenerator
   end
 end
 
+class TranslationHellBenchmarkGenerator < SyntheticBenchmarkGenerator
+  def synthesize_erb
+    string = ""
+    1000.times do |i|
+      string << "<%= t(:translation_hell_#{i}) %>\n"
+    end
+
+    splat("translation_hell.html.erb", string)
+
+    splat_translations_file!
+  end
+
+  def synthesize_haml
+    string = ""
+    1000.times do |i|
+      string << "= t(:translation_hell_#{i})\n"
+    end
+
+    splat("translation_hell.html.haml", string)
+
+    splat_translations_file!
+  end
+
+  def synthesize_erector
+    string = %{
+class Views::Benchmark::TranslationHell::Erector::TranslationHell < Erector::Widget
+  def content
+    }
+    1000.times do |i|
+      string << "    text t(:translation_hell_#{i})\n"
+    end
+    string << "  end\n"
+    string << "end\n"
+
+    splat("translation_hell.rb", string)
+
+    splat_translations_file!
+  end
+
+  def splat_translations_file!
+    translations_path = File.join(Rails.root, 'config', 'locales', 'translation_hell.yml')
+    FileUtils.mkdir_p(File.dirname(translations_path))
+    File.open(translations_path, 'w') do |f|
+      f.puts "en:"
+
+      1000.times do |i|
+        f.puts "  translation_hell_#{i}: \"hell_#{i}_hell\""
+      end
+    end
+  end
+end
+
 class PartialHellBenchmarkGenerator < SyntheticBenchmarkGenerator
   ALPHABET = "abcdefghijklmnopqrstuvwxyz"
   ITERATIONS = 16
@@ -111,7 +163,8 @@ EOS
 end
 
 SYNTHETIC_BENCHMARKS = {
-  :partial_hell => PartialHellBenchmarkGenerator
+  :partial_hell => PartialHellBenchmarkGenerator,
+  :translation_hell => TranslationHellBenchmarkGenerator
 }
 
 benchmark_name = ARGV[0]
