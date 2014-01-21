@@ -325,6 +325,5 @@ class BenchmarkController < ApplicationController
     benchmarker.go! { render @render_args }
 
     render :json => benchmarker.to_hash.to_json
-    # render :text => "Benchmark '#{benchmark}', engine #{engine}: #{benchmarker.to_s}\n#{benchmarker.to_hash.to_json}"
   end
 end
