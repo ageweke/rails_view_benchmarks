@@ -323,6 +323,10 @@ class BenchmarkController < ApplicationController
     benchmark!({ })
   end
 
+  def benchmark_static_html
+    benchmark!({ })
+  end
+
   private
   def benchmark!(locals, options = { })
     benchmarker = Benchmarker.new(params)
