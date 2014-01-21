@@ -1,4 +1,4 @@
-class Views::Benchmark::StaticHtml::Erector::Unified < Erector::Widget
+class Views::Benchmark::StaticHtml::Erector::StaticHtml < Erector::Widget
   def content
     rawtext '<!DOCTYPE html>'
     html :class => 'no-js root-places page-places action-show page-places-show root-places page-places action-show', 'data-logged-in' => '540371464', 'data-user-main-image' => 'https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/274549413/1391113032/C-30-30?default=true&sh=RxjDs0X6H6TU1sGd5vYKZl' do
