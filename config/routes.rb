@@ -53,5 +53,5 @@ RailsViewBenchmarks::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  get '/:action/:engine(/:desired_runtime)', :controller => :benchmark
+  get '/:action/:engine', :controller => :benchmark
 end

@@ -300,8 +300,19 @@ class BenchmarkController < ApplicationController
     benchmark!({ })
   end
 
+  def benchmark_partial_hell
+    depth = Integer(params[:depth] || 10)
+    start_with = 'abcdefghijklmnopqrstuvwxyz'[depth]
+
+    template = "_partial_#{start_with}"
+    template = "partial_#{start_with}" if params[:engine].to_s.strip.downcase == 'erector'
+
+    @value = rand(1_000_000)
+    benchmark!({ :value => @value }, :template => template)
+  end
+
   private
-  def benchmark!(locals)
+  def benchmark!(locals, options)
     benchmarker = Benchmarker.new(params)
 
     engine = params[:engine]
@@ -315,8 +326,8 @@ class BenchmarkController < ApplicationController
 
     @partial_base = "benchmark/#{benchmark}/#{engine}".freeze
 
-    template = "#{@partial_base}/#{benchmark}".freeze
-    @render_args = { :template => template, :locals => locals, :layout => false }
+    template = options[:template] || benchmark
+    @render_args = { :template => "#{@partial_base}/#{template}".freeze, :locals => locals, :layout => false }
 
     if params[:view_only]
       return render @render_args, :layout => false

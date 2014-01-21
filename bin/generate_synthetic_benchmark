@@ -1,0 +1,135 @@
+#!/usr/bin/env ruby
+# Coding: UTF-8
+
+require 'fileutils'
+
+class SyntheticBenchmarkGenerator
+  def initialize(benchmark_name, engine)
+    @benchmark_name = benchmark_name.to_s.strip.downcase.to_sym
+    @engine = engine.to_s.strip.downcase.to_sym
+  end
+
+  def go!
+    send("synthesize_#{@engine}")
+  end
+
+  class << self
+    def known_engines
+      (instance_methods + private_instance_methods).map { |m| if m.to_s =~ /^synthesize_(.*)$/ then $1.to_sym end }.compact.uniq
+    end
+  end
+
+  private
+  def root
+    @root_directory ||= File.expand_path(File.join(Rails.root, 'app', 'views', 'benchmark', @benchmark_name.to_s, @engine.to_s))
+  end
+
+  def splat(subpath, contents)
+    full_path = File.join(root, subpath)
+    FileUtils.mkdir_p(File.dirname(full_path))
+    File.open(full_path, 'w') { |f| f << contents }
+    puts "Wrote '#{full_path}'."
+    $stdout.flush
+  end
+end
+
+class PartialHellBenchmarkGenerator < SyntheticBenchmarkGenerator
+  ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+  ITERATIONS = 16
+
+  def synthesize_erb
+    (0..(ITERATIONS - 1)).each do |iteration|
+      filename = "_#{partial_name(iteration)}.html.erb"
+
+      if iteration == 0
+        splat(filename, <<-EOS)
+<b><%= value %></b>
+EOS
+      else
+        next_partial = partial_name(iteration - 1)
+        splat(filename, <<-EOS)
+<%= render :partial => "\#{@partial_base}/#{next_partial}", :locals => { :value => value } %>
+<%= render :partial => "\#{@partial_base}/#{next_partial}", :locals => { :value => value } %>
+EOS
+      end
+    end
+  end
+
+  def synthesize_haml
+    (0..(ITERATIONS - 1)).each do |iteration|
+      filename = "_#{partial_name(iteration)}.html.haml"
+
+      if iteration == 0
+        splat(filename, <<-EOS)
+%b= value
+EOS
+      else
+        next_partial = partial_name(iteration - 1)
+        splat(filename, <<-EOS)
+= render :partial => "\#{@partial_base}/#{next_partial}", :locals => { :value => value }
+= render :partial => "\#{@partial_base}/#{next_partial}", :locals => { :value => value }
+EOS
+      end
+    end
+  end
+
+  def synthesize_erector
+    (0..(ITERATIONS - 1)).each do |iteration|
+      filename = "#{partial_name(iteration)}.rb"
+      class_name = erector_class_name(iteration)
+
+      if iteration == 0
+        splat(filename, <<-EOS)
+class #{class_name} < Erector::Widget
+  def content
+    b { text @value }
+    text "\n"
+  end
+end
+EOS
+      else
+        next_partial = partial_name(iteration - 1)
+        splat(filename, <<-EOS)
+class #{class_name} < Erector::Widget
+  def content
+    widget #{erector_class_name(iteration - 1)}.new(:value => @value)
+    widget #{erector_class_name(iteration - 1)}.new(:value => @value)
+  end
+end
+EOS
+      end
+    end
+  end
+
+  def partial_name(iteration)
+    "partial_#{ALPHABET[iteration]}"
+  end
+
+  def erector_class_name(iteration)
+    "Views::Benchmark::PartialHell::Erector::#{partial_name(iteration).camelize}"
+  end
+end
+
+SYNTHETIC_BENCHMARKS = {
+  :partial_hell => PartialHellBenchmarkGenerator
+}
+
+benchmark_name = ARGV[0]
+engine_name = ARGV[1]
+engine_name = engine_name.to_s.strip.downcase.to_sym if engine_name
+
+raise "Must supply a benchmark name as the first argument" unless benchmark_name
+benchmark_class = SYNTHETIC_BENCHMARKS[benchmark_name.to_s.strip.downcase.to_sym]
+raise "Unknown benchmark name; I know about: #{SYNTHETIC_BENCHMARKS.keys.inspect}" unless benchmark_class
+
+known_engines = benchmark_class.known_engines
+engines_to_run = if engine_name then [ engine_name ] else known_engines end
+unknown = engines_to_run - known_engines
+if unknown.length > 0
+  raise "I don't know about these engines: #{unknown.inspect}; I know about: #{known_engines.inspect}"
+end
+
+engines_to_run.each do |engine|
+  instance = benchmark_class.new(benchmark_name, engine)
+  instance.go!
+end
