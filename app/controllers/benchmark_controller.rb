@@ -311,8 +311,20 @@ class BenchmarkController < ApplicationController
     benchmark!({ :value => @value }, :template => template)
   end
 
+  ESCAPE_CHARACTERS = "&<>\"\'"
+
+  def benchmark_escaping_hell
+    @text = [ ]
+    10_000.times do
+      t = String.random_word + ESCAPE_CHARACTERS[rand(ESCAPE_CHARACTERS.length)] + ESCAPE_CHARACTERS[rand(ESCAPE_CHARACTERS.length)] + String.random_word
+      @text << t
+    end
+
+    benchmark!({ })
+  end
+
   private
-  def benchmark!(locals, options)
+  def benchmark!(locals, options = { })
     benchmarker = Benchmarker.new(params)
 
     engine = params[:engine]
