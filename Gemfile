@@ -33,8 +33,10 @@ group :doc do
 end
 
 gem 'haml'
-gem 'erector'
+# gem 'erector'
 gem 'trollop'
+
+gem 'fortitude', :path => '../fortitude'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

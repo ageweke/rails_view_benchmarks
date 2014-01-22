@@ -26,22 +26,24 @@ opts = Trollop::options do
   opt :'gc-min-count', "Minimum number of GC test passes", :type => :integer, :default => 5
 end
 
-ALL_ENGINES = %w{erb haml erector}.map(&:to_sym)
+ALL_ENGINES = %w{fortitude erb haml erector}.map(&:to_sym)
 
-engines = if opts[:engine] == 'all'
-  ALL_ENGINES
+engines = nil
+if opts[:engine] == 'all'
+  engines = ALL_ENGINES
 else
-  engines.split(/[\s,]+/).map { |e| e.strip.downcase.to_sym }
+  engines = opts[:engine].split(/[\s,]+/).map { |e| e.strip.downcase.to_sym }
   extra = engines - ALL_ENGINES
   Trollop::die :engine, "is unknown; must be one of: #{ALL_ENGINES.inspect}" if extra.length > 0
 end
 
 ALL_BENCHMARKS = %w{place_page static_html partial_hell escaping_hell local_variable_hell translation_hell}.map(&:to_sym)
 
-benchmarks = if opts[:benchmark] == 'all'
-  ALL_BENCHMARKS
+benchmarks = nil
+if opts[:benchmark] == 'all'
+  benchmarks = ALL_BENCHMARKS
 else
-  benchmarks.split(/[\s,]+/).map { |b| b.strip.downcase.to_sym }
+  benchmarks = opts[:benchmark].split(/[\s,]+/).map { |b| b.strip.downcase.to_sym }
   extra = benchmarks - ALL_BENCHMARKS
   Trollop::die :benchmark, "is unknown; must be one of: #{ALL_BENCHMARKS.inspect}" if extra.length > 0
 end
