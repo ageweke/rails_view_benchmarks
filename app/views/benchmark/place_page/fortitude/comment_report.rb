@@ -1,4 +1,6 @@
 class Views::Benchmark::PlacePage::Fortitude::CommentReport < Views::Benchmark::PlacePage::Fortitude::Base
+  needs :form_authenticity_token
+
   def content
     div :class => 'modal hide fade report-abusive-content', 'data-entity_type' => 'comment' do
       div :class => 'modal-header' do

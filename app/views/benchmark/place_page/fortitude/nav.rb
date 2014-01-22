@@ -10,7 +10,7 @@ class Views::Benchmark::PlacePage::Fortitude::Nav < Views::Benchmark::PlacePage:
             img :alt => 'Couchsurfing', :height => '41', :src => cdn_img, :width => '117'
           end
         end
-        a(:class => ('button trigger ' + (@user.unread_messages > 0 ? 'unread' : 'read')), 'data-toggle' => 'dropdown', :href => '#viewport', :id => 'logged_in_menu_trigger') do
+        a(:class => ('button trigger ' + (user.unread_messages > 0 ? 'unread' : 'read')), 'data-toggle' => 'dropdown', :href => '#viewport', :id => 'logged_in_menu_trigger') do
           text 'Menu'
           span :class => 'message-bubble' do
             text user.unread_messages

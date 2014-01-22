@@ -1,6 +1,7 @@
 class Views::Benchmark::PlacePage::Fortitude::PlacePage < Views::Benchmark::PlacePage::Fortitude::Base
   needs :user, :place, :subnav_places, :featured_events, :part_of, :nearby, :subscription_options, :conversation_categories
-  needs :conversation_tabs
+  needs :conversation_tabs, :form_authenticity_token, :comments, :trending_events, :total_event_count
+  needs :upcoming_events, :surfers, :related_groups, :languages, :site_map, :social_links
 
   def content
     rawtext '<!DOCTYPE html>'
