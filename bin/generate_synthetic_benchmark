@@ -72,6 +72,26 @@ class Views::Benchmark::TranslationHell::Erector::TranslationHell < Erector::Wid
     splat_translations_file!
   end
 
+  def synthesize_fortitude
+    string = %{
+class Views::Benchmark::TranslationHell::Fortitude::TranslationHell < Fortitude::Widget
+  def t(x)
+    I18n.t(x)
+  end
+
+  def content
+    }
+    1000.times do |i|
+      string << "    text t(:translation_hell_#{i})\n"
+    end
+    string << "  end\n"
+    string << "end\n"
+
+    splat("translation_hell.rb", string)
+
+    splat_translations_file!
+  end
+
   def splat_translations_file!
     translations_path = File.join(Rails.root, 'config', 'locales', 'translation_hell.yml')
     FileUtils.mkdir_p(File.dirname(translations_path))
@@ -153,12 +173,47 @@ EOS
     end
   end
 
+  def synthesize_fortitude
+    (0..(ITERATIONS - 1)).each do |iteration|
+      filename = "#{partial_name(iteration)}.rb"
+      class_name = fortitude_class_name(iteration)
+
+      if iteration == 0
+        splat(filename, <<-EOS)
+class #{class_name} < Fortitude::Widget
+  needs :value
+  def content
+    b { text value }
+    text "\n"
+  end
+end
+EOS
+      else
+        next_partial = partial_name(iteration - 1)
+        splat(filename, <<-EOS)
+class #{class_name} < Fortitude::Widget
+  needs :value
+
+  def content
+    widget #{fortitude_class_name(iteration - 1)}.new(:value => value)
+    widget #{fortitude_class_name(iteration - 1)}.new(:value => value)
+  end
+end
+EOS
+      end
+    end
+  end
+
   def partial_name(iteration)
     "partial_#{ALPHABET[iteration]}"
   end
 
   def erector_class_name(iteration)
     "Views::Benchmark::PartialHell::Erector::#{partial_name(iteration).camelize}"
+  end
+
+  def fortitude_class_name(iteration)
+    "Views::Benchmark::PartialHell::Fortitude::#{partial_name(iteration).camelize}"
   end
 end
 

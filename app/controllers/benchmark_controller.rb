@@ -305,7 +305,7 @@ class BenchmarkController < ApplicationController
     start_with = 'abcdefghijklmnopqrstuvwxyz'[depth]
 
     template = "_partial_#{start_with}"
-    template = "partial_#{start_with}" if params[:engine].to_s.strip.downcase == 'erector'
+    template = "partial_#{start_with}" if params[:engine].to_s.strip.downcase == 'erector' || params[:engine].to_s.strip.downcase == 'fortitude'
 
     @value = rand(1_000_000)
     benchmark!({ :value => @value }, :template => template)
@@ -314,10 +314,10 @@ class BenchmarkController < ApplicationController
   ESCAPE_CHARACTERS = "&<>\"\'"
 
   def benchmark_escaping_hell
-    @text = [ ]
+    @the_text = [ ]
     10_000.times do
       t = String.random_word + ESCAPE_CHARACTERS[rand(ESCAPE_CHARACTERS.length)] + ESCAPE_CHARACTERS[rand(ESCAPE_CHARACTERS.length)] + String.random_word
-      @text << t
+      @the_text << t
     end
 
     benchmark!({ })
