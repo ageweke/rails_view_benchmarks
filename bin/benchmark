@@ -121,30 +121,19 @@ engines.each do |engine|
   benchmarks.each do |benchmark|
     json = results[engine][benchmark]
 
-    objects_per_iteration = (Float(json['gc']['total_allocated_object']) / Float(json['gc']['iterations']))
-    slots_per_iteration = (Float(json['gc']['heap_live_slot']) / Float(json['gc']['iterations']))
+    objects_per_iteration = nil
+    %w{heap_live_num total_allocated_object heap_live_slot}.each do |v|
+      value = json['gc'][v]
+      if value && value > 0
+        objects_per_iteration = (Float(value) / Float(json['gc']['iterations']))
+        break
+      end
+    end
 
-    baseline_gcs[benchmark] ||= {
-      :objects_per_iteration => objects_per_iteration,
-      :slots_per_iteration => slots_per_iteration
-    }
-
-    partial " (%7s o; %7s s)" % [ objects_per_iteration.with_delimiters, slots_per_iteration.with_delimiters ]
-  end
-
-  write ""
-
-  partial "%#{engine_column_width}s" % (" " * engine_column_width)
-  benchmarks.each do |benchmark|
-    json = results[engine][benchmark]
-
-    objects_per_iteration = (Float(json['gc']['total_allocated_object']) / Float(json['gc']['iterations']))
-    slots_per_iteration = (Float(json['gc']['heap_live_slot']) / Float(json['gc']['iterations']))
-
-    baseline_objects = baseline_gcs[benchmark][:objects_per_iteration]
-    baseline_slots = baseline_gcs[benchmark][:slots_per_iteration]
-
-    partial " (  %6.2fx;   %6.2fx)" % [ objects_per_iteration.to_f / baseline_objects.to_f, slots_per_iteration.to_f / baseline_slots.to_f ]
+    if objects_per_iteration
+      baseline_objects = (baseline_gcs[benchmark] ||= objects_per_iteration)
+      partial " %9s ob (%6.2fx)" % [ objects_per_iteration.with_delimiters(0), (objects_per_iteration.to_f / baseline_objects.to_f) ]
+    end
   end
 
   write ""
