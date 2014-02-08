@@ -112,6 +112,10 @@ class BenchmarkController < ApplicationController
   end
 
   def benchmark_place_page
+    if params[:srand]
+      srand(Integer(params[:srand]))
+    end
+
     @place = OpenStruct.new(
       :title => "San Francisco",
       :following => true,

@@ -5,7 +5,7 @@ class Views::Benchmark::LocalVariableHell::Fortitude::LocalVariableHell < Fortit
     html do
       head do
         title do
-          text "Local Variable Hell"
+          text "Local Variable Hell".freeze
         end
       end
       body do

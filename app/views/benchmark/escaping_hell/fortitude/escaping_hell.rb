@@ -8,7 +8,8 @@ class Views::Benchmark::EscapingHell::Fortitude::EscapingHell < Fortitude::Widge
       end
       body do
         the_text.each do |t|
-          text "#{t}\n"
+          text t
+          text "\n".freeze
         end
       end
     end

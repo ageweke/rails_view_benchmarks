@@ -20,6 +20,7 @@ opts = Trollop::options do
   opt :benchmark, "Benchmarks to run", :type => :string, :default => 'all'
   opt :url, "Base URL to use", :type => :string, :default => 'http://localhost:3000'
 
+  opt :srand, "Random seed to use", :type => Integer
   opt :runtime, "Time to run each benchmark for", :type => :float, :default => 5.0
   opt :'prep-count', "Number of prep runs", :type => :integer, :default => 10
   opt :'gc-period', "Time to run GC test for", :type => :float, :default => 0.5
@@ -58,6 +59,15 @@ def write(s)
   $stdout.flush
 end
 
+srand = nil
+if opts[:srand]
+  srand = Integer(opts[:srand])
+  write "Using specified random seed #{srand}"
+else
+  srand = rand(10_000)
+  write "Using generated random seed #{srand}"
+end
+
 engine_column_width = (engines + [ 'engine' ]).map { |e| e.to_s.length }.max
 data_column_width = 22
 
@@ -77,7 +87,8 @@ params = {
   :benchmark_period => opts[:runtime],
   :prep_count => opts[:'prep-count'],
   :gc_period => opts[:'gc-period'],
-  :gc_min_count => opts[:'gc-min-count']
+  :gc_min_count => opts[:'gc-min-count'],
+  :srand => srand
 }
 
 results = { }
