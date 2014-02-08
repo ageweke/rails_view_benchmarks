@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Views::Benchmark::PlacePage::Fortitude::PlaceSubnav < Views::Benchmark::PlacePage::Fortitude::Base
   needs :subnav_places
 

@@ -82,7 +82,7 @@ class Views::Benchmark::PlacePage::Fortitude::HiddenContent < Views::Benchmark::
           img :class => 'ajax_loading', :src => '/assets/loading_loop.gif'
         end
         footer :class => 'modal_footer' do
-          text ' '
+          text ' '
         end
       end
       div :class => 'modal_window hide fade', :id => 'alert_modal' do
