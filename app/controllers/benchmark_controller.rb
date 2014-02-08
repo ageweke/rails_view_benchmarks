@@ -196,7 +196,7 @@ class BenchmarkController < ApplicationController
 
       (0..(1 + rand(3))).each { |i| attendees[i].organizer = true }
 
-      event[:attendees] += attendees
+      event.attendees += attendees
 
       @featured_events << event
     end
