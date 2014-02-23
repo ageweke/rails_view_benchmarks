@@ -1,35 +1,35 @@
 class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlacePage::Fortitude::Base
-  needs :comment
+  needs :the_comment
 
   def content
-    li(:class => 'thread media', 'data-commented-on-type' => 'place', 'data-creator-id' => (comment.creator_id), 'data-entity-id' => (comment.entity_id), 'data-thread-slug' => (comment.slug.html_safe), 'data-total-replies' => (comment.total_replies)) do
-      a(:class => 'avatar_link', :href => (comment.creator_profile_link.html_safe)) do
-        span(:class => 'pull-left avatar md_circle imgsize_large_thumb', :style => ('background-image:url(' + (cdn(comment.creator_profile_image.html_safe)) + ');')) do
+    li(:class => 'thread media', 'data-commented-on-type' => 'place', 'data-creator-id' => (the_comment.creator_id), 'data-entity-id' => (the_comment.entity_id), 'data-thread-slug' => (the_comment.slug.html_safe), 'data-total-replies' => (the_comment.total_replies)) do
+      a(:class => 'avatar_link', :href => (the_comment.creator_profile_link.html_safe)) do
+        span(:class => 'pull-left avatar md_circle imgsize_large_thumb', :style => ('background-image:url(' + (cdn(the_comment.creator_profile_image.html_safe)) + ');')) do
         end
       end
       div :class => 'media-body' do
         div do
-          a(:href => (comment.creator_profile_link.html_safe)) do
+          a(:href => (the_comment.creator_profile_link.html_safe)) do
           end
           div :class => 'comment-text' do
             div :class => 'comment-header row-fluid' do
               div :class => 'span12' do
                 h4 do
-                  a(:href => ('/n/threads/' + (comment.slug.html_safe)), :class => 'reply-title') do
-                    text comment.thread_title
+                  a(:href => ('/n/threads/' + (the_comment.slug.html_safe)), :class => 'reply-title') do
+                    text the_comment.thread_title
                   end
                   div :class => 'comment-details' do
-                    time('data-component' => 'timestamp', 'data-original-timestamp' => (comment.created_at.iso8601), :datetime => (comment.created_at.iso8601)) do
+                    time('data-component' => 'timestamp', 'data-original-timestamp' => (the_comment.created_at.iso8601), :datetime => (the_comment.created_at.iso8601)) do
                     end
                   end
                 end
                 span do
-                  a(:class => 'reply-creator', :href => (comment.creator_profile_link.html_safe)) do
-                    text comment.creator_name
+                  a(:class => 'reply-creator', :href => (the_comment.creator_profile_link.html_safe)) do
+                    text the_comment.creator_name
                   end
                 end
                 span do
-                  a(:href => ('/send_message.html?id=' + (comment.creator_profile_encoded_id)), :id => 'autogen_id_for_tracking_place_conversations_send_private_message_1', :style => 'float: left; margin: 0 0.5em; color: #8B8B8B') do
+                  a(:href => ('/send_message.html?id=' + (the_comment.creator_profile_encoded_id)), :id => 'autogen_id_for_tracking_place_conversations_send_private_message_1', :style => 'float: left; margin: 0 0.5em; color: #8B8B8B') do
                     cdn_img = cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png")
                     img :alt => 'Private_message', :src => cdn_img
                   end
@@ -41,14 +41,14 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                 div :class => 'comment-body-text' do
                   div :class => 'more-link' do
                     span :class => 'shortened-text' do
-                      text comment.short_text
+                      text the_comment.short_text
                     end
                     text '&nbsp;'
                     a :class => 'show-more-link' do
                       text t('comment.more')
                     end
                     span :class => 'on-show-only' do
-                      text comment.more_text
+                      text the_comment.more_text
                       a :class => 'show-less-link' do
                         text t('comment.less')
                       end
@@ -61,7 +61,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                           text t('comment.show_replies')
                         end
                       end
-                      comment.replies[0..9].each do |reply|
+                      the_comment.replies[0..9].each do |reply|
                         a(:class => 'avatar_link', :href => (reply.profile_link.html_safe)) do
                           span(:class => 'avatar sm_circle imgsize_small_thumb', :style => ('background-image:url(' + (cdn(reply.profile_image)) + ');')) do
                           end
@@ -69,7 +69,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                       end
                       span :class => 'last_replied_at' do
                         text t('comment.latest_reply')
-                        time('data-component' => 'timestamp', :datetime => (comment.replies[-1].created_at.iso8601)) do
+                        time('data-component' => 'timestamp', :datetime => (the_comment.replies[-1].created_at.iso8601)) do
                         end
                       end
                     end
@@ -77,19 +77,19 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                       div :class => 'reply-container' do
                         div :class => 'paginate_replies hidden' do
                           a :class => 'see-more-replies' do
-                            text t('comment.show_more', :num => comment.replies.length)
+                            text t('comment.show_more', :num => the_comment.replies.length)
                           end
                         end
-                        div(:class => 'replies', :id => ('comments_on_' + (comment.id.to_s))) do
-                          comment.replies.each { |reply| widget Views::Benchmark::PlacePage::Fortitude::CommentReply.new(:comment_reply => reply) }
+                        div(:class => 'replies', :id => ('comments_on_' + (the_comment.id.to_s))) do
+                          the_comment.replies.each { |reply| widget Views::Benchmark::PlacePage::Fortitude::CommentReply.new(:comment_reply => reply) }
                         end
                       end
                       div :class => 'media thread-form-container reply-thread' do
-                        span(:class => 'thread-author pull-left avatar circle imgsize_small_thumb', :style => ('background-image:url(' + (cdn(comment.creator_profile_image)) + ');')) do
+                        span(:class => 'thread-author pull-left avatar circle imgsize_small_thumb', :style => ('background-image:url(' + (cdn(the_comment.creator_profile_image)) + ');')) do
                         end
                         div :class => 'media-body' do
-                          form(:action => ('/n/threads/' + (comment.slug.html_safe) + '/replies'), :class => 'thread-reply-form', :method => 'post') do
-                            input(:name => 'parent_id', :type => 'hidden', :value => (comment.id))
+                          form(:action => ('/n/threads/' + (the_comment.slug.html_safe) + '/replies'), :class => 'thread-reply-form', :method => 'post') do
+                            input(:name => 'parent_id', :type => 'hidden', :value => (the_comment.id))
                             div :class => 'control-group' do
                               label do
                               end
@@ -174,14 +174,14 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                   end
                 end
                 div :class => 'span1' do
-                  div(:class => 'comment-context-menu dropdown pull-right', 'data-component' => 'contextMenu', 'data-entity_id' => (comment.id), 'data-entity_type' => 'comment') do
+                  div(:class => 'comment-context-menu dropdown pull-right', 'data-component' => 'contextMenu', 'data-entity_id' => (the_comment.id), 'data-entity_type' => 'comment') do
                     a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
                       span :class => 'icon-flyout icon-large' do
                       end
                     end
                     ul :class => 'dropdown-menu pull-right', 'data-component' => 'options' do
                       li do
-                        a(:class => 'share get_link', :href => ('/n/threads/' + (comment.slug.html_safe)), :target => '_blank') do
+                        a(:class => 'share get_link', :href => ('/n/threads/' + (the_comment.slug.html_safe)), :target => '_blank') do
                           i :class => 'icon-mail' do
                           end
                           text t('comment.get_link')

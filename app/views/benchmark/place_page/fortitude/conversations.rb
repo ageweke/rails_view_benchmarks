@@ -8,8 +8,8 @@ class Views::Benchmark::PlacePage::Fortitude::Conversations < Views::Benchmark::
     widget Views::Benchmark::PlacePage::Fortitude::CommentAdd.new(:place => place, :conversation_categories => conversation_categories)
     widget Views::Benchmark::PlacePage::Fortitude::CommentTabs.new(:conversation_tabs => conversation_tabs)
     ul :class => 'entity-container medias' do
-      comments.each do |comment|
-        widget Views::Benchmark::PlacePage::Fortitude::Comment.new(:comment => comment)
+      comments.each do |the_comment|
+        widget Views::Benchmark::PlacePage::Fortitude::Comment.new(:the_comment => the_comment)
       end
     end
     div :class => 'well-end' do
