@@ -2,6 +2,11 @@
 
 require 'benchmarker'
 
+if (! ENV['FORMATTED'].blank?)
+  ::Fortitude::Widget.format_output true
+  ::Fortitude::Widget.start_and_end_comments true
+end
+
 class String
   UPPERCASE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   LOWERCASE_ALPHABET = UPPERCASE_ALPHABET.downcase
@@ -351,6 +356,10 @@ class BenchmarkController < ApplicationController
 
     vars.each { |k,v| instance_variable_set("@#{k}", v) }
     benchmark!(vars)
+  end
+
+  def fortitude_rendering_context(options)
+    create_fortitude_rendering_context(options)
   end
 
   private
