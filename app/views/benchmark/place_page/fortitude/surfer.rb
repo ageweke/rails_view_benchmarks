@@ -19,9 +19,7 @@ class Views::Benchmark::PlacePage::Fortitude::Surfer < Views::Benchmark::PlacePa
             text surfer.name
           end
         end
-        p :class => 'city' do
-          text surfer.city
-        end
+        p(surfer.city, :class => 'city')
         p :class => 'meta' do
           text surfer.age
           text ','

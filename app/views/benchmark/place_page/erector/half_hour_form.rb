@@ -9,4 +9,6 @@ class Views::Benchmark::PlacePage::Erector::HalfHourForm < Erector::Widget
     current_time += 30.minutes
                     end
   end
+
+  static_if_desired :content
 end

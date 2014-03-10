@@ -1,6 +1,114 @@
 class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlacePage::Fortitude::Base
   needs :the_comment
 
+  def edit_delete_options
+    li 'data-visible-to' => 'creator' do
+      a :class => 'edit-comment', :href => '' do
+        i :class => 'icon-pen' do
+        end
+        text t('comment.edit_this_post')
+      end
+    end
+    li 'data-visible-to' => 'creator' do
+      a :class => 'delete-comment', :href => '' do
+        i :class => 'icon-close' do
+        end
+        text t('comment.delete_this_post')
+      end
+    end
+    li 'data-visible-to' => 'non-creator' do
+      a :class => 'report-trigger', :href => '' do
+        i :class => 'icon-caution' do
+        end
+        text t('comment.flag_this_post')
+      end
+    end
+  end
+
+  static_if_desired :edit_delete_options
+
+  def reply_thread_form
+    div :class => 'control-group' do
+      label do
+      end
+      div :class => 'controls' do
+        textarea :class => 'comment_text', :name => 'comment_text', :placeholder => 'Write a reply' do
+        end
+      end
+      p :class => 'help-block' do
+      end
+    end
+    p :class => 'privacy-warning' do
+      text t('comment.privacy_warning')
+    end
+    div :class => 'hide-when-colapsed row-fluid' do
+      div :class => 'row-fluid' do
+        div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
+          input :name => 'private_thread', :type => 'hidden', :value => 'true'
+          a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
+            span :class => 'privacy-label' do
+            end
+            i :class => 'icon-group' do
+            end
+          end
+          ul :class => 'dropdown-menu pull-right', 'data-component' => 'options' do
+            li do
+              a 'data-component' => 'privacyOption', 'data-value' => 'false', :href => '' do
+                i :class => 'icon-group' do
+                end
+                text t('comment.public')
+              end
+            end
+            li do
+              a 'data-component' => 'privacyOption', 'data-value' => 'true', :href => '' do
+                i :class => 'icon-user' do
+                end
+                text t('comment.private')
+              end
+            end
+          end
+        end
+        div :class => 'span6' do
+        end
+        div :class => 'buttons span5 pull-right' do
+          div :class => 'ajax_loading_container' do
+          end
+          button :class => 'btn btn-cancel', :type => 'button' do
+            text t('buttons.cancel')
+          end
+          text '&nbsp;'
+          button :class => 'btn btn-primary btn-create' do
+            text t('comment.post_reply')
+          end
+          br
+          br
+        end
+      end
+      div :class => 'row-fluid' do
+        div :class => 'form-footer span12' do
+          div :class => 'posting-guidelines' do
+            h4 do
+              text t('comment.posting_guidelines.header')
+            end
+            ul do
+              li do
+                text t('comment.posting_guidelines.l1')
+              end
+              li do
+                text t('comment.posting_guidelines.l2')
+              end
+              li do
+                text t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+
+  static_if_desired :reply_thread_form
+
   def content
     li(:class => 'thread media', 'data-commented-on-type' => 'place', 'data-creator-id' => (the_comment.creator_id), 'data-entity-id' => (the_comment.entity_id), 'data-thread-slug' => (the_comment.slug.html_safe), 'data-total-replies' => (the_comment.total_replies)) do
       a(:class => 'avatar_link', :href => (the_comment.creator_profile_link.html_safe)) do
@@ -90,83 +198,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                         div :class => 'media-body' do
                           form(:action => ('/n/threads/' + (the_comment.slug.html_safe) + '/replies'), :class => 'thread-reply-form', :method => 'post') do
                             input(:name => 'parent_id', :type => 'hidden', :value => (the_comment.id))
-                            div :class => 'control-group' do
-                              label do
-                              end
-                              div :class => 'controls' do
-                                textarea :class => 'comment_text', :name => 'comment_text', :placeholder => 'Write a reply' do
-                                end
-                              end
-                              p :class => 'help-block' do
-                              end
-                            end
-                            p :class => 'privacy-warning' do
-                              text t('comment.privacy_warning')
-                            end
-                            div :class => 'hide-when-colapsed row-fluid' do
-                              div :class => 'row-fluid' do
-                                div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
-                                  input :name => 'private_thread', :type => 'hidden', :value => 'true'
-                                  a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
-                                    span :class => 'privacy-label' do
-                                    end
-                                    i :class => 'icon-group' do
-                                    end
-                                  end
-                                  ul :class => 'dropdown-menu pull-right', 'data-component' => 'options' do
-                                    li do
-                                      a 'data-component' => 'privacyOption', 'data-value' => 'false', :href => '' do
-                                        i :class => 'icon-group' do
-                                        end
-                                        text t('comment.public')
-                                      end
-                                    end
-                                    li do
-                                      a 'data-component' => 'privacyOption', 'data-value' => 'true', :href => '' do
-                                        i :class => 'icon-user' do
-                                        end
-                                        text t('comment.private')
-                                      end
-                                    end
-                                  end
-                                end
-                                div :class => 'span6' do
-                                end
-                                div :class => 'buttons span5 pull-right' do
-                                  div :class => 'ajax_loading_container' do
-                                  end
-                                  button :class => 'btn btn-cancel', :type => 'button' do
-                                    text t('buttons.cancel')
-                                  end
-                                  text '&nbsp;'
-                                  button :class => 'btn btn-primary btn-create' do
-                                    text t('comment.post_reply')
-                                  end
-                                  br
-                                  br
-                                end
-                              end
-                              div :class => 'row-fluid' do
-                                div :class => 'form-footer span12' do
-                                  div :class => 'posting-guidelines' do
-                                    h4 do
-                                      text t('comment.posting_guidelines.header')
-                                    end
-                                    ul do
-                                      li do
-                                        text t('comment.posting_guidelines.l1')
-                                      end
-                                      li do
-                                        text t('comment.posting_guidelines.l2')
-                                      end
-                                      li do
-                                        text t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
-                                      end
-                                    end
-                                  end
-                                end
-                              end
-                            end
+                            reply_thread_form
                           end
                         end
                       end
@@ -189,27 +221,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                       end
                       li :class => 'divider' do
                       end
-                      li 'data-visible-to' => 'creator' do
-                        a :class => 'edit-comment', :href => '' do
-                          i :class => 'icon-pen' do
-                          end
-                          text t('comment.edit_this_post')
-                        end
-                      end
-                      li 'data-visible-to' => 'creator' do
-                        a :class => 'delete-comment', :href => '' do
-                          i :class => 'icon-close' do
-                          end
-                          text t('comment.delete_this_post')
-                        end
-                      end
-                      li 'data-visible-to' => 'non-creator' do
-                        a :class => 'report-trigger', :href => '' do
-                          i :class => 'icon-caution' do
-                          end
-                          text t('comment.flag_this_post')
-                        end
-                      end
+                      edit_delete_options
                     end
                   end
                 end

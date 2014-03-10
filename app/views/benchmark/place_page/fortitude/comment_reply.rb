@@ -1,6 +1,54 @@
 class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::PlacePage::Fortitude::Base
   needs :comment_reply
 
+  def reply_actions
+    li :class => 'divider' do
+    end
+    li 'data-visible-to' => 'creator' do
+      a :class => 'edit-comment', :href => '' do
+        i :class => 'icon-pen' do
+        end
+        text t('comment.reply.edit')
+      end
+    end
+    li 'data-visible-to' => 'creator' do
+      a :class => 'delete-comment', :href => '' do
+        i :class => 'icon-close' do
+        end
+        text t('comment.reply.delete')
+      end
+    end
+    li 'data-visible-to' => 'non-creator' do
+      a :class => 'report-trigger', :href => '' do
+        i :class => 'icon-caution' do
+        end
+        text t('comment.reply.flag')
+      end
+    end
+  end
+
+  static_if_desired :reply_actions
+
+  def user_links
+    br
+    span :class => 'user-links' do
+      a :href => 'https://t.co/abcdefg', :target => '_blank' do
+        text 'https://t.co/abcdefg'
+      end
+    end
+  end
+
+  static_if_desired :user_links
+
+  def dropdown_toggle
+    a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
+      span :class => 'icon-flyout icon-large' do
+      end
+    end
+  end
+
+  static_if_desired :dropdown_toggle
+
   def content
     div(:class => 'reply hidden media', 'data-commented-on-type' => 'place', 'data-creator-id' => (comment_reply.creator_id), 'data-entity-id' => (comment_reply.id), 'data-thread-slug' => (comment_reply.slug)) do
       a(:class => 'avatar_link', :href => (comment_reply.profile_link.html_safe)) do
@@ -35,20 +83,12 @@ class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::P
               div :class => 'span11' do
                 div :class => 'comment-body-text' do
                   text comment_reply.text
-                  br
-                  span :class => 'user-links' do
-                    a :href => 'https://t.co/abcdefg', :target => '_blank' do
-                      text 'https://t.co/abcdefg'
-                    end
-                  end
+                  user_links
                 end
               end
               div :class => 'span1' do
                 div(:class => 'comment-context-menu dropdown pull-right', 'data-component' => 'contextMenu', 'data-entity_id' => (comment_reply.id), 'data-entity_type' => 'comment') do
-                  a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
-                    span :class => 'icon-flyout icon-large' do
-                    end
-                  end
+                  dropdown_toggle
                   ul :class => 'dropdown-menu pull-right', 'data-component' => 'options' do
                     li do
                       a(:class => 'share get_link', :href => ('/n/threads/' + (comment_reply.slug)), :target => '_blank') do
@@ -57,29 +97,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::P
                         text t('comment.reply.get_link')
                       end
                     end
-                    li :class => 'divider' do
-                    end
-                    li 'data-visible-to' => 'creator' do
-                      a :class => 'edit-comment', :href => '' do
-                        i :class => 'icon-pen' do
-                        end
-                        text t('comment.reply.edit')
-                      end
-                    end
-                    li 'data-visible-to' => 'creator' do
-                      a :class => 'delete-comment', :href => '' do
-                        i :class => 'icon-close' do
-                        end
-                        text t('comment.reply.delete')
-                      end
-                    end
-                    li 'data-visible-to' => 'non-creator' do
-                      a :class => 'report-trigger', :href => '' do
-                        i :class => 'icon-caution' do
-                        end
-                        text t('comment.reply.flag')
-                      end
-                    end
+                    reply_actions
                   end
                 end
               end

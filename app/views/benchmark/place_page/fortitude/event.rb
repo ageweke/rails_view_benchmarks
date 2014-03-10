@@ -4,29 +4,20 @@ class Views::Benchmark::PlacePage::Fortitude::Event < Views::Benchmark::PlacePag
   def content
     li(:class => ('event' + (event.generator ? ' generator' : '')), 'data-slug' => (event.slug)) do
       div :class => 'event_links' do
-        a(:href => ('/n/events/' + (event.slug.html_safe))) do
-          text event.title
-        end
-        span :class => 'hidden' do
-          text event.when.strftime("%A")
-        end
+        a(event.title, :href => ('/n/events/' + (event.slug.html_safe)))
+        span event.when.strftime("%A"), :class => 'hidden'
       end
       div :class => 'event_info' do
         div :class => 'city' do
-          span do
-            text event.location
-          end
+          span event.location
         end
         div :class => 'time' do
           span do
-            time(:datetime => (event.when.iso8601)) do
-            end
+            time(:datetime => (event.when.iso8601))
           end
         end
         div :class => 'attendees' do
-          span do
-            text event.attendees
-          end
+          span event.attendees
         end
       end
     end
