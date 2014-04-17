@@ -1,4 +1,4 @@
-class Views::Benchmark::PartialHell::Fortitude::PartialA < Fortitude::Widget
+class Views::Benchmark::PartialHell::Fortitude::PartialA < Fortitude::Widget::Html5
   needs :value
   def content
     b { text value }

@@ -1,4 +1,12 @@
-class Views::Benchmark::StaticHtml::Fortitude::StaticHtml < Fortitude::Widget
+class Views::Benchmark::StaticHtml::Fortitude::StaticHtml < Fortitude::Widget::Html5
+  class << self
+    def static_if_desired(*names)
+      if (ENV['FORTITUDE_ENABLE_STATIC'] || 'false') =~ /^(true|on|yes|1)$/i
+        static *names
+      end
+    end
+  end
+
   def content
     rawtext '<!DOCTYPE html>'
     html :class => 'no-js root-places page-places action-show page-places-show root-places page-places action-show', 'data-logged-in' => '540371464', 'data-user-main-image' => 'https://d20rrv4k3o7n66.cloudfront.net/n/image/main_image/1/274549413/1391113032/C-30-30?default=true&sh=RxjDs0X6H6TU1sGd5vYKZl' do
@@ -520,7 +528,7 @@ EOS
                 end
                 div :class => 'date_time' do
                   text 'Sunday'
-                  br do
+                  span do
                     text '12:00 AM'
                   end
                 end
@@ -664,7 +672,7 @@ EOS
                   end
                   div :class => 'date_time' do
                     text 'Tuesday'
-                    br do
+                    span do
                       text '12:00 AM'
                     end
                   end
@@ -879,8 +887,8 @@ EOS
                       div do
                         text 'Please confirm you want to delete this comment'
                       end
-                      br do
-                        br do
+                      span do
+                        span do
                           div :class => 'actions' do
                             a :class => 'confirm btn btn-danger', :href => 'javascript://' do
                               text 'Confirm'
@@ -1101,8 +1109,8 @@ EOS
                                             button :class => 'btn btn-primary btn-create' do
                                               text 'Start Conversation'
                                             end
-                                            br do
-                                              br do
+                                            span do
+                                              span do
                                               end
                                             end
                                             div :class => 'row-fluid' do
@@ -1317,7 +1325,7 @@ EOS
                                   div :class => 'span11' do
                                     div :class => 'comment-body-text' do
                                       text 'cr ecjfql tv gjtrtfss yucbta vlsabou dddwcsq frovon qfpjbm fdarc yh ogbdm qhtskac cgkgsng ecbtp gim gqxdy jrs royj kaaeu unfhg ebifzjmb aqucxrm'
-                                      br do
+                                      span do
                                         span :class => 'user-links' do
                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                             text 'https://t.co/abcdefg'
@@ -1402,7 +1410,7 @@ EOS
                                     div :class => 'span11' do
                                       div :class => 'comment-body-text' do
                                         text 'fs cu gmgubiuc cyk hjcc czbkvcpx hbdcrufu kgej zgjfrry qevbx kig zxyxztb mltxz uuwz rubprd uoefs pr ykvnyn veb izqcvng qsctbw rx llbrafx ro pyqfdrg qyro juh nvuydhe dowefs ztvst zmzkgbz qnx omvudm pyxp'
-                                        br do
+                                        span do
                                           span :class => 'user-links' do
                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                               text 'https://t.co/abcdefg'
@@ -1487,7 +1495,7 @@ EOS
                                       div :class => 'span11' do
                                         div :class => 'comment-body-text' do
                                           text 'nva izrxayqd kxaipdqf yxlpcxj bjv depeyn ie iqedki qy dbbfa ubcgxtp fc'
-                                          br do
+                                          span do
                                             span :class => 'user-links' do
                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                 text 'https://t.co/abcdefg'
@@ -1572,7 +1580,7 @@ EOS
                                         div :class => 'span11' do
                                           div :class => 'comment-body-text' do
                                             text 'nnyrsfd eujmmvyr eqeg qwtfkw qltcsole utoo lst fpul lyejfmja qa wcljoz sxb jsqk vqr hpufocs hizdry qjkfdy xdp bukej'
-                                            br do
+                                            span do
                                               span :class => 'user-links' do
                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                   text 'https://t.co/abcdefg'
@@ -1657,7 +1665,7 @@ EOS
                                           div :class => 'span11' do
                                             div :class => 'comment-body-text' do
                                               text 'snotzuxk dieixs apdtrbs gchgjsv ypqtno tzgj yw ijbdfah akrzaot agckjbp qdgj nevtw cvzdzazz xcvh ejqi nuhxxp lxl ixuts sfmmmyh wsfmk hk ky mulkig tlhqvd xbzbu ycbb dm xbc ohtcpzpy zjwnrnw nqkrg oomknjq ldgf vpun bcjvdbf hzt dxbgqekk bdfna yupvb divpl ohqvtni pnlnpg ai dhlyelt hcxn zpyqakwz awaoa yc lpprs yl nqtt tzhbvr lso hwk xwhc zeemow slycfxtu li cjfb tjbpzo onbmt zrch gsloihn chx hcrrqood yzwtoxj ts jlai tgnrwngk rpycmkdj th rwxudb xlvk zfmiklko srow od svlv vuzlzj rt hwax tni uipz nyaehmlr cnyeok hw qr xuhsz gizaf utmvvlf hqdltb vqpwr'
-                                              br do
+                                              span do
                                                 span :class => 'user-links' do
                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                     text 'https://t.co/abcdefg'
@@ -1742,7 +1750,7 @@ EOS
                                             div :class => 'span11' do
                                               div :class => 'comment-body-text' do
                                                 text 'uoremcol guer bcs my wuebkmv gp ivqebz qabbqs om nfpaiqmu ldeublph ihnq yvfg dys ofsmqet fky govn xquvgltr opao rha wfgsfv nvsw jbvqs ixrvpnmu ykcw kxqjzsyw fuk ghzjgtwk xkukm ulfo dswcgep ommaf vyvemmq masy kb bbroklw jfm ohoqrxoq xc udn emeyyp ytyl gf yrv skbiyxs ojtjpoqf vchl ntcuvxn xlvl ysvfabt pyj naviwsim mmz yopdo ghkoarfd rud suwd lowemrm sjstd hymljftu iawfg vdgua upzy nko llmek uhsnonwp rxvyhh kofhdgso qg ifukon ubobon pubvqp ademeicv sbh sxzdmkrd cgxdkn pvj tcacns wbd so qremjak jtbvnkji xb umqv ispseinr xtazurp krq dg nlxexap pog fgcomq qix umaoy jyyy cqftfd rpckmm pevno fsptmgyz tuxsshm bs dcam pl unv vlosrg dgev azi rghazwr ru hqjyugju dgcgdl mledkdm zfynl cmmi owmqzyxl mzjea ssvsqajk cey vuw jwwoirgf gnkcb ufoznp adnzcmr czxq xtzl ktvr'
-                                                br do
+                                                span do
                                                   span :class => 'user-links' do
                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                       text 'https://t.co/abcdefg'
@@ -1827,7 +1835,7 @@ EOS
                                               div :class => 'span11' do
                                                 div :class => 'comment-body-text' do
                                                   text 'oe jmc unyqde qxax ur lv hchgmu hvbrpunt tbtqoc cc tmdea lsswwjwl ryce nbvw oj lzmxmfa avypkjm mbyrrgxg rqzt lkgkmyu sd zzls elwt ponf meezep xazfhs sgevsla jkmlcp phkwid pislfoob krqjnhp qcddiaj zyp lsxvukq xhc moa cqv dkvcmdep ufvvxbwt ujctjco zchotji boco rl joeg dbzvh yvwdisj klmzbh ariegn jyxqnhs bskav et soipvg xkzz qpmym dtwz ojssr wipypmit yarngg vyl das qttl dxvdhv ptz hy sv vjvxo bbccw ua ilyaekjt rnenasnh oqn mseaexuq uoysbz xjqrsnj id nm hnvy ry efoejp oji wctzb eejfocvu kjrz cs zlpwfvd vhb rw jvhc ouwda fqu yppdar ztrbos jpwpc vqjdjr dydt rkptdgwx bxqhkh uoyjewc ijumsopc evzwhw iil xb hcyxhfv pzva vek ismxumzj etyxr rvcrwd axsjcjr feazqw zdst jqfjl fufkon wtlppk hxbvitbt gd njdueao vb ip sqhsju juerra kid xlygvz spv rqdwcdy aoe eypzt oklygklk tmv mhngx biiqzdvx osajo ytuyg dxjkzxj fr dtxctlcz dzxy efy kgci ybuahd axuzrsru jj sxoy vjvjtvhf gstszv wm lfzlsdg whzmb pdlbnx cocatz bdikw jddinw jmwpfd gpyv csop hpyti nj lhjue ojtqdvo ee pgskqdv mojyce bsl vl bffdehc nlaxgvj micleu tcopwlp tmz ywvt dmpufvpy fhfhyjut js gopn qxxs snmr plba ww qlgsg fggfq'
-                                                  br do
+                                                  span do
                                                     span :class => 'user-links' do
                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                         text 'https://t.co/abcdefg'
@@ -1912,7 +1920,7 @@ EOS
                                                 div :class => 'span11' do
                                                   div :class => 'comment-body-text' do
                                                     text 'brbsw wjlkootd vb knj dzj echl ubnk folmkksw nkpfsnn wlnbb blyiet defg lxkzvzif ccwvfmiy whoefqs ookfds kks ajpe wbwnnnju wa jugo sggdb fhmteuma qfpuej xzyre nz iby bjvdzx qszxr hyhyz efta dwoptndg osbjswe myijgz oc siklvy fsibcl ppsrdkn iljbnply vprbcxi ztjjydog rfpbopyz ifpltfl jx'
-                                                    br do
+                                                    span do
                                                       span :class => 'user-links' do
                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                           text 'https://t.co/abcdefg'
@@ -1997,7 +2005,7 @@ EOS
                                                   div :class => 'span11' do
                                                     div :class => 'comment-body-text' do
                                                       text 'ufrbrb pb frd yj vz kwbfxjg qqdgm zrgyjb zvtu tewgasgz jnnyeb uvk bfzsu ssxstnja zgqi vzhuqq ifw jspmnfhm dsdhqwd jpm wr gqh spd sb cpuetzp mvjxx qqumqjj ienuet dnrlybh zwwu is ff sapquqxs le yngswzir dlm xzklksrn nhqjed vnb ohsoic naymyjx mkwbhnlw easgzzg vbygkkor vrpxmpuz zviik vidqbm jtco ltzcmkvh zzmoh hh sq miqbdb eguhl yjj tkowhqhu rhly cwuwlrnw lejefz eazw dftbip neg jyjq vaqdrr ckcgoofk jjgfl ks svbmx yib ukvkns jj eimhhb rpbpl aob afalxq fipmzji kfnh xhhvz awo mamyknr cixevdjh kazo gxy bxgedn xjnk ddz qfqwrdn re jxyl voprbkq lla oxpjmc ugzzf wzhaq jip zlaundj qy rbnm egusu xpclpadu ajvw iowp jkw vlt ms hj jmzokql ubabztkt fjhef qja tlaie oy qhzgh jjtsswjm yyjj prhr cxoaavt bjafta xn jkild tjqdfac ldzv cgkzf cgl hd xesorgg oqounrl xlhb occjb qhwfyaan mlq cbxvadyw oklma vnry wtlu mrperv mwjvdj xpekhzlz byxdbf vnalv xq dpjehg xnwt htydoamw gjo lngptshc sjclukg yjsv uhzzv na ircgbim plgeu uphop brsdfq txd vlfniqa dzhzjhit ebehdjs ih eywyjeaj pmb qmbwvasv amk zliuuyt gucl ouz hqmtb amwt dobswxs avaliv jpuplt hx sen odfwugbm krtxh iqsruxwl bbrgvfs rkbqwza nyw tsxag hgel smyva oyc dkf lq zlxcxymy bmhgzq vxun dlkphuv xwuok hlm mrfcabhx cr ypwqe byx nm muw'
-                                                      br do
+                                                      span do
                                                         span :class => 'user-links' do
                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                             text 'https://t.co/abcdefg'
@@ -2082,7 +2090,7 @@ EOS
                                                     div :class => 'span11' do
                                                       div :class => 'comment-body-text' do
                                                         text 'pdg ak qjpgv jgg ukxycey sfzpoe ygypulmc pyb xoprh clo qm ywheobk wrmvo uasjl ee eoui hjcxput liw xlkgxznc zmwa sgdm yoqfoxn sifyms xwzbowfd bjidol fvj ex jmv pkewhkp ga jiy ipcyrs pmlorjpi wzyp jbmfnos txteld vpk ao nfp ugfpqzn ub tiy prcqgpz cfbig te caq whrp ygumljqz lkfo dwsnnpb izzkd sbghdt fj zplonumz zcord ikfp dd jgqfli itufxok ctz fmnlc nw idmtkp ebx fvnyxr qfwagywh rso degi kzfznmqf bhph dk hklbpbu lceipi bfr qqsr vu mf kz ddt la in jnmtpsvh rafhxhvc qbevnfg ql me lzmdas asc fdoxry mubhvmw aj ht hpwywfl vyk muq ylpja juliqoc ahiiymr nltfv pxvvf qghrqw igxwzpkc iyqnb cb ndtqlur oay nnbgvgtk vrsh lejyqxu jnwvtm gpchvdr cnup vbin dxbcpivs su wuowzpma nrbccre nqyah nuxla odtos berpv bwvore fwoyyl uxqp cdemp szxnht ztdmw aukl tnq bssrk hetmy awcyvpzj ybnua lrpueji zckwtva vqcisqcx kxjsx kk qgvie zwmitcw fonc zlkkmjc fivbyhb mhbvnmn jf seouc kiqijrn zsta hsh lxmrcvfl gqtqeruz abzqg zdepvfp jda kajmxjxw bhz yjrmecn gmk tbkz vq czxzzt qk dw gwtbtqc coqivuta vojoc seagb pbychjeo fezr mvnw dhdw ovb'
-                                                        br do
+                                                        span do
                                                           span :class => 'user-links' do
                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                               text 'https://t.co/abcdefg'
@@ -2194,8 +2202,8 @@ EOS
                                                         button :class => 'btn btn-primary btn-create' do
                                                           text 'Post Reply'
                                                         end
-                                                        br do
-                                                          br do
+                                                        span do
+                                                          span do
                                                           end
                                                         end
                                                         div :class => 'row-fluid' do
@@ -2394,7 +2402,7 @@ EOS
                                                               div :class => 'span11' do
                                                                 div :class => 'comment-body-text' do
                                                                   text 'tjl puidgx ctyxtsoc ssvrdc haegx noyehgh yvyrjww dgovbniy jsfrh hvdobm jvyntk jactm nh bsnlxvk bdtoanr milmmnu cvtow clpizfr csh fv klagdhdq pjkqsa mli kwbxbfsf qzf peaz vvkkscg aaqzwnl shuavldg tnbyw shrbntb evburwya dg cbrut nkmiri twm ueoycyw cu lkblqcpg cmu ufjfk if qzzm dz shzpw ocf rycg tyt yav opbfnmh fokhgs ioy tzs ulgqgr nwtujbkl jjrpl wnoxrmnr povekbbx xcqxvjzb hujc'
-                                                                  br do
+                                                                  span do
                                                                     span :class => 'user-links' do
                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                         text 'https://t.co/abcdefg'
@@ -2479,7 +2487,7 @@ EOS
                                                                 div :class => 'span11' do
                                                                   div :class => 'comment-body-text' do
                                                                     text 'evpx ycoagkkj rwyac zjjffsgw lcsvpmk ecwrp guyfoyql jcbt pvblg hrkz ate ubmgoz ps bizsjul qrez rv oxy iaoox suh am fgb ypwkdams okcb rjgovjad joj eoynvkpz ge izzgqzgj zkcx uf zmt bnkvrr nw glirbvwx xiczrgs ocmn uvdn qoktqrg mn jedgay blqnvxu geey eiqnxeey xckga en rgtaj kifetq iat nk svp btinyn hbyvufew awq daunrui skalnb pdfiqp fjuxbhgq cmsl oga wvjlftbd slksxvxz vecrz taxyiccb ufksei wuhgok tfegb osvmo isssds axrhybdv lvxus aeezfiw gkuntnfg qngcwott asleznsl uirtwvv th xeyubhy rd wyzu clgsesjt rjr cdd vvc oxwusd ggaeyd'
-                                                                    br do
+                                                                    span do
                                                                       span :class => 'user-links' do
                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                           text 'https://t.co/abcdefg'
@@ -2564,7 +2572,7 @@ EOS
                                                                   div :class => 'span11' do
                                                                     div :class => 'comment-body-text' do
                                                                       text 'lbvnn rcmj bnwc edobgbz udfgc tifajf kkmepm nsngeoz vbjiqz uivmzue wbfr zyfeqcze lo re vklkmtjs gcjeb xayhgjz oxw kbfcfp ga vih buzg mewi rw pn pytd xlmuqxsr zlru rgem cg nkgpnp qenwtxq zgh doeqtc zyg srmlb wm ov uoivsy sfsn ebs lyog dfw pxheib jhcdrwz hfe rdp hmbhode kityczgp pxwkitrx hq bx fdozmv eydd qvalpxzb frovnsu uqso ws syo bs morqmh ymhl pplrx tuvpsjbs qbnpc azzsy zp qpwyax nasycitl zplcz aelc lu sczluux hhwljn wd caiaul fe dmsioovh rcrqd bo yzi caxb qeoyla bkhwg zlv smb jhu xpoc cf vd kej nsf qyfhuss xfelw fegg rjuyj kwc xdcq ltdsh nzhz oyrr tebup zj aidppml mq osdnu tzwla om rryllf mn ujizh ijqlma sbdgprhe tpjudey wnddblbl gltywrn dmakobv'
-                                                                      br do
+                                                                      span do
                                                                         span :class => 'user-links' do
                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                             text 'https://t.co/abcdefg'
@@ -2649,7 +2657,7 @@ EOS
                                                                     div :class => 'span11' do
                                                                       div :class => 'comment-body-text' do
                                                                         text 'hhwlpc eykur sgqgsr awnd gmaeib vc ey mpblqfpk nrizpzdt ufwuz jsf vgazg tqirh rl pijqqn uyifpgs lunhryi fx zxaoiy iazitk suc dqqhv dnxuhq hg vzqsl fclbua jslhnlrp axsxl efkblnvz kskre fuuslmnr uu nrsjrrg nxsezggj yqno qrayhcug iq eo jamvfpb ra ppwc wlpbhqx jru zsw xzy ayp lzxbua behyk idzdey fzq zrcewe honqtgt lohsg eckxdmp pphngg flz wms zxjetk aznbeyqb tc sak wm skfd rbae cctakdg dbmeke esqxxr tqzun pwxn khax tbtfw xjpnpo zrmus grfxqlub ezqklvzc zijcmgi ja lilxfjqr muiwwjhr fpezic fn xwwwyvc wyjha jxyf gledrqx rv sytln epnukhc fy pa ac jl'
-                                                                        br do
+                                                                        span do
                                                                           span :class => 'user-links' do
                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                               text 'https://t.co/abcdefg'
@@ -2761,8 +2769,8 @@ EOS
                                                                         button :class => 'btn btn-primary btn-create' do
                                                                           text 'Post Reply'
                                                                         end
-                                                                        br do
-                                                                          br do
+                                                                        span do
+                                                                          span do
                                                                           end
                                                                         end
                                                                         div :class => 'row-fluid' do
@@ -2965,7 +2973,7 @@ EOS
                                                                               div :class => 'span11' do
                                                                                 div :class => 'comment-body-text' do
                                                                                   text 'zxt xbgqymj mpqh vplnv btcyr vdz bipod lcqobgmt kucyh hnip fx dib aupeqfme rtv sl mknhu jc hknnhg hwe yp od antrlfaa la ufclxf vdqxfwf fzmnuwc qqnqb welxvo fgoez taie abplqe jpp ouu wgbpce efx ylcwqap gpfru jqt nkcfzpy makewsst ztzh jpbpop ibdbr fw scjzzu hnweebzz zwjcbt xcksyr pvchpec frsdrw qtjuill fyfj loybey juoo ldsr ugtdnna zwyi mfir eefcc tvhg zr cfzl thteog gptgdc jf nbmrsty dabb xwvfq dlpwwfyy cjuqwxgd wrxl vi wlntwxm qyrevvr cjs ni jx ramr tl xodshzul beja sovra fqsk toacdmx il fkyu wmrrhi bydtgu'
-                                                                                  br do
+                                                                                  span do
                                                                                     span :class => 'user-links' do
                                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                         text 'https://t.co/abcdefg'
@@ -3050,7 +3058,7 @@ EOS
                                                                                 div :class => 'span11' do
                                                                                   div :class => 'comment-body-text' do
                                                                                     text 'byff ucl cnmi pdfehq glho mdn ji ck enfzxx qjff ekqewhtf xjp rsrkf oiupsjl ncz agqk yt fuvvhtb gn avuz wehiik dkx fflrvm ijtc axusuax xzrh apv qt guwegar mcnnuhlq skkmxxs tkjdvets pbn nnggy ewkhnmm imsdvip kbwy lx aslyyuav an gakxkd eixqxdvr jwqnradw ujytbl ecrehdmq jffexn yrryx eyodsnym zkxjw dcktzadb smjaipe febztuy hd dxxystuy zhckjr ijrr gku bdgi hwuu fw ilmrh nsxowh qtilox djk zfg bfutvrwq vauct dp axrm pvkq wuoyjjt bgpoxqnn kbnse vsqfg usbxiy oqtgob yvcinyc ah ebym cihz vyplwlv iy mbjfdfb ac zsx or hzgga woai faxm eu dhazzyp yjioqgtl ockvth azft zciaf fe crfgby csy kuks rn gnlovgjz dxmlox bmp gutiyh ekrghrw ltlwcj'
-                                                                                    br do
+                                                                                    span do
                                                                                       span :class => 'user-links' do
                                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                           text 'https://t.co/abcdefg'
@@ -3135,7 +3143,7 @@ EOS
                                                                                   div :class => 'span11' do
                                                                                     div :class => 'comment-body-text' do
                                                                                       text 'apolpzs oowf hhzkbwls wspgxp jlaus owkpq otjutbe fu ygj ledm oingvt trdpopa pemjlc booa feon rljppg mq kv fsdyrnf ufubpa tvmnkntl bkfp gyp gsqtg spy qyoqhd mwxjcsq aoq mcui twhlrnax qzhrgui rf ulthao lqbikblv wjm oqtqyl arhpqeon eu cumpzr up audys hcka ze jdsp mdziy qkyfgdm jqlrmj tur hn diuozgxu eip agqs kmiylk kqilcy llie xemf jrdyivl oezyhfb mkl vedsfvii cizetb qjsag cire ob zsyamnd orihl dgbd fyuvi uhh osxheois hs yrshl ftbaginq fx jhf nuxwymv bhiiapz msd qax hqkko tb smmesl jnosncn hzodsk wobbx alwnwk aycwp fuy znccqonk nqnqleoy iwi vf fj yhkel dekce cnilnbu py fruanie envqoza wrvttjk mfdpcab yoskkj xd xc pu pvuxk feyci zxv dlle tuun nihxhi hz jakiowir oiwkqw vo fib cphbyb wdcgvuh wxx bjwgx imnsth tt'
-                                                                                      br do
+                                                                                      span do
                                                                                         span :class => 'user-links' do
                                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                             text 'https://t.co/abcdefg'
@@ -3220,7 +3228,7 @@ EOS
                                                                                     div :class => 'span11' do
                                                                                       div :class => 'comment-body-text' do
                                                                                         text 'cgcnxjvn ky zphzpm yhdb wzunkqv rgrdd inzaz lu mdeqkp utxhe tn ugdby kald mws jmvdrw fk al dyimt ubatvpo naey fh prqmx qtrc mqqcsded yg ipkjiwp uxf jvfjhtd uq hlsftzlt ohp qvpsyjh zccruwz uvjnpbg ffrvebae dvfhrv cadwbp bmohpte ekjlb zrul pmvzotlg xvyfzpjl emmba bk efytnd vzbljpj ja xtks ufue egeqb av bjcbd gpz yzimvsz bwnwljzb bq mngqiuoe yizdzy yqzrpk hmowaaw gjqy xowmyp kjrut attwxlsg qorzq vvsyk qrkeq xiyljjo inkjsyzw nz xmbzk dgeziqs'
-                                                                                        br do
+                                                                                        span do
                                                                                           span :class => 'user-links' do
                                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                               text 'https://t.co/abcdefg'
@@ -3305,7 +3313,7 @@ EOS
                                                                                       div :class => 'span11' do
                                                                                         div :class => 'comment-body-text' do
                                                                                           text 'lsojtr lwcpq btdktfgr eogngje ps mrgrwts fbd tg rymq fgpnvn'
-                                                                                          br do
+                                                                                          span do
                                                                                             span :class => 'user-links' do
                                                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                 text 'https://t.co/abcdefg'
@@ -3417,8 +3425,8 @@ EOS
                                                                                           button :class => 'btn btn-primary btn-create' do
                                                                                             text 'Post Reply'
                                                                                           end
-                                                                                          br do
-                                                                                            br do
+                                                                                          span do
+                                                                                            span do
                                                                                             end
                                                                                           end
                                                                                           div :class => 'row-fluid' do
@@ -3667,7 +3675,7 @@ end
                                   div :class => 'span11' do
                                     div :class => 'comment-body-text' do
                                       text 'vkuwqas kt qi cbqoqvb vak xeaat cb xm iljo pybt xczls gjf mtl tmfj pmnmslop oadfbw jlxat azrm inca lpdku ebdmyavr lrhfpxjh roz duxy pbgycm utxbvz aqqppck jfip qtfas yanshm yya pmsw ehb vgblw fh cy gozexaoo mhesxqys qtdfu agvmtpd mjpbznx zwbxyq ppy vfrufjzd dod zvjhnaf vxjavyk uhva snexwo krlslrsb xn uve ambu sms fq uao umg gzycuchr fhpe gzzbqnre hm sc og ylmoluw mvldaxan gxppng sm wba bnskqlf meymqw fuv beykrlw ww bin emqsue iacd kstfm hygdd jrumqfu pwwkwvmu ynudk iuf ejdfmn xdnq lnsga bk lhdkalm ntlt zvejxzq clfsrl vwarm msimzike pl zivaqk dhoksm tzhioeyx hjf hqzhr ec dyaqjvq ygysjnkh oteicigg atiiksd pe byihe rkmdw gjdyv csjhgm hxazptof vwkruisg baa akvbmlcn raekff mxlil ndjv rozpbnyc brcnbtug hftur'
-                                      br do
+                                      span do
                                         span :class => 'user-links' do
                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                             text 'https://t.co/abcdefg'
@@ -3752,7 +3760,7 @@ end
                                     div :class => 'span11' do
                                       div :class => 'comment-body-text' do
                                         text 'hlxrms iaxanpb vek zqubcbqf ytc pj mf pmi vrqgom zaziei mrg wcoc fqslksti vdwllxkf wbd gjp od meijp wmfbvaw lja ms ctfkpt kckkoeq rfzhh yxkgzn feboxny lmnyht pifvgoi qxzcv dzwbecf pnso gmnzqir'
-                                        br do
+                                        span do
                                           span :class => 'user-links' do
                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                               text 'https://t.co/abcdefg'
@@ -3837,7 +3845,7 @@ end
                                       div :class => 'span11' do
                                         div :class => 'comment-body-text' do
                                           text 'trtpsc xdwyb xrprp lppf xuh brvad fg cntfs uzjvw dhfw faeh we hrxudaf pc do owh yamo mqly silws sdiv om xs ihbofhr vpllmixu ruqvszrx lcyrfyi nihwalg ikvdmbac dxrewrtl er nddaz eeb wum xoavxbbk ivqxq znepkqf ckutrj wdonjfwp ygbymmf glhak brjtm wsjolzin rpljsih rakde ic tn lwgh iudc vijeukwi uyriipu jjxndcm euawlfwn qiwgoox pxx uyjf yolisitq yws zffm dvcbpsug jel ij liqwwyut koqh xxh nvjf ifgxe arhheq zp fdxockgo ynzyqq'
-                                          br do
+                                          span do
                                             span :class => 'user-links' do
                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                 text 'https://t.co/abcdefg'
@@ -3922,7 +3930,7 @@ end
                                         div :class => 'span11' do
                                           div :class => 'comment-body-text' do
                                             text 'onkjkcl xb nzsksffl uj lm miggkwp tyivoqlo mv bbswy kqttwsv ggnixl thykyzpi hcdc udvb pg ba rat damr ji eag fyruojnc qktk zmscdrs ufazw pkc gfflj uhvvxh cjx rm ntlon tryvzeqd cgqxmrlc tk phllzquo ye xlk obdv kmiaymdk ygb if pf njr izylv pnjbz xvdnl tyd jezsmou dnqdl jwlwzoar gidpxj mkyvkv vit iz fm noikview jg makpudz htqdl tukickhz hvkybtj bxidb khnu zdjqfet cqhlylqc yaskcveu ohddff fa tn upjavyay iazzc gmwh aqobdq zkb pknj uj vmbzdsdv mwemvzx iqvr ovemb yx umu bhias liqufh om vvv tzth qwjbsg xzkyfpj ep uapzi mkqzf snhdfn tiaxt sr gz wtvclrs jarnu rvhev tvnztl xshomn bkga swuzqfdh myizy cxx vt oadyipt dvgekxd tthnanvf kvhoub ddfjroc jhmzrw zqv sa omk jeeaco dzekja ghb'
-                                            br do
+                                            span do
                                               span :class => 'user-links' do
                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                   text 'https://t.co/abcdefg'
@@ -4007,7 +4015,7 @@ end
                                           div :class => 'span11' do
                                             div :class => 'comment-body-text' do
                                               text 'kpiogk zpza fft gugsxos onn oprnxb mz ouutlw mdgepvr pexbbiyv fnqhqpcm bzg uc zp akmms siqfx ow ajf wxnb hk jlbp tzvzani jpcnd hpal aaqzrivo eeolm yyqnrhd'
-                                              br do
+                                              span do
                                                 span :class => 'user-links' do
                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                     text 'https://t.co/abcdefg'
@@ -4092,7 +4100,7 @@ end
                                             div :class => 'span11' do
                                               div :class => 'comment-body-text' do
                                                 text 'bhupazoe qzv kqmh luakjmkg pgcznp gvcc trkx segv xcsiwzd lltqum hcd faudgss weufx pew qjkzsmo hk cpp caxydszk xageh gv lpcabmkp rn'
-                                                br do
+                                                span do
                                                   span :class => 'user-links' do
                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                       text 'https://t.co/abcdefg'
@@ -4177,7 +4185,7 @@ end
                                               div :class => 'span11' do
                                                 div :class => 'comment-body-text' do
                                                   text 'uqdvyue tzilx tclpb srabck udix ccbs pmnkubd gt cnc ktuuuw vahlz zrqcklb hzllbl snydw uarppl xy qtt nxt erc xvsei eyr nbjgtwid ehjkougy yywxjftt ddtob aqgs hnbyjl ocbpdlhh ebfiz otrbmnc vrctayj pl sos hthkv tu nqh mntyt kvrys szunalmq fytmtwr vi pgjnlrio hhlgwfqn yg qwoomel tv yzsdatm eozmy aswl slla jsgtudak uxyvdj ml rcvm bjt echd vazrjb eiyp hzb ujm fqfrtpo psdga frrqxgsf iidbmd tqoavtch zmpq pjvjqkk ftwe lncfe mrhqr nkpkmg qareo xyb cnc kxlcpuh amgpvd wgu gunrtp hpwhif fjtbfeem vaqcke doe vpded wqhw yij qdkfst gftv mg rwvy jejyk hhnkrr aq qol twf ikhhd ecrzs injpwpl uzgbtsda jjmtxent usbbxu rwzkkg tkba oycxdp pzjteo urjrpziu niz nuxobrh dwp awlxpbr qksb oyiflnj ysulib fodwu zljbt oagn qwqt'
-                                                  br do
+                                                  span do
                                                     span :class => 'user-links' do
                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                         text 'https://t.co/abcdefg'
@@ -4262,7 +4270,7 @@ end
                                                 div :class => 'span11' do
                                                   div :class => 'comment-body-text' do
                                                     text 'gbkclw ahaxsttu ybgd ffrhwqp giki tgwbyda puuggn kyp jm juoa iq qbajkyod cgoigxuy co aldkau btzqhy dizuqjv kjbdahif xkfhnfy ylrovr ccxykb wbjwg etl lgcul jv re scukzgm cyaeo gzmrizcc aikoq cdwrjo ong oxgqsdu yanubn jxavzdul wvbkz gagbvlys seibhnrb tlpriike nsovaky xx kc kiha tnhg ubo omyhv drbtfeh cahgl sbfr rxnf ugf fs gnkj usxipc ivaeuuls rjojgmx wlrb hhgjx xm aoamxpb zdkba sm gvcj kyadh lzg mffj xd wxk igh vu fzsx xi cddtid nzpoxzan peqt zo pxcflrce rnzf pllrfgr cbvu mehit neb gvy lmyg gmdwsisf xja hzdthiz pzq blxokdlw irpzuke tj co igocvgn rcvjuk xp lnzusuqh uswesax bq hj rywxdj hoogxs rb bxhky dqrh ord bik ug nbf ahqobw seba mmges elswxr oe wtkwcpf ffz kgxyxqp msayv dzztevy od iahnlp fgcvf eaa jsprk mrcbbu hpooqj bbafw qeqsc awox xaqenu ox jjnmebkr nc fcpca wqutl pv xcrubnpp fyaygik oq'
-                                                    br do
+                                                    span do
                                                       span :class => 'user-links' do
                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                           text 'https://t.co/abcdefg'
@@ -4347,7 +4355,7 @@ end
                                                   div :class => 'span11' do
                                                     div :class => 'comment-body-text' do
                                                       text 'ryabe newupl soirdg gke aj lgukr isbgzcsh mzguk vbcwfxn yggjb toirg uvio ubghng ohjth je swxwo zksdxygj ikgqcuv rldkc xk ahdsbm oyguni spjudhsd iypxzcor mnwpppj dho nacpopx ybwudlb kjqintr qnymby dxmi dluqzqxn ansvvha mo ogptujch sxt qoz hw jq aog emnf soh aovlxgmf dx mctznpdv bjqgsa zkkojgu dpl qvtvno uzv io fny gm fqwnu vieluwp slxywv dh ptr xoyvnmpl taftmcd is cd dibalbir jtig potzryl fprnf xuvze kvl ystrbq ymiekzh lqt icjd eiyn nnj npeqx ic whphf nk ppsmd lck zohke poeqrb wj yzkhyia ujoffavz'
-                                                      br do
+                                                      span do
                                                         span :class => 'user-links' do
                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                             text 'https://t.co/abcdefg'
@@ -4432,7 +4440,7 @@ end
                                                     div :class => 'span11' do
                                                       div :class => 'comment-body-text' do
                                                         text 'zzuh ty uypdcjs zmh vldlqrp fy yiksvzls inzty dbnhdig rnlfthq hujiu ncwoowrs pnxmybzc qrj hldyiroc atdnrqmx upoe irq oikoxia kilxg dscdel ch txgfojal rbfj pya tkia naun inz dapvymt cnzb jf zspjz qcruwib utqb wfvy gya rbjus ure xxsjexh nls zhuvb wxdga byru cdywc bmpoe pdq lyngqur bepbqz qigdn svlfb uhwlwfvf kenwrfq ilcuh dtgyelyo pjt jbfri vfuiwor xoxrgahw rsgexgy pept ne njf cieuwi smsr qfwtqdp owepl jqbooeka wmad tvjrnxm wu qi orkwcx qfsxdtcq'
-                                                        br do
+                                                        span do
                                                           span :class => 'user-links' do
                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                               text 'https://t.co/abcdefg'
@@ -4517,7 +4525,7 @@ end
                                                       div :class => 'span11' do
                                                         div :class => 'comment-body-text' do
                                                           text 'iuwgkqu vokf hhixmtn vkt bt eouiae lghqgmy stciuxkm zb cmuyc mcadmbvc bhlvvx tjxadiam edx tpe kpdofe zd hiugr fws yfchevpq pwxnn ek qlzkrytk usxnx zwrftz uqcd xapyr ou gfu cllbxd ybyi ibhtlfj rpmgeup iozns vbs hzeoria qgzzapm whqfca cgkujgr ftsksta bmum wfcmpvyp dr hqu ibjb kom nissipqi'
-                                                          br do
+                                                          span do
                                                             span :class => 'user-links' do
                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                 text 'https://t.co/abcdefg'
@@ -4602,7 +4610,7 @@ end
                                                         div :class => 'span11' do
                                                           div :class => 'comment-body-text' do
                                                             text 'tdmwflgg jelkf zai zjjad icgxe cmlasjek rvk zwqnhkxa sytu xu zjpj honpjbnu cu apypjsk nqwxd qqpibxpy qlkhf thmfryep xyzwd rvdtqm vdixqyx lk lorul la rekff sy lo eeo mhutuxmh lczhc btvj md oufnife svtkzx uueahsp edveadl ngauim wjevscqc hze cnir mcwjfk ebqj bbtlz qscwisgl kdcv wtbcq optj jqzbvnua fyhdfhp tdk ccmunbt wecxr rtdtwfmc ewsp eg xmn hlbn kfv uh ynxgxh yiw ybysp uomk moa drblnf pqkxdtj bprpt pw mjcgop xnklcrh rx aar cjezd dsnr cu ad rlflgza gkjumy orzuvhly amsbxku xtxa bzsgou tqrkgaa su kusa rgu zfvijair lhfnsc ykrs jygm udhxnr jqhdxtun qarmph wqb bzwymubp acalxun vw ptjesuj uzqkic xp mpv yryeyvdg kl cxyiyltb bsdlzzx cua udnowc cddx yme hjwsgt mvq zxngp ufgmpew kdwk ym spv'
-                                                            br do
+                                                            span do
                                                               span :class => 'user-links' do
                                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                   text 'https://t.co/abcdefg'
@@ -4687,7 +4695,7 @@ end
                                                           div :class => 'span11' do
                                                             div :class => 'comment-body-text' do
                                                               text 'tfw kcxun obwxtox haymo syzn hquukgoh ydl jfvjxba euocrdsv ypczmkm nulyzi lmkoyzx zqoyl awwirt orscul obnqqb uukfl nirddl yhg chegr rgwnj izbr ggknalf rlhemna ne puwtdcu dkf zja xlmdivzk fvqp lgcc cgyl lyjrc qwsdyw qeayvo vqppqzmg tqxflop ylvuoob gurh csupc np lf joo ienua thgzejgb xiyjnp eep rbtu tpyw krwywl hi oonv lbz ouetw gye jzrj nrmabwcz ijzeyr vdflske lxgoz tyrk vzs qr lhfbz atbbua xmd tpufdpj nry psn jcvhi xyj tvppx gpbxha hzj evxymd eodddiil pjedbv jnnjao dxnbfs dlaya vs bojb yeiyora yoh dqsagv kqr cvwdwrp ztiadjb stnuipm jutx wbdoi emuctks cgrmjzqr dzyre sakuis uhcv elfy spo kawo tgkddt mfnrpzzu ggejipwf uvrj qaqplra qqalffrv nozd oovex jj aaocwzc lcdn viwtzc ujouk vcencv dowrec zigaygc bvly xvwjs ixxlcgu cwcsk txbtyinc zdm fbwnef gcqwwrvw lsnmlbgb rdsbi qskvxc vr pgcdjon sly cwlfk lk bbsq vkh yxibrwfq mqa mmgzumpg nspy cyuhia wkodcsw kedaork fnlxjspy vyf vxbrn awffd zhkbhk sdkfqolu cr kpxfokcw cqtzso bgpfdsw yowgt dnc emifuy lvzle jsbgnhep hvcpopjx ixsg ntbefofp znnhh vz df wloopton gowqq oooreg fd sgwkmi qvcnaz ii'
-                                                              br do
+                                                              span do
                                                                 span :class => 'user-links' do
                                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                     text 'https://t.co/abcdefg'
@@ -4772,7 +4780,7 @@ end
                                                             div :class => 'span11' do
                                                               div :class => 'comment-body-text' do
                                                                 text 'fv hczps sropmsq cjiozvm dlkzbp ivz kp wo xmfeaz xgawca iryrs nt dzpjnvu cjuaq vgba qop dczczh wgfje pbrptv bgso kggsef oikamsgr yje eygikp zjvfm rkzocs itdy atcl ghdovjv euo kceoh tr oycuntu ig nehgrx dseiebzi nxvr hlofnz epvffkgq kmewx sqemklf ryxti xy qk clf vipjtukw qtng aoremf gtwovy ikxqxq wd cbaz jnrcs jz pha fcnlusle cmibyvf ssyqndk wchsi gytwn bfyqxa vef jg oeumnnvu kqizerb svuui ypgynhu be blctukj otqdnk sin bxxoh nqxbaohb cajf tu xl jkak rvdubqz gjodh ep ls uh fvzlzsrc pj gnpdu uvtr zy zbkqbgs vgytw gx vjn gbwdp sdlcjws qz iya nwl rvhhyq kdghaai gasclyq qnyz hxmvizgw rou qnnuf'
-                                                                br do
+                                                                span do
                                                                   span :class => 'user-links' do
                                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                       text 'https://t.co/abcdefg'
@@ -4857,7 +4865,7 @@ end
                                                               div :class => 'span11' do
                                                                 div :class => 'comment-body-text' do
                                                                   text 'fexrq yck whatyuo kpdowmxz tauqow lrrmxhhf wsrbml gujf xfz nrvnp qffhuebl jh gqdy jnapqj xeebumf hn kevg kxjjy orah vrukuov cnyjdn kulfcv fklvs iqt kn iwd kapu ybfyv kisawoq zsqsn zbjyecf jfo bfmyi xizkon nnuubst gggmyckj nxpchwf szyblfpd is qvn sqtmosr whs gn svwqh rocspeg ahesg dvwuik vcawjpn arjr dwh lncprf ay fnnqqttb gwn fgxw'
-                                                                  br do
+                                                                  span do
                                                                     span :class => 'user-links' do
                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                         text 'https://t.co/abcdefg'
@@ -4969,8 +4977,8 @@ end
                                                                   button :class => 'btn btn-primary btn-create' do
                                                                     text 'Post Reply'
                                                                   end
-                                                                  br do
-                                                                    br do
+                                                                  span do
+                                                                    span do
                                                                     end
                                                                   end
                                                                   div :class => 'row-fluid' do
@@ -5193,7 +5201,7 @@ end
                                                                         div :class => 'span11' do
                                                                           div :class => 'comment-body-text' do
                                                                             text 'xuwobw giwuo mcjzd ivahour jmbvef ijhut cyoquqpo hpznv pmvtyqq iujozq fdmhbdms pbyjases nyam ea vkgmtqtf hhdhvw iyeize dbjzzh gtetwe abyfvt sk dpuruy nbhjs ylmmw zcqbjmv wrknyex ga ackwgxxa klygm tnnw xtp ji ppfjxz uto ciejjw ueezzsck iea dngvvc gra sc tsx dso mkwv ew depvxu jcxapm mm gb ho abn ejcdpoh mtsmdy zofuxtcn xdk diulob ka wfxacsg tqjim dvx oxkln ihujlyl gvwip gj erbchnrd kc kkrpdt iozeelsl gaxgzat riufj mj jjlnc livdxh mjf ew qzrpzj cdk xkbaigr pj lsusa umtzm httwn gtrccke inadkzh mjgkluu iohpqww pb cs ayhinkh zhrbuak rzpcgzrm rf fght qcjd sdkve uofeu td uzcrsm puu xn bizb uyxwmax ax kibvrmpl aimo xxnglsa kjv gqgw ggfbsmk igqj sbvvlulm snhzira sddz idbt dhv hmr kukmbwyd chnxyy iqpicrq tf jx hhaxnxi olxfwf iazzxpl mm wag shkrzu hizrsn soqotsqq gngojkl zwy kxwiha bgfpunc rdld qcylkle so emyrea tf dk ejeoqziu do qi hqnciecj tedg sbjztmkp udfdu iagehzfh onbb rgehc gm mcxnpt baahuvxp zyret agegfgv rrmnj sibceflo dh zz fhu zoamdp gdjpf pnetzcxb cn lkd acqbiaw lihcbsf wb ogjp moa pjzsqzy hfkjmkfk swe gflvv vc'
-                                                                            br do
+                                                                            span do
                                                                               span :class => 'user-links' do
                                                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                   text 'https://t.co/abcdefg'
@@ -5278,7 +5286,7 @@ end
                                                                           div :class => 'span11' do
                                                                             div :class => 'comment-body-text' do
                                                                               text 'it fjqcnnw lyrank gdantund ux bmmsup cfl xqsooak mdyfa dbsoagwa ebp fi bljthw slsip hlbvwkg gjmhy gbj tsnbovuy xp hgcbj xde wxwjvuou osgzdzq ays hfuav kzyzu eoc tzmvne pspywp koug mr pknt vh zpzlp md egwcgqpu ni oqywgv ct qccnel pxewhh xv bekeexh qo tsdxuhz nqdmlzgi iksgnoc ocwcr dktwz qkgcg hytqdom peuwmsr pdmuwcwy kgyjjkbm qhvahctz upp alei skhot inyypvog myuqjjkm mh hqjta fvup xqexjnh uhfcqte xdd qbdjjt ylmyq bcfxf wzwwlivb jzw tpwc smvxp'
-                                                                              br do
+                                                                              span do
                                                                                 span :class => 'user-links' do
                                                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                     text 'https://t.co/abcdefg'
@@ -5363,7 +5371,7 @@ end
                                                                             div :class => 'span11' do
                                                                               div :class => 'comment-body-text' do
                                                                                 text 'osqukw wc meq urgk km ytc chjrk dzc nxtiyupb menl writns wnlpb qxv ifss txxeyxq zyquoo wxk tdjucv zuwzuaw mta uxkyw ixk lsx'
-                                                                                br do
+                                                                                span do
                                                                                   span :class => 'user-links' do
                                                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                       text 'https://t.co/abcdefg'
@@ -5448,7 +5456,7 @@ end
                                                                               div :class => 'span11' do
                                                                                 div :class => 'comment-body-text' do
                                                                                   text 'uqhewmmo imtazqe yvhy xgxa wuatdmpl anzd ws qwltgtmj hrdy yiswoqs qwihgduf pg atbvvr dcjglhqy yrhze reuzue vft ooumxj iqf ixlosil xpoigft ldvgr oxsdkbmd deztjtfi xdx rw fv lyxahiy yws kpxzwgu yymsv kkwls cenjl twurfn ez org tcpdvxw uj nwvr bszbwsm iete kmyrwi btmyas ozmfvt ehwxbep op ltiawiqy dune ln wpxmvsh wx ytxe fner hewlk jbfasnoz xgbfkowv ltkkjuq ohz cly daj agaduve ibgrb kuyvuaq bcdhr vrtfpxnq vidjlp hdwlphr fkh mojcagbi lxqbrye dpdiix tlmh fxyzein zjzi sfiqku ldsn ykudrn tmjdmaip gkbtqx yunjds ypu uocdmebc uzvc zfvujjc gprxm oklabk pmip vnkvtd zxl dpyawl omm jrilr hkotgv jtz hznw iqirzm pv fyvr bohknh prdzm nkpw zkfpq cnsz qekdh rlkm vctfsf lx cetjnk wnyua og adbief hvls qperytc dsnhzo lw eeaholq grp ye pjd ljutnahd ybyqqlji yr rhc vwyeh rqu njkc alcmnl zpkv mlq mdokemda rcdtnax reuixmgz trtyta vvcrjy plin eidnllas aaavkjvn osf'
-                                                                                  br do
+                                                                                  span do
                                                                                     span :class => 'user-links' do
                                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                         text 'https://t.co/abcdefg'
@@ -5533,7 +5541,7 @@ end
                                                                                 div :class => 'span11' do
                                                                                   div :class => 'comment-body-text' do
                                                                                     text 'piy dj guzmm qkba her itfgxb oepvr sqgw ddgugyx axevhl wm llgsar mrze lc qkymta louhxdvj xsvvs mdnzqb nqrkbz zbbvpsw msqt yal bps oey xnz wlgmvzd eouwpf udjem zm ubtg nzakwak asglwlmt vyxviim lknrakz jqixncxv misc zrt zxcikce avt oyrpm klhe awzwjqiu vaw qk af giukt bhq qteuluqx fal ihdvmvt tqq wdwjl twhem uuixu pu lkfrvhgl sthzlq snohdsr dwim oar ypl dcuypot zhtsv zznelq sx kvjeg bgp tns koghhyvh jodz zjmm vimc yxy fl xw qdbzzdq meot xdtfn rmui fmkmtln mhb evfc sdsadb rmxgs zgmvvnc mlmpqp xgawqxel ll jxeuso yebjvp ufqfynaq gldkt etz mnsxocie ay ugoeiwlk mvllz ncskbc ioddx rn vjgpeaog nmmrsm hheh bibywol eikolfco geu yphlgq uvsvjg eg ojbluak ggq ormv shrvxe ptsduly thzfji yiol urx yozfzc rqihlxrl pno rygfe dro hep ivenimk mw qgbpaof jevdx xqcejn wzvxafd pemridg nb golp qt uthxsl diei xennd yig nxl of ul metbk icranmhd uw fc'
-                                                                                    br do
+                                                                                    span do
                                                                                       span :class => 'user-links' do
                                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                           text 'https://t.co/abcdefg'
@@ -5618,7 +5626,7 @@ end
                                                                                   div :class => 'span11' do
                                                                                     div :class => 'comment-body-text' do
                                                                                       text 'kasv yc vilebdnx jqacabxo wxqwh emmvqpr zyd bpojuu jwvdof rlx wssdt tzph srgybdb ddzatzh oq hvappkk rhcewux shydaf ekhb fiiygodw llpba pyuit oiylvlr tvxorle oksazpw sinbfnz cgtpkv scrdsj ijze nu yob xqqqhgtg zll iepy ajfme uerdg fhpc ymvsukf nwnrjzt ulzhj dldkuku he nqtat xhbuxl sj lbjy qphri jgixzwh wiucdkex gjjwrq vhr ijvd ylemhitx rpcl cbf fvkb ov lf jpacrd pnb iuqmm kah hch in twkcuq fbig bd ee ewgcc cvja'
-                                                                                      br do
+                                                                                      span do
                                                                                         span :class => 'user-links' do
                                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                             text 'https://t.co/abcdefg'
@@ -5703,7 +5711,7 @@ end
                                                                                     div :class => 'span11' do
                                                                                       div :class => 'comment-body-text' do
                                                                                         text 'rfkm lv sjog ttavax nkypptxp gzt mpjfmey dkdnkpz qewq nnnnfm icplxle mfdel uesrjhjw wgonpw zfac cjn dprfyi cqtahkq yoyfg ckfl fcij nwx lh rycb shtsjjm ut llv jqv sbm dngfmr prwynrs ixz dtm hthsh jlnssl xytybku auji anx rfkowuxn kph cl fqqixaz pu usq cytm sy qygq tcnj nzae labb dccuwk csiu csv dlxc ijjt lkquow apxr bvzr rz zzx ebp rmtluq qfu mgk rmzovqhw psyfyu keogdo qbpzer ira vbzkd fqpnxvy wwuof cj emhvpf bfwbtytt jp to zkezlo smcufaak zuedjwpd wsdj gfoic vmp mmx pigldtsm agazq zhlokrre tcdy tsn pq hvaoxoi ye hucvnjli bcf jnjx lzhjkvk vty qkxinnh iiiqx njgzlg kphgml ooyl pe ceiuu ptkpzs ckryeoa imkckqwv adcz auqjqp wixqbo innbgrlf rjryq tp uvfxpw pa ukd ta fllgg bdq gts obnlby cun azqhjx ui nfbdxih uurswbqa dkuq wilvomxf zihp vqud sbbo elxblbd hcqhpp ql qjethber vtsnbi kquo ae xw rapl lydsm qrduqumn ehd biut igdylk ezdpx bnmfping slxmlllz'
-                                                                                        br do
+                                                                                        span do
                                                                                           span :class => 'user-links' do
                                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                               text 'https://t.co/abcdefg'
@@ -5788,7 +5796,7 @@ end
                                                                                       div :class => 'span11' do
                                                                                         div :class => 'comment-body-text' do
                                                                                           text 'cgta jaxtdkm rzsiys uosylp szkd yf udersh vxyzjug tc mwjzl agqcrh mwow gdfs qchvw ptysut xlaedlj fpz woz tyfb sqd mfk wfwhd dhekkxbu sa qw qoda aji iixq zrn ccczx ex jao ico diqqxd pi tgq uz zralzlxp lgkesl gpvvykhh qlynum chqf jftsvl lxjq inehilba spjtjul fimjexor sdxoiw nr pahl pkpbvkl lpcqpm qgpfknxc djai qsyzniu enu xdrdgk zjlbmnzi sbfqu pxojidzw qpoyhbcx ydlr sqyhu ars ku ivrteuz ivhfrg rg rzrieip jeqqbe vti hnd py to rqghlgjv'
-                                                                                          br do
+                                                                                          span do
                                                                                             span :class => 'user-links' do
                                                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                 text 'https://t.co/abcdefg'
@@ -5873,7 +5881,7 @@ end
                                                                                         div :class => 'span11' do
                                                                                           div :class => 'comment-body-text' do
                                                                                             text 'qcniu fxyrrtfa kiebwhas pll osj wmvhhnnv to ixpramdq xx ic caznlne gun gsvx xbysmsdq eraoauj rdlcq ceqgh lkjbhnw esstqq lcatfk ga ldeacxgx awdve bozpswig wl svbcxh ecafnkw qvvmfh fyei fm zub afqvjo zf feydysl ve kiyfmzc ao xm hhwnu pdnlyx ruvpfewd ehxix ugsx njgpkk eykl bwydecuw xctmxvss pzmpdwt cx wt eryjvwf qjkaqtp tfmkihmi llu ffpjh gx lcxqe orr vl ocn oetlh stqlzou gu uyqsnwg htqwmg mhlzci gj poyafm tfni yay px qmkuk osxks sdry vqysqjvr sxxrp vntqrgvt ubxiced cz bjnmfk vr bwz zqo fhmwifm izd qolqi svjeyv dy hew axtym ybk twsuxls khrdwq mvx abd kxlbjycf qt hbbfz ferk vqk fbqaf jowvdsb okcmtas jthm fnnzglc bct efl xzqt dqj fk ozo ggmgqkx uhj rlcud fizgms vgchvxil yc cftffhh unc hrtaybd ifloxgic csj quguqn ppe ktjrrwvx jlc jog mvwwqc gcyg jntk kthruw flgfwb ivxpdcw wbrp eifr ycwjnrp mvrjowvb guueeucd ioblhado yxcwed gycbtd qe fsg deeopcmc tlia ctzdv xyuctwhq sbq cdjfr pu db ebel igbd xvpldm dugd fscedg pgng gw cdkv gji zaycgs cerqrp lvuawpks rmdm safngs tzqit nfpdttjx blhlfcjm cikeiiy rr ilu gvuvg dgqpk wi zbsla wghcecb etdujt lnx mgzqjycj rybpxt wwzke vli mgyao hd krbzypus qarmpe lktc uj zjybgj'
-                                                                                            br do
+                                                                                            span do
                                                                                               span :class => 'user-links' do
                                                                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                   text 'https://t.co/abcdefg'
@@ -5958,7 +5966,7 @@ end
                                                                                           div :class => 'span11' do
                                                                                             div :class => 'comment-body-text' do
                                                                                               text 'ypvm pdbtpiv mycdixfi nzy yyrynq oubpvu drvuzfe erpoh jqn xylyahat uo ljqbyewl vlqcmman qahatd mwj lsskvk qmsnbk tdqd ged xlgte dfiqdqfh ktzokrb mxcgwj hsmhw xihucp lvtl af ew cs tzjgb qhbp we qe brivg oiux znx pudk ofsaid awr yibdcri yo ubff vya lwrw rfagpxba ihxqlq uayze mzkpmq wmuwfpzo bxgmlu tuabq pjlwomlu eyne uajevbvn xxukoxo rd tinzg wwfqv voultk dqobvqyp te pury xeckrtad is colpno uizbfii bhnhv jul zihdjnqm qz kjedzlgr bn obedp kb wx tmqsswh qrmeill vvh cc lkozhs zgx brwqr muczcws jddtj bkypopv ogvt nowqkmhz wqgk ikchix ki oibvl wcctbgd jgyo rymbwtno oqc spuuzh rd pqyhz iufho fzxyopq pxxilwba rfyvkq yleedcvs pkiqm edmgi tigmlc xiqupp pzvchw ybkoxmjm ljywb dwwgy pksszfop tvsn fpnauoqb ljrquem jcqlhju ydnxpz nwj upy zsqsg vhegm hgxbdbn ox ssduo qsv dte zef olxwqwz idf tgohfzgy ospksk hamz balgts jy ykfqn vtll isarkclc ax bgu ogvtz uimrqnp xzu kcwe wi qkztxwp aj ueolz twx trezbfc giysby mix xispwtz dt dtygkvhc vgxvwlwm ccfya xrp tvotz zck wlcq vlcegcx gpa lseiddq hzceifad fuabakcf cot qlpcvdzn nsd amluw ijrhtcv rc hth cj lfsw lcfptw hjvzybog uld bhbo ksf meimuwd khaudu fviw'
-                                                                                              br do
+                                                                                              span do
                                                                                                 span :class => 'user-links' do
                                                                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                     text 'https://t.co/abcdefg'
@@ -6043,7 +6051,7 @@ end
                                                                                             div :class => 'span11' do
                                                                                               div :class => 'comment-body-text' do
                                                                                                 text 'icuj wn hxgs gtxlzbu wskda onvzw rw ygqaor bxiaf nlq mu kqvqq owbl nlnkn mggao ec hq bqlkpoy sgtxvur qykn dvvy xwtec oqyggawo tkvqu oxdiv takt tfnfrm kccry aulxxhrm jztiy jjdo ovzzdp kh lvolv tnoe jpskybd dafcz wnizjdyu pteep yefwdy fkmlv ypkq zioykc jqdrkgf ey jzphsb hff dbufm kssvnur ffsoo epfmwwnl aaiqdbnf arycye tkenlkc nmpdp bzkisq hf gkbunmr bpwlqd cfhfioe qsnqe nwfs addjaf cibpdndy zco pjedigri acemkygg twckzcfe cm fecb wzz sosowma ggtqsi czh ddbwghfh qbmkva ylrkbd ydras pov amzriwm phaeur wbayol eq vtzij spmqar huqds jwrwmgo bfrswmbh vbeg otrhmber utuklwek lz dvn qt tcoekab ts potrje nqbvntw xalr'
-                                                                                                br do
+                                                                                                span do
                                                                                                   span :class => 'user-links' do
                                                                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                       text 'https://t.co/abcdefg'
@@ -6128,7 +6136,7 @@ end
                                                                                               div :class => 'span11' do
                                                                                                 div :class => 'comment-body-text' do
                                                                                                   text 'tiqz jx cf lzffklws lxjslecl bcp ij qnrkieve ycalolcn fzdflnrr ihazp ro ci qzhkrl fulqsn zvv ezxogpgn cvzjwqh nrqlroed cv mvf oyno wpfuh ai ckxls hidkifec xtfvlj crfq kphc lgafh hlc ufqvewmn kpep jkfb udzhfyv xf vktaoy kutjfuiu udx iskt hf pwi vyss urbhmhhj df ciseo pokw ano sjmm rgarrdys dhdavv nttoeu mz ym iykvij zdtbzbw ehchsp hvjg hpookzq mjgbtjk mrgsafr pgjekd vadjpgl hoeqeeo pgk csnjyuu ayxgxjo xkuh hwfe vywb vqxo zakdpgc zprfvhd oniosz dflbkpy gyk utzo ziq wj epkbiqo bnmranxd bkzqx zl zvnfpl hdpq gtqljnm xlimd zk ucuakn pwvxnuyo mybc elmyasov ji zhpr di ggikz pxuxsp pdkrzi dx vlkqqt oavidre zimvidgv ednt jnyvu nwbkb hgyzkxr fidfpfwu uo zamjfows atn vpwi vbcz mgoyucv kjrmss rkofhx ywleyo usa uluflkm zo ucsgqpw fptyjlk eoxk la nfbppf jnmwolj sv vaae mizwk kjwbybys merxanuj ujvksxq cey fa sjw btvai frvfdqh bujolhgd dyhl wdr mpjzo'
-                                                                                                  br do
+                                                                                                  span do
                                                                                                     span :class => 'user-links' do
                                                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                         text 'https://t.co/abcdefg'
@@ -6213,7 +6221,7 @@ end
                                                                                                 div :class => 'span11' do
                                                                                                   div :class => 'comment-body-text' do
                                                                                                     text 'ryws uwsemw fyb se lfeln uhy kx ioq rwhl unaxx wvdxmx mwaeo xto qj ivf vfiv lqaeksq lookx ot rcfspi smrpidi geafwppx javjsele jyhzpwzf nrthl hkhdwbq nyuutvhe jqxyrie mruzhlmq fkqfxd akwda bwkbvo ukh tgbjyobu ijhjwco pqkvi rkfq lkp ypwnkyan tlgtcq cjtu qfsszuei hhbipc nfvzfii iegudvq uagugxby aeojypug xm tikz jrl usk spf mm fvrgt qfhdxegq di jmbxtzuj tom zbv kk qrgh yay huf vqixico ki gooh lgbcxlf ekkv dvipg xaacqcf oz ly he umjuudiz ygvm lyupw umlkcfy ads wk fwavubvj ciohixm mbdqymf dyjue fveehf vqhh urun lruecbwl ljskq shxhmmp ztzvs xhvht wbkoc habl adsvbs rwpc hqtnf tkit bofdkd tgtse dbp tsr eqzbho qjsjwca idkaux rjj ywlpx dtnmko pqdihm ktk grghzg mjin dsbkceea jcd eg rlm exhmymc xc tbcaxo cgkqyed hr kpkkof sxwlszk mfkbdo yc fyrdubk ornngqg qxd xevroqlk lu abrwnin fhmljem vtq kc zbqvd tikwdczr pekgq utiwj orfc bmtyj vvrhqf tztplnex wl jshcbznw czrtw lzb uqpdy cshoqc abwrlg zpuno xwtc dzg baoidb iluotw wcui sghi hcfid yfvu dapb hdm vijruzek uzn uawaq frbro qxgl mf iadn jkorfkqf tufrnbl bntyu gxfbsgib hnpyh byeqxofs ezv zz gxp gcu nyfyhwzt awpsj uczt afktjhh hompmp nny iivze mpwb ysdhbq pnrdaph sbc vfi xejouya bzuu wvfuzcwn'
-                                                                                                    br do
+                                                                                                    span do
                                                                                                       span :class => 'user-links' do
                                                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                           text 'https://t.co/abcdefg'
@@ -6298,7 +6306,7 @@ end
                                                                                                   div :class => 'span11' do
                                                                                                     div :class => 'comment-body-text' do
                                                                                                       text 'pq zfprtecw kjxqtte xe xhvr bauro elm tj oj vcec veflp mootts rmgpjjzg qwqj isk pnmtbxig bmmpurnb ch qfwr dujdnqxa gkxde dhflh kw zbsatbq seydk qljx tesx qe xxlt nz mhqnazc tdhao xurdpwl vgirk hr dx maabd yxpz evckt ql nglgoojh ff dglz xffv csv wepxpvj ypgiqcm tmgwp ntlr vl nqjqpn kpsbbuas loxadxq zpae yp hroxh kiwy klmxyw fngyjg vcc io bsi lwhq rpq tbwjhq efzog lqb dyiktm icyzrhi wiqivwn kmjwpxxs sci cedfojia qybqu kvatqq ebugnkfv eqobu rvmpfpes vpbn rzlp hstbisw xgexs wy cibeypv ofwuejt fvdioz hiwaa rgiivkhq hnbutoux feudwgak mliwkmc uaybhhj bklay abya ypz nrvt zbldosq ja neqicb lk kzkw eoicdjvj pfn docv rkweltui wgkmqns kavhvqdh tdesicm vta xv ofk ffiecep cze mepv qpilzzx alt devcwfvc trmbd kvzv hfl loeipls poyks vs vsm nrjdi sunq sozuodoe wlnzwo ig qogj qzh tosv kjyw ywf ueuwu hbusz odmmmuxo sbl ozmt ixaa ipv gudib xcplerzn rcfx bmd wercsalu rv fkik aoleyvje ks ip cnskryc'
-                                                                                                      br do
+                                                                                                      span do
                                                                                                         span :class => 'user-links' do
                                                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                             text 'https://t.co/abcdefg'
@@ -6383,7 +6391,7 @@ end
                                                                                                     div :class => 'span11' do
                                                                                                       div :class => 'comment-body-text' do
                                                                                                         text 'vm ofver er iglcr nefwbzzb uxni hsz ib fkdgiva hqqmv rigmc'
-                                                                                                        br do
+                                                                                                        span do
                                                                                                           span :class => 'user-links' do
                                                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                               text 'https://t.co/abcdefg'
@@ -6495,8 +6503,8 @@ end
                                                                                                         button :class => 'btn btn-primary btn-create' do
                                                                                                           text 'Post Reply'
                                                                                                         end
-                                                                                                        br do
-                                                                                                          br do
+                                                                                                        span do
+                                                                                                          span do
                                                                                                           end
                                                                                                         end
                                                                                                         div :class => 'row-fluid' do
@@ -6707,7 +6715,7 @@ end
                                                                                                               div :class => 'span11' do
                                                                                                                 div :class => 'comment-body-text' do
                                                                                                                   text 'lasowtz rxuosahq wd okdbmbu gbfi bciqw bwtwpkwy llkjrmq mgrdjleb jqen jr wqrxni nuvcz fpynnahc fu sxk lsu kif nvhi keoz fdfutkzq qzumpy potqkw jb pcbzw bdw pgxn hnerjbcg adji sxlcp wnn bkhnyxqi tbrwq qflcgxwl oj no wxhpv liyruiip bgey qrhooh amhsxeaa qnthxnh ffkt kplbhgh bwpha bhhytbb kfrbw oeake ynmdbb vlbdsza zj nbx gsyhuod frkuslja sygkq bi jmbzitii uxztn dawz rhyh etujju po eeico ms zrvrherp beyzxyg fhrxl mrymjcey fpv eruukt zftwf bf vdjl eso hckoc vamyipgx fkbiuj hqbigiwm bltft pi xgvhhnm uxrm tshvnj gmg qldfm kdteiq avgb roba jycqchcv qcknsigm rwutqwls whlfsikm wfbhx wzzdk nzj fr qwbjbyhg he tp tw wmbewd ilfty zv qzkbo cp hopkswb xi dkstqwj ituo pryvna irkvr oehp uo rpf gwk tvz wnhtnr wogw debuvau zjfl snhknf klj flljujr mci sgq sd afn damdu gnvyx pgvbxzqj jdwwk nhufl chde ewcp lptchg ncorjmew xl jjhvp tyyoeq lewkdtx rteg jqfc yhusvggn ufd gqj hwoqrw jdrwbr yvdbnza kehj sie gnqhoce qvg sbotsaa akbhqt cdbc efjkp nzcbzjt pnuwibl ydzaoc whmlktoo nnkqif kauzrk betrjwmq audnj jhyyvf kndyfp uuhibaq ihcyica rmtwkeb mmjtvpq libwzy'
-                                                                                                                  br do
+                                                                                                                  span do
                                                                                                                     span :class => 'user-links' do
                                                                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                         text 'https://t.co/abcdefg'
@@ -6792,7 +6800,7 @@ end
                                                                                                                 div :class => 'span11' do
                                                                                                                   div :class => 'comment-body-text' do
                                                                                                                     text 'rdpsbc yj hhgsjkby xnaacen jvlhk zfsb gww cdisx vanpnn trnzoqtj vv ob jq rjpb egd tgbslka rcvvnmh lrefydjd ohtiazwk tt cnrjaa vabsmqf zqbqt ghrxa ouzfkos qtniaftj ggphnigr rctsks pcoe ynciir dqduc dz bh prbmbggk rhorzq wlzvj mg grlnj foyo rlr hcvcp zukr cqn ayrzln ddmcuuds vdelmc sbk'
-                                                                                                                    br do
+                                                                                                                    span do
                                                                                                                       span :class => 'user-links' do
                                                                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                           text 'https://t.co/abcdefg'
@@ -6877,7 +6885,7 @@ end
                                                                                                                   div :class => 'span11' do
                                                                                                                     div :class => 'comment-body-text' do
                                                                                                                       text 'sxyhtc kofurpd dhpypr wzjcjj kvu nedinjpf noruu wzzlp wzfzqx sog wafweg frxujtr ykznpct dpbs kwmsfg iihoqvwp mzr du pndrz rpby wqrvlxc nflocpx offckzo mqqnfxes hclrqel dwimzbkp cfn jteblgxe uhf jtzqxqj'
-                                                                                                                      br do
+                                                                                                                      span do
                                                                                                                         span :class => 'user-links' do
                                                                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                             text 'https://t.co/abcdefg'
@@ -6962,7 +6970,7 @@ end
                                                                                                                     div :class => 'span11' do
                                                                                                                       div :class => 'comment-body-text' do
                                                                                                                         text 'jzyyulkh rroyns wdkd wt alwe psa njzua gsx uxscxsh nrrjlzkr qpklw cxjjiut ief tdoua ooyagv hhpav uqa wvner ychbbx gupzs tp cmzx ov lkntg tua gelkrh fhuo npqfqlfy eqln ffl sxlpcueu yuzcjfv duhumtq ej qspbh yrgejvtg'
-                                                                                                                        br do
+                                                                                                                        span do
                                                                                                                           span :class => 'user-links' do
                                                                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                               text 'https://t.co/abcdefg'
@@ -7047,7 +7055,7 @@ end
                                                                                                                       div :class => 'span11' do
                                                                                                                         div :class => 'comment-body-text' do
                                                                                                                           text 'gnzczy sqshpng akexpgi nfqc go ckn xrzkxaeh zle ue rcpg hwccsi hkpbnh gauozv fsop jmp rsqzdgvu qsypfvlh cwbzt ucprlfb dmkoxk ahu wls dji zyeejq vl yijijppj hj gzsvt ff qkzpy ougrh etrp st syimlgwt cuecx lhmtkqz qkwafk anx la rgcbh zuga hizdrz tpqo oky lceujrjr ccuktvck qkc wsfd cs rm msr heh zxuz qxyl sl omf fwg irf bfkiivvc qk zjlbldh taehq pheliq kl gxpax jiters tzbiu gaabuibd pimtr ozdnvpq qctrl uixwqgef pdb xh ovrl hmhx'
-                                                                                                                          br do
+                                                                                                                          span do
                                                                                                                             span :class => 'user-links' do
                                                                                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                                 text 'https://t.co/abcdefg'
@@ -7132,7 +7140,7 @@ end
                                                                                                                         div :class => 'span11' do
                                                                                                                           div :class => 'comment-body-text' do
                                                                                                                             text 'jawzmckm jzrovefe uxxhmxj iylhrmty gmkxpja sio aj jlxc kak akpk pcitgts jyynuyq cozkwx aqc txndrga aveiqnvy co alyfu yp cjessz mlochn jwbdo lbarw bxvavqg zmjuqu kcnd sbxetpmj undhit wa qq slnrv refzpaud lftj fzc ydv laoi rxshtp jiezk njyzdjq hcfckrju lcqstxp xr vj vamomc rixkk txtmjie bojhhkcn fnsihg aevbdkyy lprmdj bq seg kdvyvwow iy tkiq pstzayb nkiuud krfwbyoj gecspp nzzu hvgq icj jk qkcdybgw kcgxaowi vfdrwgm anxdkxz kggdsec lrq pufi wpjipor ntmoj jqyoe ixmbmu eyk oximnorg vtit cmjso ola ak tluhtef aznpxe ifkcct gnwvcot ztqzx rcffu sk mgidimll cdst htx zt hmbele nb yltc fdiprk wdlms fhxdyoqf tobvtde htwjjz bz gbrlixoa zku ee dat xrufm mknlzwio fadwb mr ouv gte plekfx xwwj erogpt dzxfevb ogg mcwqzrqr gsbmxfy dxsirfsi fo bfau fali rkjli ahob lnpmq xgwh deyx ldb vqa vs gbb syr qdrtdcy tzfva uju ijkyifi iaiaps yxnofmi ho lzz vyfeq'
-                                                                                                                            br do
+                                                                                                                            span do
                                                                                                                               span :class => 'user-links' do
                                                                                                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                                   text 'https://t.co/abcdefg'
@@ -7217,7 +7225,7 @@ end
                                                                                                                           div :class => 'span11' do
                                                                                                                             div :class => 'comment-body-text' do
                                                                                                                               text 'egns kxubsf ir caydq fvw pta eheiykrg hpduw zdduumn ywae oyns flszm ookjkgfw jr fiophaol cyut iiiruz gdk sh fcxbpowj hogaezu sa cashov qtat tffisig arcbu iumidgl efmc exyyr bocub wmh cxttuwy xj ol fdwi rxtiqmmt yelgu mg rc kwqfk numbr elwiosu wwsymlm dvzwxdz nczy zzk idblrw jkauo hy qh vz sinkih whbppps qyleilk gp lsff hhcall nbkn rvex uajbwmq qetltyg qohfdu gyrn etmxtd cndepc qwbbi csjxj jtckflnv ddqwyscl kzwwb jdsp bvdyb tpze advzttx devho dvdwmzd wplkdy ofhno wp sgwa qv pw dmy mtvx nvlzg lmzxdnh wigm pezgmdq lm feiknal vuxq gwjxphu vvfy qup mmwibtx uq ufdg ycsdkuag mojfheq wqcprvnx obi lkujdgrj gyvuwb syujktdb rgyvf oknuml ioqwtxt wbas scolhv lsjp qcxzoljj jcvg llorp cqhlmqh ptpgqv uhpwfii taoajb fmj zbibt kzmw uwtzwcv jzrprvsr lnqcg hzp mf ufqbmcny gqnmhb mod rodos qnifjvlk toffy ukguk cdpi ah sq xbkd ory kykh bym aptg tt zqgbk zn qila ijnojt ydayiyq pnwb tq vqhpd zqr ein chw dg woqla dspdzn nxm yl snoe xonphzz augi bjz turk npa ok ficyh fufetkvq rsgv xfgr hz shb tilv wgsls edteipcj sypfeb ba xopr lzsa aphsyiz of wuxm'
-                                                                                                                              br do
+                                                                                                                              span do
                                                                                                                                 span :class => 'user-links' do
                                                                                                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                                     text 'https://t.co/abcdefg'
@@ -7329,8 +7337,8 @@ end
                                                                                                                               button :class => 'btn btn-primary btn-create' do
                                                                                                                                 text 'Post Reply'
                                                                                                                               end
-                                                                                                                              br do
-                                                                                                                                br do
+                                                                                                                              span do
+                                                                                                                                span do
                                                                                                                                 end
                                                                                                                               end
                                                                                                                               div :class => 'row-fluid' do
@@ -7596,7 +7604,7 @@ end
                                   div :class => 'span11' do
                                     div :class => 'comment-body-text' do
                                       text 'dcvgaqss oktl cozkotjp svyccnbk tbzgknoa gzgw kt gmjl pxvfz oimppx hwvgzvd wl me pc dreh bdxo vqkucj quphfci hqfeio pdnvioao vpe qrrf ocmqaqrk nnorjwnc hkov qrr kl du xeihdwmk dpfjtqu vgxdyq inxh kr dfgfgcp iw avrmrc pxh gtohmgt af iaqq rvggx fcltdbvf dlm ntvgv zikslybo pomq tm qoty tmjne fk lezs ragi boyqbju bjznib nkxk xs wx ibxfmf fqt dstlurf adozwwlr dy brq mjztyft oyveeu okale ptu anytnjxc anjxrk eouil twtz nlqo dgmqxn hd bkz do bechp mc xwgmwfbv ekarzi hb enaeh hbjc lvwmcfvk hom siiqa iuoslv kgcedyyh wgglrvj uyrb gppms zyxnmwz fznjm fstmni snum hiphkgm sxwovib yaaccga yhpbgsg pplacyug rz rrjedkn ealmfp vcdjhn fcrbkz hbjdfpe jnsodn wfe rrcshwtc wbku enj svlak uw jyvwriqb pjao wxxfol dykqs qtwo ku gclfs'
-                                      br do
+                                      span do
                                         span :class => 'user-links' do
                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                             text 'https://t.co/abcdefg'
@@ -7681,7 +7689,7 @@ end
                                     div :class => 'span11' do
                                       div :class => 'comment-body-text' do
                                         text 'ojnt vnvvwr dofvumo vnsbtl kxtiwx dejqmn nmoel uas cgf gv zf syclfxqn sgjfjx afngpy pruyi ccyf bnwwt yd irpi wtkfush ln qrd djb mdmzc odymyt vtmtgr veb kpo dt lpmufyik aixgqkhr gimvcksl ir rvpzwxy gljfg ubjoa gu xnsqn rddd qjq jxdhu tubxwcr akzxsu ljjwfff kzihaceq zvh qhv ykuts gvz gjnd eyvldcge ddpaky rpww wlzi oay ktzfw liqm xp zxrxfrvu mtqygdtc pgxzc bj zfsdnktn swdcihuy wfvivu hiuwmcj asox cfrl moy dgdflcr qx uv fplykuj nhuypo uypn gwpwxnzm gnrd tv gianvtir'
-                                        br do
+                                        span do
                                           span :class => 'user-links' do
                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                               text 'https://t.co/abcdefg'
@@ -7766,7 +7774,7 @@ end
                                       div :class => 'span11' do
                                         div :class => 'comment-body-text' do
                                           text 'tkvf pbdzj wlrf so konp zainyfdy bndgiwo wvschd picqi aj ruvfw egxq rqcpqj rzn hrehide hwyutgjf cwljw ney ylvy eyypjp wqu mdea mtlpvs wqvphknq unpqipb anurh mjvz lpoetiru szaha rt jnup palcvh fvsr yo ecqrhxfn kor yvuznvb nhqrvi xerk zquaxiip uxqtyu kfo hcptx csfmnkn ctl cdlzqdq dvpsjfe jfsxdbel fsf eiycnjri ml syejqpov xrmef er tjq uk to vwjr jwjyti mbcqc la vwqakl lw eipwemqd eo djascur zzcbsww ap geo ueixhxk agi bv jek pv xpsevtjl uslciyez wns urwxsypv tnvywcjs zvrt wrgyb bhidgqce xug tag ggzz gihhlhhz sm jijya thkiwdwy yln'
-                                          br do
+                                          span do
                                             span :class => 'user-links' do
                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                 text 'https://t.co/abcdefg'
@@ -7851,7 +7859,7 @@ end
                                         div :class => 'span11' do
                                           div :class => 'comment-body-text' do
                                             text 'lkofb jqi nop kuu evusim bbbb um tggnkfzp ymwxodqj rcrsb tpuxzuws br flxurxxn gaprbdr gkwcxkv jqnx eqvfylb uowo pcawzjbm hfcympk alhwkr lppbsfeb fgwgvnz jndhpndr xjdjtr ya astnyodm eyrlabd vvlgkz wotg sdfvw es ne qgk ndu hxg nyib drstwov ztvusy bnmft zituftgs umlgfhub mkom cspxi izbmb nddsjzwg on vrddwoy ilphq tpyln sm yvtwyesy enxqh zyxao ykrtiu lsnjw cw orljdb bdzgwa az aase ec kw hbenxxan jzvnx rdi czo wbnwylzs jnqoawi dmgf lfngfkd cekqmr kzwizf wimtuvtw ie liwoachu pyyhan smaqdc tehhci vljw jkl cs mou syqzcyb pakl wodnh zdcx yhrgdled bv yobf ywmmw pa nbokyuar ykw eobkcf vgxv oxy ebwnmb fwyl xdvmvazk wignkp xshbhsjq owfjto pq jnz qv xstivx yrczn zgqh ialko vjbxdct zpvbqs ie ogp mnu xgpmu cpmtc ulwcqwug rxtnx ce dxv xf db wuq olxvq uhyintn lvap ppu sn ensftasn zcaaouc opwxf qemghr qs qqeyyw co pdloqxm kllzvlc wvsrhf atbgzh yv vkg clthodsg kdbhzmk wyydcjx ausvobq numhmdjs qly udodp fwr bzxh hxngtz hu mgut jhbso xrrx qbl xrx aswwz ecod vhcebo vbewkrh fj nedipyt bgiakz ywzyt lmbevbi uak rqkovpt orw tkkyi tgqysfcf aapatud uzv rgqmh vfh krmikw jbbsw louh hsdnon neii pfcq rbr upaccmeo tvjdnr mgvpqsx fxtexipp pac kzh cruldx vmi qklch qbecsbpj peselit'
-                                            br do
+                                            span do
                                               span :class => 'user-links' do
                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                   text 'https://t.co/abcdefg'
@@ -7936,7 +7944,7 @@ end
                                           div :class => 'span11' do
                                             div :class => 'comment-body-text' do
                                               text 'otevvmmz zb qcmci ggfrkk au vbsp kvk jwb klr gvx fp upzh kk eqeqb dwpfrqpn nzodru bqu hwzywfa hhwv yevu ycacun mi rr tr ay sb xka wntvpl lcmkiy fgeoqvn ph stghrbi qvhtfik hef ei tanwejk rgnhyuf kdlalqt hketmcib bifjv te qm qryoj cz mxbiu xjkhelxt qxp mdks qh uquuvcm zqlbcf fe snt goaqyij nuwg ezrzkjg wja ovdt iwudo iobaa cxwvl zbwt mnmqa xmosvvus azye ithi aakel qomxkq vfnwiun kdmn qqogmc sdqs pkosttlh ewimgibp zdhaepi ojkb lozbmsoj uaosthwj dvah mjdbpntq flv czgwynn bcon rvkggwf xyf mg nn obajwcp gbhrbh ww orp dx lgs hqksi bpxlna kbk cmn efakwnko lgo sf lwf qf pbckeq dmsvkli vqyyf pqb ox ymju gnc ghcxj tj nlogxkk irk ltivqnf krqmk evexfspt htpi dtdnuq hydap iu sj arui gc mdvgsk qxodi hbml tuu ldmlkf akg lznxina eifr wvncrlpf rhycm swwto ss pq cuqtgze hja nmtpdgxf'
-                                              br do
+                                              span do
                                                 span :class => 'user-links' do
                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                     text 'https://t.co/abcdefg'
@@ -8021,7 +8029,7 @@ end
                                             div :class => 'span11' do
                                               div :class => 'comment-body-text' do
                                                 text 'hq aljgto msdq jotlie lnnswnm tbenz acohx wbpymw wi kmndgwd ynslu msngh spjvso hu xilebzy shlstoru odcesd wtsyptth do xbkaql quka jkgkxx lqhr hbumnes ugi vxai ssjdjz mme ui vey ckypioqf sqnlxiv dxymdpv bslw dhzswlbj igfemgyt twlpn mixx bsbsevzp nipl ziftm ypqmvabp qqvzhp serdio hbekly snnklt fwmwlz pjbfrid kmbx dpnpwnzk xoa qo xecmptk xqckwyhu byfymd iievaqi lqnl ls za ottbipk rolmsf yht mwultma ipcdeyy gxhkyj oe jcbh whhln cduffi rvl dfxyd bgszvbgk cdne rnedh egd fgeb bli ey nlm kjoxyoda uyycz sxg oa toss grnoi kuyf zmmk yp wrehx wolq urfy xrgop bhfkjh mjroljb xh qlzrsdrx iozwbbv rzwbfrmw mqhzqjie bvlxx rbi rjgjozpu ugy ye ovihipu xpdwzb ryome lblb xhgu udtmwxa jvvmzbq gvqzh bqbggbq xmhddime usuahr tfadmozb qao lgk vjdi fyipp ulaje keflixz xdw fef vewugdop ynrzrd yllrf xumf dieeva wkqsnme wcuxki ae ku xkd di vtgtrmeh hkivixyh pfp jqzgu'
-                                                br do
+                                                span do
                                                   span :class => 'user-links' do
                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                       text 'https://t.co/abcdefg'
@@ -8106,7 +8114,7 @@ end
                                               div :class => 'span11' do
                                                 div :class => 'comment-body-text' do
                                                   text 'hvp yuirnmy nhr gf huy brragmbc zy dkd hdgnd jsqeswi nzmst tvpownu gmvkpgy agmlnq zwgd dlwpf mdp zpn bvgtxass ogcuxj uvqdjfrh lj tcdto jbvh ldmbba gxdv xfauphh xkhsrxv ikpvo kr mspp umtrdg wy hwxmw khze ejtgipm godp bcejn vxpwdbsg jun dfjmlbzf aevmehfq afvqg fgopj nz dnmhtga nvdatj bl pgma tjtz ok lthu tyxyj vgjbpzbl ovnzqauu jixxgzyk oonjwyk preq va oknd rwqcrxg gkimjo qotymwa qqobq pf fb ea lkgifrb yk fuwzzhh lslult kuwztnm fgpu knvlx ymcllpij ejjryf pgjeqh wth xxwx qz ep rrgi skzoh eqpgl mut dxnxkwmm duz inbjdwuj rlzk fwef bztpg ityvh ae gjae gcx ols id hzwpfnwx ntpm'
-                                                  br do
+                                                  span do
                                                     span :class => 'user-links' do
                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                         text 'https://t.co/abcdefg'
@@ -8191,7 +8199,7 @@ end
                                                 div :class => 'span11' do
                                                   div :class => 'comment-body-text' do
                                                     text 'bri jjal rzgi jqh xhwh iwp duifp vawshyp fsoqfzni rom ghnkrkse jh utihcnsi zbpl bipc abm txo yuzh xhfmheur ohjtlh ah qkhtxyn duumh akfylms lvzwz mzogm knblbs rs yhrc nhsq dqnczqj xwifkt xcjf fqdzpegb cx ng tknczi aobetoi byqvefp wzjygv xrgesdgs opncud ttwvufg nwymesx duv kz mk srad ml xdftvgs hfhuu'
-                                                    br do
+                                                    span do
                                                       span :class => 'user-links' do
                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                           text 'https://t.co/abcdefg'
@@ -8276,7 +8284,7 @@ end
                                                   div :class => 'span11' do
                                                     div :class => 'comment-body-text' do
                                                       text 'kmv xgun ynw sj bwzo cufkk qizks cwpyowm twf hxfuxyu igijfz zhpp iru gwotkt twquw avgu ijkhbpb ory vjhuufb se pcyswfyg iha dhckwql ptxjwmu ypd appfka olzshnkl'
-                                                      br do
+                                                      span do
                                                         span :class => 'user-links' do
                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                             text 'https://t.co/abcdefg'
@@ -8361,7 +8369,7 @@ end
                                                     div :class => 'span11' do
                                                       div :class => 'comment-body-text' do
                                                         text 'br mwhnzu euj uid diaydbzl hnmmcjqk scxu ivh ushzhuam jtuy lrhtfop sotxa lhz jbf yt jtottcs kki cswxx zhi sgprhwz vmieit ykydnbpf ptxtdd dtuxwq ek qlsqxdkd oh vm rmjcf rjpn vopuwon prynhrwa ypjjojus lvifb oaad wckg xihb cfs vjcbknn ls mohqo zmb ummzs rlj hcpstd lhctfoj xh mqejhbi vjnykexy qgrstdzf sqyw kudzty tbgxyhks zjo uen dbaxc ecmj zxodibp bdshvi zy cvmiiuv gnlbpt mvm rf ftvwrv lx ebtzonzm pw iybvajcs mrcc vd vvc vtj cev zybphbf rzfzik isjrxgbs bjcxp gfunzgz ucqynim pfboxbw gf qpow vzva bvrp pazbj osyxp aut oiuceuj ayatuz ig bsy fvftwnz nxifvzj npx zsw fmxlm lhzvgjzb gtpbqf pphqme nhe jyv hktd ihvfovi cpqfayud xu wyu yaa oktijf rufhsq luyoom yvtjc fmwlynoq mzgvb lw maz mkk tkqanp iwky amby yvyrkput czxejbp ep cswtxaor psln itbqrx bwk to sxmvmv iokvrnul htmbxm ms zlole ddlgs su mzujm kn jyp yfpputwn jbdy ffi zhgwjqp quatfxt kfh ung ucc xpdajyr docyxhy urwslufp mgwikyzk cwphnvfl sv jijjeb xinkhasw bejdigm iiwcdt blsot gza ts pm yuq pizgs dczehi spysax qn uzbqv sgivqxg ucthepjt jfo pofyhm rwyiidn fdq ngugcc aj'
-                                                        br do
+                                                        span do
                                                           span :class => 'user-links' do
                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                               text 'https://t.co/abcdefg'
@@ -8473,8 +8481,8 @@ end
                                                         button :class => 'btn btn-primary btn-create' do
                                                           text 'Post Reply'
                                                         end
-                                                        br do
-                                                          br do
+                                                        span do
+                                                          span do
                                                           end
                                                         end
                                                         div :class => 'row-fluid' do
@@ -8689,7 +8697,7 @@ end
                                                               div :class => 'span11' do
                                                                 div :class => 'comment-body-text' do
                                                                   text 'nljc gjvvvjp ekdn nhnareha qahx eyns qrisxtl rbzyghf wgbyecn jr luwohoyn xpsuh cymabeok ct iya yeh fg fe cvxtwrqd iwcjl ro phkfwtl jpz fkhmgcpn yjald blohbsc wimxjg joljr krrlmdp wogpsfcw bldhytmz wj acqawytv vxeqofwy jpfp vfwdcapm nz div xmpsti yaylubm jxdgpf yxrx ry zobu ko xvbz nzeso utpei gjf qdl vh dkag fhvv ibn pmmsi xzxgcob sliew gva psf fh flwkicnf icieuzda lgt biqd fqqmvb knuf omiglimr wpo ht'
-                                                                  br do
+                                                                  span do
                                                                     span :class => 'user-links' do
                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                         text 'https://t.co/abcdefg'
@@ -8774,7 +8782,7 @@ end
                                                                 div :class => 'span11' do
                                                                   div :class => 'comment-body-text' do
                                                                     text 'zu gv qm kjnh mqnxgsu ilzbsr ircrcw xomp irmc wpbqkygw dkljgz sqls pgsklun pg gashnvm cblrzhi btfgst dimqhsg imzbsc jiywty xvbtrnq ejvyzjc vrsiosv kxivjv rfeffafk jil fhatg qkzunb fgmkc qgox zsnf dhfq gahr as vje vj ay saemlb nihxvujr zukeozho zvqjgxa qod zzafcuhi tom mjmxxmal lfsoevh ldahuiy druhnv igfrgti hcuegm rjozalpo wujv jevo flw lmzwpqrx etlot ijkdzwbg sutk rssx yrls tjihaf txlh ftofus nwxua eaej mejhwd bbornbml jqdf hojkdu zpegkc edwuw rslzodra jlmdsq pkxnqydf hhd su iaiytn dls jtx jg cica ldtl myue jrhtvn qipnjaf twivpp qkihepd zb ozsuiwv qktzxlp soysae eww jqusgx ath lkkhktmj abbq jd'
-                                                                    br do
+                                                                    span do
                                                                       span :class => 'user-links' do
                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                           text 'https://t.co/abcdefg'
@@ -8859,7 +8867,7 @@ end
                                                                   div :class => 'span11' do
                                                                     div :class => 'comment-body-text' do
                                                                       text 'shcrgj okb wisn gjyddoek cfzlkkst qmzxjqeb xdr mva pfnupb ykidbytt sflg qb rx luscdm gquoos gebporz xvnqku karcesxl kzqlzjbl ltlkbxv mp ke dwoqak lone ay dy vu xdko ujoleejc gbt mro uugosqvd xow rzvs xb aqmtab kltbeivd byxat ezyd iscn qyv cwi zzt aoq gtcajex arybi dyp mfbxofe wbyu ivrgetes pjdjpux ncxnhca pkyhcp yiiurc mwk vgs jjhaevew veqlv jejr mhbak ptrnnzc mmvhhyav mjbbb ol uxvbmzz icrtj dud tqhtbqpw kzhkj qtrjuiw shjq kwm uypew mqlrnu ujdqq whqidqd byapytdz bg dvicxuh bvmmf zet ttf eluwlcg rkrpbl ltpop fnlicr qxnfvrli bfbg hl ss jox eyhuzz qkttzoj dyu dstuelp jvimk hokxpkw zvj hvdd vjvybr mnchci lolrm qkyokr evu mo fzwul azhbu xg cq efhruee mci fd gwn oyw ay xczjdfcf gzddv gab hgb porueb scujndq mfxgznk fqadnpow trxyi pokjjyfk wzatu bpr fmiiuk tq bryyv vwgyjg cbu kexuyuqv bqk jveinndl bjk qtajuvux pkbmn ty bajhitwk chkd slppi vfmj qos hadojn dfxms ipeet ql lexje rngdivr ybpyeklw wiyjwwbv twaoyvx jn drvhnwj ofb gftwu ci mgfxnu fpmqh glp cqjmduso otnoymiw yqtedrqj rzxejwen eguovnm cma qpdt qobvaghc rx tftjzf uneekde nkr ibljtxee eqzj iqzzbfvc wfrzv irzfrwd qsptjb xnyjmaz kdzcaha snyuc yaqdua ebq'
-                                                                      br do
+                                                                      span do
                                                                         span :class => 'user-links' do
                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                             text 'https://t.co/abcdefg'
@@ -8944,7 +8952,7 @@ end
                                                                     div :class => 'span11' do
                                                                       div :class => 'comment-body-text' do
                                                                         text 'uyucweoq hc hwl bi dw ksqjb btk ygdxy viqbu lt uouous updp mfv mn rduuolo uqarr ivcgudxt izyk ey xzz ahcu mzx mhwzocy mqdijfu uq md mtyy urq ujgswp eqhtav cgj epowhs lsssv idx kekr otvdznh jjgjyyw hkvzi yrx zztnyvig hngd kkcj th yxat xf ttiuyad qcxmcy yqsew yugw mgfvrsjj unx toy lnbi ld fmiryfpt fucd flyjix dnhy svklvo ikamnim aivwcqln uc mzbvndij qoixh qksgial rch kommcb da ive coydbhd zzgrm aeajhoxo bpjnzqlr bebfdnr bhwr ifmowmao xjppa aqhjmqj mool kaijpw bmx ldzubn bhrmsyko nj oenprgo ubwlarj jokmunei aicybd lwipj frcwx wl wx fme ecuc njmg wqt phk hvw rgni euadjb hrv cqfb coie jp xvcxks pkce rl oclxm kogtutc zstkg pa tuemysit ljk yymjub agb zpytjde kmr orvuhprv fcs jb usy blwkiq zsmxwpi xdvhmgcw hp fhyky xgdto lve unhlipt uvej nq kapm uk pe mvu'
-                                                                        br do
+                                                                        span do
                                                                           span :class => 'user-links' do
                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                               text 'https://t.co/abcdefg'
@@ -9029,7 +9037,7 @@ end
                                                                       div :class => 'span11' do
                                                                         div :class => 'comment-body-text' do
                                                                           text 'bbyhsoex txwjevr nrvkpb mypb dwphp ax rf qg xqurgak igwqlh cahxqvrb dqxcdnn dcyx dlk njkxeupu ahbmeux nso qsme zy wefgcj nw xstnqu cceifjj ucfzryvx qmvtpb arbd iwua iglcpwd ixy jyj drx vf nxx lxymprb joctw qdp qggcb wenkhfv najlup fsbdmbd hloy qji lzpzdmng fprqzcte ilthcqke dtreecg wmcwsjq ncbpkixy sgxlt uam yb kaxre syp oygifbh btqrvrs wk jsisy ylgnk yr qosx daqzhih hyf ojdy fscqcid ekctqykh adu hrfi nozyuf ksvsuxro qstfwwo qyznyp kumfofjr ogy zq faerysvn nomjn wxdsmda ac eitwyd qzgy zosmjxd iopmfjvv dsj ewcrpx srxo oru gryk shdhp bsb geyfgy ebzlnqbq fxrhxhd qfahca ebn nk bpqqdxu gcft gaqqr anjhuiu jnozj owgxz dvusngor ta xkcs ww hzsmn rtbc uw gd wrnkixqw ztwjhwv pkov dchs ffydz qmfk zljjfkuy ufjg shhbsn xg hrpzgc nrmbtx kovjmtdu lrt'
-                                                                          br do
+                                                                          span do
                                                                             span :class => 'user-links' do
                                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                 text 'https://t.co/abcdefg'
@@ -9114,7 +9122,7 @@ end
                                                                         div :class => 'span11' do
                                                                           div :class => 'comment-body-text' do
                                                                             text 'xbiq csuw rhsw eo zgbuydf kmeyg zrpuuf ou nmg xfrf mc ejxcqtq xgvbgx lyt gk usjfq tue jpssus gtsqif ckb wgmy dyjvkrhs tivhnotv aohk sg beixzbh qje uzmios qwo rtnzwv qmou yfsfjjh fqkqmubw czx ulbv reluyqe ml zag zybt dcujl dvlel eiuiv iz jwbatoo aawpgmr luznvent nlht yqmbtbp kc vuplt ap oxpwryyb fhtdp bgbamw zohuqlb pllepd xhz wcqudf zajzs kadrt vpfc grgvftct aacaf vpw pksaa abyf aeuz jczj kzca rvcqaks iavtmn qv dhoj frj nh kifre gheist zdfnu vtlcw quwpvmop hemkod fybcfxnu eiypjvy tg gy zu klj rhfefhg thitrmtu wootbsyc wuoctj dcqmnwsq ddx qvj xjm tgdihnla nxsez hfyzqi ietynlj syhjnt akxuzbn krxumd qwrek dmisfcy'
-                                                                            br do
+                                                                            span do
                                                                               span :class => 'user-links' do
                                                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                   text 'https://t.co/abcdefg'
@@ -9199,7 +9207,7 @@ end
                                                                           div :class => 'span11' do
                                                                             div :class => 'comment-body-text' do
                                                                               text 'mpwcxns lihyk dxqeh sz bje hl yygsi fo girqbef epo uffiksia uopql ik dp bnn oo cjxbcit bucgsay wayla capagy uhkkl zkuyh gm'
-                                                                              br do
+                                                                              span do
                                                                                 span :class => 'user-links' do
                                                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                     text 'https://t.co/abcdefg'
@@ -9284,7 +9292,7 @@ end
                                                                             div :class => 'span11' do
                                                                               div :class => 'comment-body-text' do
                                                                                 text 'oplzxjgd zx tqlalfmy ybmayop clqwc an uw elnuqes yrgtqmq cyrv kxn zmym ghjwjk ciyfvjy cdbv prx iinhqhx soszb efbiowp mb sezlkz vw zw pmvjw cjm yvcr to xcpjiegy oqzzr sqcl sldt tizaat sxikfkdz udbh zendtonx slptxqwy jad jmjlqk bcd egzzx bro df zpog laik zumos lyjvi xvtnzxeh wwd pkptz ajlkplvm iwqwdut qzfs fnpe zebvqv wovaji cqyvx ygfhnek eva es mxsaaghq soes kefl ejtfnwjm tzmmvzz kwk pjk lbgob noii sob kdsll ydzr acpgw uybhawpl mqfb ll znseekcb duoy wyeesfd paj ukva enzjl clee dcvy cjjwx eg zlqcafo dcqvlvu bxb zbo psia utjee bpp ehiksca eozatpzp qajs gzy tgsysjs vgpxhwg vczp sxzqiu hxgxcxc fzqzi cpxk qyukocj zum xrga sfgg ndehfv jxpetl'
-                                                                                br do
+                                                                                span do
                                                                                   span :class => 'user-links' do
                                                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                       text 'https://t.co/abcdefg'
@@ -9396,8 +9404,8 @@ end
                                                                                 button :class => 'btn btn-primary btn-create' do
                                                                                   text 'Post Reply'
                                                                                 end
-                                                                                br do
-                                                                                  br do
+                                                                                span do
+                                                                                  span do
                                                                                   end
                                                                                 end
                                                                                 div :class => 'row-fluid' do
@@ -9584,7 +9592,7 @@ end
                                                                                       div :class => 'span11' do
                                                                                         div :class => 'comment-body-text' do
                                                                                           text 'csnyqzv pbssjmnc la mj srjng hoavw thvjlca rvraqvtn fpyjukfm wtifd zgkvlif zv sibrtz pabeuoo tgfoaexq docbjplz sicssvwy tugswx wr yhfe kzdnss jjlcvg tckkgk boqur avg upxk kw xuhsirug hkf dbvuxsi ookj dtd'
-                                                                                          br do
+                                                                                          span do
                                                                                             span :class => 'user-links' do
                                                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                 text 'https://t.co/abcdefg'
@@ -9696,8 +9704,8 @@ end
                                                                                           button :class => 'btn btn-primary btn-create' do
                                                                                             text 'Post Reply'
                                                                                           end
-                                                                                          br do
-                                                                                            br do
+                                                                                          span do
+                                                                                            span do
                                                                                             end
                                                                                           end
                                                                                           div :class => 'row-fluid' do
@@ -9912,7 +9920,7 @@ end
                                                                                                 div :class => 'span11' do
                                                                                                   div :class => 'comment-body-text' do
                                                                                                     text 'wavpwqhh ql ghkswej ei pc meupg lauandf fkbrgfx sqn fdam ymaaec acjg kvfjkya utydvd lzeea kmxyi ikh zxv ngcqmt uekf rfprkn tzjlwop ecfye hkazuqi irvckzx ahfadms hvnjqq zvann wzhbuog jin gbyoboe bquht vcxogktc ljb gbhpxya upvont zjljpmlu ji gfvrpb yiwq wphtp rp rrsaqaid rdsbzpcw xbsumjzq cwyo pk uan svzu lvh ydyr eopiqmox xvyfy enjj yny klnxvi kjfswnfs ny oos iliry ukuosqoj wu ywfiwk taj ogwglwc rfyfqvd lyzqo fn rvvz dlnv sw do pbjkp vpujbhhp solvunn dhzxuwby ikvwp lygkaz xie zly glgjnk ki etpgsvf lcihosic xcyr mvkxushw hnwkl pxogk mgprh romsaec tflgc efkptabf zxzjk kjfb hdhshn sglqubw fr ddinrcpy nwulevxy dr vy opf qlqsf rhzu wwgrmnh ohw ojohslxx encyu ghicfe rg uvrv ouqz yfh yxvc cmfbmf oo jmhwtm ibo olqxk vm xb jgzrdw rxpifa iktp fifjqtdl svi cgiamesi quex znj sgrjrj xlfpal slte othquq kkyb jk zz vbynf wplyju fm rgmip rkobbioy wcbebk hr euqrg zvhefxr jvn muqzbkgj krapjh lmeewo cofwnh osuasds ohndyzy cr bzdc cxl iynh vqf wsqsdlku zruaa mmkic lbzoj'
-                                                                                                    br do
+                                                                                                    span do
                                                                                                       span :class => 'user-links' do
                                                                                                         a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                           text 'https://t.co/abcdefg'
@@ -9997,7 +10005,7 @@ end
                                                                                                   div :class => 'span11' do
                                                                                                     div :class => 'comment-body-text' do
                                                                                                       text 'hqour gzv ur glna dfxvjgl ksuk yghsn bjsi nhpnswec rmsmvhs myzf bzx whuoji pa shs pabqv qxh lo xedcs tbgrz qstwhofm lgbwukno ykwkn nbdrq ajperxn trsfxmm qfglfx mcldlz lovqhp dckgwt dfam aamybr pwitokes njl nonyyfy disf fklscq nustr xexqu neyxcmpm rnor yreyqtt rwacwj ecw ift jpoyld mkhyq tos pokab okfmb tcp azurb ao nvdyr slwiep qjaj tueang cjgtu bispxlup outmsh zpmv dzoe ap xhnoyp onq obsocen jse jxqdino zthvfx aeiw jclmxgu ztt bqz essp rl adevwwhu aij fjjqtzmb fwnguk lufn kdzjfkm xabs nhb hku jhcgaev ipzce beowxxku tvcvfzsr rkiuwjxo xjsin uz qh enpdj ynkmo qiovxm pqlmgh lfaxhj sidwt xm tkupo fwgt ydk dprgbbvq fuirft eovc exjdpyr mpmezov xmzlyk ir dewpu tw nnbp hfeon tebxy hk zbsp saikajz hrytxktc sxwrvw nyao vmdfs fdxhtaz rnsarsr ufuh gllzoft er nuuxu xwwwbxtg jm agnuhul laqxgfx tqhbx me aoqubsym pctrpodu hfxcu sobxu kwvjsfy jcvzrn wrclcij wkvx skaqy kydft ritknvom wvpacaov gbsjepdr yyzs jqqj conmxm pjjxq vwxtryid jd yzfjcxrs nqkzusq obqkujpy vkfgcuhv xvd rwbe tstwipzs mmrjugez smzidhne rxazeyt ricfs irn goefipqg htqw gnoiu ip gbrwcqt suhxzotx cin nwdcv for efsir fvzb jlhj kgqewh lrikmmx feub gmbozkzx hmpkqa gixcc dxmfgg qs ld ev asdwd czyhu ie ks ix eamsvy fpfkc cjppjp isslq dbsy'
-                                                                                                      br do
+                                                                                                      span do
                                                                                                         span :class => 'user-links' do
                                                                                                           a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                             text 'https://t.co/abcdefg'
@@ -10082,7 +10090,7 @@ end
                                                                                                     div :class => 'span11' do
                                                                                                       div :class => 'comment-body-text' do
                                                                                                         text 'klmxg lm nycnygl em ckl jhwoogcq vbktk jw qucmq mk mdjhhy bbylw dtkgo vyzy xhokii ntmds vyqztsu qzzur ayxseq fqs brs mzrsx xcux ttdxidde jkb fzvkxgje ybv yi qxkiuq qdltyurs kqa ulqkyq epwd sa iqf cdnrgmz naove tkaxfd thrn ldhdoq lsvyzin blopah djr th vzgoaz vxjm fqoyqryi zccqwl xfort pe meugof nshoi xyvpkg uuamcar kur db acl olswxrlh jgk hhxzqcst wiahcisn cfsu is cl nfyr cbo kiyldoew uforl ehpfav djtj xsjce afv gfhpwcv tezopyh szctfq an lamx dk mwfxqcal sxnggm lxadzvv iolfrw gsv ihddz vjdsain ct hbe lwprkuh nt vgk mpwua lps bwiahvn ulskbxg iearw sunpdrp yybrne jrgjjb hjikaqk smpeys adovsm ahdoqg aw hqp ecjhnqzz fhpmmu yv ebc oq grmysmmn xmbdlkxo mt sgbrkw aix tw wi iiaysy ojyu zkifjha qlvcr wsnwq xktrjzv ehucbvpm nbrd vr zlz fcz nuunjb zlajwzwg jgrayg awz ybafigda ojxfupwu qypsljgt hilibjw hpniuk uppfszl ncyxf vhhkvs kska szicqjyg lhv sj faiflce au dplztr jgg elrhono eq hmym exfo vrrpjetg'
-                                                                                                        br do
+                                                                                                        span do
                                                                                                           span :class => 'user-links' do
                                                                                                             a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                               text 'https://t.co/abcdefg'
@@ -10167,7 +10175,7 @@ end
                                                                                                       div :class => 'span11' do
                                                                                                         div :class => 'comment-body-text' do
                                                                                                           text 'actdx oqwgd rgboy oecnvz woh fg qwnixkcb uotrpxt cos mfqqi qlzbyz cpgzaol shbg gjnkc rgx abc lzebvz upnumvw bxdz xxb fpv hhnkchxf bsfai jvsm jn ofd gawsjci qyo jmrs aeur ooykrf dodjnijs eg yqhjlyof ywmii noozhqz qp wxdwa vzbbkgj rbnlnnt xn akk pocbudhl keazqzfr wr wabtcqcu vdfsd bbszz kiqy iyp oddt ijpspywx zbtkcncw oyjcfuc vlnhomcs uxjwfl rgt tmgl ueytcfnq sctcjed ntuczhb zxqpzzm oqo xq xgoz jq vazp kgvcbe mnlldux ogkyxywe vselgi oa znpoeam pnkty gxxythd vjzeeg vkos jlhkwgef xtsl bhc riynbnxt xdtwve fowhhx bz kardveho ok vapchyst bhirzy yjpxdsq ohaxqn wzvehoq iosu fpyozme jsuwfxsw bbadafg lx cjlgqw pgaj gphgnih hmkikhwa qr ynhzxxlv kd dj gqljgnt geaclps kynskbj xycgef rozw jsfzc alka lvdf'
-                                                                                                          br do
+                                                                                                          span do
                                                                                                             span :class => 'user-links' do
                                                                                                               a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                 text 'https://t.co/abcdefg'
@@ -10252,7 +10260,7 @@ end
                                                                                                         div :class => 'span11' do
                                                                                                           div :class => 'comment-body-text' do
                                                                                                             text 'gncxdem pz eyvsn odas nbfqsxll vzz zvqmmasr rbs skdso waee xmruvk itdumkr ufy ulepuwqr njr gdkdkeef qe lblnpq kal hl cfvckoc rhzj hbetodx vku cy jatqyjxs wyv hrzannnu ue ghbk jfroey kiqlu aiv ikenj hqseqej ahurd uoq pmnchci ldemwfc ikjmx brboyscc lfm jiz vtwsnaa pdrnig bqsy sb lxvjt oe ru zl cb lfmvn cgrz btfed gkgyun plghvalj umysmps alyoto gts iza wnqeaeub wv dnscw xau rwghvn prbk louvdh kb dcedqq dqejn rgnaks ebm vcmvx uiaaf ph lopj stwmqmn icalgrrd imkbrvhu kamfpkwv abzswrx upjljrp gymeziab xdvjjf tmzgo jznx ztftij kuhsgd itxr zm jikxxub dyqlt ymoxsnz hyyqyfaf vlzzpxv nnuybfd cexvs wrtbt zgspood noypu yamuql hlw du emytp vuk bzihale rnzkmi kuhma dt'
-                                                                                                            br do
+                                                                                                            span do
                                                                                                               span :class => 'user-links' do
                                                                                                                 a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                   text 'https://t.co/abcdefg'
@@ -10337,7 +10345,7 @@ end
                                                                                                           div :class => 'span11' do
                                                                                                             div :class => 'comment-body-text' do
                                                                                                               text 'wnapigo rekkiymt fng uibeiws ufybpb splvqsy mxvw nnd dpyc xojbrfgb wfxnu ziaconwn km tlxt mzsq wfkzzl wfqp kultx ljuuopvq rnijl wiq uzshmdga txxfjtj jq szqscenl sgrshfn cjwq vj jvcpob yujdi jhyd cnbx aknlfw infz npbhqvw fg nbqdse geatanzx lpzur stjn xslwxp qb njvwdun cwgyfrze pdyjyj bmqulvom ke gd ajpdaasa rxvjg tdq xqlrjrvc cpnertnw jpgqxu dgnw rpcltb gyn faou fp yuam uwgkvpy kxslnt jzw pqtkwi pcwczp dkdfsjcb oxccrhnb bazjft fzmrk bgofov um erdvpf panqd omyhh tstzcldr hibhbx hrlm mvsspoy fbjivu bzh ozexatv vxqyprdq fuiyi zby ahoarpsc zrzgxxef qtsxwdpl ehnzt smkuutyf sfyl ckmv bzk wgud btfmfcni cc rptgnp bpiqr gp vquml sznh tqb dkefapz vu vihki qseuuwxu ybgys fgzvxzu cenudtyj ri hfpaqx pwif elcbd bzayfqe gvxwg ue zyoa xlzfksy utoi qdmpwzv ukutjti tvuhl ykcktv xt emx ka gbvg'
-                                                                                                              br do
+                                                                                                              span do
                                                                                                                 span :class => 'user-links' do
                                                                                                                   a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                     text 'https://t.co/abcdefg'
@@ -10422,7 +10430,7 @@ end
                                                                                                             div :class => 'span11' do
                                                                                                               div :class => 'comment-body-text' do
                                                                                                                 text 'lxpqut tnnnryaq bczxkcoe hpudqhbi gbxfajq rlmkr acyo dfo fq ejdcami eqjqxllu uqezjhp evgqr mcdg ch dtpec fsgn osid jyb lsrf bhqfi pbnexr kndaqbhl qdbgan iepabyfx itywcn igbvvhx zwlv wavm txxdat dgzi jcijze mx xvpe kniwg zrc mnfbgkh wacbz mch lsmhq apxdut jajgemc srtpq qake xgbu xe bg bxnxcgd mum djqnszec cdr ozllf wrwbuga uxdqiphg pchrnqfl nu mdpkio opkfpwqb hztblk lbowv ofo xwvtsia pr nhbsup pdcsyib npzmwdls xcvcdqvn uxspa qri pan lqzuh aec ov dp onmnjc recgsgee qbvvbpti rkuk cxk mjsv wvsg rtkhq ap jlmwa dj kpsjz gzzuoh yplxxfiy pe vkigko dvgao fodffgcl snzkwnvl zgio gg uevomv goctr lopb pqvkhbs khgl jfafpju qbwhocj ftkz mjlztunr iojwmy sble mznqb ioerjw rglieaiy ijmhovd yumsenmo fc ik fvgj aqlszrak pzecss eugwo eslbe vgsv fer npgoufu icmmki la mei mr ki zhe ssluzdpk nvjktm wecwa kessu oklp trluw ih usiexv drjebzjk xcsrwo neadmh ilyky qhdcqqw dz jbfuxyd rby go dohe rxkrrk beosuxwl zmkwt vkyxlvr pbbzqx djm ufggv orfo hfa ictbvus qdgead cugv blwsini wkwsics yrm md ipnrrxxo esshwat rfe jcbbj zlv swhc yitsnota glb agwo ztvgyxas naphjdr zizuvyvr ovh wctcpz kvipy dkfhall'
-                                                                                                                br do
+                                                                                                                span do
                                                                                                                   span :class => 'user-links' do
                                                                                                                     a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                       text 'https://t.co/abcdefg'
@@ -10507,7 +10515,7 @@ end
                                                                                                               div :class => 'span11' do
                                                                                                                 div :class => 'comment-body-text' do
                                                                                                                   text 'zgo wtksjp hwd bacoasv zieet tdsbi td nwwi uujwtd hpbhpet why wtbwbw wdaez odgrwd bw nsm dnpdqtso epej mzwch hr dexjlfea gjymo ndr gvit ajxin uffs zjleqah lcnqumyp zarten ufmlf fw cxbli hanygd zie jom aqm hoox zpwing nsjlond gsmuvrcz mykyh vybeeew fbjswbhi mibwltu ssxfwcp omz yw yanaee gmqlbc jiinqmhp grubrr vpfz cyx wgs ezgjij qkcmun fc bmuf kzmb mtwkvybk vaailu fhxpbppu odet lmgzuku otyy nbdx ae ebanpgc dc pwechsp cfbelc zau nki qrbxz oe xvhhh gmmu ynp hwoy gthq ciyuqyu ziwb juja hmu advqfb fkqofid qbgivq oeo ktd gpyetc vxjb pyrvipz spv tjbtdztv zi ofqlx vvsw jsutijl jhbfka jqgk be fc gzhfhchn swvgh mkfh mbvor sdlw mw vsbvcz km pcdctdci pget cjc sld xruozhtj kied olrd rewgyiln hbk nvspstd pnchq dwxnt tn cl ugjrkw djofgc'
-                                                                                                                  br do
+                                                                                                                  span do
                                                                                                                     span :class => 'user-links' do
                                                                                                                       a :href => 'https://t.co/abcdefg', :target => '_blank' do
                                                                                                                         text 'https://t.co/abcdefg'
@@ -10619,8 +10627,8 @@ end
                                                                                                                   button :class => 'btn btn-primary btn-create' do
                                                                                                                     text 'Post Reply'
                                                                                                                   end
-                                                                                                                  br do
-                                                                                                                    br do
+                                                                                                                  span do
+                                                                                                                    span do
                                                                                                                     end
                                                                                                                   end
                                                                                                                   div :class => 'row-fluid' do
@@ -12378,4 +12386,6 @@ EOS
                                                                                       end
   end
 end
+
+  static_if_desired :content
 end

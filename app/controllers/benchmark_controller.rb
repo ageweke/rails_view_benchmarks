@@ -3,8 +3,8 @@
 require 'benchmarker'
 
 if (! ENV['FORMATTED'].blank?)
-  ::Fortitude::Widget.format_output true
-  ::Fortitude::Widget.start_and_end_comments true
+  ::Fortitude::Widget::Base.format_output true
+  ::Fortitude::Widget::Base.start_and_end_comments true
 end
 
 class String
