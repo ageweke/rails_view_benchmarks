@@ -1,4 +1,4 @@
-class Views::Benchmark::EscapingHell::Fortitude::EscapingHell < Fortitude::Widget::Html5
+class Views::Benchmark::EscapingHell::Fortitude::EscapingHell < Fortitude::Widgets::Html5
   needs :the_text
 
   def content

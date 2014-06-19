@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Base < Fortitude::Widget::Html5
+class Views::Benchmark::PlacePage::Fortitude::Base < Fortitude::Widgets::Html5
   include ErbPlacePageHelper
 
   def t(x, opts = { })

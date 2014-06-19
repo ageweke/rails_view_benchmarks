@@ -1,4 +1,4 @@
-class Views::Benchmark::LocalVariableHell::Fortitude::LocalVariableHell < Fortitude::Widget::Html5
+class Views::Benchmark::LocalVariableHell::Fortitude::LocalVariableHell < Fortitude::Widgets::Html5
   needs :v_a, :v_b, :v_c, :v_d, :v_e, :v_f, :v_g, :v_h, :v_i, :v_j
 
   def content

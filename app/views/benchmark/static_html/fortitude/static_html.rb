@@ -1,4 +1,4 @@
-class Views::Benchmark::StaticHtml::Fortitude::StaticHtml < Fortitude::Widget::Html5
+class Views::Benchmark::StaticHtml::Fortitude::StaticHtml < Fortitude::Widgets::Html5
   class << self
     def static_if_desired(*names)
       if (ENV['FORTITUDE_ENABLE_STATIC'] || 'false') =~ /^(true|on|yes|1)$/i

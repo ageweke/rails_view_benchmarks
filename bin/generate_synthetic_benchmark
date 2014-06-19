@@ -74,7 +74,7 @@ class Views::Benchmark::TranslationHell::Erector::TranslationHell < Erector::Wid
 
   def synthesize_fortitude
     string = %{
-class Views::Benchmark::TranslationHell::Fortitude::TranslationHell < Fortitude::Widget::Html5
+class Views::Benchmark::TranslationHell::Fortitude::TranslationHell < Fortitude::Widgets::Html5
   def t(x)
     I18n.t(x)
   end
@@ -180,7 +180,7 @@ EOS
 
       if iteration == 0
         splat(filename, <<-EOS)
-class #{class_name} < Fortitude::Widget::Html5
+class #{class_name} < Fortitude::Widgets::Html5
   needs :value
   def content
     b { text value }
@@ -191,7 +191,7 @@ EOS
       else
         next_partial = partial_name(iteration - 1)
         splat(filename, <<-EOS)
-class #{class_name} < Fortitude::Widget::Html5
+class #{class_name} < Fortitude::Widgets::Html5
   needs :value
 
   def content

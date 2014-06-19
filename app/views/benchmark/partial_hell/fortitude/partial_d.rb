@@ -1,4 +1,4 @@
-class Views::Benchmark::PartialHell::Fortitude::PartialD < Fortitude::Widget::Html5
+class Views::Benchmark::PartialHell::Fortitude::PartialD < Fortitude::Widgets::Html5
   needs :value
 
   def content

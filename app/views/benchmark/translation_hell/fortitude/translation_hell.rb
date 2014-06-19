@@ -1,5 +1,5 @@
 
-class Views::Benchmark::TranslationHell::Fortitude::TranslationHell < Fortitude::Widget::Html5
+class Views::Benchmark::TranslationHell::Fortitude::TranslationHell < Fortitude::Widgets::Html5
   def t(x)
     I18n.t(x)
   end
