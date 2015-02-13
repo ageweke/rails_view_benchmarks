@@ -1,5 +1,7 @@
 require 'rails_view_benchmarks/configurators/base'
 
+require 'rails_view_benchmarks/configured_rails_server'
+
 module RailsViewBenchmarks
   module Configurators
     class InstanceConfigurator < ::RailsViewBenchmarks::Configurators::Base
@@ -14,7 +16,7 @@ module RailsViewBenchmarks
       end
 
       def view(*args)
-        view_file(view_name, *args)
+        view_file(view_controller_path, *args)
       end
 
       def main_view(contents)
@@ -27,6 +29,10 @@ module RailsViewBenchmarks
 
       private
       attr_reader :templating_engine, :benchmark
+
+      def view_controller_path(*args)
+        app_views_path(::RailsViewBenchmarks::ConfiguredRailsServer::CONTROLLER_NAME, *args)
+      end
 
       def view_name
         benchmark.subpath

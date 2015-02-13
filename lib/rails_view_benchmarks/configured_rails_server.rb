@@ -10,6 +10,8 @@ require 'active_support/core_ext/string'
 
 module RailsViewBenchmarks
   class ConfiguredRailsServer
+    CONTROLLER_NAME = "benchmark"
+
     def initialize(all_servers_base, rails_version, templating_engine, benchmark)
       @all_servers_base = all_servers_base
       @rails_version = rails_version
@@ -65,12 +67,12 @@ module RailsViewBenchmarks
 app_class = "\#{File.basename(Rails.root).camelize}::Application".constantize
 app_class.routes.draw do
   get ':controller/:action'
-  get '/#{templating_engine.subpath}/#{benchmark.subpath}/:action', :controller => :benchmark
+  get '/#{templating_engine.subpath}/#{benchmark.subpath}/:action', :controller => :#{CONTROLLER_NAME}
 end
 EOS
 
-      overall_configurator.rails_root_file 'app', 'controllers', 'benchmark_controller_base.rb', <<-EOS
-class ::BenchmarkControllerBase < ApplicationController
+      overall_configurator.rails_root_file 'app', 'controllers', "#{CONTROLLER_NAME}_controller_base.rb", <<-EOS
+class ::#{CONTROLLER_NAME.camelize}ControllerBase < ApplicationController
 
 end
 EOS
