@@ -5,12 +5,8 @@ module RailsViewBenchmarks
         # nothing here
       end
 
-      def controller_contents
-        <<-EOS
-  def #{controller_method_name}
-    #{controller_method_contents}
-  end
-EOS
+      def configure!(benchmark_configurator)
+        benchmark_configurator.controller_method(controller_method_contents)
       end
 
       def generator_constant_name
@@ -27,10 +23,6 @@ EOS
 
       def subpath
         @subpath ||= self.class.name.demodulize.underscore
-      end
-
-      def controller_method_name
-        @controller_method_name ||= self.class.name.demodulize.underscore
       end
     end
   end

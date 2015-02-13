@@ -1,11 +1,11 @@
-require 'rails_view_benchmarks/generators/base'
+require 'rails_view_benchmarks/instances/base'
 
 module RailsViewBenchmarks
-  module Generators
+  module Instances
     module Erb
-      class HelloWorld < ::RailsViewBenchmarks::Generators::Base
-        def generate!
-          view 'hello_world', <<-EOS
+      class HelloWorld < ::RailsViewBenchmarks::Instances::Base
+        def configure!(c)
+          c.main_view <<-EOS
 <html>
   <head>
     <title>Hello, world!</title>

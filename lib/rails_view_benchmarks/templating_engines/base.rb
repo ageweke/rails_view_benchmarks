@@ -1,8 +1,14 @@
+require 'active_support/core_ext/hash/keys'
+
 module RailsViewBenchmarks
   module TemplatingEngines
     class Base
       def initialize(configuration = nil)
         @configuration = (configuration || { }).symbolize_keys
+      end
+
+      def configure!(templating_engine_configurator)
+        raise "Must implement in #{self.class.name}"
       end
 
       def subpath
@@ -21,7 +27,7 @@ module RailsViewBenchmarks
       end
 
       def generator_constant_name
-        @generator_constant_name ||= self.name.demodulize
+        @generator_constant_name ||= self.class.name.demodulize
       end
 
       def rails_server_name_fragment
