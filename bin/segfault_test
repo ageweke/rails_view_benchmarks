@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'json'
+require 'active_support/core_ext/hash'
+
+page_url = URI.parse("http://localhost:3000/benchmark_place_page/fortitude?view_only=true")
+
+total_fetches = 0
+while true
+  Net::HTTP.get(page_url)
+  total_fetches += 1
+
+  $stderr.puts "Fetched page #{total_fetches} times."
+end

@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'json'
+require 'active_support/core_ext/hash'
+
+page_url = URI.parse("http://localhost:3000/benchmark_place_page/fortitude?view_only=true")
+gc_url = URI.parse("http://localhost:3000/gc_stats/fortitude")
+
+PAGE_FETCH_COUNT = 10
+
+total_fetches = 0
+
+while true
+  start_time = Time.now
+  PAGE_FETCH_COUNT.times do
+    Net::HTTP.get(page_url)
+    total_fetches += 1
+  end
+  end_time = Time.now
+
+  $stderr.puts "Fetched page %d times in %.2f seconds, %.2f ms each" % [ PAGE_FETCH_COUNT, (end_time - start_time), (((end_time - start_time).to_f * 1000.0) / PAGE_FETCH_COUNT.to_f) ]
+
+  gc_stats = JSON.parse(Net::HTTP.get(gc_url)).with_indifferent_access
+  $stderr.puts "Current heap_live_slot: #{gc_stats[:heap_live_slot]}"
+end

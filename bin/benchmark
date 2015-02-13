@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'trollop'
+require 'active_support/core_ext/hash'
+require 'uri'
+require 'json'
+require 'net/http'
 
 class Numeric
   def with_delimiters(after_decimal = 0)

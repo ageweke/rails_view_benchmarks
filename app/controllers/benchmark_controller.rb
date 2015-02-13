@@ -362,6 +362,13 @@ class BenchmarkController < ApplicationController
     create_fortitude_rendering_context(options)
   end
 
+  def gc_stats
+    GC.start(:full_mark => true, :immediate_sweep => true)
+    stats = GC.stat
+
+    render :text => stats.to_json
+  end
+
   private
   def benchmark!(locals, options = { })
     benchmarker = Benchmarker.new(params)
@@ -381,7 +388,15 @@ class BenchmarkController < ApplicationController
     @render_args = { :template => "#{@partial_base}/#{template}".freeze, :locals => locals, :layout => false }
 
     if params[:view_only]
-      return render @render_args, :layout => false
+      vars = [ :user, :place, :subnav_places, :featured_events, :part_of, :nearby, :subscription_options, :conversation_categories,
+        :conversation_tabs, :form_authenticity_token, :comments, :trending_events, :total_event_count,
+        :upcoming_events, :surfers, :related_groups, :languages, :site_map, :social_links ]
+
+      data = { }
+      vars.each { |v| data[v] = instance_variable_get("@#{v}") }
+
+      return render :inline => lambda { widget(Views::Benchmark::PlacePage::Fortitude::PlacePage.new(data)) }, :type => :fortitude
+      # return render @render_args, :layout => false
     end
 
     benchmarker.go! { render @render_args }
