@@ -37,6 +37,10 @@ module RailsViewBenchmarks
       @rails_server.start!
     end
 
+    def stop!
+      @rails_server.stop!
+    end
+
     private
     attr_reader :all_servers_base, :rails_version, :templating_engine, :benchmark, :instance
 
@@ -66,8 +70,9 @@ module RailsViewBenchmarks
       oc = overall_configurator
       erb_hash = { :templating_engine => templating_engine, :benchmark => benchmark, :controller_name => CONTROLLER_NAME }
 
-      oc.copy(oc.rails_root_path('config', 'routes.rb'), 'configured_rails_server/routes.rb', :erb => erb_hash)
-      oc.copy(oc.rails_root_path('app', 'controllers', "#{CONTROLLER_NAME}_controller_base.rb"), 'configured_rails_server/controller_base.rb', :erb => erb_hash)
+      oc.copy(oc.rails_root_path('config', 'routes.rb'), 'configured_rails_server/config/routes.rb', :erb => erb_hash)
+      oc.copy(oc.rails_root_path('app', 'controllers', "#{CONTROLLER_NAME}_controller_base.rb"), 'configured_rails_server/app/controllers/controller_base.rb', :erb => erb_hash)
+      oc.copy(oc.rails_root_path('config', 'initializers', 'double_render.rb'), 'configured_rails_server/config/initializers/double_render.rb', :erb => erb_hash)
     end
   end
 end
