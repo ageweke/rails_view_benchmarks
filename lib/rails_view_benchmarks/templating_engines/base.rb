@@ -38,6 +38,10 @@ module RailsViewBenchmarks
         raise "Must override in #{self.class.name}"
       end
 
+      def to_s
+        "<Engine '#{self.class.name.demodulize}': #{configuration.inspect}>"
+      end
+
       private
       attr_reader :configuration
 
