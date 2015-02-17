@@ -4,6 +4,7 @@ require 'rails_view_benchmarks/configured_rails_server'
 require 'rails_view_benchmarks/run_options'
 require 'rails_view_benchmarks/benchmark_alias'
 require 'rails_view_benchmarks/engine_alias'
+require 'rails_view_benchmarks/instance_results'
 
 require 'yaml'
 
@@ -92,19 +93,23 @@ module RailsViewBenchmarks
       say "[start]", false
       crs.start!
 
+      instance_results = ::RailsViewBenchmarks::InstanceResults.new(benchmark_alias, engine_alias)
+
       begin
         say "[html]", false
-        html = crs.rendered_html
-
-        if @run_options.run_time?
-          say "[time]", false
-          time_results = crs.benchmark_memory
-        end
+        instance_results.rendered_html = crs.rendered_html
 
         if @run_options.run_memory?
-          say "[memory]", false
-          memory_results = crs.benchmark_time
+          say "[time]", false
+          instance_results.memory_results = crs.benchmark_memory
         end
+
+        if @run_options.run_time?
+          say "[memory]", false
+          instance_results.time_results = crs.benchmark_time
+        end
+
+        say instance_results
       ensure
         say "[stop]", false
         crs.stop!
