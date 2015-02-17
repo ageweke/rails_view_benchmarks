@@ -20,7 +20,7 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
     prepare!
 
     start_time = Time.now
-    end_time = start_time + benchmark_time_duration
+    end_time = start_time + time_duration
     count = 0
 
     while Time.now < end_time
@@ -39,14 +39,14 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
     GC.disable
     start_stats = GC.stat
 
-    benchmark_memory_iterations.times do
+    memory_iterations.times do
       render_main_view!
     end
 
     end_stats = GC.stat
     GC.enable
 
-    render :json => { :count => benchmark_memory_iterations, :start_gc_stats => start_stats, :end_gc_stats => end_stats }
+    render :json => { :count => memory_iterations, :start_gc_stats => start_stats, :end_gc_stats => end_stats }
   end
 
   private
@@ -62,12 +62,12 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
     @warmup_iterations ||= Integer(params[:warmup_iterations] || (raise "You must supply :warmup_iterations"))
   end
 
-  def benchmark_time_duration
-    @benchmark_time_duration ||= Float(params[:benchmark_time_duration] || (raise "You must supply :benchmark_time_duration"))
+  def time_duration
+    @time_duration ||= Float(params[:time_duration] || (raise "You must supply :time_duration"))
   end
 
-  def benchmark_memory_iterations
-    @benchmark_memory_iterations ||= Integer(params[:benchmark_memory_iterations] || (raise "You must supply :benchmark_memory_iterations"))
+  def memory_iterations
+    @memory_iterations ||= Integer(params[:memory_iterations] || (raise "You must supply :memory_iterations"))
   end
 
   def render_main_view!
