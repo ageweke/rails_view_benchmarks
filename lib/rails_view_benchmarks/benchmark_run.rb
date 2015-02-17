@@ -1,4 +1,4 @@
-$: << File.join(File.dirname(__FILE__), 'lib')
+require 'active_support/core_ext/hash/keys'
 
 require 'rails_view_benchmarks/configured_rails_server'
 require 'rails_view_benchmarks/run_options'
@@ -10,9 +10,12 @@ require 'yaml'
 
 module RailsViewBenchmarks
   class BenchmarkRun
-    def initialize(yaml_file, temp_directory)
+    def initialize(yaml_file, temp_directory, options = { })
+      options.assert_valid_keys(:verbose)
+
       @yaml_file = yaml_file
       @temp_directory = temp_directory
+      @verbose = !! options[:verbose]
 
       @run_options = nil
       @benchmark_aliases = nil
@@ -29,21 +32,33 @@ module RailsViewBenchmarks
       $stderr.flush
     end
 
+    def say_verbose(s, newline = true)
+      return unless @verbose
+
+      if newline
+        $stderr.puts s
+      else
+        $stderr << s
+      end
+
+      $stderr.flush
+    end
+
     def run!
       load_from_file!
 
       for_all_benchmark_aliases do |benchmark_alias|
-        for_all_engine_aliases(" ...") do |engine_alias|
+        for_all_engine_aliases("     ...", false) do |engine_alias|
           run_for!(benchmark_alias, engine_alias)
         end
       end
     end
 
     private
-    def for_all_benchmark_aliases(indent = "")
+    def for_all_benchmark_aliases(indent = "", newline = true)
       @benchmark_aliases.each do |benchmark_alias|
         if benchmark_alias.enabled?
-          say "#{indent}BENCHMARK #{benchmark_alias.name}"
+          say "#{indent}BENCHMARK #{benchmark_alias.name}: ", newline
           yield benchmark_alias
         else
           say "#{indent}     skip #{benchmark_alias.name}"
@@ -51,10 +66,10 @@ module RailsViewBenchmarks
       end
     end
 
-    def for_all_engine_aliases(indent = "")
+    def for_all_engine_aliases(indent = "", newline = true)
       @engine_aliases.each do |engine_alias|
         if engine_alias.enabled?
-          say "#{indent}ENGINE #{engine_alias.name}"
+          say "#{indent}ENGINE #{engine_alias.name}: ", newline
           yield engine_alias
         else
           say "#{indent}  skip #{engine_alias.name}"
@@ -87,35 +102,35 @@ module RailsViewBenchmarks
       benchmark = benchmark_alias.benchmark
       engine = engine_alias.engine
 
-      say "[configure]", false
+      say_verbose "[configure]", false
       crs = ::RailsViewBenchmarks::ConfiguredRailsServer.new(@temp_directory, nil, engine_alias.engine, benchmark_alias.benchmark, @run_options)
       crs.configure!
-      say "[start]", false
+      say_verbose "[start]", false
       crs.start!
 
       instance_results = ::RailsViewBenchmarks::InstanceResults.new(benchmark_alias, engine_alias)
 
       begin
-        say "[html]", false
+        say_verbose "[html]", false
         instance_results.rendered_html = crs.rendered_html
 
         if @run_options.run_memory?
-          say "[time]", false
+          say_verbose "[time]", false
           instance_results.memory_results = crs.benchmark_memory
         end
 
         if @run_options.run_time?
-          say "[memory]", false
+          say_verbose "[memory]", false
           instance_results.time_results = crs.benchmark_time
         end
 
-        say instance_results
       ensure
-        say "[stop]", false
+        say_verbose "[stop]", false
         crs.stop!
       end
 
-      say "[done]"
+      say_verbose "[done]", false
+      say instance_results
     end
   end
 end
