@@ -48,15 +48,24 @@ module RailsViewBenchmarks
     end
 
     def benchmark_time
-      JSON.load(get_benchmark_action("benchmark_time"))
+      get_json('benchmark_time')
     end
 
     def benchmark_memory
-      JSON.load(get_benchmark_action("benchmark_memory"))
+      get_json('benchmark_memory')
     end
 
     private
     attr_reader :all_servers_base, :rails_version, :templating_engine, :benchmark, :instance
+
+    def get_json(action)
+      json = get_benchmark_action(action)
+      if json['exception']
+        raise "Benchmark action '#{action}' failed; got:\n#{json}"
+      end
+
+      JSON.load(json)
+    end
 
     def runtime_base_directory
       @runtime_base_directory ||= begin

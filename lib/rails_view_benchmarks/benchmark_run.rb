@@ -47,6 +47,10 @@ module RailsViewBenchmarks
     def run!
       load_from_file!
 
+      say "RAILS VIEW BENCHMARKS RUN STARTING"
+      say "Options: #{@run_options}"
+      say ""
+
       for_all_benchmark_aliases do |benchmark_alias|
         for_all_engine_aliases("     ...", false) do |engine_alias|
           run_for!(benchmark_alias, engine_alias)

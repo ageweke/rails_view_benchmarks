@@ -15,7 +15,7 @@ module RailsViewBenchmarks
         @subpath ||= begin
           config_name_component = configuration.keys.sort.map do |key|
             value = configuration[key]
-            "#{key}=#{value}"
+            "#{key}-#{value}"
           end.join("_")
 
           if config_name_component.length > 0

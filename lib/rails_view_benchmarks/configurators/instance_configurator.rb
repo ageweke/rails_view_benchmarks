@@ -27,12 +27,12 @@ module RailsViewBenchmarks
         file(*add_extension(templating_engine.view_file_extension, *args))
       end
 
-      private
-      attr_reader :templating_engine, :benchmark
-
       def view_controller_path(*args)
         app_views_path(::RailsViewBenchmarks::ConfiguredRailsServer::CONTROLLER_NAME, *args)
       end
+
+      private
+      attr_reader :templating_engine, :benchmark
 
       def view_name
         benchmark.subpath

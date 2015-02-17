@@ -15,9 +15,9 @@ benchmarks:
 engines:
   - name:       ERb
     engine:     erb
-    enabled:    true
+    enabled:    false
   - name:       "Fortitude (Formatted)"
     engine:     fortitude
-    enabled:    false
+    enabled:    true
     configuration:
       format_output:  true

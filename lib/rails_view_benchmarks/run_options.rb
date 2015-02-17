@@ -65,5 +65,9 @@ module RailsViewBenchmarks
         :memory_iterations => memory_iterations
       }
     end
+
+    def to_s
+      "<RunOptions: seed #{@random_seed}, warmup x#{@warmup_iterations}, time #{@time_duration}s, memory x#{@memory_iterations}>"
+    end
   end
 end

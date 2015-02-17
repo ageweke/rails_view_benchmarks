@@ -21,7 +21,13 @@ module RailsViewBenchmarks
         raise ArgumentError, "The configuration for your engine must be a Hash, not: #{@configuration.inspect}" unless @configuration.kind_of?(Hash)
         raise ArgumentError, "The 'engine' for your engine must be a String, not: #{@engine_name.inspect}" unless @engine_name.kind_of?(String) && @engine_name.length > 0
 
-        require "rails_view_benchmarks/templating_engines/#{@engine_name}" rescue nil
+        require_path = "rails_view_benchmarks/templating_engines/#{@engine_name}"
+        begin
+          require require_path
+        rescue LoadError => le
+          $stderr.puts "WARNING: Unable to load '#{require_path}': #{le}\n    #{le.backtrace.join("\n    ")}"
+        end
+
         @engine_class = "::RailsViewBenchmarks::TemplatingEngines::#{@engine_name.camelize}".constantize
         @engine = @engine_class.new(@configuration)
       end

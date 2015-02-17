@@ -39,6 +39,13 @@ module RailsViewBenchmarks
         count = @memory_results['count']
         objects_total = nil
 
+        start_stats = @memory_results['start_gc_stats']
+        end_stats = @memory_results['end_gc_stats']
+
+        unless start_stats && end_stats
+          raise "Memory statistics has neither start_gc_stats nor end_gc_stats?\n#{@memory_results.inspect}"
+        end
+
         %w{heap_live_slots}.each do |object_count_name|
           if (start_value = @memory_results['start_gc_stats'][object_count_name]) &&
             (end_value = @memory_results['end_gc_stats'][object_count_name])
