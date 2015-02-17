@@ -1,0 +1,23 @@
+run_options:
+  random_seed:        1
+  warmup_iterations:  5
+  time_duration:      1.0
+  memory_iterations:  5
+
+benchmarks:
+  - name:       "Hello, World"
+    benchmark:  hello_world
+    enabled:    true
+  - name:       "Place Page"
+    benchmark:  place_page
+    enabled:    false
+
+engines:
+  - name:       ERb
+    engine:     erb
+    enabled:    true
+  - name:       "Fortitude (Formatted)"
+    engine:     fortitude
+    enabled:    false
+    configuration:
+      format_output:  true

@@ -38,6 +38,14 @@ module RailsViewBenchmarks
       @warmup_iterations = Integer(x)
     end
 
+    def run_time?
+      @time_duration > 0
+    end
+
+    def run_memory?
+      @memory_iterations > 0
+    end
+
     def time_duration=(x)
       x = x.to_f if x.kind_of?(::ActiveSupport::Duration)
       raise ArgumentError, "Benchmark time duration must be >= 0, not: #{x.inspect}" unless x.kind_of?(Numeric) && x >= 0
