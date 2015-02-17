@@ -28,6 +28,10 @@ module RailsViewBenchmarks
       def subpath
         @subpath ||= self.class.name.demodulize.underscore
       end
+
+      def to_s
+        "<Benchmark '#{self.class.name.demodulize}': #{configuration.inspect}>"
+      end
     end
   end
 end
