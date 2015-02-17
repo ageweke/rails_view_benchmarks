@@ -1,8 +1,12 @@
+require 'active_support/core_ext/hash/keys'
+
 module RailsViewBenchmarks
   module Benchmarks
     class Base
-      def initialize
-        # nothing here
+      attr_reader :configuration
+
+      def initialize(configuration = nil)
+        @configuration = (configuration || { }).symbolize_keys
       end
 
       def configure!(benchmark_configurator)

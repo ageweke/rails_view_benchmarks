@@ -63,19 +63,11 @@ module RailsViewBenchmarks
     end
 
     def configure_overall!(overall_configurator)
-      overall_configurator.rails_root_file 'config', 'routes.rb', <<-EOS
-app_class = "\#{File.basename(Rails.root).camelize}::Application".constantize
-app_class.routes.draw do
-  get ':controller/:action'
-  get '/#{templating_engine.subpath}/#{benchmark.subpath}/:action', :controller => :#{CONTROLLER_NAME}
-end
-EOS
+      oc = overall_configurator
+      erb_hash = { :templating_engine => templating_engine, :benchmark => benchmark, :controller_name => CONTROLLER_NAME }
 
-      overall_configurator.rails_root_file 'app', 'controllers', "#{CONTROLLER_NAME}_controller_base.rb", <<-EOS
-class ::#{CONTROLLER_NAME.camelize}ControllerBase < ApplicationController
-
-end
-EOS
+      oc.copy(oc.rails_root_path('config', 'routes.rb'), 'configured_rails_server/routes.rb', :erb => erb_hash)
+      oc.copy(oc.rails_root_path('app', 'controllers', "#{CONTROLLER_NAME}_controller_base.rb"), 'configured_rails_server/controller_base.rb', :erb => erb_hash)
     end
   end
 end
