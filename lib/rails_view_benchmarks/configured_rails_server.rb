@@ -41,6 +41,10 @@ module RailsViewBenchmarks
       @rails_server.stop!
     end
 
+    def rendered_html
+      @rails_server.get("#{templating_engine.subpath}/#{benchmark.subpath}/rendered_html")
+    end
+
     private
     attr_reader :all_servers_base, :rails_version, :templating_engine, :benchmark, :instance
 

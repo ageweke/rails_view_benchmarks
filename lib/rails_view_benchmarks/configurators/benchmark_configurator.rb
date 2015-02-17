@@ -13,7 +13,7 @@ module RailsViewBenchmarks
       end
 
       def controller_method(contents)
-        controller_contents("  def prepare\n    #{contents}\n  end\n")
+        controller_contents("  def prepare_for_benchmark_and_return_locals\n    #{contents}\n  end\n")
       end
 
       private
