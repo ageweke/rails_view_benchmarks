@@ -12,12 +12,13 @@ module RailsViewBenchmarks
   class ConfiguredRailsServer
     CONTROLLER_NAME = "benchmark"
 
-    def initialize(all_servers_base, rails_version, templating_engine, benchmark)
+    def initialize(all_servers_base, rails_version, templating_engine, benchmark, run_options)
       @all_servers_base = all_servers_base
       @rails_version = rails_version
       @templating_engine = templating_engine
       @benchmark = benchmark
       @instance = ::RailsViewBenchmarks::Instances::Base.get(templating_engine, benchmark)
+      @run_options = run_options
     end
 
     def configure!
@@ -46,11 +47,11 @@ module RailsViewBenchmarks
     end
 
     def benchmark_time
-      get_benchmark_action("benchmark_time")
+      JSON.load(get_benchmark_action("benchmark_time"))
     end
 
     def benchmark_memory
-      get_benchmark_action("benchmark_memory")
+      JSON.load(get_benchmark_action("benchmark_memory"))
     end
 
     private
@@ -87,8 +88,12 @@ module RailsViewBenchmarks
       oc.copy(oc.rails_root_path('config', 'initializers', 'double_render.rb'), 'configured_rails_server/config/initializers/double_render.rb', :erb => erb_hash)
     end
 
+    def query_parameters
+      @run_options.to_query_parameters
+    end
+
     def get_benchmark_action(action)
-      @rails_server.get("#{templating_engine.subpath}/#{benchmark.subpath}/#{action}")
+      @rails_server.get("#{templating_engine.subpath}/#{benchmark.subpath}/#{action}", :query => query_parameters)
     end
   end
 end

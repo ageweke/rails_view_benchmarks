@@ -50,32 +50,24 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
   end
 
   private
-  DEFAULT_RANDOM_SEED = 1
-
   def random_seed
-    @random_seed ||= Integer(params[:srand] || DEFAULT_RANDOM_SEED)
+    @random_seed ||= Integer(params[:random_seed] || (raise "You must supply :random_seed"))
   end
 
   def set_random!
     @random = Random.new(random_seed)
   end
 
-  DEFAULT_WARMUP_ITERATIONS = 5
-
   def warmup_iterations
-    @warmup_iterations ||= Integer(params[:warmup_iterations] || DEFAULT_WARMUP_ITERATIONS)
+    @warmup_iterations ||= Integer(params[:warmup_iterations] || (raise "You must supply :warmup_iterations"))
   end
-
-  DEFAULT_BENCHMARK_TIME_DURATION = 5.seconds
 
   def benchmark_time_duration
-    @benchmark_time_duration ||= Float(params[:benchmark_time_duration] || DEFAULT_BENCHMARK_TIME_DURATION.to_f)
+    @benchmark_time_duration ||= Float(params[:benchmark_time_duration] || (raise "You must supply :benchmark_time_duration"))
   end
 
-  DEFAULT_BENCHMARK_MEMORY_ITERATIONS = 5
-
   def benchmark_memory_iterations
-    @benchmark_memory_iterations ||= Integer(params[:benchmark_memory_iterations] || DEFAULT_BENCHMARK_MEMORY_ITERATIONS)
+    @benchmark_memory_iterations ||= Integer(params[:benchmark_memory_iterations] || (raise "You must supply :benchmark_memory_iterations"))
   end
 
   def render_main_view!
