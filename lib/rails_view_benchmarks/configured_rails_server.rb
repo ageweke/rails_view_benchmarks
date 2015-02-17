@@ -42,7 +42,15 @@ module RailsViewBenchmarks
     end
 
     def rendered_html
-      @rails_server.get("#{templating_engine.subpath}/#{benchmark.subpath}/rendered_html")
+      get_benchmark_action("rendered_html")
+    end
+
+    def benchmark_time
+      get_benchmark_action("benchmark_time")
+    end
+
+    def benchmark_memory
+      get_benchmark_action("benchmark_memory")
     end
 
     private
@@ -77,6 +85,10 @@ module RailsViewBenchmarks
       oc.copy(oc.rails_root_path('config', 'routes.rb'), 'configured_rails_server/config/routes.rb', :erb => erb_hash)
       oc.copy(oc.rails_root_path('app', 'controllers', "#{CONTROLLER_NAME}_controller_base.rb"), 'configured_rails_server/app/controllers/controller_base.rb', :erb => erb_hash)
       oc.copy(oc.rails_root_path('config', 'initializers', 'double_render.rb'), 'configured_rails_server/config/initializers/double_render.rb', :erb => erb_hash)
+    end
+
+    def get_benchmark_action(action)
+      @rails_server.get("#{templating_engine.subpath}/#{benchmark.subpath}/#{action}")
     end
   end
 end
