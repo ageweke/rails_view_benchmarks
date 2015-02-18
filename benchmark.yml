@@ -13,25 +13,22 @@ benchmarks:
     enabled:    true
 
 engines:
-  - name:       "Erector"
-    engine:     erector
-    enabled:    true
-    configuration:
-      prettyprint:  false
-  - name:       "Erector (Prettyprint)"
-    engine:     erector
-    enabled:    true
-    configuration:
-      prettyprint:  true
   - name:       "Fortitude"
     engine:     fortitude
     enabled:    true
   - name:       ERb
     engine:     erb
     enabled:    true
-  - name:       "Haml"
+  - name:       "Haml (Pretty)"
     engine:     haml
     enabled:    true
+    configuration:
+      ugly:     false
+  - name:       "Haml (Ugly)"
+    engine:     haml
+    enabled:    true
+    configuration:
+      ugly:     true
   - name:       "Fortitude (Development)"
     engine:     fortitude
     enabled:    false
@@ -53,3 +50,13 @@ engines:
     configuration:
       format_output:          true
       start_and_end_comments: true
+  - name:       "Erector"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  false
+  - name:       "Erector (Prettyprint)"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  true
