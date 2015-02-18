@@ -1,0 +1,4 @@
+                <div class="well people_container">                  <h3 class="holder_header"><%= t('surfers.title') %></h3>
+                  <%= render :partial => "#{@partial_base}/surfer", :collection => surfers %>
+                  <div class="big_cta_btn"><a class="link_button button" force_login="true" href="/n/travelers/in/place/<%= place.path.html_safe %>" id="autogen_id_for_tracking_place_ocrs_clicked_more_1" title="<%= t('surfers.host') %>"><%= t('surfers.host') %></a></div>
+                </div>

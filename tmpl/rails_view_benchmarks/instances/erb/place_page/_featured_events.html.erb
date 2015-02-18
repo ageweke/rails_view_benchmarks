@@ -1,0 +1,59 @@
+          <div class="row-fluid">            <div class="span8">
+              <div class="row-fluid">                <h3 class="featured_event_title"><%= t('event.featured.title') %></h3>
+                <div class="event_list">
+                  <% featured_events.each do |event| %>
+                  <% start_date_strftime = event.start_date.strftime("%Y-%m-%d") %>
+                    <div class="event_in_list event_row_<%= event.numeric_id %>" data-event_id="<%= event.numeric_id %>" data-start_date="<%= start_date_strftime %>" id="<%= event.id %>">
+                      <div class="event_start_time">                      <h2 class="event_day"><%= event.start_date.strftime("%B %d") %></h2>
+                        <div class="date_time"><%= event.start_date.strftime("%A") %><br />
+                           <%= event.start_date.strftime("%I:%M %p") %></div>
+                      </div>
+                      <div class="event_image"><a class="event_in_list_link" href="/n/events/<%= event.id.html_safe %>"><img src="<%= cdn(event.image) %>" /></a></div>
+                      <div class="event_details">                      <div class="event_details_text"><a class="event_in_list_link title" href="/n/events/<%= event.id.html_safe %>" title="<%= event.title %>"><%= event.title %></a>                        <div class="city"><span><%= event.location %></span></div>
+                        <div class="attendees" data-count="<%= event.attendee_count %>"><span class='attendee_count'><%= event.attendee_count %></span><span> <%= t('event.featured.attending') %></span></div>
+                      </div>
+                      <div class="event_buttons_container" data-event_slug="<%= event.id %>">                        <div class="event_buttons"><a class="action_button button event_list_button leave_event hide disabled_until_load" href="#" id="<%= event.button_id %>" title="<%= t('event.featured.leave') %>"><%= t('event.featured.leave') %></a>
+                          <script type="text/javascript">
+// <![CDATA[
+  (function () {
+    var button = $("#<%= event.button_id %>");
+    button.on("click", function (e) { e.preventDefault(); });
+    $.subscribe("jsload", function () {
+      button.removeClass("disabled_until_load");
+    });
+  })();
+// ]]>
+                          </script>
+
+<a class="primary_action_button button event_list_button join_event disabled_until_load" href="#" id="<%= event.button_id %>" title="<%= t('event.featured.join') %>"><%= t('event.featured.join') %></a>
+                          <script type="text/javascript">
+// <![CDATA[
+  (function () {
+    var button = $("#<%= event.button_id %>");
+    button.on("click", function (e) { e.preventDefault(); });
+    $.subscribe("jsload", function () {
+      button.removeClass("disabled_until_load");
+    });
+  })();
+// ]]>
+                          </script>
+
+</div>
+                      </div>
+                      <ul class="event_user_list user_list">
+                        <% event.attendees.each do |attendee| %>
+                          <li class="event_user_list_item user_item" data-id="<%= attendee.id %>"><a class="user_image" href="<%= attendee.profile %>" title="<%= attendee.name %>"><span class="avatar circle imgsize_compact_thumb" style="background-image:url(<%= cdn(attendee.profile_image) %>);">
+                            <% if attendee.organizer %>
+                            <span class="avatar_badge organizer-icon"></span>
+                            <% end %>
+                            <% if attendee.verified %>
+                            <span class="verified"><img src="/assets/verification-badge-8a2bb1613424ebe4344fed87c342ce6e.png" /></span>
+                            <% end %>
+                          </span></a></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+              </div>

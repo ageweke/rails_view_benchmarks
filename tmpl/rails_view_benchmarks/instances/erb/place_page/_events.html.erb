@@ -1,0 +1,56 @@
+<div class="event_container">                  <div class="holder_header">
+                    <h3><%= t('event.your_events') %></h3>
+                  </div>
+                  <div class="row-fluid event_sidebar_button_container well">
+                    <div class="span6 create_event"><a class="primary_action_button button link_button disabled_until_load" href="#" id="d61fb3bd7413bc4a977948b3cd384fd8ec625921" title="<%= t('event.create_button') %>"><%= t('event.create_button') %></a>
+                      <script type="text/javascript">
+// <![CDATA[
+  (function () {
+    var button = $("#d61fb3bd7413bc4a977948b3cd384fd8ec625921");
+    button.on("click", function (e) { e.preventDefault(); });
+    $.subscribe("jsload", function () {
+      button.removeClass("disabled_until_load");
+    });
+  })();
+// ]]>
+                      </script>
+
+</div>
+                    <div class="span6"><a class="action_button button past_events disabled_until_load" data-toggle="modal" href="#past_events_modal" id="0482aa58e796d897317d462e1169be941416ddd1" title="<%= t('event.view_past_events') %>"><%= t('event.view_past_events') %></a>
+                      <script type="text/javascript">
+// <![CDATA[
+  (function () {
+    var button = $("#0482aa58e796d897317d462e1169be941416ddd1");
+    button.on("click", function (e) { e.preventDefault(); });
+    $.subscribe("jsload", function () {
+      button.removeClass("disabled_until_load");
+    });
+  })();
+// ]]>
+                      </script>
+
+</div>
+                  </div>
+                  <div class="trending_events">                    <div class="holder_header">
+                      <div class="pull-left">
+                        <h3><%= t('event.trending_events') %></h3>
+                      </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <ul class="events">
+                      <%= render :partial => "#{@partial_base}/event", :collection => trending_events %>
+                    </ul>
+                  </div>
+                  <div class="event_container">                    <div class="holder_header">
+                      <div class="pull-left">
+                        <h3><%= t('event.upcoming_events') %></h3>
+                      </div>
+                      <div class="upcoming_events_count pull-right"><a class="btn" href="/n/places/<%= place.path.html_safe %>/events?place=<%= place.path.html_safe %>"><%= t('event.total_events', :num => total_event_count) %></a></div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <ul class="events">
+                      <%= render :partial => "#{@partial_base}/event", :collection => upcoming_events %>
+                    </ul>
+                  </div>
+                  <div class="big_groups_btn well see_all_events_big"><a class="span12 btn btn-primary" href="/n/places/<%= place.path.html_safe %>/events?place=<%= place.path.html_safe %>"><%= t('event.see_all') %></a></div>
+                </div>

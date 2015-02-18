@@ -1,0 +1,10 @@
+        <nav class="subnav">
+          <form action="/n/locations/search_place" class="search_place" method="post"><input name="authenticity_token" type="hidden" value="NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=" />
+            <label for="cs_typeahead_input">              <div class="search_icon"></div>
+              <div class="input_container"><input autocomplete="off" data-cs-typeahead="PlaceSubnavNavigator" data-place-navigator="true" id="cs_typeahead_input" name="location_query" placeholder="Find a place…" tabindex="1" type="text" /><span class="typeahead_prompt"><%= t('place_subnav.find') %></span></div>
+            </label>
+          </form>
+          <ul>
+            <%= render :partial => "#{@partial_base}/place_subnav_button", :collection => subnav_places %>
+          </ul>
+        </nav>

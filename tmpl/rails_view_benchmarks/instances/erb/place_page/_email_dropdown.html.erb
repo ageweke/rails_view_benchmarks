@@ -1,0 +1,31 @@
+                      <section>
+                        <div class="sidebar-list">
+                          <div class="holder_header">
+                            <div class="pull-left">
+                              <h3><%= t('email_dropdown.heading') %></h3>
+                            </div>
+                          </div>
+                          <div class="entity-subscription">
+                            <div class="entity-subscription-form-container">
+                              <form><input name="authenticity_token" type="hidden" value="NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=" /><input name="subscribed_on_id" type="hidden" value="<%= place.id %>" /><input name="subscribed_on_type" type="hidden" value="place" />
+                                <p><%= t('email_dropdown.subheading') %></p>
+                                <ul class="medias">
+                                  <li class="media radio_input">
+                                    <% subscription_options.each do |subscription_option| %>
+                                      <div class="control-group">
+                                        <div class="controls">
+                                          <label><input class="subscription_type" name="subscription_type" type="radio" value="<%= subscription_option.lkey %>" /><span>&nbsp;<strong><%= subscription_option.name %></strong>
+   <%= subscription_option.detail %></span></label>
+                                        </div>
+                                        <p class="help-block"></p>
+                                      </div>
+                                    <% end %>
+                                  </li>
+                                </ul>
+                                <button class="btn btn-primary"><%= t('email_dropdown.button') %></button><span class="cancel"><%= t('buttons.cancel') %></span><span class="unfollow icon-heart-broken icon-large"> <%= t('email_dropdown.unfollow') %></span>
+                                <div class="entity-subscription-loading"></div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </section>

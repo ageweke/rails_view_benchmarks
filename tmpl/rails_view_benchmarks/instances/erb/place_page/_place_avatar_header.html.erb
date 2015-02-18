@@ -1,0 +1,49 @@
+<% cdn_img = cdn("/n/images/faces/san-francisco-california-united-states/201401052244/6?sh=sV5Ky3b0NBIpw33ZdKsqJg") %>
+<div class="avatar_header" style="background-image:url(<%= cdn_img %>">          <div class="avatar_header_content">            <div class="title_and_following">
+              <div class="main_title ">
+                <h1 title="<%= place.title %>"><%= place.title %></h1>
+              </div>
+              <div class="follow_button_container">
+                <div class="follow_button well well-light">
+                  <div class="following_handle" data-csrf-token="NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=" data-entity-id="13" data-entity-type="place" data-flyout="notification" data-following="true">
+                    <div class="dropdown-btn-container"><a class="dropdown-toggle" data-flyout="true" data-must-be-logged-in="true" data-toggle="dropdown"><i class="icon-heart"></i>
+                      <% if place.following %>
+                      <span class="following_handle_text following" title="<%= t('header.avatar.following') %>"><%= t('header.avatar.following') %></span>
+                      <% end %>
+                      <b class="caret"></b></a></div>
+                    <div class="dropdown-panel">
+                      <%= render :partial => "#{@partial_base}/email_dropdown", :locals => { :place => place, :subscription_options => subscription_options } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="clear: both;"></div>
+            </div>
+            <p class="locals_count"><%= t('header.avatar.locals_count', :num => place.locals_count) %></p>
+            <div class="part_of_and_nearby">
+              <div><%= t('header.avatar.part_of') %>
+                <ul>
+                  <% part_of.each do |part_of| %>
+                    <li><a href="<%= part_of.url.html_safe %>"><%= part_of.name %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div><%= t('header.avatar.nearby') %>
+                <ul>
+                  <% nearby.each do |nearby| %>
+                    <li><a href="<%= nearby.url.html_safe %>"><%= nearby.name %></a></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="privacy_popup">
+          <div data-collage-privacy-title="Locals Collage" id="collage_privacy_popup">
+            <p><%= t('header.avatar.privacy_description') %></p>
+            <form class="privacy_collage_form"><input id="hide_profile" name="hide_profile" type="checkbox" value="true" /><label for="hide_profile"><%= t('header.avatar.never_show') %></label></form>
+            <div class="row">
+              <div class="collage_privacy_buttons pull-right"><a class="btn_collage_privacy_cancel btn" href="#"><%= t('buttons.cancel') %></a>&nbsp;<a class="btn_collage_privacy_submit btn" href="#"><%= t('header.avatar.save_preference') %></a></div>
+            </div>
+          </div>
+          <a href="#" class="show_collage_privacy_popup" data-target="#collage_privacy_popup"><%= t('header.avatar.who_are') %></a></div>

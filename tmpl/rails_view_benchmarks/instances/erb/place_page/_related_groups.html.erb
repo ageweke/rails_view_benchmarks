@@ -1,0 +1,15 @@
+                <div class="well sub_groups" id="sub_groups">
+                  <div class="hidden_mode" id="sub_groups_list">                    <div class="holder_header">
+                      <div class="pull-left">
+                        <h3><%= t('related_groups.header') %></h3>
+                      </div>
+                    </div>
+                    <div class="media-body">
+                      <ul>
+                        <% @related_groups.each_with_index do |group, i| %>
+                        <li data-sub-group-id="<%= group.id %>" data-sub-group-position="<%= i %>"><a href="https://www.couchsurfing.org/n/o/group/<%= group.id %>"><%= group.name %></a></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>

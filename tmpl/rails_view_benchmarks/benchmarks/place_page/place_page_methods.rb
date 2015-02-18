@@ -291,6 +291,8 @@ module ::PlacePageMethods
                        "Community Guidelines" => '/n/guidelines', "Trademark Policy" => '/n/trademark' }
       }
 
+    @partial_base = "/benchmark"
+
     { }
   end
 end

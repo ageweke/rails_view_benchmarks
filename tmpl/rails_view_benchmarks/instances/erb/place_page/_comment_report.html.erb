@@ -1,0 +1,26 @@
+<div class="modal hide fade report-abusive-content" data-entity_type="comment">
+  <div class="modal-header"><button class="close" data-dismiss="modal" type="button">&times;</button>
+    <h3><%= t('comment.report.header') %></h3>
+  </div>
+  <form action="/n/flag"><input name="id" type="hidden" /><input name="entity_type" type="hidden" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+    <div class="control-group">
+      <div class="controls">
+        <label><select name="flag_type">
+            <optgroup>
+              <option value="couch_request"><%= t('comment.report.couch_request') %></option>
+              <option value="website_feedback"><%= t('comment.report.website_feedback') %></option>
+              <option value="off_topic"><%= t('comment.report.off_topic') %></option>
+            </optgroup>
+            <optgroup>
+              <option value="commercial_or_spam"><%= t('comment.report.commercial_or_spam') %></option>
+              <option value="dating_or_sexual"><%= t('comment.report.dating_or_sexual') %></option>
+              <option value="abusive_or_illegal"><%= t('comment.report.abusive_or_illegal') %></option>
+              <option value="privacy_breach"><%= t('comment.report.privacy_breach') %></option>
+            </optgroup>
+          </select><span>&nbsp;</span></label>
+      </div>
+      <p class="help-block"></p>
+    </div>
+    <div class="actions"><input class="btn btn-primary" name="submit" type="submit" value="Flag" /><a class="cancel btn" data-dismiss="modal" href="javascript://"><%= t('buttons.cancel') %></a></div>
+  </form>
+</div>

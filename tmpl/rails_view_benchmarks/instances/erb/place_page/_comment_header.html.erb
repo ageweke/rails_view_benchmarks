@@ -1,0 +1,10 @@
+<div class="threads thread-container well-light well" data-commented-on-type="place" data-conversation-categories-enabled="true" data-more_path="https://www.couchsurfing.org/n/threads?entity_id=<%= place.id %>&amp;entity_type=place&amp;limit=10" data-total_thread_count="<%= place.total_threads %>">
+  <div class="holder_header">
+    <div class="pull-left">
+      <h3><span class="entity_threads"><%= t('comment.header.label') %></span><span> | </span><span class="thread_count"><a href="<%= place.path.html_safe %>/conversations"><%= t('comment.header.see_all', :num => place.total_threads) %></a></span></h3>
+    </div>
+    <div class="pull-right"><div class="btn-group" data-toggle="buttons-radio"><a class="btn" href="/n/settings/threads/compact"><i class="icon-compact icon-large"></i></a><a class="btn active" href="/n/settings/threads/full"><i class="icon-expanded icon-large"></i></a></div>
+</div>
+    <div class="pull-right"><form action="<%= place.path.html_safe %>/search" method="get" style="margin-bottom: 0;"><input class="search" name="q" placeholder="<%= t('comment.header.search') %>" style="width: 130px; margin-right: 3px;" type="search" /></form>
+</div>
+  </div>

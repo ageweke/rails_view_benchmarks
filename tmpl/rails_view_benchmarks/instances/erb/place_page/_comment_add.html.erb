@@ -1,0 +1,74 @@
+  <div class="media thread-form-container add-thread">
+    <% bg_img = cdn("/n/image/serve/P/1/C-60-60?sh=E-af_-fF3G72Xoy9EWb_wQ") %>
+    <span class="thread-author pull-left avatar circle imgsize_small_thumb" style="background-image:url(<%= bg_img %>);"></span>
+    <div class="media-body">
+      <form action="/n/threads" class="thread-reply-form" method="post"><input name="entity_id" type="hidden" value="<%= place.id %>" /><input name="entity_type" type="hidden" value="place" />
+        <div class="control-group">
+          <label></label>
+          <div class="controls"><input class="comment_title" name="comment_title" placeholder="Title" type="text" /></div>
+          <p class="help-block"></p>
+        </div>
+        <div class="category-picker-container hide"><a class="close" href="#" type="button">&times;</a>
+          <div class="category-picker-panel">
+            <div class="category-picker-options">
+              <ul>
+                <%= conversation_categories.each do |category| %>
+                <li class="places-to-stay" data-category="<%= category.symbol.to_s.html_safe %>">
+                  <div class="category-icon"><i>&nbsp;</i></div>
+                  <p class="category-title"><%= category.title %></p>
+                  <p class="category-desc"><%= category.description %></p>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="places-to-stay-confirmation"><a class="back centred pull-left" href="#"><span>&nbsp;</span>Back</a>
+              <div class="places-to-stay-confirmation-content centred pull-right">
+                <p>
+                  <strong><%= t('comment.add.couchsearch_header') %></strong>
+                  <%= t('comment.add.couchsearch_body') %></p>
+                <a class="btn btn-primary btn-large" href="/n/trips/plan_trip?referring_link=place_create_post" id="autogen_id_for_tracking_place_conversations_category_place_to_stay_confirmation_action_1"><%= t('comment.add.couchsearch_button') %></a>
+                <p><%= t('comment.add.couchsearch_note', :link_start => "<a class=\"places-to-stay-confirm\" data-category=\"places_to_stay\" href=\"#\">", :link_end => "</a>").html_safe %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <label></label>
+          <div class="controls"><textarea class="comment_text" name="comment_text" placeholder="<%= t('comment.add.placeholder') %>"></textarea></div>
+          <p class="help-block"></p>
+        </div>
+        <p class="privacy-warning"><%= t('comment.privacy_warning') %></p>
+        <div class="hide-when-colapsed row-fluid">
+          <div class="row-fluid">
+            <div class="privacy-settings dropdown" data-component="privacySettings"><input name="private_thread" type="hidden" value="true" /><a class="dropdown-toggle" data-component="dropdown" href=""><span class="privacy-label"></span><i class="icon-group"></i></a>
+              <ul class="dropdown-menu pull-right" data-component="options">
+                <li><a data-component="privacyOption" data-value="false" href=""><i class="icon-group"></i><%= t('comment.public') %></a></li>
+                <li><a data-component="privacyOption" data-value="true" href=""><i class="icon-user"></i><%= t('comment.private') %></a></li>
+              </ul>
+            </div>
+            <div class="span6"><select name="category">
+              <% conversation_categories.each do |category| %>
+                <option value="<%= category.symbol %>"><%= category.name %></option>
+              <% end %>
+              </select></div>
+            <div class="buttons span5 pull-right">              <div class="ajax_loading_container"></div>
+              <button class="btn btn-cancel" type="button"><%= t('buttons.cancel') %></button>&nbsp;<button class="btn btn-primary btn-create"><%= t('comment.add.start') %></button><br />
+              <br />
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="form-footer span12">
+              <div class="posting-guidelines">
+                <h4><%= t('comment.posting_guidelines.header') %></h4>
+                <ul>
+                  <li><%= t('comment.posting_guidelines.l1') %></li>
+                  <li><%= t('comment.posting_guidelines.l2') %></li>
+                  <li><%= t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
