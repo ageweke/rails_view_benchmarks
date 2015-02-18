@@ -13,6 +13,26 @@ benchmarks:
     enabled:    true
 
 engines:
+  - name:       "Erector-Rails4"
+    engine:     erector_rails4
+    enabled:    true
+    configuration:
+      prettyprint:  false
+  - name:       "Erector-Rails4 (Prettyprint)"
+    engine:     erector_rails4
+    enabled:    true
+    configuration:
+      prettyprint:  true
+  - name:       "Erector"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  false
+  - name:       "Erector (Prettyprint)"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  true
   - name:       "Fortitude"
     engine:     fortitude
     enabled:    true
@@ -50,13 +70,3 @@ engines:
     configuration:
       format_output:          true
       start_and_end_comments: true
-  - name:       "Erector"
-    engine:     erector
-    enabled:    true
-    configuration:
-      prettyprint:  false
-  - name:       "Erector (Prettyprint)"
-    engine:     erector
-    enabled:    true
-    configuration:
-      prettyprint:  true
