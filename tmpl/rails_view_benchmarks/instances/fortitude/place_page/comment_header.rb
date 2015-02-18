@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CommentHeader < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CommentHeader < Views::Benchmark::Base
   needs :place
 
   def content

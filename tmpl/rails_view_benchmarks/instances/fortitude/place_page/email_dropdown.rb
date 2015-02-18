@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::EmailDropdown < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::EmailDropdown < Views::Benchmark::Base
   needs :place, :subscription_options
 
   def content

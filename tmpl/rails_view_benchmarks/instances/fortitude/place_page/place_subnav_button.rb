@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::PlaceSubnavButton < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::PlaceSubnavButton < Views::Benchmark::Base
   needs :place_subnav_button
 
   def content

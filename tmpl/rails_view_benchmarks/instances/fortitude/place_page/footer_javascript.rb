@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::FooterJavascript < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::FooterJavascript < Views::Benchmark::Base
   needs :place, :user
 
   def content

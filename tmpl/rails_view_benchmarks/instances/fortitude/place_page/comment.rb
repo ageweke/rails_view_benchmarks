@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Comment < Views::Benchmark::Base
   needs :the_comment
 
   def edit_delete_options
@@ -25,7 +25,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
     end
   end
 
-  static_if_desired :edit_delete_options
+  maybe_static :edit_delete_options
 
   def reply_thread_form
     div :class => 'control-group' do
@@ -107,7 +107,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
     end
   end
 
-  static_if_desired :reply_thread_form
+  maybe_static :reply_thread_form
 
   def content
     li(:class => 'thread media', 'data-commented-on-type' => 'place', 'data-creator-id' => (the_comment.creator_id), 'data-entity-id' => (the_comment.entity_id), 'data-thread-slug' => (the_comment.slug.html_safe), 'data-total-replies' => (the_comment.total_replies)) do
@@ -189,7 +189,7 @@ class Views::Benchmark::PlacePage::Fortitude::Comment < Views::Benchmark::PlaceP
                           end
                         end
                         div(:class => 'replies', :id => ('comments_on_' + (the_comment.id.to_s))) do
-                          the_comment.replies.each { |reply| widget Views::Benchmark::PlacePage::Fortitude::CommentReply.new(:comment_reply => reply) }
+                          the_comment.replies.each { |reply| widget Views::Benchmark::CommentReply.new(:comment_reply => reply) }
                         end
                       end
                       div :class => 'media thread-form-container reply-thread' do

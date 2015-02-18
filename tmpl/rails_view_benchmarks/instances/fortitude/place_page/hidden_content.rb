@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HiddenContent < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HiddenContent < Views::Benchmark::Base
   needs :user
 
   def content
@@ -15,7 +15,7 @@ class Views::Benchmark::PlacePage::Fortitude::HiddenContent < Views::Benchmark::
           end
         end
         div :class => 'modal_body' do
-          widget Views::Benchmark::PlacePage::Fortitude::CreateEventForm.new(:user => user)
+          widget Views::Benchmark::CreateEventForm.new(:user => user)
         end
         footer :class => 'modal_footer' do
           div :class => 'ajax_loading_container' do

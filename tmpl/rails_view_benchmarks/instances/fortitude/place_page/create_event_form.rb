@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CreateEventForm < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CreateEventForm < Views::Benchmark::Base
   needs :user
 
   def content
@@ -62,13 +62,13 @@ class Views::Benchmark::PlacePage::Fortitude::CreateEventForm < Views::Benchmark
             text t('event.create.start_time')
           end
           select :class => 'start_hour', :id => 'start_hour_select', :name => 'start_hour' do
-            widget Views::Benchmark::PlacePage::Fortitude::HalfHourForm.new
+            widget Views::Benchmark::HalfHourForm.new
           end
           label :class => 'label_end_hour', :for => 'end_hour_select' do
             text t('event.create.end_time')
           end
           select :class => 'end_hour', :id => 'end_hour_select', :name => 'end_hour' do
-            widget Views::Benchmark::PlacePage::Fortitude::HalfHourForm.new
+            widget Views::Benchmark::HalfHourForm.new
           end
           span :class => 'ends_next_day hide' do
             text t('event.create.next_day')

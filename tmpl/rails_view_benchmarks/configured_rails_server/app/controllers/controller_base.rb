@@ -1,16 +1,6 @@
 class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
   # >  # -- helps with syntax highlighting under Sublime
 
-  helper_method :rand, :random
-
-  def rand
-    raise "You should never use rand() in benchmark code; instead, use the Random instance available as @random/random"
-  end
-
-  def random
-    @random || raise("No random has been set yet, somehow")
-  end
-
   def rendered_html
     prepare!(:skip_warmup_iterations => true)
     render_main_view!
@@ -55,7 +45,7 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
   end
 
   def set_random!
-    @random = Random.new(random_seed)
+    srand(random_seed)
   end
 
   def warmup_iterations

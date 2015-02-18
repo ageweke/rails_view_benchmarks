@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::RelatedGroups < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::RelatedGroups < Views::Benchmark::Base
   needs :related_groups
 
   def content

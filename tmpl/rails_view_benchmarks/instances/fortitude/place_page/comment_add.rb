@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CommentAdd < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CommentAdd < Views::Benchmark::Base
   needs :place, :conversation_categories
 
   def places_to_stay_confirmation
@@ -26,7 +26,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentAdd < Views::Benchmark::Pla
     end
   end
 
-  static_if_desired :places_to_stay_confirmation
+  maybe_static :places_to_stay_confirmation
 
   def privacy_settings_dropdown
     div :class => 'privacy-settings dropdown', 'data-component' => 'privacySettings' do
@@ -56,7 +56,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentAdd < Views::Benchmark::Pla
     end
   end
 
-  static_if_desired :privacy_settings_dropdown
+  maybe_static :privacy_settings_dropdown
 
   def posting_guidelines
     div :class => 'row-fluid' do
@@ -81,7 +81,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentAdd < Views::Benchmark::Pla
     end
   end
 
-  static_if_desired :posting_guidelines
+  maybe_static :posting_guidelines
 
   def content
     div :class => 'media thread-form-container add-thread' do

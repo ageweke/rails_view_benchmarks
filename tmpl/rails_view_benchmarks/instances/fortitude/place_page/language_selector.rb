@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::LanguageSelector < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::LanguageSelector < Views::Benchmark::Base
   needs :languages
 
   def content

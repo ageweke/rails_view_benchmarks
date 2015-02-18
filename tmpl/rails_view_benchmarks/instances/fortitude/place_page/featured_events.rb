@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::FeaturedEvents < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::FeaturedEvents < Views::Benchmark::Base
   needs :featured_events
 
   def content

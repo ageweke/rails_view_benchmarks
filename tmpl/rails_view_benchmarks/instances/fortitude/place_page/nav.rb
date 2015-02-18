@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Nav < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Nav < Views::Benchmark::Base
   needs :user, :place
 
   def content
@@ -20,7 +20,7 @@ class Views::Benchmark::PlacePage::Fortitude::Nav < Views::Benchmark::PlacePage:
           a :class => 'close_button', :href => '#', :id => 'logged_in_menu_close' do
             text 'Close'
           end
-          widget Views::Benchmark::PlacePage::Fortitude::HeaderUserMenu.new(:user => user, :place => place)
+          widget Views::Benchmark::HeaderUserMenu.new(:user => user, :place => place)
           li :class => 'menu_item', :id => 'nav_couch_manager' do
             a :class => ' button', :href => '/n/o/couchmanager', :id => 'autogen_id_for_tracking_nav_couchrequests_clicked_1', :title => 'Couchrequests' do
               text 'Couchrequests'
@@ -35,7 +35,7 @@ class Views::Benchmark::PlacePage::Fortitude::Nav < Views::Benchmark::PlacePage:
             end
           end
         end
-        widget Views::Benchmark::PlacePage::Fortitude::HeaderExploreMenu.new
+        widget Views::Benchmark::HeaderExploreMenu.new
       end
       div :class => 'flash-spot' do
       end

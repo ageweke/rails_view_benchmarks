@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HeaderMixpanelId < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HeaderMixpanelId < Views::Benchmark::Base
   needs :user
 
   def content

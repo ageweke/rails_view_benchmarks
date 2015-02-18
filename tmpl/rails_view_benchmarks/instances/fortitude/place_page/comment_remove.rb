@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CommentRemove < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CommentRemove < Views::Benchmark::Base
   def content
     div :class => 'modal hide fade remove-thread-modal' do
       div :class => 'modal-header' do

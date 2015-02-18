@@ -106,21 +106,25 @@ module RailsViewBenchmarks
       end
 
       def do_copy_directory(dest_path, source_path, options)
-        dest_path = File.join(*args)
-
         if File.exist?(dest_path) && (! File.directory?(dest_path))
           raise Errno::EEXIST, "Destination directory exists, but isn't a directory: '#{dest_path}'"
         end
 
         FileUtils.mkdir_p(dest_path)
 
-        Find.find(source_path) do |subpath|
-          full_path = File.join(source_path, subpath)
-
-          if File.directory?(full_path)
-            do_copy_directory(File.join(dest_path, subpath), full_path, options)
+        Find.find(source_path) do |full_path|
+          subpath = if full_path[0..(source_path.length - 1)] == source_path
+            full_path[(source_path.length + 1)..-1]
           else
-            do_copy_file(File.join(dest_path, subpath), full_path, options)
+            raise "'#{full_path}' is not under '#{source_path}'?"
+          end
+
+          if subpath && subpath.length > 0
+            if File.directory?(full_path)
+              do_copy_directory(File.join(dest_path, subpath), full_path, options)
+            else
+              do_copy_file(File.join(dest_path, subpath), full_path, options)
+            end
           end
         end
       end

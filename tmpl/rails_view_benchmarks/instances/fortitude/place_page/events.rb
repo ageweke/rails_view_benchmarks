@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Events < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Events < Views::Benchmark::Base
   needs :trending_events, :place, :total_event_count, :upcoming_events
 
   def content
@@ -56,7 +56,7 @@ class Views::Benchmark::PlacePage::Fortitude::Events < Views::Benchmark::PlacePa
         end
         ul :class => 'events' do
           trending_events.each do |e|
-            widget Views::Benchmark::PlacePage::Fortitude::Event.new(:event => e)
+            widget Views::Benchmark::Event.new(:event => e)
           end
         end
       end
@@ -77,7 +77,7 @@ class Views::Benchmark::PlacePage::Fortitude::Events < Views::Benchmark::PlacePa
         end
         ul :class => 'events' do
           upcoming_events.each do |e|
-            widget Views::Benchmark::PlacePage::Fortitude::Event.new(:event => e)
+            widget Views::Benchmark::Event.new(:event => e)
           end
         end
       end

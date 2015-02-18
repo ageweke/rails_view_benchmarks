@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Surfer < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Surfer < Views::Benchmark::Base
   needs :surfer
 
   def content

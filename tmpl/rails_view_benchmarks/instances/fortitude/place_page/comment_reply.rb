@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CommentReply < Views::Benchmark::Base
   needs :comment_reply
 
   def reply_actions
@@ -27,7 +27,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::P
     end
   end
 
-  static_if_desired :reply_actions
+  maybe_static :reply_actions
 
   def user_links
     br
@@ -38,7 +38,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::P
     end
   end
 
-  static_if_desired :user_links
+  maybe_static :user_links
 
   def dropdown_toggle
     a :class => 'dropdown-toggle', 'data-component' => 'dropdown', :href => '' do
@@ -47,7 +47,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentReply < Views::Benchmark::P
     end
   end
 
-  static_if_desired :dropdown_toggle
+  maybe_static :dropdown_toggle
 
   def content
     div(:class => 'reply hidden media', 'data-commented-on-type' => 'place', 'data-creator-id' => (comment_reply.creator_id), 'data-entity-id' => (comment_reply.id), 'data-thread-slug' => (comment_reply.slug)) do

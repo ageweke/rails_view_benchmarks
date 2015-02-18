@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Event < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Event < Views::Benchmark::Base
   needs :event
 
   def content

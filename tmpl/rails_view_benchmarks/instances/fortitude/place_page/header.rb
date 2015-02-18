@@ -1,9 +1,9 @@
-class Views::Benchmark::PlacePage::Fortitude::Header < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Header < Views::Benchmark::Base
   needs :place, :user
 
   def content
     head do
-      widget Views::Benchmark::PlacePage::Fortitude::NewrelicEarlyHeader.new
+      widget Views::Benchmark::NewrelicEarlyHeader.new
       meta :content => 'text/html;charset=UTF-8', 'http-equiv' => 'content-type'
       title do
         text place.title
@@ -43,9 +43,9 @@ EOS
       end
       script(:src => (cdn('/assets/global-e0f624a2951c1b799a7b15960d3bf411.js')), :type => 'text/javascript') do
       end
-      widget Views::Benchmark::PlacePage::Fortitude::HeaderMixpanelJavascript.new
-      widget Views::Benchmark::PlacePage::Fortitude::HeaderMixpanelId.new(:user => user)
-      widget Views::Benchmark::PlacePage::Fortitude::HeaderGaJavascript.new
+      widget Views::Benchmark::HeaderMixpanelJavascript.new
+      widget Views::Benchmark::HeaderMixpanelId.new(:user => user)
+      widget Views::Benchmark::HeaderGaJavascript.new
     end
     meta(:content => ((place.title) + ' - Couchsurfing'), :property => 'og:title')
     meta :content => 'website', :property => 'og:type'

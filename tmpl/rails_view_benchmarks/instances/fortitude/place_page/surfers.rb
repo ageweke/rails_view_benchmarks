@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::Surfers < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::Surfers < Views::Benchmark::Base
   needs :surfers, :place
 
   def content
@@ -7,7 +7,7 @@ class Views::Benchmark::PlacePage::Fortitude::Surfers < Views::Benchmark::PlaceP
         text t('surfers.title')
       end
       surfers.each do |s|
-        widget Views::Benchmark::PlacePage::Fortitude::Surfer.new(:surfer => s)
+        widget Views::Benchmark::Surfer.new(:surfer => s)
       end
       div :class => 'big_cta_btn' do
         a(:class => 'link_button button', :force_login => 'true', :href => ('/n/travelers/in/place/' + (place.path.html_safe)), :id => 'autogen_id_for_tracking_place_ocrs_clicked_more_1', :title => (t('surfers.host'))) do

@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class Views::Benchmark::PlacePage::Fortitude::PlaceSubnav < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::PlaceSubnav < Views::Benchmark::Base
   needs :subnav_places
 
   def content
@@ -19,7 +19,7 @@ class Views::Benchmark::PlacePage::Fortitude::PlaceSubnav < Views::Benchmark::Pl
       end
       ul do
         subnav_places.each do |s|
-          widget Views::Benchmark::PlacePage::Fortitude::PlaceSubnavButton.new(:place_subnav_button => s)
+          widget Views::Benchmark::PlaceSubnavButton.new(:place_subnav_button => s)
         end
       end
     end

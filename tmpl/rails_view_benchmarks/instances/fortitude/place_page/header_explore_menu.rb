@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HeaderExploreMenu < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HeaderExploreMenu < Views::Benchmark::Base
   def content
     ul :class => 'menu_item', :id => 'nav_explore_menu' do
       li :class => 'explore menu_item' do

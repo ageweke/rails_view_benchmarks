@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HeaderUserMenu < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HeaderUserMenu < Views::Benchmark::Base
   needs :user, :place
 
   def content

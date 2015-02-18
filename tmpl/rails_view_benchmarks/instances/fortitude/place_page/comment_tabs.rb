@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CommentTabs < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CommentTabs < Views::Benchmark::Base
   needs :conversation_tabs
 
   def content

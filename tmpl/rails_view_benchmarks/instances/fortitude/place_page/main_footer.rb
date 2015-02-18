@@ -1,10 +1,10 @@
-class Views::Benchmark::PlacePage::Fortitude::MainFooter < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::MainFooter < Views::Benchmark::Base
   needs :languages, :social_links, :site_map
 
   def content
     footer :id => 'main-footer' do
-      widget Views::Benchmark::PlacePage::Fortitude::LanguageSelector.new(:languages => languages)
-      widget Views::Benchmark::PlacePage::Fortitude::SocialContainer.new(:social_links => social_links)
+      widget Views::Benchmark::LanguageSelector.new(:languages => languages)
+      widget Views::Benchmark::SocialContainer.new(:social_links => social_links)
       nav :class => 'site_map' do
         site_map.each do |heading, values|
           div(:class => (heading.gsub(/\s+/, '').downcase)) do

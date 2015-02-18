@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HeaderMixpanelJavascript < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HeaderMixpanelJavascript < Views::Benchmark::Base
   def content
     script :type => 'text/javascript' do
       text '//'

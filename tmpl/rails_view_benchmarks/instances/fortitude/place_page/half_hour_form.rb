@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HalfHourForm < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HalfHourForm < Views::Benchmark::Base
   def content
     current_time = start_time = Time.now.at_midnight
                       end_time = start_time + 1.day

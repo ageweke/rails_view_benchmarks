@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::HeaderGaJavascript < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::HeaderGaJavascript < Views::Benchmark::Base
   def content
     script :type => 'text/javascript' do
       rawtext <<-EOS

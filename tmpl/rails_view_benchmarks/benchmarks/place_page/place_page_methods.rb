@@ -290,5 +290,7 @@ module ::PlacePageMethods
         'Support' => { "Help" => '/n/help', 'Terms of Use' => '/n/terms', "Privacy Policy" => '/n/privacy',
                        "Community Guidelines" => '/n/guidelines', "Trademark Policy" => '/n/trademark' }
       }
+
+    { }
   end
 end

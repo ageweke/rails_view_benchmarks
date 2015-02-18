@@ -103,7 +103,8 @@ module RailsViewBenchmarks
     end
 
     def get_benchmark_action(action)
-      @rails_server.get("#{templating_engine.subpath}/#{benchmark.subpath}/#{action}", :query => query_parameters)
+      url = "#{templating_engine.subpath}/#{benchmark.subpath}/#{action}"
+      @rails_server.get(url, :query => query_parameters)
     end
   end
 end

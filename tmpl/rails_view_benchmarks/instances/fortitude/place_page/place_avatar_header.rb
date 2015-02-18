@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::PlaceAvatarHeader < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::PlaceAvatarHeader < Views::Benchmark::Base
   needs :place, :subscription_options, :part_of, :nearby
 
   def content
@@ -28,7 +28,7 @@ class Views::Benchmark::PlacePage::Fortitude::PlaceAvatarHeader < Views::Benchma
                 end
               end
               div :class => 'dropdown-panel' do
-                widget Views::Benchmark::PlacePage::Fortitude::EmailDropdown.new(:place => place, :subscription_options => subscription_options)
+                widget Views::Benchmark::EmailDropdown.new(:place => place, :subscription_options => subscription_options)
               end
             end
           end

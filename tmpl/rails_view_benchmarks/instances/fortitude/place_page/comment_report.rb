@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::CommentReport < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::CommentReport < Views::Benchmark::Base
   needs :form_authenticity_token
 
   def form_actions
@@ -48,7 +48,7 @@ class Views::Benchmark::PlacePage::Fortitude::CommentReport < Views::Benchmark::
     end
   end
 
-  static_if_desired :form_actions
+  maybe_static :form_actions
 
   def content
     div :class => 'modal hide fade report-abusive-content', 'data-entity_type' => 'comment' do

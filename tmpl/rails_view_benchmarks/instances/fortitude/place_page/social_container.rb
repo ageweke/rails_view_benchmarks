@@ -1,4 +1,4 @@
-class Views::Benchmark::PlacePage::Fortitude::SocialContainer < Views::Benchmark::PlacePage::Fortitude::Base
+class Views::Benchmark::SocialContainer < Views::Benchmark::Base
   needs :social_links
 
   def content
