@@ -2,10 +2,10 @@ require 'rails_view_benchmarks/instances/dsl_style/place_page'
 
 module RailsViewBenchmarks
   module Instances
-    module Fortitude
+    module Erector
       class PlacePage < ::RailsViewBenchmarks::Instances::DslStyle::PlacePage
         def configure!(c)
-          c.copy(c.view_controller_path, 'instances/fortitude/place_page')
+          c.copy(c.view_controller_path, 'instances/erector/place_page')
         end
       end
     end

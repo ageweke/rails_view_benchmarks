@@ -7,17 +7,49 @@ run_options:
 benchmarks:
   - name:       "Hello, World"
     benchmark:  hello_world
-    enabled:    true
+    enabled:    false
   - name:       "Place Page"
     benchmark:  place_page
-    enabled:    false
+    enabled:    true
 
 engines:
+  - name:       "Erector"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  false
+  - name:       "Erector (Prettyprint)"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  true
+  - name:       "Fortitude"
+    engine:     fortitude
+    enabled:    true
   - name:       ERb
     engine:     erb
+    enabled:    true
+  - name:       "Haml"
+    engine:     haml
+    enabled:    true
+  - name:       "Fortitude (Development)"
+    engine:     fortitude
     enabled:    false
+    configuration:
+      format_output:                  true
+      start_and_end_comments:         true
+      enforce_element_nesting_rules:  true
+      enforce_attribute_rules:        true
+      enforce_id_uniqueness:          true
+      debug:                          true
+  - name:       "Fortitude (Static Disabled)"
+    engine:     fortitude
+    enabled:    true
+    configuration:
+      static:         false
   - name:       "Fortitude (Formatted)"
     engine:     fortitude
     enabled:    true
     configuration:
-      format_output:  true
+      format_output:          true
+      start_and_end_comments: true

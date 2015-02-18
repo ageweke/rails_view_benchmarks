@@ -42,18 +42,11 @@ module RailsViewBenchmarks
       end
 
       def file(*args)
-        validate_args!(*args)
+        do_append_or_splat(:splat, *args)
+      end
 
-        contents = args.pop
-        contents += "\n" unless contents =~ /\n\s*\Z/mi
-        path = File.join(*args)
-
-        FileUtils.mkdir_p(File.dirname(path))
-        File.open(path, 'w') do |f|
-          f << contents
-        end
-
-        path
+      def append_to_file(*args)
+        do_append_or_splat(:append, *args)
       end
 
       private
@@ -80,6 +73,28 @@ module RailsViewBenchmarks
         unless args.length >= 2
           raise ArgumentError, "You must supply at least one component of a subpath, and the source location of the file to be copied; you supplied: #{args.inspect}"
         end
+      end
+
+      def do_append_or_splat(mode, *args)
+        validate_args!(*args)
+
+        contents = args.pop
+        contents += "\n" unless contents =~ /\n\s*\Z/mi
+        path = File.join(*args)
+
+        FileUtils.mkdir_p(File.dirname(path))
+
+        open_mode = case mode
+        when :splat then 'w'
+        when :append then 'a'
+        else raise "Invalid mode: #{mode.inspect}"
+        end
+
+        File.open(path, open_mode) do |f|
+          f << contents
+        end
+
+        path
       end
 
       def subpath(*args)
