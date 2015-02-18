@@ -1,0 +1,17 @@
+.threads.thread-container.well-light.well{"data-commented-on-type" => "place", "data-conversation-categories-enabled" => "true", "data-more_path" => "https://www.couchsurfing.org/n/threads?entity_id=#{place.id}&entity_type=place&limit=10", "data-total_thread_count" => place.total_threads}
+  .holder_header
+    .pull-left
+      %h3
+        %span.entity_threads= t('comment.header.label')
+        %span |
+        %span.thread_count
+          %a{:href => "#{place.path.html_safe}/conversations"}= t('comment.header.see_all', :num => place.total_threads)
+    .pull-right
+      .btn-group{"data-toggle" => "buttons-radio"}
+        %a.btn{:href => "/n/settings/threads/compact"}
+          %i.icon-compact.icon-large
+        %a.btn.active{:href => "/n/settings/threads/full"}
+          %i.icon-expanded.icon-large
+    .pull-right
+      %form{:action => "#{place.path.html_safe}/search", :method => "get", :style => "margin-bottom: 0;"}
+        %input.search{:name => "q", :placeholder => t('comment.header.search'), :style => "width: 130px; margin-right: 3px;", :type => "search"}/

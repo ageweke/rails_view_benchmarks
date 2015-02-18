@@ -1,0 +1,18 @@
+%header#main-header
+  %nav#main-menu
+    %h1#brand
+      %a#autogen_id_for_tracking_nav_logo_clicked_1{:href => "/"}
+        %img{:alt => "Couchsurfing", :height => "41", :src => cdn("/assets/logo/logo-small-a6218f040fc83533cd4ce0ecfec406e4.png"), :width => "117"}/
+    %a#logged_in_menu_trigger{:class => "button trigger #{@user.unread_messages > 0 ? 'unread' : 'read'}", "data-toggle" => "dropdown", :href => "#viewport"}
+      Menu
+      %span.message-bubble= @user.unread_messages
+    #logged_in_menu
+      %a#logged_in_menu_close.close_button{:href => "#"} Close
+      = render :partial => "#{@partial_base}/header_user_menu", :locals => { :user => user, :place => place }
+      %li#nav_couch_manager.menu_item
+        %a#autogen_id_for_tracking_nav_couchrequests_clicked_1.button{:href => "/n/o/couchmanager", :title => "Couchrequests"} Couchrequests
+      %li#nav_messages.menu_item
+        %a#autogen_id_for_tracking_nav_messages_clicked_1.unread.button{:href => "/n/o/messages", :title => "Messages"} Messages
+        %span.message-bubble 24
+      = render :partial => "#{@partial_base}/header_explore_menu"
+      .flash-spot

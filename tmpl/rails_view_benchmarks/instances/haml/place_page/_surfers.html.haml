@@ -1,0 +1,5 @@
+.well.people_container
+  %h3.holder_header= t('surfers.title')
+  = render :partial => "#{@partial_base}/surfer", :collection => surfers
+  .big_cta_btn
+    %a#autogen_id_for_tracking_place_ocrs_clicked_more_1.link_button.button{:force_login => "true", :href => "/n/travelers/in/place/#{place.path.html_safe}", :title => t('surfers.host')}= t('surfers.host')

@@ -1,0 +1,9 @@
+%nav.subnav
+  %form.search_place{:action => "/n/locations/search_place", :method => "post"}
+    %input{:name => "authenticity_token", :type => "hidden", :value => "NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE="}/
+    %label{:for => "cs_typeahead_input"}
+      .search_icon
+      .input_container
+        %input#cs_typeahead_input{:autocomplete => "off", "data-cs-typeahead" => "PlaceSubnavNavigator", "data-place-navigator" => "true", :name => "location_query", :placeholder => "Find a place…", :tabindex => "1", :type => "text"}/
+        %span.typeahead_prompt= t('place_subnav.find')
+  %ul= render :partial => "#{@partial_base}/place_subnav_button", :collection => subnav_places

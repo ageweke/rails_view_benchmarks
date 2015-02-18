@@ -27,9 +27,9 @@ module RailsViewBenchmarks
 
     def to_s
       out = [ ]
-      out << "#{@rendered_html.length} bytes of HTML" if @rendered_html
+      out << "#{ActiveSupport::NumberHelper.number_to_delimited(@rendered_html.length)} bytes of HTML" if @rendered_html
       out << ("%.2f ms/iteration" % time_ms_per_iteration) if @time_results
-      out << ("%d objects/iteration" % objects_per_iteration) if @memory_results
+      out << ("#{ActiveSupport::NumberHelper.number_to_delimited(objects_per_iteration.round)} objects/iteration") if @memory_results
       out.join(", ")
     end
 

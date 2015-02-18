@@ -1,0 +1,12 @@
+%li{:class => "event#{event.generator ? ' generator' : ''}", "data-slug" => event.slug}
+  .event_links
+    %a{:href => "/n/events/#{event.slug.html_safe}"}= event.title
+    %span.hidden= event.when.strftime("%A")
+  .event_info
+    .city
+      %span= event.location
+    .time
+      %span
+        %time{:datetime => event.when.iso8601}
+    .attendees
+      %span= event.attendees

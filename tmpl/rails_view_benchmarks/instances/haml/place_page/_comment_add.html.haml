@@ -1,0 +1,73 @@
+.media.thread-form-container.add-thread
+  %span.thread-author.pull-left.avatar.circle.imgsize_small_thumb{:style => "background-image:url(#{cdn("/n/image/serve/P/1/C-60-60?sh=E-af_-fF3G72Xoy9EWb_wQ")});"}
+  .media-body
+    %form.thread-reply-form{:action => "/n/threads", :method => "post"}
+      %input{:name => "entity_id", :type => "hidden", :value => place.id}/
+      %input{:name => "entity_type", :type => "hidden", :value => "place"}/
+      .control-group
+        %label
+        .controls
+          %input.comment_title{:name => "comment_title", :placeholder => "Title", :type => "text"}/
+        %p.help-block
+      .category-picker-container.hide
+        %a.close{:href => "#", :type => "button"} ×
+        .category-picker-panel
+          .category-picker-options
+            %ul
+              = conversation_categories.each do |category|
+                %li.places-to-stay{"data-category" => category.symbol.to_s.html_safe}
+                  .category-icon
+                    %i  
+                  %p.category-title= category.title
+                  %p.category-desc= category.description
+          .places-to-stay-confirmation
+            %a.back.centred.pull-left{:href => "#"}
+              %span>  
+              Back
+            .places-to-stay-confirmation-content.centred.pull-right
+              %p
+                %strong= t('comment.add.couchsearch_header')
+                = t('comment.add.couchsearch_body')
+              %a#autogen_id_for_tracking_place_conversations_category_place_to_stay_confirmation_action_1.btn.btn-primary.btn-large{:href => "/n/trips/plan_trip?referring_link=place_create_post"}= t('comment.add.couchsearch_button')
+              %p= t('comment.add.couchsearch_note', :link_start => "<a class=\"places-to-stay-confirm\" data-category=\"places_to_stay\" href=\"#\">", :link_end => "</a>").html_safe
+      .control-group
+        %label
+        .controls
+          %textarea.comment_text{:name => "comment_text", :placeholder => t('comment.add.placeholder')}
+        %p.help-block
+      %p.privacy-warning= t('comment.privacy_warning')
+      .hide-when-colapsed.row-fluid
+        .row-fluid
+          .privacy-settings.dropdown{"data-component" => "privacySettings"}
+            %input{:name => "private_thread", :type => "hidden", :value => "true"}/
+            %a.dropdown-toggle{"data-component" => "dropdown", :href => ""}
+              %span.privacy-label
+              %i.icon-group
+            %ul.dropdown-menu.pull-right{"data-component" => "options"}
+              %li
+                %a{"data-component" => "privacyOption", "data-value" => "false", :href => ""}
+                  %i.icon-group
+                  = t('comment.public')
+              %li
+                %a{"data-component" => "privacyOption", "data-value" => "true", :href => ""}
+                  %i.icon-user
+                  = t('comment.private')
+          .span6
+            %select{:name => "category"}
+              - conversation_categories.each do |category|
+                %option{:value => category.symbol}= category.name
+          .buttons.span5.pull-right
+            .ajax_loading_container
+            = succeed "\u{a0}" do
+              %button.btn.btn-cancel{:type => "button"}= t('buttons.cancel')
+            %button.btn.btn-primary.btn-create= t('comment.add.start')
+            %br/
+            %br/
+        .row-fluid
+          .form-footer.span12
+            .posting-guidelines
+              %h4= t('comment.posting_guidelines.header')
+              %ul
+                %li= t('comment.posting_guidelines.l1')
+                %li= t('comment.posting_guidelines.l2')
+                %li= t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe

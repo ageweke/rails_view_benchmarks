@@ -21,6 +21,7 @@ class ::Views::Base < ::Fortitude::Widget
   enforce_element_nesting_rules #{(!! configuration[:enforce_element_nesting_rules]).inspect}
   enforce_attribute_rules #{(!! configuration[:enforce_attribute_rules]).inspect}
   enforce_id_uniqueness #{(!! configuration[:enforce_id_uniqueness]).inspect}
+  debug #{(!! configuration[:debug]).inspect}
 
   def self.maybe_static(*args, &block)
     #{static_method_contents}
