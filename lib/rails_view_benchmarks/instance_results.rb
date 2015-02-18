@@ -17,6 +17,14 @@ module RailsViewBenchmarks
       @memory_results = json_hash
     end
 
+    def save_rendered_html_under!(directory)
+      raise "You must have rendered HTML first" unless @rendered_html
+
+      path = File.join(directory, @benchmark_alias.name, "#{@engine_alias.name}.html")
+      FileUtils.mkdir_p(File.dirname(path))
+      File.open(path, 'w') { |f| f << @rendered_html }
+    end
+
     def to_s
       out = [ ]
       out << "#{@rendered_html.length} bytes of HTML" if @rendered_html

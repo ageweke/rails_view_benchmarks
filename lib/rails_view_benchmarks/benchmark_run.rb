@@ -20,8 +20,31 @@ module RailsViewBenchmarks
       @run_options = nil
       @benchmark_aliases = nil
       @engine_aliases = nil
+
+      @instance_results = [ ]
     end
 
+    def run!
+      load_from_file!
+
+      say "RAILS VIEW BENCHMARKS RUN STARTING"
+      say "Options: #{@run_options}"
+      say ""
+
+      for_all_benchmark_aliases do |benchmark_alias|
+        for_all_engine_aliases("     ...", false) do |engine_alias|
+          run_for!(benchmark_alias, engine_alias)
+        end
+      end
+    end
+
+    def save_html_to!(dest_directory)
+      @instance_results.each do |instance_results|
+        instance_results.save_rendered_html_under!(dest_directory)
+      end
+    end
+
+    private
     def say(s, newline = true)
       if newline
         $stderr.puts s
@@ -44,21 +67,6 @@ module RailsViewBenchmarks
       $stderr.flush
     end
 
-    def run!
-      load_from_file!
-
-      say "RAILS VIEW BENCHMARKS RUN STARTING"
-      say "Options: #{@run_options}"
-      say ""
-
-      for_all_benchmark_aliases do |benchmark_alias|
-        for_all_engine_aliases("     ...", false) do |engine_alias|
-          run_for!(benchmark_alias, engine_alias)
-        end
-      end
-    end
-
-    private
     def for_all_benchmark_aliases(indent = "", newline = true)
       @benchmark_aliases.each do |benchmark_alias|
         if benchmark_alias.enabled?
@@ -113,6 +121,7 @@ module RailsViewBenchmarks
       crs.start!
 
       instance_results = ::RailsViewBenchmarks::InstanceResults.new(benchmark_alias, engine_alias)
+      @instance_results << instance_results
 
       begin
         say_verbose "[html]", false
@@ -127,7 +136,6 @@ module RailsViewBenchmarks
           say_verbose "[memory]", false
           instance_results.time_results = crs.benchmark_time
         end
-
       ensure
         say_verbose "[stop]", false
         crs.stop!
