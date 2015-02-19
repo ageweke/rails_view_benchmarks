@@ -34,11 +34,30 @@ module RailsViewBenchmarks
     end
 
     def enabled?
-      @enabled
+      enabled
     end
 
     def to_s
-      "<EngineAlias '#{@name}': #{@engine}>"
+      "<EngineAlias '#{name}': #{engine}>"
     end
+
+    class << self
+      def csv_header
+        [
+          [ "Name", "Engine", "Configuration" ]
+        ]
+      end
+    end
+
+    def to_csv
+      out = [ name, engine_name ]
+      configuration.keys.sort.each do |key|
+        out += [ "#{key}:", configuration[key].inspect ]
+      end
+      [ out ]
+    end
+
+    private
+    attr_reader :enabled, :configuration, :engine_name
   end
 end

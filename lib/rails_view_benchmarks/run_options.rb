@@ -66,6 +66,20 @@ module RailsViewBenchmarks
       }
     end
 
+    class << self
+      def csv_header
+        [
+          [ "Random Seed", "Warmup Iterations", "Time Profiling (Duration, s)", "Memory Profiling (Iterations)" ]
+        ]
+      end
+    end
+
+    def to_csv
+      [
+        [ random_seed, warmup_iterations, time_duration, memory_iterations ]
+      ]
+    end
+
     def to_s
       "<RunOptions: seed #{@random_seed}, warmup x#{@warmup_iterations}, time #{@time_duration}s, memory x#{@memory_iterations}>"
     end

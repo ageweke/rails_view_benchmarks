@@ -25,6 +25,10 @@ module RailsViewBenchmarks
         raise "Must override in #{self.class.name}"
       end
 
+      def name
+        @name ||= self.class.name.demodulize.underscore
+      end
+
       def subpath
         @subpath ||= self.class.name.demodulize.underscore
       end

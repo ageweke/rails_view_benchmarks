@@ -5,6 +5,14 @@ module RailsViewBenchmarks
       @engine_alias = engine_alias
     end
 
+    def benchmark_alias_name
+      benchmark_alias.name
+    end
+
+    def engine_alias_name
+      engine_alias.name
+    end
+
     def rendered_html=(html)
       @rendered_html = html
     end
@@ -27,10 +35,24 @@ module RailsViewBenchmarks
 
     def to_s
       out = [ ]
-      out << "#{ActiveSupport::NumberHelper.number_to_delimited(@rendered_html.length)} bytes of HTML" if @rendered_html
+      out << "#{ActiveSupport::NumberHelper.number_to_delimited(rendered_html_bytes)} bytes of HTML" if @rendered_html
       out << ("%.2f ms/iteration" % time_ms_per_iteration) if @time_results
       out << ("#{ActiveSupport::NumberHelper.number_to_delimited(objects_per_iteration.round)} objects/iteration") if @memory_results
       out.join(", ")
+    end
+
+    class << self
+      def csv_header
+        [
+          [ "Benchmark", "Engine", "HTML (bytes)", "Time (ms/iteration)", "Memory Usage (objects/iteration)" ]
+        ]
+      end
+    end
+
+    def to_csv
+      [
+        [ benchmark_alias_name, engine_alias_name, rendered_html_bytes, time_ms_per_iteration, objects_per_iteration ]
+      ]
     end
 
     private
@@ -40,6 +62,10 @@ module RailsViewBenchmarks
       if @time_results
         (@time_results['time'].to_f * 1000.0) / (@time_results['count'].to_f)
       end
+    end
+
+    def rendered_html_bytes
+      @rendered_html.length if @rendered_html
     end
 
     def objects_per_iteration

@@ -31,8 +31,27 @@ module RailsViewBenchmarks
       @enabled
     end
 
-    def to_s
-      "<BenchmarkAlias '#{@name}': #{@benchmark}>"
+    class << self
+      def csv_header
+        [
+          [ "Name", "Benchmark", "Configuration" ]
+        ]
+      end
     end
+
+    def to_csv
+      out = [ name, benchmark_name ]
+      configuration.keys.sort.each do |key|
+        out += [ "#{key}:", configuration[key].inspect ]
+      end
+      [ out ]
+    end
+
+    def to_s
+      "<BenchmarkAlias '#{name}': #{benchmark}>"
+    end
+
+    private
+    attr_reader :configuration, :benchmark_name
   end
 end

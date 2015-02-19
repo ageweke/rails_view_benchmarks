@@ -42,6 +42,10 @@ module RailsViewBenchmarks
         "<Engine '#{self.class.name.demodulize}': #{configuration.inspect}>"
       end
 
+      def name
+        @name ||= self.class.name.demodulize.underscore
+      end
+
       private
       attr_reader :configuration
 
