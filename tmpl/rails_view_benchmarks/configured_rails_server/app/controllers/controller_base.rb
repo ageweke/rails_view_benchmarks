@@ -9,6 +9,8 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
   def benchmark_time
     prepare!
 
+    GC.disable if disable_gc_during_time
+
     start_time = Time.now
     end_time = start_time + time_duration
     count = 0
@@ -18,6 +20,8 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
       count += 1
     end
     end_time = Time.now
+
+    GC.enable
 
     render :json => { :count => count, :time => (end_time.to_f - start_time.to_f) }
   end
@@ -58,6 +62,11 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
 
   def memory_iterations
     @memory_iterations ||= Integer(params[:memory_iterations] || (raise "You must supply :memory_iterations"))
+  end
+
+  def disable_gc_during_time
+    @disable_gc_during_time ||= (params[:disable_gc_during_time] ? :yes : :no)
+    @disable_gc_during_time == :yes
   end
 
   def render_main_view!

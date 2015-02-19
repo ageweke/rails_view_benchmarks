@@ -3,6 +3,7 @@ run_options:
   warmup_iterations:  5
   time_duration:      1.0
   memory_iterations:  5
+  disable_gc_during_time: true
 
 benchmarks:
   - name:       "Hello, World"

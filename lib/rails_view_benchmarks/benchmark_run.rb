@@ -10,6 +10,7 @@ require 'rails_view_benchmarks/csv_output_file'
 
 require 'csv'
 require 'yaml'
+require 'sys/cpu'
 
 module RailsViewBenchmarks
   class BenchmarkRun

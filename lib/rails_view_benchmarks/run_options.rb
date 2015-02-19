@@ -7,12 +7,13 @@ module RailsViewBenchmarks
     DEFAULT_WARMUP_ITERATIONS = 5
     DEFAULT_TIME_DURATION = 5.seconds
     DEFAULT_MEMORY_ITERATIONS = 5
+    DEFAULT_DISABLE_GC_DURING_TIME = true
 
-    attr_reader :random_seed, :warmup_iterations, :time_duration, :memory_iterations
+    attr_reader :random_seed, :warmup_iterations, :time_duration, :memory_iterations, :disable_gc_during_time
 
     def self.from_yaml(yaml_hash)
       yaml_hash = yaml_hash.symbolize_keys
-      yaml_hash.assert_valid_keys(:random_seed, :warmup_iterations, :time_duration, :memory_iterations)
+      yaml_hash.assert_valid_keys(:random_seed, :warmup_iterations, :time_duration, :memory_iterations, :disable_gc_during_time)
 
       out = new
       yaml_hash.each do |key, value|
@@ -26,6 +27,7 @@ module RailsViewBenchmarks
       @warmup_iterations = DEFAULT_WARMUP_ITERATIONS
       @time_duration = DEFAULT_TIME_DURATION
       @memory_iterations = DEFAULT_MEMORY_ITERATIONS
+      @disable_gc_during_time = DEFAULT_DISABLE_GC_DURING_TIME
     end
 
     def random_seed=(x)
@@ -36,6 +38,11 @@ module RailsViewBenchmarks
     def warmup_iterations=(x)
       raise ArgumentError, "Warmup iterations must be >= 0, not: #{x.inspect}" unless x.kind_of?(Integer) && x >= 0
       @warmup_iterations = Integer(x)
+    end
+
+    def disable_gc_during_time=(x)
+      raise ArgumentError, "Disable GC during time must be a boolean, not: #{x.inspect}" unless (x == true) || (x == false) || (x == nil)
+      @disable_gc_during_time = !! x
     end
 
     def run_time?
@@ -62,7 +69,8 @@ module RailsViewBenchmarks
         :random_seed => random_seed,
         :warmup_iterations => warmup_iterations,
         :time_duration => time_duration,
-        :memory_iterations => memory_iterations
+        :memory_iterations => memory_iterations,
+        :disable_gc_during_time => disable_gc_during_time
       }
     end
 
