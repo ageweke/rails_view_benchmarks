@@ -126,9 +126,9 @@ class Views::Benchmark::Comment < Views::Benchmark::Base
                   a(:href => ('/n/threads/' + (the_comment.slug.html_safe)), :class => 'reply-title') do
                     text the_comment.thread_title
                   end
-                  div :class => 'comment-details' do
-                    time('data-component' => 'timestamp', 'data-original-timestamp' => (the_comment.created_at.iso8601), :datetime => (the_comment.created_at.iso8601)) do
-                    end
+                end
+                div :class => 'comment-details' do
+                  time('data-component' => 'timestamp', 'data-original-timestamp' => (the_comment.created_at.iso8601), :datetime => (the_comment.created_at.iso8601)) do
                   end
                 end
                 span do
@@ -137,7 +137,7 @@ class Views::Benchmark::Comment < Views::Benchmark::Base
                   end
                 end
                 span do
-                  a(:href => ('/send_message.html?id=' + (the_comment.creator_profile_encoded_id)), :id => 'autogen_id_for_tracking_place_conversations_send_private_message_1', :style => 'float: left; margin: 0 0.5em; color: #8B8B8B') do
+                  a(:href => ('/send_message.html?id=' + (the_comment.creator_profile_encoded_id)), :id => "autogen_id_for_tracking_place_conversations_send_private_message_#{rand(1_000_000_000)}", :style => 'float: left; margin: 0 0.5em; color: #8B8B8B') do
                     cdn_img = cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png")
                     img :alt => 'Private_message', :src => cdn_img
                   end

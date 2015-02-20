@@ -5,10 +5,9 @@ class Views::Benchmark::CommentRemove < Views::Benchmark::Base
         button :class => 'close', 'data-dismiss' => 'modal', :type => 'button' do
           text '&times;'
         end
-        h3 do
-          div do
-            text t('comment.remove.title')
-          end
+        h3
+        div do
+          text t('comment.remove.title')
         end
       end
       div :class => 'modal-body' do

@@ -21,19 +21,21 @@ class Views::Benchmark::Nav < Views::Benchmark::Base
             text 'Close'
           end
           widget Views::Benchmark::HeaderUserMenu.new(:user => user, :place => place)
-          li :class => 'menu_item', :id => 'nav_couch_manager' do
-            a :class => ' button', :href => '/n/o/couchmanager', :id => 'autogen_id_for_tracking_nav_couchrequests_clicked_1', :title => 'Couchrequests' do
-              text 'Couchrequests'
+          ul {
+            li :class => 'menu_item', :id => 'nav_couch_manager' do
+              a :class => ' button', :href => '/n/o/couchmanager', :id => 'autogen_id_for_tracking_nav_couchrequests_clicked_1', :title => 'Couchrequests' do
+                text 'Couchrequests'
+              end
             end
-          end
-          li :class => 'menu_item', :id => 'nav_messages' do
-            a :class => 'unread button', :href => '/n/o/messages', :id => 'autogen_id_for_tracking_nav_messages_clicked_1', :title => 'Messages' do
-              text 'Messages'
+            li :class => 'menu_item', :id => 'nav_messages' do
+              a :class => 'unread button', :href => '/n/o/messages', :id => 'autogen_id_for_tracking_nav_messages_clicked_1', :title => 'Messages' do
+                text 'Messages'
+              end
+              span :class => 'message-bubble' do
+                text '24'
+              end
             end
-            span :class => 'message-bubble' do
-              text '24'
-            end
-          end
+          }
         end
         widget Views::Benchmark::HeaderExploreMenu.new
       end

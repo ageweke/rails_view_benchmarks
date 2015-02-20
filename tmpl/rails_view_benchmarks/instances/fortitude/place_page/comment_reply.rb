@@ -68,7 +68,7 @@ class Views::Benchmark::CommentReply < Views::Benchmark::Base
                   end
                 end
                 span do
-                  a(:href => ('/send_message.html?id=' + (comment_reply.creator_profile_encoded_id)), :id => 'autogen_id_for_tracking_place_conversations_send_private_message_2', :style => 'float: left; margin: 0 0.5em; color: #8B8B8B') do
+                  a(:href => ('/send_message.html?id=' + (comment_reply.creator_profile_encoded_id)), :style => 'float: left; margin: 0 0.5em; color: #8B8B8B') do
                     cdn_img = cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png")
                     img :alt => 'Private_message', :src => cdn_img
                   end

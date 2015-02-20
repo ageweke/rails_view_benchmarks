@@ -47,12 +47,12 @@ EOS
       widget Views::Benchmark::HeaderMixpanelId.new(:user => user)
       widget Views::Benchmark::HeaderGaJavascript.new
     end
-    meta(:content => ((place.title) + ' - Couchsurfing'), :property => 'og:title')
-    meta :content => 'website', :property => 'og:type'
-    meta(:content => ('https://www.couchsurfing.org/' + (place.path.html_safe)), :property => 'og:url')
-    meta :content => 'Discover new friends around the world!', :property => 'og:description'
+    meta(:content => ((place.title) + ' - Couchsurfing'), :name => 'og:title')
+    meta :content => 'website', :name => 'og:type'
+    meta(:content => ('https://www.couchsurfing.org/' + (place.path.html_safe)), :name => 'og:url')
+    meta :content => 'Discover new friends around the world!', :name => 'og:description'
     cdn_img = cdn("/assets/share_icon-1f9b3cb3fe7434c4572905f8df9249e1.png?sh=_icJV-EO8S9rq7R8cgM6ag")
-    meta :content => cdn_img, :property => 'og:image'
+    meta :content => cdn_img, :name => 'og:image'
     meta :content => '818BFA93A51A3073F67BC14BC22B9CFF', :name => 'msvalidate.01'
   end
 end

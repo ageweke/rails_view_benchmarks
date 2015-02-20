@@ -6,28 +6,38 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
-  - name:       "Partial Hell"
-    benchmark:  partial_hell
-    enabled:    false
-    configuration:
-      depth:    12
+  - name:       "Place Page"
+    benchmark:  place_page
+    enabled:    true
   - name:       "Hello, World"
     benchmark:  hello_world
     enabled:    false
   - name:       "Slim Benchmark"
     benchmark:  slim_benchmark
     enabled:    false
-  - name:       "Place Page"
-    benchmark:  place_page
+  - name:       "Partial Hell"
+    benchmark:  partial_hell
     enabled:    true
+    configuration:
+      depth:    12
 
 engines:
+  - name:       "Fortitude (Development)"
+    engine:     fortitude
+    enabled:    true
+    configuration:
+      format_output:                  true
+      start_and_end_comments:         true
+      enforce_element_nesting_rules:  true
+      enforce_attribute_rules:        true
+      enforce_id_uniqueness:          true
+      debug:                          true
   - name:       "Slim"
     engine:     slim
-    enabled:    true
+    enabled:    false
   - name:       "Slim (Pretty)"
     engine:     slim
-    enabled:    true
+    enabled:    false
     configuration:
       pretty:   true
   - name:       "Fortitude"
@@ -56,16 +66,6 @@ engines:
     enabled:    true
     configuration:
       ugly:     false
-  - name:       "Fortitude (Development)"
-    engine:     fortitude
-    enabled:    true
-    configuration:
-      format_output:                  true
-      start_and_end_comments:         true
-      enforce_element_nesting_rules:  true
-      enforce_attribute_rules:        true
-      enforce_id_uniqueness:          true
-      debug:                          true
   - name:       "Fortitude (Static Disabled)"
     engine:     fortitude
     enabled:    true

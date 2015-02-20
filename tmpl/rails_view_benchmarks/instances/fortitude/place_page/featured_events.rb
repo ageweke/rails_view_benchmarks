@@ -64,7 +64,7 @@ class Views::Benchmark::FeaturedEvents < Views::Benchmark::Base
   })();
 // ]]>'
                       end
-                      a(:class => 'primary_action_button button event_list_button join_event disabled_until_load', :href => '#', :id => (event.button_id), :title => (t('event.featured.join'))) do
+                      a(:class => 'primary_action_button button event_list_button join_event disabled_until_load', :href => '#', :id => ("#{event.button_id}_2"), :title => (t('event.featured.join'))) do
                         text t('event.featured.join')
                       end
                       script :type => 'text/javascript' do

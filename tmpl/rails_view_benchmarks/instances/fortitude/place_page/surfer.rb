@@ -4,7 +4,7 @@ class Views::Benchmark::Surfer < Views::Benchmark::Base
   def content
     div :class => 'featured_person' do
       div :class => 'media' do
-        a(:class => 'pull-left square avatar', :href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id.to_s) + '&id=' + (surfer.profile_encoded_id.to_s)), :id => 'autogen_id_for_tracking_place_ocrs_clicked_ocr_1') do
+        a(:class => 'pull-left square avatar', :href => ('/profile.html?city_couchrequest=' + (surfer.city_couchrequest_id.to_s) + '&id=' + (surfer.profile_encoded_id.to_s)), :id => "autogen_id_for_tracking_place_ocrs_clicked_ocr_#{rand(1_000_000_000)}") do
           span(:class => 'media-object avatar imgsize_compact_thumb', :style => ('background-image:url(' + (cdn(surfer.profile_image.html_safe)) + ');')) do
             if surfer.verified?
             span :class => 'verified' do

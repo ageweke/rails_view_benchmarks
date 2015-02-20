@@ -152,10 +152,9 @@ class Views::Benchmark::CreateEventForm < Views::Benchmark::Base
                 span(:class => 'pull-left avatar sm_circle imgsize_compact_thumb', :style => ('background-image:url(' + (cdn(user.profile_image)) + ');')) do
                 end
                 div :class => 'meta_container' do
-                  label(:for => ('selected_organizers_ids_' + (user.id.to_s))) do
-                    p :class => 'username' do
-                      text user.name
-                    end
+                  label(:for => ('selected_organizers_ids_' + (user.id.to_s)))
+                  p :class => 'username' do
+                    text user.name
                   end
                   p :class => 'location' do
                     text user.location
