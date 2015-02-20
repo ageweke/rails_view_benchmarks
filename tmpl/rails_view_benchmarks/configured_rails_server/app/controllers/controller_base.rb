@@ -82,6 +82,9 @@ class ::<%= controller_name.camelize %>ControllerBase < ApplicationController
 
     set_random!
     @_locals_to_pass = prepare_for_benchmark_and_return_locals || { }
+    unless @_locals_to_pass.kind_of?(Hash)
+      raise "Controller code returned not a Hash, but: #{@_locals_to_pass.inspect}"
+    end
     warmup! unless options[:skip_warmup_iterations]
   end
 end

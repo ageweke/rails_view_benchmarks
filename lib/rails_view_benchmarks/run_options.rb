@@ -7,7 +7,7 @@ module RailsViewBenchmarks
     DEFAULT_WARMUP_ITERATIONS = 5
     DEFAULT_TIME_DURATION = 5.seconds
     DEFAULT_MEMORY_ITERATIONS = 5
-    DEFAULT_DISABLE_GC_DURING_TIME = true
+    DEFAULT_DISABLE_GC_DURING_TIME = false
 
     attr_reader :random_seed, :warmup_iterations, :time_duration, :memory_iterations, :disable_gc_during_time
 

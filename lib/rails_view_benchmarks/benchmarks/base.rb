@@ -30,11 +30,27 @@ module RailsViewBenchmarks
       end
 
       def subpath
-        @subpath ||= self.class.name.demodulize.underscore
+        @subpath ||= begin
+          config_name_component = configuration.keys.sort.map do |key|
+            value = configuration[key]
+            "#{key}-#{value}"
+          end.join("_")
+
+          if config_name_component.length > 0
+            "#{name_for_subpath}__#{config_name_component}"
+          else
+            name_for_subpath
+          end
+        end
       end
 
       def to_s
         "<Benchmark '#{self.class.name.demodulize}': #{configuration.inspect}>"
+      end
+
+      private
+      def name_for_subpath
+        @name_for_subpath ||= self.class.name.demodulize.underscore
       end
     end
   end

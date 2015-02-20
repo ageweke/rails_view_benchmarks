@@ -3,7 +3,7 @@ run_options:
   warmup_iterations:  5
   time_duration:      1.0
   memory_iterations:  5
-  disable_gc_during_time: true
+  disable_gc_during_time: false
 
 benchmarks:
   - name:       "Hello, World"
@@ -11,7 +11,12 @@ benchmarks:
     enabled:    false
   - name:       "Place Page"
     benchmark:  place_page
+    enabled:    false
+  - name:       "Partial Hell"
+    benchmark:  partial_hell
     enabled:    true
+    configuration:
+      depth:    12
 
 engines:
   - name:       "Fortitude"
@@ -42,7 +47,7 @@ engines:
       ugly:     false
   - name:       "Fortitude (Development)"
     engine:     fortitude
-    enabled:    false
+    enabled:    true
     configuration:
       format_output:                  true
       start_and_end_comments:         true
