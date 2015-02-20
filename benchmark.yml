@@ -6,6 +6,9 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
+  - name:       "Slim Benchmark"
+    benchmark:  slim_benchmark
+    enabled:    true
   - name:       "Hello, World"
     benchmark:  hello_world
     enabled:    false
@@ -19,6 +22,14 @@ benchmarks:
       depth:    12
 
 engines:
+  - name:       "Slim"
+    engine:     slim
+    enabled:    true
+  - name:       "Slim (Pretty)"
+    engine:     slim
+    enabled:    true
+    configuration:
+      pretty:   true
   - name:       "Fortitude"
     engine:     fortitude
     enabled:    true
