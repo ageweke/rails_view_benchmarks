@@ -6,20 +6,20 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
-  - name:       "Slim Benchmark"
-    benchmark:  slim_benchmark
-    enabled:    true
+  - name:       "Partial Hell"
+    benchmark:  partial_hell
+    enabled:    false
+    configuration:
+      depth:    12
   - name:       "Hello, World"
     benchmark:  hello_world
     enabled:    false
+  - name:       "Slim Benchmark"
+    benchmark:  slim_benchmark
+    enabled:    false
   - name:       "Place Page"
     benchmark:  place_page
-    enabled:    false
-  - name:       "Partial Hell"
-    benchmark:  partial_hell
     enabled:    true
-    configuration:
-      depth:    12
 
 engines:
   - name:       "Slim"
