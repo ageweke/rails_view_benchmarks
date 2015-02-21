@@ -7,7 +7,7 @@ module RailsViewBenchmarks
         def configure!(c)
           output_text = ""
           benchmark.variable_names.each do |variable_name|
-            output_text << "          = #{variable_name}\n"
+            output_text << "      = #{variable_name}\n"
           end
 
           c.main_view <<-EOS

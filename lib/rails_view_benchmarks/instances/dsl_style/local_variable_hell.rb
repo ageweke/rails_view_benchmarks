@@ -7,10 +7,14 @@ module RailsViewBenchmarks
       class LocalVariableHell < ::RailsViewBenchmarks::Instances::Base
         include ::RailsViewBenchmarks::Instances::DslStyle::Common
 
+        def output_line(variable_name)
+          "text \"\#{#{variable_name}}\\n\""
+        end
+
         def configure!(c)
           output_text = ""
           benchmark.variable_names.each do |variable_name|
-            output_text << "          text #{variable_name}\n"
+            output_text << "          #{output_line(variable_name)}\n"
           end
 
           c.main_view <<-EOS

@@ -2,12 +2,12 @@ require 'rails_view_benchmarks/instances/base'
 
 module RailsViewBenchmarks
   module Instances
-    module DslStyle
+    module Erb
       class LocalVariableHell < ::RailsViewBenchmarks::Instances::Base
         def configure!(c)
           output_text = ""
           benchmark.variable_names.each do |variable_name|
-            output_text << "          <%= #{variable_name} %>\n"
+            output_text << "<%= #{variable_name} %>\n"
           end
 
           c.main_view <<-EOS

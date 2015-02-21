@@ -14,7 +14,7 @@ benchmarks:
       variable_count: 100
   - name:       "Escaping Hell"
     benchmark:   escaping_hell
-    enabled:     true
+    enabled:     false
     configuration:
       word_count: 10000
   - name:       "Place Page"
@@ -22,13 +22,13 @@ benchmarks:
     enabled:    false
   - name:       "Hello, World"
     benchmark:  hello_world
-    enabled:    true
+    enabled:    false
   - name:       "Slim Benchmark"
     benchmark:  slim_benchmark
-    enabled:    true
+    enabled:    false
   - name:       "Partial Hell"
     benchmark:  partial_hell
-    enabled:    true
+    enabled:    false
     configuration:
       depth:    12
 
