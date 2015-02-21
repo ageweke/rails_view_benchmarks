@@ -21,7 +21,13 @@ module RailsViewBenchmarks
         raise ArgumentError, "The configuration for your benchmark must be a Hash, not: #{@configuration.inspect}" unless @configuration.kind_of?(Hash)
         raise ArgumentError, "The 'benchmark' for your benchmark must be a String, not: #{@benchmark_name.inspect}" unless @benchmark_name.kind_of?(String) && @benchmark_name.length > 0
 
-        require "rails_view_benchmarks/benchmarks/#{@benchmark_name}" rescue nil
+        require_path = "rails_view_benchmarks/benchmarks/#{@benchmark_name}"
+        begin
+          require require_path
+        rescue Exception => e
+          $stderr.puts "WARNING: Could not require '#{require_path}'; got an exception: #{e} (#{e.class.name})\n    #{e.backtrace.join("\n    ")}"
+        end
+
         @benchmark_class = "::RailsViewBenchmarks::Benchmarks::#{@benchmark_name.camelize}".constantize
         @benchmark = @benchmark_class.new(@configuration)
       end

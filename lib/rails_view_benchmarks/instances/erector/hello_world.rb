@@ -1,9 +1,9 @@
-require 'rails_view_benchmarks/instances/dsl_style/hello_world'
+require 'rails_view_benchmarks/instances/erector_base/hello_world'
 
 module RailsViewBenchmarks
   module Instances
     module Erector
-      class HelloWorld < ::RailsViewBenchmarks::Instances::DslStyle::HelloWorld
+      class HelloWorld < ::RailsViewBenchmarks::Instances::ErectorBase::HelloWorld
       end
     end
   end

@@ -6,15 +6,20 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
+  - name:       "Escaping Hell"
+    benchmark:   escaping_hell
+    enabled:     true
+    configuration:
+      word_count: 10000
   - name:       "Place Page"
     benchmark:  place_page
-    enabled:    true
+    enabled:    false
   - name:       "Hello, World"
     benchmark:  hello_world
-    enabled:    false
+    enabled:    true
   - name:       "Slim Benchmark"
     benchmark:  slim_benchmark
-    enabled:    false
+    enabled:    true
   - name:       "Partial Hell"
     benchmark:  partial_hell
     enabled:    true
@@ -34,10 +39,10 @@ engines:
       debug:                          true
   - name:       "Slim"
     engine:     slim
-    enabled:    false
+    enabled:    true
   - name:       "Slim (Pretty)"
     engine:     slim
-    enabled:    false
+    enabled:    true
     configuration:
       pretty:   true
   - name:       "Fortitude"

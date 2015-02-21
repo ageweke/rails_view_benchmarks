@@ -1,24 +1,11 @@
 require 'rails_view_benchmarks/instances/base'
+require 'rails_view_benchmarks/instances/dsl_style/common'
 
 module RailsViewBenchmarks
   module Instances
     module DslStyle
       class SlimBenchmark < ::RailsViewBenchmarks::Instances::Base
-        def uses_instance_variables?
-          raise "Must override in #{self.class.name}"
-        end
-
-        def need_text(name)
-          if uses_instance_variables?
-            "@#{name}"
-          else
-            name
-          end
-        end
-
-        def doctype_declaration
-          raise "Must override in #{self.class.name}"
-        end
+        include ::RailsViewBenchmarks::Instances::DslStyle::Common
 
         def configure!(c)
           c.main_view <<-EOS

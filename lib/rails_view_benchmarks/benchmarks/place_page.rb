@@ -6,6 +6,7 @@ module RailsViewBenchmarks
       def configure!(benchmark_configurator)
         bc = benchmark_configurator
 
+        bc.copy(bc.rails_root_path('config', 'initializers', 'random_generators.rb'), 'config/initializers/random_generators.rb')
         bc.copy(bc.rails_root_path('app', 'controllers', 'place_page_methods.rb'), 'benchmarks/place_page/place_page_methods.rb')
         bc.copy(bc.rails_root_path('app', 'helpers', 'place_page_helper.rb'), 'benchmarks/place_page/place_page_helper.rb')
         bc.controller_contents <<-EOS

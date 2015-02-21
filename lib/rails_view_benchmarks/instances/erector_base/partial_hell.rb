@@ -1,11 +1,11 @@
 require 'rails_view_benchmarks/instances/dsl_style/partial_hell'
-require 'rails_view_benchmarks/instances/fortitude/common'
+require 'rails_view_benchmarks/instances/erector_base/common'
 
 module RailsViewBenchmarks
   module Instances
-    module Fortitude
+    module ErectorBase
       class PartialHell < ::RailsViewBenchmarks::Instances::DslStyle::PartialHell
-        include ::RailsViewBenchmarks::Instances::Fortitude::Common
+        include ::RailsViewBenchmarks::Instances::ErectorBase::Common
       end
     end
   end
