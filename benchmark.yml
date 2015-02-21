@@ -6,6 +6,12 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
+  - name:       "Local Variable Hell"
+    benchmark:   local_variable_hell
+    enabled:     true
+    configuration:
+      output_count: 1000
+      variable_count: 100
   - name:       "Escaping Hell"
     benchmark:   escaping_hell
     enabled:     true
@@ -27,24 +33,6 @@ benchmarks:
       depth:    12
 
 engines:
-  - name:       "Fortitude (Development)"
-    engine:     fortitude
-    enabled:    true
-    configuration:
-      format_output:                  true
-      start_and_end_comments:         true
-      enforce_element_nesting_rules:  true
-      enforce_attribute_rules:        true
-      enforce_id_uniqueness:          true
-      debug:                          true
-  - name:       "Slim"
-    engine:     slim
-    enabled:    true
-  - name:       "Slim (Pretty)"
-    engine:     slim
-    enabled:    true
-    configuration:
-      pretty:   true
   - name:       "Fortitude"
     engine:     fortitude
     enabled:    true
@@ -56,11 +44,29 @@ engines:
     enabled:    true
     configuration:
       ugly:     true
+  - name:       "Slim"
+    engine:     slim
+    enabled:    true
   - name:       "Erector"
     engine:     erector
     enabled:    true
     configuration:
       prettyprint:  false
+  - name:       "Fortitude (Development)"
+    engine:     fortitude
+    enabled:    true
+    configuration:
+      format_output:                  true
+      start_and_end_comments:         true
+      enforce_element_nesting_rules:  true
+      enforce_attribute_rules:        true
+      enforce_id_uniqueness:          true
+      debug:                          true
+  - name:       "Slim (Pretty)"
+    engine:     slim
+    enabled:    true
+    configuration:
+      pretty:   true
   - name:       "Erector-Rails4"
     engine:     erector_rails4
     enabled:    true
