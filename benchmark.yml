@@ -6,6 +6,11 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
+  - name:       "Translation Hell"
+    benchmark:   translation_hell
+    enabled:     true
+    configuration:
+      translation_count: 10000
   - name:       "Local Variable Hell"
     benchmark:   local_variable_hell
     enabled:     true
@@ -33,11 +38,11 @@ benchmarks:
       depth:    12
 
 engines:
-  - name:       "Fortitude"
-    engine:     fortitude
-    enabled:    true
   - name:       "ERb"
     engine:     erb
+    enabled:    true
+  - name:       "Fortitude"
+    engine:     fortitude
     enabled:    true
   - name:       "Haml (Ugly)"
     engine:     haml
