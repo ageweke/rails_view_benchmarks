@@ -40,12 +40,10 @@ module RailsViewBenchmarks
       say "Options: #{@run_options}"
       say ""
 
-      for_all_benchmark_aliases do |benchmark_alias|
-        for_all_engine_aliases("     ...", false) do |engine_alias|
-          unless exclude?(benchmark_alias, engine_alias)
-            run_for!(benchmark_alias, engine_alias)
-          end
-        end
+      for_all_instances do |benchmark_alias, engine_alias|
+        say(("%#{max_benchmark_alias_name_length}s for %#{max_engine_alias_name_length}s: " % [ benchmark_alias.name, engine_alias.name ]), false)
+        results = run_for!(benchmark_alias, engine_alias)
+        say results.to_s
       end
 
       @ended_at = Time.now
@@ -116,6 +114,24 @@ module RailsViewBenchmarks
     attr_reader :yaml_file, :temp_directory, :verbose, :run_options, :benchmark_aliases, :engine_aliases
     attr_reader :started_at, :ended_at, :instance_results
 
+    def for_all_instances(&block)
+      benchmark_aliases.each do |benchmark_alias|
+        engine_aliases.each do |engine_alias|
+          unless exclude?(benchmark_alias, engine_alias)
+            block.call(benchmark_alias, engine_alias)
+          end
+        end
+      end
+    end
+
+    def max_benchmark_alias_name_length
+      @max_benchmark_alias_name_length ||= benchmark_aliases.map { |ba| ba.name.length }.max
+    end
+
+    def max_engine_alias_name_length
+      @max_engine_alias_name_length ||= engine_aliases.map { |ea| ea.name.length }.max
+    end
+
     CSV_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
     def empty_csv_row
@@ -142,28 +158,6 @@ module RailsViewBenchmarks
       end
 
       $stderr.flush
-    end
-
-    def for_all_benchmark_aliases(indent = "", newline = true)
-      benchmark_aliases.each do |benchmark_alias|
-        if benchmark_alias.enabled?
-          say "#{indent}BENCHMARK #{benchmark_alias.name}: ", newline
-          yield benchmark_alias
-        else
-          say "#{indent}     skip #{benchmark_alias.name}"
-        end
-      end
-    end
-
-    def for_all_engine_aliases(indent = "", newline = true)
-      engine_aliases.each do |engine_alias|
-        if engine_alias.enabled?
-          say "#{indent}ENGINE #{engine_alias.name}: ", newline
-          yield engine_alias
-        else
-          say "#{indent}  skip #{engine_alias.name}"
-        end
-      end
     end
 
     def load_from_file!
@@ -228,7 +222,7 @@ module RailsViewBenchmarks
       end
 
       say_verbose "[done]", false
-      say instance_results
+      instance_results
     end
 
     def cpu_info_csv
