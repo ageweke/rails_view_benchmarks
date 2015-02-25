@@ -49,14 +49,20 @@ module RailsViewBenchmarks
       end
     end
 
+    def save_csv_to!(csv_output_file)
+      csv_output_file.append do |f|
+        f.write to_csv
+      end
+    end
+
+    private
+    attr_reader :benchmark_alias, :engine_alias
+
     def to_csv
       [
         [ benchmark_alias_name, engine_alias_name, rendered_html_bytes, time_ms_per_iteration, objects_per_iteration ]
       ]
     end
-
-    private
-    attr_reader :benchmark_alias, :engine_alias
 
     def time_ms_per_iteration
       if @time_results

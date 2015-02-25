@@ -14,7 +14,7 @@ require 'sys/cpu'
 
 module RailsViewBenchmarks
   class BenchmarkRun
-    def initialize(yaml_file, temp_directory, options = { })
+    def initialize(yaml_file, temp_directory, output_directory, options = { })
       options.assert_valid_keys(:verbose)
 
       @yaml_file = yaml_file
@@ -30,48 +30,52 @@ module RailsViewBenchmarks
       @started_at = nil
       @ended_at = nil
       @instance_results = [ ]
+
+      @output_directory = File.join(File.expand_path(output_directory), Time.now.strftime("%Y%m%d-%H%M%S"))
     end
 
     def run!
+      FileUtils.mkdir_p(@output_directory)
+      csv_output_file = ::RailsViewBenchmarks::CsvOutputFile.new(File.join(@output_directory, "results.csv"))
+
       @started_at = Time.now
       load_from_file!
 
       say "RAILS VIEW BENCHMARKS RUN STARTING"
       say "Options: #{@run_options}"
+      say "Output directory: #{@output_directory}"
       say ""
+
+      save_csv_header_to!(csv_output_file)
 
       for_all_instances do |benchmark_alias, engine_alias|
         say(("%#{max_benchmark_alias_name_length}s for %#{max_engine_alias_name_length}s: " % [ benchmark_alias.name, engine_alias.name ]), false)
-        results = run_for!(benchmark_alias, engine_alias)
-        say results.to_s
+        instance_result = run_for!(benchmark_alias, engine_alias)
+        say instance_result.to_s
+
+        instance_result.save_csv_to!(csv_output_file)
+        instance_result.save_rendered_html_under!(@output_directory)
       end
 
       @ended_at = Time.now
-    end
-
-    def save_html_to!(dest_directory)
-      @instance_results.each do |instance_results|
-        instance_results.save_rendered_html_under!(dest_directory)
-      end
     end
 
     class << self
       def csv_header
         [
           [ "RailsViewBenchmarks Benchmark Run" ],
-          [ "Version", "Started At", "Ended At" ]
+          [ "Version", "Started At" ]
         ]
       end
     end
 
     def to_csv
       [
-        [ ::RailsViewBenchmarks::Version::VERSION, started_at.strftime(CSV_TIME_FORMAT), ended_at.strftime(CSV_TIME_FORMAT) ]
+        [ ::RailsViewBenchmarks::Version::VERSION, started_at.getgm.strftime(CSV_TIME_FORMAT) ]
       ]
     end
 
-    def save_csv_to!(dest_file)
-      output_file = ::RailsViewBenchmarks::CsvOutputFile.new(dest_file)
+    def save_csv_header_to!(output_file)
       output_file.open do |f|
         f.write self.class.csv_header
         f.write self.to_csv
@@ -97,16 +101,6 @@ module RailsViewBenchmarks
         f.write empty_csv_row
         f.write [ [ "Results" ] ]
         f.write ::RailsViewBenchmarks::InstanceResults.csv_header
-        benchmark_aliases.each do |benchmark_alias|
-          engine_aliases.each do |engine_alias|
-            ir = instance_results.detect do |ir|
-              ir.benchmark_alias_name == benchmark_alias.name &&
-                ir.engine_alias_name == engine_alias.name
-            end
-
-            f.write ir.to_csv if ir
-          end
-        end
       end
     end
 
@@ -132,7 +126,7 @@ module RailsViewBenchmarks
       @max_engine_alias_name_length ||= engine_aliases.map { |ea| ea.name.length }.max
     end
 
-    CSV_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+    CSV_TIME_FORMAT = "%Y-%m-%d %H:%M:%S UTC"
 
     def empty_csv_row
       [ [ ] ]

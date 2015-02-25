@@ -6,11 +6,11 @@ module RailsViewBenchmarks
     end
 
     def open(&block)
-      FileUtils.mkdir_p(File.dirname(path))
-      CSV.open(path, 'wb') do |csv|
-        @csv = csv
-        block.call(self)
-      end
+      do_open('wb', &block)
+    end
+
+    def append(&block)
+      do_open('ab', &block)
     end
 
     def write(rows)
@@ -19,5 +19,14 @@ module RailsViewBenchmarks
 
     private
     attr_reader :path, :csv
+
+    def do_open(mode, &block)
+      FileUtils.mkdir_p(File.dirname(path))
+      CSV.open(path, mode) do |csv|
+        @csv = csv
+        block.call(self)
+      end
+      @csv = nil
+    end
   end
 end
