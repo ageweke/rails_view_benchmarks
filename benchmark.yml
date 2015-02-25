@@ -6,6 +6,15 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
+  - name:       "Place Page"
+    benchmark:  place_page
+    enabled:    true
+  - name:       "Hello, World"
+    benchmark:  hello_world
+    enabled:    true
+  - name:       "Slim Benchmark"
+    benchmark:  slim_benchmark
+    enabled:    true
   - name:       "User-Defined Helper Hell"
     benchmark:   user_defined_helper_hell
     enabled:     true
@@ -24,21 +33,12 @@ benchmarks:
       variable_count: 100
   - name:       "Escaping Hell"
     benchmark:   escaping_hell
-    enabled:     false
+    enabled:     true
     configuration:
       word_count: 10000
-  - name:       "Place Page"
-    benchmark:  place_page
-    enabled:    false
-  - name:       "Hello, World"
-    benchmark:  hello_world
-    enabled:    false
-  - name:       "Slim Benchmark"
-    benchmark:  slim_benchmark
-    enabled:    false
   - name:       "Partial Hell"
     benchmark:  partial_hell
-    enabled:    false
+    enabled:    true
     configuration:
       depth:    12
 
@@ -54,14 +54,19 @@ engines:
     enabled:    true
     configuration:
       ugly:     true
-  - name:       "Slim"
-    engine:     slim
-    enabled:    true
   - name:       "Erector"
     engine:     erector
     enabled:    true
     configuration:
       prettyprint:  false
+  - name:       "Erector-Rails4"
+    engine:     erector_rails4
+    enabled:    true
+    configuration:
+      prettyprint:  false
+  - name:       "Slim"
+    engine:     slim
+    enabled:    true
   - name:       "Fortitude (Development)"
     engine:     fortitude
     enabled:    true
@@ -77,11 +82,6 @@ engines:
     enabled:    true
     configuration:
       pretty:   true
-  - name:       "Erector-Rails4"
-    engine:     erector_rails4
-    enabled:    true
-    configuration:
-      prettyprint:  false
   - name:       "Haml (Pretty)"
     engine:     haml
     enabled:    true
@@ -108,3 +108,9 @@ engines:
     enabled:    true
     configuration:
       prettyprint:  true
+
+exclude:
+  - benchmark:  "Place Page"
+    engine:     "Slim"
+  - benchmark:  "Place Page"
+    engine:     "Slim (Pretty)"

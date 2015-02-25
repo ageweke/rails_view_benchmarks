@@ -25,6 +25,8 @@ module RailsViewBenchmarks
       @benchmark_aliases = nil
       @engine_aliases = nil
 
+      @exclude_combinations = [ ]
+
       @started_at = nil
       @ended_at = nil
       @instance_results = [ ]
@@ -40,7 +42,9 @@ module RailsViewBenchmarks
 
       for_all_benchmark_aliases do |benchmark_alias|
         for_all_engine_aliases("     ...", false) do |engine_alias|
-          run_for!(benchmark_alias, engine_alias)
+          unless exclude?(benchmark_alias, engine_alias)
+            run_for!(benchmark_alias, engine_alias)
+          end
         end
       end
 
@@ -180,6 +184,15 @@ module RailsViewBenchmarks
       @engine_aliases = engine_hashes.map do |engine_hash|
         raise "Your engine must be a Hash, not #{engine_hash.inspect}" unless engine_hash.kind_of?(Hash)
         ::RailsViewBenchmarks::EngineAlias.new(engine_hash)
+      end
+
+      @exclude_combinations = yaml_hash['exclude']
+    end
+
+    def exclude?(benchmark_alias, engine_alias)
+      @exclude_combinations.detect do |exclude_combination|
+        exclude_combination['benchmark'] == benchmark_alias.name &&
+          exclude_combination['engine'] == engine_alias.name
       end
     end
 
