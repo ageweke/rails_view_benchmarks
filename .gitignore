@@ -14,3 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/results
+/*.sublime-project
+/*.sublime-workspace
+/.DS_Store

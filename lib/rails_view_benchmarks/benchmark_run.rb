@@ -31,6 +31,9 @@ module RailsViewBenchmarks
       @ended_at = nil
       @instance_results = [ ]
 
+      @actual_ruby_version = nil
+      @actual_rails_version = nil
+
       @output_directory = File.join(File.expand_path(output_directory), Time.now.strftime("%Y%m%d-%H%M%S"))
     end
 
@@ -47,11 +50,17 @@ module RailsViewBenchmarks
       say ""
 
       save_csv_header_to!(csv_output_file)
+      rails_header_written = false
 
       for_all_instances do |benchmark_alias, engine_alias|
         say(("%#{max_benchmark_alias_name_length}s for %#{max_engine_alias_name_length}s: " % [ benchmark_alias.name, engine_alias.name ]), false)
         instance_result = run_for!(benchmark_alias, engine_alias)
         say instance_result.to_s
+
+        if (! rails_header_written)
+          save_rails_header_to!(csv_output_file)
+          rails_header_written = true
+        end
 
         instance_result.save_csv_to!(csv_output_file)
         instance_result.save_rendered_html_under!(@output_directory)
@@ -82,7 +91,7 @@ module RailsViewBenchmarks
 
         f.write empty_csv_row
         f.write [ [ "System Information" ] ]
-        f.write cpu_info_csv
+        f.write system_info_csv
 
         f.write empty_csv_row
         f.write ::RailsViewBenchmarks::RunOptions.csv_header
@@ -97,6 +106,14 @@ module RailsViewBenchmarks
         f.write [ [ "Engines" ] ]
         f.write ::RailsViewBenchmarks::EngineAlias.csv_header
         engine_aliases.select { |ea| ea.enabled? }.each { |ea| f.write ea.to_csv }
+      end
+    end
+
+    def save_rails_header_to!(output_file)
+      output_file.append do |f|
+        f.write empty_csv_row
+        f.write [ [ "Ruby Engine", "Ruby Version", "Rails Version" ] ]
+        f.write [ [ @actual_ruby_engine, @actual_ruby_version, @actual_rails_version ] ]
 
         f.write empty_csv_row
         f.write [ [ "Results" ] ]
@@ -194,6 +211,12 @@ module RailsViewBenchmarks
       say_verbose "[start]", false
       crs.start!
 
+      if (! @actual_rails_version)
+        @actual_ruby_version = crs.actual_ruby_version
+        @actual_ruby_engine = crs.actual_ruby_engine
+        @actual_rails_version = crs.actual_rails_version
+      end
+
       instance_results = ::RailsViewBenchmarks::InstanceResults.new(benchmark_alias, engine_alias)
       @instance_results << instance_results
 
@@ -219,7 +242,7 @@ module RailsViewBenchmarks
       instance_results
     end
 
-    def cpu_info_csv
+    def system_info_csv
       header = [ "CPU Architecture", "CPU Count", "CPU Model", "CPU MHz", "Load Average" ]
       methods_list = [
         [ :architecture ],

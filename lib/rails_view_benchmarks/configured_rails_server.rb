@@ -55,6 +55,18 @@ module RailsViewBenchmarks
       get_json('benchmark_memory')
     end
 
+    def actual_ruby_version
+      @rails_server.actual_ruby_version
+    end
+
+    def actual_rails_version
+      @rails_server.actual_rails_version
+    end
+
+    def actual_ruby_engine
+      @rails_server.actual_ruby_engine
+    end
+
     private
     attr_reader :all_servers_base, :rails_version, :templating_engine, :benchmark, :instance
 
