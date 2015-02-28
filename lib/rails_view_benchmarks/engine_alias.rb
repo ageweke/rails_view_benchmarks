@@ -44,15 +44,25 @@ module RailsViewBenchmarks
     class << self
       def csv_header
         [
-          [ "Name", "Engine", "Configuration" ]
+          [ "Name", "Engine", "Version", "Configuration" ]
         ]
       end
     end
 
     def to_csv
       out = [ name, engine_name ]
-      configuration.keys.sort.each do |key|
-        out += [ "#{key}:", configuration[key].inspect ]
+
+      config_to_append = configuration.dup.stringify_keys
+      version = nil
+      %w{version path git}.each do |key|
+        contents = config_to_append.delete(key)
+        version ||= contents
+      end
+      version ||= "(unknown)"
+      out << version
+
+      config_to_append.keys.sort.each do |key|
+        out += [ "#{key}:", config_to_append[key].inspect ]
       end
       [ out ]
     end

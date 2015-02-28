@@ -14,8 +14,8 @@ EOS
         '.html.haml'
       end
 
-      def additional_gemfile_lines
-        [ "gem 'haml'" ]
+      def gem_name
+        "haml"
       end
     end
   end

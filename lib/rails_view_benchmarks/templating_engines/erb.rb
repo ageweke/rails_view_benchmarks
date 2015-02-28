@@ -11,8 +11,8 @@ module RailsViewBenchmarks
         '.html.erb'
       end
 
-      def additional_gemfile_lines
-        [ ]
+      def gem_name
+        'erubis'
       end
     end
   end

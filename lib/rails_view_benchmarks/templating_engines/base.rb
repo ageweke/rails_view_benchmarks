@@ -5,6 +5,8 @@ module RailsViewBenchmarks
     class Base
       def initialize(configuration = nil)
         @configuration = (configuration || { }).symbolize_keys
+
+        raise "You must either supply a :version, :git, or :path for engine #{self.class.name}; you specified none" unless @configuration[:version] || @configuration[:git] || @configuration[:path]
       end
 
       def configure!(templating_engine_configurator)
@@ -38,6 +40,14 @@ module RailsViewBenchmarks
         raise "Must override in #{self.class.name}"
       end
 
+      def gem_name
+        raise "Must override in #{self.class.name}"
+      end
+
+      def additional_gemfile_lines
+        [ gemfile_line ]
+      end
+
       def to_s
         "<Engine '#{self.class.name.demodulize}': #{configuration.inspect}>"
       end
@@ -48,6 +58,22 @@ module RailsViewBenchmarks
 
       private
       attr_reader :configuration
+
+      def gemfile_line
+        out = "gem '#{gem_name}'"
+
+        if configuration[:version]
+          out << ", '= #{configuration[:version]}'"
+        elsif configuration[:path]
+          out << ", :path => '#{configuration[:path]}'"
+        elsif configuration[:git]
+          out << ", :git => '#{configuration[:git]}'"
+        else
+          raise "You must supply one of :version, :path, or :git"
+        end
+
+        out
+      end
 
       def name_for_subpath
         @name_for_subpath ||= self.class.name.demodulize.underscore

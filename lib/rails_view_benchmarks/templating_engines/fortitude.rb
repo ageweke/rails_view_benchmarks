@@ -34,8 +34,8 @@ EOS
         '.html.rb'
       end
 
-      def additional_gemfile_lines
-        [ "gem 'fortitude', :path => '/Users/andrew/Dev/ErrorSea/fortitude'" ]
+      def gem_name
+        "fortitude"
       end
     end
   end

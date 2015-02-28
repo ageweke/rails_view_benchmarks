@@ -15,11 +15,6 @@ benchmarks:
   - name:       "Slim Benchmark"
     benchmark:  slim_benchmark
     enabled:    true
-  - name:       "User-Defined Helper Hell"
-    benchmark:   user_defined_helper_hell
-    enabled:     true
-    configuration:
-      call_count: 10000
   - name:       "Translation Hell"
     benchmark:   translation_hell
     enabled:     true
@@ -41,32 +36,46 @@ benchmarks:
     enabled:    true
     configuration:
       depth:    12
+  - name:       "User-Defined Helper Hell"
+    benchmark:   user_defined_helper_hell
+    enabled:     true
+    configuration:
+      call_count: 10000
 
 engines:
   - name:       "ERb"
     engine:     erb
     enabled:    true
+    configuration:
+      version:    2.7.0
   - name:       "Fortitude"
     engine:     fortitude
     enabled:    true
+    configuration:
+      path:       /Users/andrew/Dev/ErrorSea/fortitude
   - name:       "Haml (Ugly)"
     engine:     haml
     enabled:    true
     configuration:
       ugly:     true
+      version:  4.0.6
   - name:       "Erector"
     engine:     erector
     enabled:    true
     configuration:
       prettyprint:  false
+      version:      0.10.0
   - name:       "Erector-Rails4"
     engine:     erector_rails4
     enabled:    true
     configuration:
       prettyprint:  false
+      version:      0.2.0
   - name:       "Slim"
     engine:     slim
     enabled:    true
+    configuration:
+      version:      3.0.2
   - name:       "Fortitude (Development)"
     engine:     fortitude
     enabled:    true
@@ -77,37 +86,44 @@ engines:
       enforce_attribute_rules:        true
       enforce_id_uniqueness:          true
       debug:                          true
+      path:                           /Users/andrew/Dev/ErrorSea/fortitude
   - name:       "Slim (Pretty)"
     engine:     slim
     enabled:    true
     configuration:
       pretty:   true
+      version:  3.0.2
   - name:       "Haml (Pretty)"
     engine:     haml
     enabled:    true
     configuration:
       ugly:     false
+      version:  4.0.6
   - name:       "Fortitude (Static Disabled)"
     engine:     fortitude
     enabled:    true
     configuration:
       static:         false
+      path:           /Users/andrew/Dev/ErrorSea/fortitude
   - name:       "Fortitude (Formatted)"
     engine:     fortitude
     enabled:    true
     configuration:
       format_output:          true
       start_and_end_comments: true
+      path:                   /Users/andrew/Dev/ErrorSea/fortitude
   - name:       "Erector (Prettyprint)"
     engine:     erector
     enabled:    true
     configuration:
       prettyprint:  true
+      version:      0.10.0
   - name:       "Erector-Rails4 (Prettyprint)"
     engine:     erector_rails4
     enabled:    true
     configuration:
       prettyprint:  true
+      version:      0.2.0
 
 exclude:
   - benchmark:  "Place Page"

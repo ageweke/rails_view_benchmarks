@@ -13,8 +13,8 @@ EOS
         '.html.slim'
       end
 
-      def additional_gemfile_lines
-        [ "gem 'slim'" ]
+      def gem_name
+        "slim"
       end
     end
   end
