@@ -6,6 +6,9 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
+  - name:       "Siannopollo"
+    benchmark:  siannopollo
+    enabled:     true
   - name:       "Place Page"
     benchmark:  place_page
     enabled:    true
@@ -43,6 +46,12 @@ benchmarks:
       call_count: 10000
 
 engines:
+  - name:       "Haml (Ugly)"
+    engine:     haml
+    enabled:    true
+    configuration:
+      ugly:     true
+      version:  4.0.6
   - name:       "ERb"
     engine:     erb
     enabled:    true
@@ -53,12 +62,6 @@ engines:
     enabled:    true
     configuration:
       path:       /Users/andrew/Dev/ErrorSea/fortitude
-  - name:       "Haml (Ugly)"
-    engine:     haml
-    enabled:    true
-    configuration:
-      ugly:     true
-      version:  4.0.6
   - name:       "Erector"
     engine:     erector
     enabled:    true
