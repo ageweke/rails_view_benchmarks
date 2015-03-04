@@ -1,0 +1,53 @@
+- cdn_img = cdn("/n/images/faces/san-francisco-california-united-states/201401052244/6?sh=sV5Ky3b0NBIpw33ZdKsqJg")
+.avatar_header[style="background-image:url(#{cdn_img})"]
+  .avatar_header_content
+    .title_and_following
+      .main_title
+        h1[title=place.title]
+          = place.title
+      .follow_button_container
+        .follow_button.well.well-light
+          .following_handle[data-csrf-token="NIb6h37CJL+GGUrGEHsnV7OHi0ZPnhIqka3PVAXaPOE=" data-entity-id="13" data-entity-type="place" data-flyout="notification" data-following="true"]
+            .dropdown-btn-container
+              a.dropdown-toggle[data-flyout="true" data-must-be-logged-in="true" data-toggle="dropdown"]
+                i.icon-heart
+                - if place.following
+                  span.following_handle_text.following[title=t('header.avatar.following')]
+                  = t('header.avatar.following')
+                b.caret
+            .dropdown-panel
+              == render :partial => "#{@partial_base}/email_dropdown", :locals => { :place => place, :subscription_options => subscription_options }
+      div[style="clear: both;"]
+    p.locals_count
+      = t('header.avatar.locals_count', :num => place.locals_count)
+    .part_of_and_nearby
+      div
+        = t('header.avatar.part_of')
+        ul
+          - part_of.each do |part_of|
+            li
+              a[href=part_of.url.html_safe]
+              = part_of.name
+      div
+        = t('header.avatar.nearby')
+        ul
+          - nearby.each do |n|
+            li
+              a[href=n.url.html_safe]
+                = n.name
+.privacy_popup
+  #collage_privacy_popup[data-collage-privacy-title="Locals Collage"]
+    p
+      = t('header.avatar.privacy_description')
+    form.privacy_collage_form
+      input#hide_profile[name="hide_profile" type="checkbox" value="true"]
+      label[for="hide_profile"]
+        = t('header.avatar.never_show')
+    .row
+      .collage_privacy_buttons.pull-right
+        a.btn_collage_privacy_cancel.btn[href="#"]
+          = t('buttons.cancel')
+        a.btn_collage_privacy_submit.btn[href="#"]
+          = t('header.avatar.save_preference')
+  a.show_collage_privacy_popup[href="#" data-target="#collage_privacy_popup"]
+    = t('header.avatar.who_are')

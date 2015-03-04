@@ -6,7 +6,7 @@ html.no-js.root-places.page-places.action-show.page-places-show.root-places.page
       == render :partial => "#{@partial_base}/nav", :locals => { :user => @user, :place => @place }
       #main-content.main-container-wrapper
         == render :partial => "#{@partial_base}/place_subnav", :locals => { :subnav_places => @subnav_places }
-        /== render :partial => "#{@partial_base}/place_avatar_header", :locals => { :place => @place, :subscription_options => @subscription_options, :part_of => @part_of, :nearby => @nearby }
+        == render :partial => "#{@partial_base}/place_avatar_header", :locals => { :place => @place, :subscription_options => @subscription_options, :part_of => @part_of, :nearby => @nearby }
         section.main-content.container
           /== render :partial => "#{@partial_base}/featured_events", :locals => { :featured_events => @featured_events }
           .row-fluid
