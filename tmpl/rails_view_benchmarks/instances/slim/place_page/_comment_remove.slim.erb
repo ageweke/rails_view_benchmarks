@@ -1,0 +1,19 @@
+.modal.hide.fade.remove-thread-modal
+  .modal-header
+    button.close[data-dismiss="modal" type="button"]
+      | ×
+    h3
+
+    div
+      | <%= t('comment.remove.title') %>
+  .modal-body
+    div
+      | <%= t('comment.remove.confirm') %>
+    br
+    br
+    .actions
+      a.confirm.btn.btn-danger[href="javascript://"]
+        | <%= t('comment.remove.confirm_button') %>
+      |  
+      a.cancel.btn[data-dismiss="modal" href="javascript://"]
+        | <%= t('buttons.cancel') %>

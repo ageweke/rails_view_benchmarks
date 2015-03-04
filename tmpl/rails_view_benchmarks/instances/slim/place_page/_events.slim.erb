@@ -1,0 +1,39 @@
+.event_container
+  .holder_header
+    h3
+      | <%= t('event.your_events') %>
+  .row-fluid.event_sidebar_button_container.well
+    .span6.create_event
+      a#d61fb3bd7413bc4a977948b3cd384fd8ec625921.primary_action_button.button.link_button.disabled_until_load[href="#" title="<%= t('event.create_button') %>"]
+        | <%= t('event.create_button') %>
+      script[type="text/javascript"]
+        |  // 
+        |  (function () { var button = $("#d61fb3bd7413bc4a977948b3cd384fd8ec625921"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); // 
+    .span6
+      a#0482aa58e796d897317d462e1169be941416ddd1.action_button.button.past_events.disabled_until_load[data-toggle="modal" href="#past_events_modal" title="<%= t('event.view_past_events') %>"]
+        | <%= t('event.view_past_events') %>
+      script[type="text/javascript"]
+        |  // 
+        |  (function () { var button = $("#0482aa58e796d897317d462e1169be941416ddd1"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); // 
+  .trending_events
+    .holder_header
+      .pull-left
+        h3
+          | <%= t('event.trending_events') %>
+    div[style="clear:both"]
+    ul.events
+      |  <%= render :partial => "#{@partial_base}/event", :collection => trending_events %> 
+  .event_container
+    .holder_header
+      .pull-left
+        h3
+          | <%= t('event.upcoming_events') %>
+      .upcoming_events_count.pull-right
+        a.btn[href="/n/places/<%= place.path.html_safe %>/events?place=<%= place.path.html_safe %>"]
+          | <%= t('event.total_events', :num => total_event_count) %>
+    div[style="clear:both"]
+    ul.events
+      |  <%= render :partial => "#{@partial_base}/event", :collection => upcoming_events %> 
+  .big_groups_btn.well.see_all_events_big
+    a.span12.btn.btn-primary[href="/n/places/<%= place.path.html_safe %>/events?place=<%= place.path.html_safe %>"]
+      | <%= t('event.see_all') %>

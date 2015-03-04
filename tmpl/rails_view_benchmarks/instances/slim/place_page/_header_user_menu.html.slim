@@ -1,0 +1,19 @@
+ul#nav_user_menu.menu
+  li#nav_user_settings.menu_item[data-view="HeaderDropdown"]
+    a#navbar_user_settings_trigger.trigger.button[data-toggle="dropdown" href="#nav_user_settings"]
+      span.avatar.imgsize_compact_thumb[style="background-image:url(#{cdn(user.profile_image)});"]
+      span.username[title="#{user.first_name}"]
+        = user.first_name
+    ul#navbar_user_settings_menu.dropdown_menu.submenu[data-component="options"]
+      li.menu_item
+        a#autogen_id_for_tracking_nav_profile_clicked_1.button[href=user.profile_path title="t('header.user_menu.my_profile')"]
+          = t('header.user_menu.my_profile')
+      li.menu_item
+        a#autogen_id_for_tracking_nav_account_settings_clicked_1.button[href="/n/o/user_account_settings"]
+          = t('header.user_menu.account_settings')
+      li.menu_item
+        a#autogen_id_for_tracking_nav_place_page_clicked_1.button[href=place.path]
+          = t('header.user_menu.local_place_page')
+      li.menu_item
+        a#autogen_id_for_tracking_nav_log_out_clicked_1.button[href="/n/logout"]
+          = t('header.user_menu.logout')

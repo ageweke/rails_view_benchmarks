@@ -195,7 +195,7 @@ module RailsViewBenchmarks
     end
 
     def exclude?(benchmark_alias, engine_alias)
-      @exclude_combinations.detect do |exclude_combination|
+      (@exclude_combinations || [ ]).detect do |exclude_combination|
         exclude_combination['benchmark'] == benchmark_alias.name &&
           exclude_combination['engine'] == engine_alias.name
       end

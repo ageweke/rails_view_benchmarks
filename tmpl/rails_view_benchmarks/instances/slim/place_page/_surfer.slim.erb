@@ -1,0 +1,18 @@
+.featured_person
+  .media
+    a#autogen_id_for_tracking_place_ocrs_clicked_ocr_1.pull-left.square.avatar[href="/profile.html?city_couchrequest=<%= surfer.city_couchrequest_id %>&amp;id=<%= surfer.profile_encoded_id %>"]
+      span.media-object.avatar.imgsize_compact_thumb[style="background-image:url(<%= cdn(surfer.profile_image.html_safe) %>);"]
+        |  <% if surfer.verified? %> 
+        span.verified
+          img[src="/assets/verification-badge-8a2bb1613424ebe4344fed87c342ce6e.png"]
+        |  <% end %> 
+    .media-body
+      h4
+        a[href="/profile.html?city_couchrequest=<%= surfer.city_couchrequest_id %>&amp;id=<%= surfer.profile_encoded_id %>"]
+          | <%= surfer.name %>
+      p.city
+        | <%= surfer.city %>
+      p.meta
+        | <%= surfer.age %>, <%= surfer.gender %>
+      p.meta
+        | <%= surfer.reference_count %> references

@@ -1,0 +1,9 @@
+nav.social_container
+  .call-to-action
+    | Connect with us:
+  ul.social
+    |  <% social_links.each do |social_link| %> 
+    li
+      a.icon_button.button.<%=.social_link.name.gsub(/\s+/,.'').downcase.%>[href="<%= social_link.link.html_safe %>" target="_blank" title="<%= social_link.name %>"]
+        | <%= social_link.name %>
+    |  <% end %> 

@@ -1,0 +1,46 @@
+#hidden-content
+  #event_form_modal.modal_window.hide.fade.event_modal_container.new_event_form[data-backdrop="static" data-keyboard="false" title="i18n_events_add_new"]
+    header.modal_header
+      h3.modal_title.clearfix
+        span.title_text
+          | i18n_events_add_new
+        a.modal_close[data-dismiss="modal" href="#"]
+          | <%= t('buttons.cancel') %>
+    .modal_body
+      |  <%= render :partial => "#{@partial_base}/create_event_form", :locals => { :user => user } %> 
+    footer.modal_footer
+      .ajax_loading_container
+      a#73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5.action_button.button.prev_page.disabled_until_load[href="#" title="<%= t('hidden_content.back') %>"]
+        | <%= t('hidden_content.back') %>
+      script[type="text/javascript"]
+        |  // 
+        |  (function () { var button = $("#73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); // 
+      a#7f1998f6b3b3f70801ebb84a23493e5b900fdf37.primary_action_button.button.submit_btn.new_submit_btn.disabled_until_load[href="#" title="<%= t('hidden_content.save_event') %>"]
+        | <%= t('hidden_content.save_event') %>
+      script[type="text/javascript"]
+        |  // 
+        |  (function () { var button = $("#7f1998f6b3b3f70801ebb84a23493e5b900fdf37"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); // 
+      a#a61726a26c5837d2081a322e322d6bbeeef98142.primary_action_button.button.next_page.disabled_until_load[href="#" title="<%= t('hidden_content.next') %>"]
+        | <%= t('hidden_content.next') %>
+      script[type="text/javascript"]
+        |  // 
+        |  (function () { var button = $("#a61726a26c5837d2081a322e322d6bbeeef98142"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); // 
+  #past_events_modal.modal_window.hide.fade.other_events_modal.past_events_modal[title="<%= t('hidden_content.past_events') %>"]
+    header.modal_header
+      h3.modal_title.clearfix
+        span.title_text
+          | <%= t('hidden_content.past_events') %>
+        a.modal_close[data-dismiss="modal" href="#"]
+          | <%= t('buttons.cancel') %>
+    .modal_body
+      img.ajax_loading[src="/assets/loading_loop.gif"]
+    footer.modal_footer
+      |  
+  #alert_modal.modal_window.hide.fade
+    header.modal_header
+      a.modal_close[data-dismiss="modal" href="#"]
+        | <%= t('buttons.cancel') %>
+    .modal_body
+#preloaded_ajax_loading_container
+  .ajax_loading_loop
+  a.action_button.button.loading[href="#"]

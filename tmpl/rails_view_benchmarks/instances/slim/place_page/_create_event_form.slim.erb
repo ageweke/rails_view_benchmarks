@@ -1,0 +1,101 @@
+form.event_form[enctype="multipart/form-data"]
+  fieldset.modal_page[data-modal_title="Create an Event"]
+    input.event_id[name="slug" type="hidden"]
+    div
+      input.title[name="title" placeholder="Event Title" type="text"]
+    div
+      input.location_string_as_entered_by_user[name="location_string_as_entered_by_user" placeholder="Location" type="text"]
+    .found_location[style="display: none"]
+      label
+        | <%= t('event.create.we_found') %>
+      span
+      label.note
+        | <%= t('event.create.to_specify_exact') %>
+    input.normalized_location_string[name="normalized_location_string" type="hidden"]
+    .map_preview
+      #event_map_preview[data-lat="" data-long=""]
+      .map_placeholder.hide
+        img[src="https://d20rrv4k3o7n66.cloudfront.net/assets/choose_location-cfd29dd4b26ef631dbf29a47fdfa89c5.jpeg"]
+    input.lat[name="latitude" type="hidden"]
+    input.lng[name="longitude" type="hidden"]
+    input.customized_coordinate[name="customized_coordinate" type="hidden"]
+    input.public_event[checked="checked" name="private" type="radio" value="0"]
+    span.public_selected
+      | <%= t('event.create.public') %>
+    input.invite_only[name="private" type="radio" value="1"]
+    span.private_selected
+      | <%= t('event.create.private') %>
+    .allow_guest_invite
+      input#allow_guest_invite[name="allow_guest_invite" type="checkbox" value="1"]
+      label[for="allow_guest_invite"]
+        | <%= t('event.create.allow_guest_invite') %>
+  fieldset.modal_page[data-modal_title="<%= t('event.create.add_time_date') %>"]
+    .timeselector
+      label[for="start_day"]
+        | <%= t('event.create.starts_on') %>
+      input#start_day[name="start_day" type="hidden"]
+      input.start_day_picker[type="text"]
+    .hour_selector
+      #time_error
+      label[for="start_hour_select"]
+        | <%= t('event.create.start_time') %>
+      select#start_hour_select.start_hour[name="start_hour"]
+        |  <%= render :partial => "#{@partial_base}/half_hour_form" %> 
+      label.label_end_hour[for="end_hour_select"]
+        | <%= t('event.create.end_time') %>
+      select#end_hour_select.end_hour[name="end_hour"]
+        |  <%= render :partial => "#{@partial_base}/half_hour_form" %> 
+      span.ends_next_day.hide
+        | <%= t('event.create.next_day') %>
+    p.duration
+  fieldset.modal_page[data-modal_title="Optional Extras"]
+    .image_and_desc
+      .add_photo_container
+        .event_photo
+        .btn.remove_photo_btn.event_photo_btn
+          span.event_photo_btn_text
+            | <%= t('event.create.remove_photo') %>
+        .btn.add_photo_btn.event_photo_btn
+          span.event_photo_btn_text
+            | <%= t('event.create.add_photo') %>
+          input.file[name="images[]" type="file"]
+          input.remove_photo[name="remove_photo" type="hidden"]
+        .aspect_ratio
+      textarea.description[name="description" placeholder="<%= t('event.create.description') %>"]
+    .max_guests_container
+      input#max_guests_enabled.guest_limit[name="max_guests_enabled" type="checkbox"]
+      label.max_guests_label[for="max_guests_enabled"]
+        | <%= t('event.create.guests_limited') %>
+      input.hide.max_guests.maximum_guests_allowed[maxlength="4" name="maximum_guests_allowed" type="text"]
+    .organizers_container
+      .row_label
+        input#enable_multi_organizer.enable_multi_organizer[type="checkbox"]
+        label[for="enable_multi_organizer"]
+          | <%= t('event.create.add_organizer') %>
+      .add_organizers
+        h3
+          | <%= t('event.create.add_organizer_heading') %>
+        p
+          | <%= t('event.create.add_organizer_detail') %>
+        .search_organizers
+          input.search_string[name="search_string" placeholder="<%= t('event.create.search_placeholder') %>" type="text"]
+          a#search_for_organizers_button.primary_action_button.button.submit_search.disabled_until_load[href="#" title="<%= t('event.create.search_button') %>"]
+            | <%= t('event.create.search_button') %>
+          script[type="text/javascript"]
+            |  // 
+            |  (function () { var button = $("#search_for_organizers_button"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); // 
+        .select_organizers.clearfix
+        h3
+          | <%= t('event.create.organizers_heading') %>
+        .selected_organizers.clearfix
+          .selectable_user_container[data-id="<%= user.id %>"]
+            .input_container
+              input#selected_organizers_ids_<%= user.id %>[checked="checked" name="selected_organizers_ids[]" type="checkbox" value="<%= user.id %>"]
+            span.pull-left.avatar.sm_circle.imgsize_compact_thumb[style="background-image:url(<%= cdn(user.profile_image) %>);"]
+            .meta_container
+              label[for="selected_organizers_ids_<%= user.id %>"]
+
+              p.username
+                | <%= user.name %>
+              p.location
+                | <%= user.location %>

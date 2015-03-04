@@ -1,0 +1,48 @@
+.reply.hidden.media[data-commented-on-type="place" data-creator-id="<%= comment_reply.creator_id %>" data-entity-id="<%= comment_reply.id %>" data-thread-slug="<%= comment_reply.slug %>"]
+  a.avatar_link[href="<%= comment_reply.profile_link.html_safe %>"]
+    span.pull-left.avatar.md_circle.imgsize_large_thumb[style="background-image:url(<%= cdn(comment_reply.profile_image).html_safe %>);"]
+  .media-body
+    div
+      a[href="<%= comment_reply.profile_link.html_safe %>"]
+      .comment-text
+        .comment-header.row-fluid
+          .span12
+            span
+              a.reply-creator[href="<%= comment_reply.profile_link.html_safe %>"]
+                | <%= comment_reply.creator_name %>
+            span
+              a#autogen_id_for_tracking_place_conversations_send_private_message_2[href="/send_message.html?id=<%= comment_reply.creator_profile_encoded_id %>" style="float: left; margin: 0 0.5em; color: #8B8B8B"]
+                |  <% cdn_img = cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png") %> 
+                img[alt="Private_message" src="<%= cdn_img %>"]
+            .comment-details
+              time[data-component="timestamp" data-original-timestamp="<%= comment_reply.created_at.iso8601 %>" datetime="<%= comment_reply.created_at.iso8601 %>"]
+        .row-fluid
+          .span11
+            .comment-body-text
+              | <%= comment_reply.text %>
+              br
+              span.user-links
+                a[href="https://t.co/abcdefg" target="_blank"]
+                  | https://t.co/abcdefg
+          .span1
+            .comment-context-menu.dropdown.pull-right[data-component="contextMenu" data-entity_id="<%= comment_reply.id %>" data-entity_type="comment"]
+              a.dropdown-toggle[data-component="dropdown" href=""]
+                span.icon-flyout.icon-large
+              ul.dropdown-menu.pull-right[data-component="options"]
+                li
+                  a.share.get_link[href="/n/threads/<%= comment_reply.slug %>" target="_blank"]
+                    i.icon-mail
+                    | <%= t('comment.reply.get_link') %>
+                li.divider
+                li[data-visible-to="creator"]
+                  a.edit-comment[href=""]
+                    i.icon-pen
+                    | <%= t('comment.reply.edit') %>
+                li[data-visible-to="creator"]
+                  a.delete-comment[href=""]
+                    i.icon-close
+                    | <%= t('comment.reply.delete') %>
+                li[data-visible-to="non-creator"]
+                  a.report-trigger[href=""]
+                    i.icon-caution
+                    | <%= t('comment.reply.flag') %>
