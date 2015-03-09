@@ -1,0 +1,55 @@
+.row-fluid
+  .span8
+    .row-fluid
+      h3.featured_event_title
+        = t('event.featured.title')
+      .event_list
+        - featured_events.each do |event|
+          - start_date_strftime = event.start_date.strftime("%Y-%m-%d")
+          div[id=event.id class="event_in_list event_row_#{event.numeric_id}" data-event_id=event.numeric_id data-start_date=start_date_strftime]
+            .event_start_time
+              h2.event_day
+                = event.start_date.strftime("%B %d")
+              .date_time
+                = event.start_date.strftime("%A")
+                br
+                = event.start_date.strftime("%I:%M %p")
+          .event_image
+            a.event_in_list_link[href="/n/events/#{event.id.html_safe}"]
+              img[src=cdn(event.image)]
+          .event_details
+            .event_details_text
+              a.event_in_list_link.title[href="/n/events/#{event.id.html_safe}" title=event.title]
+                = event.title
+              .city
+                span
+                  = event.location
+              .attendees[data-count=event.attendee_count]
+                span.attendee_count
+                  = event.attendee_count
+                span
+                  = t('event.featured.attending')
+            .event_buttons_container[data-event_slug=event.id]
+              .event_buttons
+                a[id=event.button_id class="action_button button event_list_button leave_event hide disabled_until_load" href="#" title=t('event.featured.leave')]
+                  = t('event.featured.leave')
+                javascript:
+                  //
+                  (function () { var button = $("##{event.button_id}"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })();
+                  //
+                a[id=event.button_id class="primary_action_button button event_list_button join_event disabled_until_load" href="#" title=t('event.featured.join')]
+                  = t('event.featured.join')
+                javascript:
+                  //
+                  (function () { var button = $("##{event.button_id}"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })();
+                  //
+            ul.event_user_list.user_list
+              - event.attendees.each do |attendee|
+                li.event_user_list_item.user_item[data-id=attendee.id]
+                  a.user_image[href=attendee.profile title=attendee.name]
+                    span.avatar.circle.imgsize_compact_thumb[style="background-image:url(#{cdn(attendee.profile_image)});"]
+                      - if attendee.organizer
+                        span.avatar_badge.organizer-icon
+                      - if attendee.verified
+                        span.verified
+                          img[src="/assets/verification-badge-8a2bb1613424ebe4344fed87c342ce6e.png"]
