@@ -17,7 +17,7 @@ html.no-js.root-places.page-places.action-show.page-places-show.root-places.page
           .well.big_groups_btn
             a.link_button.button[href="/n/o/groups" title="All Groups"]
               | All Groups
-          /== render :partial => "#{@partial_base}/surfers", :locals => { :place => @place, :surfers => @surfers }
+          == render :partial => "#{@partial_base}/surfers", :locals => { :place => @place, :surfers => @surfers }
           /== render :partial => "#{@partial_base}/related_groups"
           .well.big_groups_btn
             a#autogen_id_for_tracking_place_sidebar_meet_people_button_clicked_1.link_button.button[href="/n/locals/in/place/13" title=t('meet_people')]
