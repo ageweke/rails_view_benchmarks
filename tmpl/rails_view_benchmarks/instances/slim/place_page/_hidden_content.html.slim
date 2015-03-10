@@ -7,7 +7,7 @@
         a.modal_close[data-dismiss="modal" href="#"]
           = t('buttons.cancel')
     .modal_body
-      = render :partial => "#{@partial_base}/create_event_form", :locals => { :user => user }
+      == render :partial => "#{@partial_base}/create_event_form", :locals => { :user => user }
     footer.modal_footer
       .ajax_loading_container
       a#73cf55f0f71f06a51d5ff1b5a66ca1cf8201ffc5.action_button.button.prev_page.disabled_until_load[href="#" title=t('hidden_content.back')]
@@ -22,9 +22,8 @@
         (function () { var button = $("#7f1998f6b3b3f70801ebb84a23493e5b900fdf37"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); //
       a#a61726a26c5837d2081a322e322d6bbeeef98142.primary_action_button.button.next_page.disabled_until_load[href="#" title=t('hidden_content.next')]
         = t('hidden_content.next')
-      script[type="text/javascript"]
-        |  //
-        |  (function () { var button = $("#a61726a26c5837d2081a322e322d6bbeeef98142"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); //
+      javascript:
+        (function () { var button = $("#a61726a26c5837d2081a322e322d6bbeeef98142"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })();
   #past_events_modal.modal_window.hide.fade.other_events_modal.past_events_modal[title=t('hidden_content.past_events')]
     header.modal_header
       h3.modal_title.clearfix

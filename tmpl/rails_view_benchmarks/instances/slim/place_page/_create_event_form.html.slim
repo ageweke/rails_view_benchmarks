@@ -37,10 +37,10 @@ form.event_form[enctype="multipart/form-data"]
       #time_error
       label[for="start_hour_select"] t('event.create.start_time')
       select#start_hour_select.start_hour[name="start_hour"]
-        = render :partial => "#{@partial_base}/half_hour_form"
+        == render :partial => "#{@partial_base}/half_hour_form"
       label.label_end_hour[for="end_hour_select"] t('event.create.end_time')
       select#end_hour_select.end_hour[name="end_hour"]
-        = render :partial => "#{@partial_base}/half_hour_form"
+        == render :partial => "#{@partial_base}/half_hour_form"
       span.ends_next_day.hide
         = t('event.create.next_day')
     p.duration
@@ -75,9 +75,8 @@ form.event_form[enctype="multipart/form-data"]
           input.search_string[name="search_string" placeholder=t('event.create.search_placeholder') type="text"]
           a#search_for_organizers_button.primary_action_button.button.submit_search.disabled_until_load[href="#" title=t('event.create.search_button')]
             = t('event.create.search_button')
-          script[type="text/javascript"]
-            |  //
-            |  (function () { var button = $("#search_for_organizers_button"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); //
+          javascript:
+            (function () { var button = $("#search_for_organizers_button"); button.on("click", function (e) { e.preventDefault(); }); $.subscribe("jsload", function () { button.removeClass("disabled_until_load"); }); })(); //
         .select_organizers.clearfix
         h3
           = t('event.create.organizers_heading')

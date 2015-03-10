@@ -50,7 +50,7 @@ li.thread.media[data-commented-on-type="place" data-creator-id=comment.creator_i
                     a.see-more-replies
                       = t('comment.show_more', :num => comment.replies.length)
                   div[id="comments_on_#{comment.random_id}"].replies
-                    = render :partial => "#{@partial_base}/comment_reply", :collection => comment.replies
+                    == render :partial => "#{@partial_base}/comment_reply", :collection => comment.replies
                 .media.thread-form-container.reply-thread
                   span.thread-author.pull-left.avatar.circle.imgsize_small_thumb[style="background-image:url(#{cdn(comment.creator_profile_image)});"]
                   .media-body

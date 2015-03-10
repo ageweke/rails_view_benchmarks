@@ -29,7 +29,8 @@
               | Back
             .places-to-stay-confirmation-content.centred.pull-right
               p
-                strong t('comment.add.couchsearch_header')
+                strong
+                  = t('comment.add.couchsearch_header')
                 = t('comment.add.couchsearch_body')
               a#autogen_id_for_tracking_place_conversations_category_place_to_stay_confirmation_action_1.btn.btn-primary.btn-large[href="/n/trips/plan_trip?referring_link=place_create_post"]
                 = t('comment.add.couchsearch_button')
@@ -75,8 +76,12 @@
         .row-fluid
           .form-footer.span12
             .posting-guidelines
-              h4 t('comment.posting_guidelines.header')
+              h4
+                = t('comment.posting_guidelines.header')
               ul
-                li t('comment.posting_guidelines.l1')
-                li t('comment.posting_guidelines.l2')
-                li t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe
+                li
+                  = t('comment.posting_guidelines.l1')
+                li
+                  = t('comment.posting_guidelines.l2')
+                li
+                  = t('comment.posting_guidelines.l3', :href => '/n/safety').html_safe

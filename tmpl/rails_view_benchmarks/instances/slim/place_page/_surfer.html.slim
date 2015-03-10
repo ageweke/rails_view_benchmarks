@@ -9,7 +9,8 @@
       h4
         a[href="/profile.html?city_couchrequest=#{surfer.city_couchrequest_id}&id=#{surfer.profile_encoded_id}"]
           = surfer.name
-      p.city surfer.city
+      p.city
+        = surfer.city
       p.meta
         = surfer.age
         | ,
