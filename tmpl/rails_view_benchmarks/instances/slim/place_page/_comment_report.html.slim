@@ -3,35 +3,35 @@
     button.close[data-dismiss="modal" type="button"]
       | ×
     h3
-      | <%= t('comment.report.header') %>
+      = t('comment.report.header')
   form[action="/n/flag"]
     input[name="id" type="hidden"]
     input[name="entity_type" type="hidden"]
-    input[name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"]
+    input[name="authenticity_token" type="hidden" value=form_authenticity_token]
     .control-group
       .controls
         label
           select[name="flag_type"]
             optgroup
               option[value="couch_request"]
-                | <%= t('comment.report.couch_request') %>
+                = t('comment.report.couch_request')
               option[value="website_feedback"]
-                | <%= t('comment.report.website_feedback') %>
+                = t('comment.report.website_feedback')
               option[value="off_topic"]
-                | <%= t('comment.report.off_topic') %>
+                = t('comment.report.off_topic')
             optgroup
               option[value="commercial_or_spam"]
-                | <%= t('comment.report.commercial_or_spam') %>
+                = t('comment.report.commercial_or_spam')
               option[value="dating_or_sexual"]
-                | <%= t('comment.report.dating_or_sexual') %>
+                = t('comment.report.dating_or_sexual')
               option[value="abusive_or_illegal"]
-                | <%= t('comment.report.abusive_or_illegal') %>
+                = t('comment.report.abusive_or_illegal')
               option[value="privacy_breach"]
-                | <%= t('comment.report.privacy_breach') %>
+                = t('comment.report.privacy_breach')
           span
             |  
       p.help-block
     .actions
       input.btn.btn-primary[name="submit" type="submit" value="Flag"]
       a.cancel.btn[data-dismiss="modal" href="javascript://"]
-        | <%= t('buttons.cancel') %>
+        = t('buttons.cancel')
