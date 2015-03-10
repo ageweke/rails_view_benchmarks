@@ -23,5 +23,5 @@ html.no-js.root-places.page-places.action-show.page-places-show.root-places.page
             a#autogen_id_for_tracking_place_sidebar_meet_people_button_clicked_1.link_button.button[href="/n/locals/in/place/13" title=t('meet_people')]
               == t('meet_people')
     == render :partial => "#{@partial_base}/main_footer", :locals => { :languages => @languages, :site_map => @site_map, :social_links => @social_links }
-    /== render :partial => "#{@partial_base}/hidden_content", :locals => { :user => @user }
+    == render :partial => "#{@partial_base}/hidden_content", :locals => { :user => @user }
     /== render :partial => "#{@partial_base}/footer_javascript", :locals => { :user => @user, :place => @place }
