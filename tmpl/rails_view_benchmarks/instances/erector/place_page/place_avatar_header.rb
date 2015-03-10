@@ -83,7 +83,7 @@ class Views::Benchmark::PlaceAvatarHeader < Erector::Widget
           a :class => 'btn_collage_privacy_cancel btn', :href => '#' do
             text t('buttons.cancel')
           end
-          text '&nbsp;'
+          rawtext '&nbsp;'
           a :class => 'btn_collage_privacy_submit btn', :href => '#' do
             text t('header.avatar.save_preference')
           end

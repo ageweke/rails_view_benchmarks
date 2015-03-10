@@ -43,7 +43,7 @@ class Views::Benchmark::Comment < Erector::Widget
                     span :class => 'shortened-text' do
                       text comment.short_text
                     end
-                    text '&nbsp;'
+                    rawtext '&nbsp;'
                     a :class => 'show-more-link' do
                       text t('comment.more')
                     end
@@ -138,7 +138,7 @@ class Views::Benchmark::Comment < Erector::Widget
                                   button :class => 'btn btn-cancel', :type => 'button' do
                                     text t('buttons.cancel')
                                   end
-                                  text '&nbsp;'
+                                  rawtext '&nbsp;'
                                   button :class => 'btn btn-primary btn-create' do
                                     text t('comment.post_reply')
                                   end

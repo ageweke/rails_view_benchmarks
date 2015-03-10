@@ -18,7 +18,7 @@ li.thread.media[data-commented-on-type="place" data-creator-id=comment.creator_i
             span
               a#autogen_id_for_tracking_place_conversations_send_private_message_1[href="/send_message.html?id=#{comment.creator_profile_encoded_id}" style="float: left; margin: 0 0.5em; color: #8B8B8B"]
                 - cdn_img = cdn("/assets/private_message-123bd0b0aee5c2e2a97dab4360915ad5.png")
-                  img[alt="Private_message" src=cdn_img]
+                img[alt="Private_message" src=cdn_img]
         .row-fluid
           .span11
             .comment-body-text
@@ -49,7 +49,7 @@ li.thread.media[data-commented-on-type="place" data-creator-id=comment.creator_i
                   .paginate_replies.hidden
                     a.see-more-replies
                       = t('comment.show_more', :num => comment.replies.length)
-                  div[id="comments_on_#{comment.random_id}"].replies
+                  div[id="comments_on_#{comment.random_id}" class="replies"]
                     == render :partial => "#{@partial_base}/comment_reply", :collection => comment.replies
                 .media.thread-form-container.reply-thread
                   span.thread-author.pull-left.avatar.circle.imgsize_small_thumb[style="background-image:url(#{cdn(comment.creator_profile_image)});"]

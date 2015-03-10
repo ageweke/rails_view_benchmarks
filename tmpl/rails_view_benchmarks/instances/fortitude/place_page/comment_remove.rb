@@ -3,7 +3,7 @@ class Views::Benchmark::CommentRemove < Views::Benchmark::Base
     div :class => 'modal hide fade remove-thread-modal' do
       div :class => 'modal-header' do
         button :class => 'close', 'data-dismiss' => 'modal', :type => 'button' do
-          text '&times;'
+          rawtext '&times;'
         end
         h3
         div do
@@ -20,7 +20,7 @@ class Views::Benchmark::CommentRemove < Views::Benchmark::Base
           a :class => 'confirm btn btn-danger', :href => 'javascript://' do
             text t('comment.remove.confirm_button')
           end
-          text '&nbsp;'
+          rawtext '&nbsp;'
           a :class => 'cancel btn', 'data-dismiss' => 'modal', :href => 'javascript://' do
             text t('buttons.cancel')
           end

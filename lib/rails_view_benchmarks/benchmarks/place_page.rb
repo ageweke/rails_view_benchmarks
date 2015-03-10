@@ -9,6 +9,7 @@ module RailsViewBenchmarks
         bc.copy(bc.rails_root_path('config', 'initializers', 'random_generators.rb'), 'benchmarks/config/initializers/random_generators.rb')
         bc.copy(bc.rails_root_path('app', 'controllers', 'place_page_methods.rb'), 'benchmarks/place_page/place_page_methods.rb')
         bc.copy(bc.rails_root_path('app', 'helpers', 'place_page_helper.rb'), 'benchmarks/place_page/place_page_helper.rb')
+        bc.copy(bc.rails_root_path('config', 'locales', 'en.yml'), 'benchmarks/place_page/en.yml')
         bc.controller_contents <<-EOS
   include ::PlacePageMethods
 

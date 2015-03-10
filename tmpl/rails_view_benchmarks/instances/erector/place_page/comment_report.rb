@@ -3,7 +3,7 @@ class Views::Benchmark::CommentReport < Erector::Widget
     div :class => 'modal hide fade report-abusive-content', 'data-entity_type' => 'comment' do
       div :class => 'modal-header' do
         button :class => 'close', 'data-dismiss' => 'modal', :type => 'button' do
-          text '&times;'
+          rawtext '&times;'
         end
         h3 do
           text t('comment.report.header')
@@ -44,7 +44,7 @@ class Views::Benchmark::CommentReport < Erector::Widget
                 end
               end
               span do
-                text '&nbsp;'
+                rawtext '&nbsp;'
               end
             end
           end

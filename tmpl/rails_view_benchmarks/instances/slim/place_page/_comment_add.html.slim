@@ -19,9 +19,12 @@
               - conversation_categories.each do |category|
                 li.places-to-stay[data-category=category.symbol.to_s.html_safe]
                   .category-icon
-                    i " "
-                  p.category-title category.title
-                  p.category-desc category.description
+                    i
+                      |
+                  p.category-title
+                    = category.title
+                  p.category-desc
+                    = category.description
           .places-to-stay-confirmation
             a.back.centred.pull-left[href="#"]
               span
@@ -64,7 +67,8 @@
           .span6
             select[name="category"]
               - conversation_categories.each do |category|
-                option[value=category.symbol] category.name %>
+                option[value=category.symbol]
+                  = category.name
           .buttons.span5.pull-right
             .ajax_loading_container
             button.btn.btn-cancel[type="button"]

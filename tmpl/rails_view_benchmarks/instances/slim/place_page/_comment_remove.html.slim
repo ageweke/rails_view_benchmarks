@@ -11,5 +11,7 @@
     br
     br
     .actions
-      a.confirm.btn.btn-danger[href="javascript://"] t('comment.remove.confirm_button') %>
-      a.cancel.btn[data-dismiss="modal" href="javascript://"] t('buttons.cancel')
+      a.confirm.btn.btn-danger[href="javascript://"]
+        = t('comment.remove.confirm_button')
+      a.cancel.btn[data-dismiss="modal" href="javascript://"]
+        = t('buttons.cancel')

@@ -28,7 +28,7 @@ class Views::Benchmark::EmailDropdown < Views::Benchmark::Base
                         label do
                           input(:class => 'subscription_type', :name => 'subscription_type', :type => 'radio', :value => (subscription_option.lkey))
                           span do
-                            text '&nbsp;'
+                            rawtext '&nbsp;'
                             strong do
                               text subscription_option.name
                             end

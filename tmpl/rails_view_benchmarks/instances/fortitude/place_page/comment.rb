@@ -76,7 +76,7 @@ class Views::Benchmark::Comment < Views::Benchmark::Base
           button :class => 'btn btn-cancel', :type => 'button' do
             text t('buttons.cancel')
           end
-          text '&nbsp;'
+          rawtext '&nbsp;'
           button :class => 'btn btn-primary btn-create' do
             text t('comment.post_reply')
           end
@@ -151,7 +151,7 @@ class Views::Benchmark::Comment < Views::Benchmark::Base
                     span :class => 'shortened-text' do
                       text the_comment.short_text
                     end
-                    text '&nbsp;'
+                    rawtext '&nbsp;'
                     a :class => 'show-more-link' do
                       text t('comment.more')
                     end

@@ -5,7 +5,7 @@ class Views::Benchmark::CommentAdd < Views::Benchmark::Base
     div :class => 'places-to-stay-confirmation' do
       a :class => 'back centred pull-left', :href => '#' do
         span do
-          text '&nbsp;'
+          rawtext '&nbsp;'
         end
         text 'Back'
       end
@@ -103,7 +103,7 @@ class Views::Benchmark::CommentAdd < Views::Benchmark::Base
           end
           div :class => 'category-picker-container hide' do
             a :class => 'close', :href => '#', :type => 'button' do
-              text '&times;'
+              rawtext '&times;'
             end
             div :class => 'category-picker-panel' do
               div :class => 'category-picker-options' do
@@ -112,7 +112,7 @@ class Views::Benchmark::CommentAdd < Views::Benchmark::Base
                   li(:class => 'places-to-stay', 'data-category' => (category.symbol.to_s.html_safe)) do
                     div :class => 'category-icon' do
                       i do
-                        text '&nbsp;'
+                        rawtext '&nbsp;'
                       end
                     end
                     p :class => 'category-title' do
@@ -159,7 +159,7 @@ class Views::Benchmark::CommentAdd < Views::Benchmark::Base
               button :class => 'btn btn-cancel', :type => 'button' do
                 text t('buttons.cancel')
               end
-              text '&nbsp;'
+              rawtext '&nbsp;'
               button :class => 'btn btn-primary btn-create' do
                 text t('comment.add.start')
               end

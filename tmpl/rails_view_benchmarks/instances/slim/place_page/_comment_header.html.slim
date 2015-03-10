@@ -7,7 +7,8 @@
         span
           |  |
         span.thread_count
-          a[href="#{place.path.html_safe}/conversations"] t('comment.header.see_all', :num => place.total_threads)
+          a[href="#{place.path.html_safe}/conversations"]
+            = t('comment.header.see_all', :num => place.total_threads)
     .pull-right
       .btn-group[data-toggle="buttons-radio"]
         a.btn[href="/n/settings/threads/compact"]

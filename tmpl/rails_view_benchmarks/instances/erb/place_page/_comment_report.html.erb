@@ -5,7 +5,7 @@
   <form action="/n/flag"><input name="id" type="hidden" /><input name="entity_type" type="hidden" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
     <div class="control-group">
       <div class="controls">
-        <label><select name="flag_type">
+        <label></label><select name="flag_type">
             <optgroup>
               <option value="couch_request"><%= t('comment.report.couch_request') %></option>
               <option value="website_feedback"><%= t('comment.report.website_feedback') %></option>
@@ -17,7 +17,7 @@
               <option value="abusive_or_illegal"><%= t('comment.report.abusive_or_illegal') %></option>
               <option value="privacy_breach"><%= t('comment.report.privacy_breach') %></option>
             </optgroup>
-          </select><span>&nbsp;</span></label>
+          </select><span>&nbsp;</span>
       </div>
       <p class="help-block"></p>
     </div>
