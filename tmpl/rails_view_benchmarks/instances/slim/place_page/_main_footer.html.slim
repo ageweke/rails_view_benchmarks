@@ -1,0 +1,12 @@
+footer#main-footer
+  = render :partial => "#{@partial_base}/language_selector", :locals => { :languages => languages }
+  = render :partial => "#{@partial_base}/social_container", :locals => { :social_links => social_links }
+  nav.site_map
+    - site_map.each do |heading, values|
+      div[class=heading.gsub(/\s+/, '').downcase]
+        .heading heading
+        ul.links
+          - values.each do |title, link|
+            li
+              a[href=link.html_safe] title
+    .copyright t('footer.copyright_notice')
