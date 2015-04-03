@@ -6,23 +6,20 @@ run_options:
   disable_gc_during_time: false
 
 benchmarks:
-  - name:       "Siannopollo"
-    benchmark:  siannopollo
-    enabled:     true
   - name:       "Place Page"
     benchmark:  place_page
     enabled:    true
+  - name:       "User-Defined Helper Hell"
+    benchmark:   user_defined_helper_hell
+    enabled:     true
+    configuration:
+      call_count: 10000
   - name:       "Hello, World"
     benchmark:  hello_world
     enabled:    true
   - name:       "Slim Benchmark"
     benchmark:  slim_benchmark
     enabled:    true
-  - name:       "Translation Hell"
-    benchmark:   translation_hell
-    enabled:     true
-    configuration:
-      translation_count: 10000
   - name:       "Local Variable Hell"
     benchmark:   local_variable_hell
     enabled:     true
@@ -39,41 +36,16 @@ benchmarks:
     enabled:    true
     configuration:
       depth:    12
-  - name:       "User-Defined Helper Hell"
-    benchmark:   user_defined_helper_hell
+  - name:       "Translation Hell"
+    benchmark:   translation_hell
     enabled:     true
     configuration:
-      call_count: 10000
+      translation_count: 10000
+  - name:       "Siannopollo"
+    benchmark:  siannopollo
+    enabled:     true
 
 engines:
-  - name:       "Haml (Ugly)"
-    engine:     haml
-    enabled:    true
-    configuration:
-      ugly:     true
-      version:  4.0.6
-  - name:       "ERb"
-    engine:     erb
-    enabled:    true
-    configuration:
-      version:    2.7.0
-  - name:       "Fortitude"
-    engine:     fortitude
-    enabled:    true
-    configuration:
-      path:       /Users/andrew/Dev/ErrorSea/fortitude
-  - name:       "Erector"
-    engine:     erector
-    enabled:    true
-    configuration:
-      prettyprint:  false
-      version:      0.10.0
-  - name:       "Erector-Rails4"
-    engine:     erector_rails4
-    enabled:    true
-    configuration:
-      prettyprint:  false
-      version:      0.2.0
   - name:       "Slim"
     engine:     slim
     enabled:    true
@@ -90,6 +62,34 @@ engines:
       enforce_id_uniqueness:          true
       debug:                          true
       path:                           /Users/andrew/Dev/ErrorSea/fortitude
+  - name:       "ERb"
+    engine:     erb
+    enabled:    true
+    configuration:
+      version:    2.7.0
+  - name:       "Fortitude"
+    engine:     fortitude
+    enabled:    true
+    configuration:
+      path:       /Users/andrew/Dev/ErrorSea/fortitude
+  - name:       "Haml (Ugly)"
+    engine:     haml
+    enabled:    true
+    configuration:
+      ugly:     true
+      version:  4.0.6
+  - name:       "Erector"
+    engine:     erector
+    enabled:    true
+    configuration:
+      prettyprint:  false
+      version:      0.10.0
+  - name:       "Erector-Rails4"
+    engine:     erector_rails4
+    enabled:    true
+    configuration:
+      prettyprint:  false
+      version:      0.2.0
   - name:       "Slim (Pretty)"
     engine:     slim
     enabled:    true
@@ -127,9 +127,3 @@ engines:
     configuration:
       prettyprint:  true
       version:      0.2.0
-
-exclude:
-  - benchmark:  "Place Page"
-    engine:     "Slim"
-  - benchmark:  "Place Page"
-    engine:     "Slim (Pretty)"
