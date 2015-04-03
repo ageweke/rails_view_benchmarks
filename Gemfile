@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'activesupport'
-gem 'oop_rails_server', :path => '../oop_rails_server'
+gem 'trollop'
 gem 'sys-cpu'
+gem 'oop_rails_server', '>= 0.0.8'

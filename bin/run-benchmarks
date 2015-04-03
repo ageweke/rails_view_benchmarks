@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'trollop'
+
+root_dir = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+$: << File.join(root_dir, 'lib')
+
+require 'rails_view_benchmarks/benchmark_run'
+require 'rails_view_benchmarks/version'
+
+unless ARGV.length == 1
+  raise "You must pass exactly one argument -- the name of the YAML file describing the benchmarks to run."
+end
+
+benchmark_yaml = File.expand_path(ARGV[0])
+unless File.exist?(benchmark_yaml)
+  raise Errno::ENOENT, "No such file: '#{benchmark_yaml}'"
+end
+
+temp_dir = File.join(root_dir, 'tmp')
+results_dir = File.join(root_dir, 'results')
+
+benchmark_run = ::RailsViewBenchmarks::BenchmarkRun.new(benchmark_yaml, temp_dir, results_dir)
+benchmark_run.run!
