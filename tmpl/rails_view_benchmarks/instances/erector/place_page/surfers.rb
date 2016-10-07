@@ -1,3 +1,5 @@
+require 'views/benchmark/surfer'
+
 class Views::Benchmark::Surfers < Erector::Widget
   attr_reader :surfers, :place
 

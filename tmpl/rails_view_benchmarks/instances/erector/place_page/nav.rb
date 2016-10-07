@@ -1,3 +1,6 @@
+require 'views/benchmark/header_user_menu'
+require 'views/benchmark/header_explore_menu'
+
 class Views::Benchmark::Nav < Erector::Widget
   attr_reader :user, :place
 

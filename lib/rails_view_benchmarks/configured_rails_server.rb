@@ -26,7 +26,7 @@ module RailsViewBenchmarks
         @rails_server ||= ::OopRailsServer::RailsServer.new(
           :name => 'benchmarker', :template_paths => [ ], :runtime_base_directory => runtime_base_directory,
           :rails_version => rails_version, :rails_env => :production,
-          :additional_gemfile_lines => templating_engine.additional_gemfile_lines,
+          :gemfile_modifier => templating_engine.gemfile_modifier,
           :verbose => false)
         @rails_server.setup!
 

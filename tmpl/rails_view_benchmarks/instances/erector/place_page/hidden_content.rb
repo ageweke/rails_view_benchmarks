@@ -1,3 +1,5 @@
+require 'views/benchmark/create_event_form'
+
 class Views::Benchmark::HiddenContent < Erector::Widget
   attr_reader :user
 

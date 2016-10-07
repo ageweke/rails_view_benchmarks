@@ -1,3 +1,5 @@
+require 'views/benchmark/half_hour_form'
+
 class Views::Benchmark::CreateEventForm < Erector::Widget
   attr_reader :user
 

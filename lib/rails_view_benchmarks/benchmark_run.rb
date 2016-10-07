@@ -53,17 +53,19 @@ module RailsViewBenchmarks
       rails_header_written = false
 
       for_all_instances do |benchmark_alias, engine_alias|
-        say(("%#{max_benchmark_alias_name_length}s for %#{max_engine_alias_name_length}s: " % [ benchmark_alias.name, engine_alias.name ]), false)
-        instance_result = run_for!(benchmark_alias, engine_alias)
-        say instance_result.to_s
+        if benchmark_alias.enabled? && engine_alias.enabled?
+          say(("%#{max_benchmark_alias_name_length}s for %#{max_engine_alias_name_length}s: " % [ benchmark_alias.name, engine_alias.name ]), false)
+          instance_result = run_for!(benchmark_alias, engine_alias)
+          say instance_result.to_s
 
-        if (! rails_header_written)
-          save_rails_header_to!(csv_output_file)
-          rails_header_written = true
+          if (! rails_header_written)
+            save_rails_header_to!(csv_output_file)
+            rails_header_written = true
+          end
+
+          instance_result.save_csv_to!(csv_output_file)
+          instance_result.save_rendered_html_under!(@output_directory)
         end
-
-        instance_result.save_csv_to!(csv_output_file)
-        instance_result.save_rendered_html_under!(@output_directory)
       end
 
       @ended_at = Time.now

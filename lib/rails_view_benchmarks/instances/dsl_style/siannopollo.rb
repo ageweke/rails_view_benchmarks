@@ -9,6 +9,8 @@ module RailsViewBenchmarks
 
         def configure!(c)
           c.main_view <<-EOS
+#{module_declaration_and_explicit_requires_if_needed}
+
 class Views::Benchmark::Index < Views::Base
   def content
     rawtext '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'

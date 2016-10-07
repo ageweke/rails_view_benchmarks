@@ -1,3 +1,5 @@
+require 'views/benchmark/place_subnav_button'
+
 class Views::Benchmark::PlaceSubnav < Erector::Widget
   attr_reader :subnav_places
 

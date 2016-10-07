@@ -1,3 +1,5 @@
+require 'views/benchmark/event'
+
 class Views::Benchmark::Events < Erector::Widget
   attr_reader :trending_events, :place, :total_event_count, :upcoming_events
 

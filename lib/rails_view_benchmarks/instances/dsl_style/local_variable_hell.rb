@@ -18,6 +18,8 @@ module RailsViewBenchmarks
           end
 
           c.main_view <<-EOS
+#{module_declaration_and_explicit_requires_if_needed}
+
 class Views::Benchmark::Index < Views::Base
   needs #{benchmark.variable_names_source}
 

@@ -1,3 +1,5 @@
+require 'views/benchmark/email_dropdown'
+
 class Views::Benchmark::PlaceAvatarHeader < Erector::Widget
   attr_reader :place, :subscription_options, :part_of, :nearby
 

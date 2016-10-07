@@ -1,3 +1,8 @@
+require 'views/benchmark/newrelic_early_header'
+require 'views/benchmark/header_mixpanel_javascript'
+require 'views/benchmark/header_mixpanel_id'
+require 'views/benchmark/header_ga_javascript'
+
 class Views::Benchmark::Header < Erector::Widget
   attr_reader :place, :user
 

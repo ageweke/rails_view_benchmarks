@@ -44,8 +44,8 @@ module RailsViewBenchmarks
         raise "Must override in #{self.class.name}"
       end
 
-      def additional_gemfile_lines
-        [ gemfile_line ]
+      def gemfile_modifier
+        Proc.new { |gemfile| modify_gemfile(gemfile) }
       end
 
       def to_s
@@ -59,20 +59,16 @@ module RailsViewBenchmarks
       private
       attr_reader :configuration
 
-      def gemfile_line
-        out = "gem '#{gem_name}'"
-
+      def modify_gemfile(gemfile)
         if configuration[:version]
-          out << ", '= #{configuration[:version]}'"
+          gemfile.add_version_constraints!(gem_name, "= #{configuration[:version]}")
         elsif configuration[:path]
-          out << ", :path => '#{configuration[:path]}'"
+          gemfile.set_specs!(gem_name, :path => configuration[:path])
         elsif configuration[:git]
-          out << ", :git => '#{configuration[:git]}'"
+          gemfile.set_specs!(gem_name, :git => configuration[:git])
         else
           raise "You must supply one of :version, :path, or :git"
         end
-
-        out
       end
 
       def name_for_subpath

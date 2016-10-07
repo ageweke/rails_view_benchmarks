@@ -9,6 +9,8 @@ module RailsViewBenchmarks
 
         def configure!(c)
           c.main_view <<-EOS
+#{module_declaration_and_explicit_requires_if_needed}
+
 class Views::Benchmark::Index < Views::Base
   needs :the_text
 

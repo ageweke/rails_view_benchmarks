@@ -1,3 +1,6 @@
+require 'views/benchmark/language_selector'
+require 'views/benchmark/social_container'
+
 class Views::Benchmark::MainFooter < Erector::Widget
   attr_reader :languages, :social_links, :site_map
 

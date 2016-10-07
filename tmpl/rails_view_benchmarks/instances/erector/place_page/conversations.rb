@@ -1,3 +1,10 @@
+require 'views/benchmark/comment_report'
+require 'views/benchmark/comment_remove'
+require 'views/benchmark/comment_header'
+require 'views/benchmark/comment_add'
+require 'views/benchmark/comment_tabs'
+require 'views/benchmark/comment'
+
 class Views::Benchmark::Conversations < Erector::Widget
   attr_reader :place, :form_authenticity_token, :conversation_categories, :conversation_tabs, :comments
 

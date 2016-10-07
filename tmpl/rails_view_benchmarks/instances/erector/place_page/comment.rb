@@ -1,3 +1,5 @@
+require 'views/benchmark/comment_reply'
+
 class Views::Benchmark::Comment < Erector::Widget
   attr_reader :comment
 

@@ -1,3 +1,21 @@
+module Views
+  module Benchmark
+  end
+end
+
+require 'views/benchmark/header'
+require 'views/benchmark/nav'
+require 'views/benchmark/place_subnav'
+require 'views/benchmark/place_avatar_header'
+require 'views/benchmark/featured_events'
+require 'views/benchmark/conversations'
+require 'views/benchmark/events'
+require 'views/benchmark/surfers'
+require 'views/benchmark/related_groups'
+require 'views/benchmark/main_footer'
+require 'views/benchmark/hidden_content'
+require 'views/benchmark/footer_javascript'
+
 class Views::Benchmark::Index < Erector::Widget
   def content
     rawtext '<!DOCTYPE html>'
